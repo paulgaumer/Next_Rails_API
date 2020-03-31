@@ -9,15 +9,15 @@ export default function SignUp(props) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        user: { email: 'bibi@test.com', password: 'password' }
+        user: { email: 'yuk@test.com', password: 'password' }
       })
     });
     const data = await res.json();
     console.log(data);
 
-    // return {
-    //   examples: data
-    // };
+    return {
+      currentUserToken: data
+    };
   };
 
   const handleClick = (e) => {
