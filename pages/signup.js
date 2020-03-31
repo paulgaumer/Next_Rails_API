@@ -5,7 +5,7 @@ export default function SignUp(props) {
   const signup = async () => {
     const res = await fetch('http://localhost:3000/api/users', {
       method: 'POST',
-      header: {
+      headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
