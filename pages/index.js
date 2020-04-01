@@ -29,7 +29,7 @@ Index.getInitialProps = async function(ctx) {
   const res = await fetch('http://localhost:3000/api/users/current', {
     method: 'get',
     headers: {
-      Authorization: `Bearer ${token}`
+      Authorization: `${token}`
     }
   });
   const data = await res.json();

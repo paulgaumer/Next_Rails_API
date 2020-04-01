@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Layout from '../components/MyLayout.js';
 import fetch from 'isomorphic-unfetch';
+import Cookies from 'js-cookie';
+import Router from 'next/router';
 
 const signup = async (user) => {
   const res = await fetch('http://localhost:3000/api/users', {
@@ -15,13 +17,10 @@ const signup = async (user) => {
       }
     })
   });
-
-  console.log(res.headers.get('Authorization'));
+  const token = res.headers.get('Authorization');
   const data = await res.json();
-
-  return {
-    currentUserToken: data
-  };
+  Cookies.set('token', token, { expires: 1 });
+  Router.push('/');
 };
 
 const SignUpPage = (props) => {

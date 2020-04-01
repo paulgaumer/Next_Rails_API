@@ -17,7 +17,7 @@ const login = async (user) => {
   });
   const data = await res.json();
   console.log(data);
-  Cookies.set('token', data.token, { expires: 1 });
+  Cookies.set('token', `Bearer ${data.token}`, { expires: 1 });
   Router.push('/');
 };
 

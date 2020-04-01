@@ -3,15 +3,16 @@ import React, { createContext, useReducer } from 'react';
 export const UserStateContext = createContext();
 export const UserDispatchContext = createContext();
 
-function reducer(state, action) {
-  console.log('HHELLO');
+const reducer = (state, action) => {
+  // console.log('h');
   switch (action.type) {
     case 'SET_CURRENT_USER':
       return { user: action.payload };
     default:
       throw new Error();
   }
-}
+  return state;
+};
 
 const UserContextProvider = ({ children }) => {
   const initialState = {};
