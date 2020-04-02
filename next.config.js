@@ -1,10 +1,7 @@
-const { parsed: localEnv } = require('dotenv').config();
-const webpack = require('webpack');
-
+require('dotenv').config();
 module.exports = {
-  webpack(config) {
-    config.plugins.push(new webpack.EnvironmentPlugin(localEnv));
-
-    return config;
+  env: {
+    // Reference a variable that was defined in the .env file and make it available at Build Time
+    API_HOST: process.env.API_HOST
   }
 };
