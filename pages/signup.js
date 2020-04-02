@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
 import Router from 'next/router';
 
 const signup = async (user) => {
-  const res = await fetch('http://localhost:3000/api/users', {
+  const res = await fetch('http://localhost:3000/users', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

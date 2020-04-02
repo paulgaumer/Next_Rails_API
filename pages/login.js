@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
 import Router from 'next/router';
 
 const login = async (user) => {
-  const res = await fetch('http://localhost:3000/api/users/sign_in', {
+  const res = await fetch('http://localhost:3000/users/sign_in', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -15,10 +15,10 @@ const login = async (user) => {
       user: { email: user.email, password: user.password }
     })
   });
-  const data = await res.json();
-  console.log(data);
-  Cookies.set('token', `Bearer ${data.token}`, { expires: 1 });
-  Router.push('/');
+  const token = res.headers.get('Authorization');
+  // const data = await res.json();
+  Cookies.set('token', token, { expires: 1 });
+  Router.push('/dashboard');
 };
 
 const LogInPage = () => {
