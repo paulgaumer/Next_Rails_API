@@ -10,7 +10,7 @@ const saveForm = async (info) => {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`
+      Authorization: token
     },
     body: JSON.stringify({
       podcast: { name: info }
