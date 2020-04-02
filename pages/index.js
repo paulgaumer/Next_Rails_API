@@ -25,8 +25,9 @@ export default Index;
 
 // Index.getInitialProps = async function(ctx) {
 //   const { token } = nextCookie(ctx);
+// const apiUrl = process.env.API_HOST;
 
-//   const res = await fetch('http://localhost:3000/users/current', {
+//   const res = await fetch(`${apiUrl}/users/current`, {
 //     method: 'get',
 //     headers: {
 //       Authorization: `${token}`

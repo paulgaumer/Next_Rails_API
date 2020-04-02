@@ -5,7 +5,8 @@ import Cookies from 'js-cookie';
 import Router from 'next/router';
 
 const login = async (user) => {
-  const res = await fetch('http://localhost:3000/users/sign_in', {
+  const apiUrl = process.env.API_HOST;
+  const res = await fetch(`${apiUrl}/users/sign_in`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',

@@ -18,8 +18,9 @@ export default PodcastHome;
 
 PodcastHome.getInitialProps = async function({ req }) {
   const sub = req.url.slice(1);
+  const apiUrl = process.env.API_HOST;
 
-  const res = await fetch(`http://localhost:3000/api/v1/landing/${sub}`, {
+  const res = await fetch(`${apiUrl}/api/v1/landing/${sub}`, {
     method: 'get'
   });
   const data = await res.json();

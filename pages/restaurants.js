@@ -25,8 +25,9 @@ export default Restaurants;
 
 Restaurants.getInitialProps = async function(ctx) {
   const { token } = nextCookie(ctx);
+  const apiUrl = process.env.API_HOST;
 
-  const res = await fetch('http://localhost:3000/api/examples', {
+  const res = await fetch(`${apiUrl}/api/examples`, {
     method: 'get',
     headers: {
       Authorization: `Bearer ${token}`

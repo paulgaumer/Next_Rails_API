@@ -4,8 +4,9 @@ import Cookies from 'js-cookie';
 import Router from 'next/router';
 
 const saveForm = async (info) => {
+  const apiUrl = process.env.API_HOST;
   const token = Cookies.get('token');
-  const res = await fetch('http://localhost:3000/api/v1/dashboard/edit', {
+  const res = await fetch(`${apiUrl}/api/v1/dashboard/edit`, {
     method: 'PATCH',
     headers: {
       Accept: 'application/json',
