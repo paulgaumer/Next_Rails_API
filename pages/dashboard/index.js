@@ -26,10 +26,11 @@ Dashboard.getInitialProps = async function(ctx) {
   const res = await fetch('http://localhost:3000/api/v1/dashboard', {
     method: 'get',
     headers: {
-      Authorization: `${token}`
+      Authorization: token
     }
   });
   const data = await res.json();
+  console.log(data);
 
   return {
     data
