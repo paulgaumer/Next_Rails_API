@@ -11,8 +11,8 @@ const Dashboard = ({ data }) => {
       <NameForm podcastName={data.name} />
 
       <h2>Here is your Landing Page</h2>
-      <Link href="/[podcast]" as={`/${data.name}`} target="_blank">
-        <a>{data.name}</a>
+      <Link href="/[podcast]" as={`/${data.name}`}>
+        <a target="_blank">{data.name}</a>
       </Link>
     </Layout>
   );

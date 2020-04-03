@@ -10,16 +10,15 @@ const linkStyle = {
 export default function Header() {
   const handleLogOut = (e) => {
     const token = cookie.get('token');
+    const apiUrl = process.env.API_HOST;
 
     e.preventDefault();
-    fetch('/api/users/sign_out', {
+    fetch(`${apiUrl}/users/sign_out`, {
       method: 'DELETE',
       headers: {
-        Authorization: `Bearer ${token}`
+        Authorization: token
       }
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
+    });
     cookie.remove('token');
     Router.push('/');
   };
