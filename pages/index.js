@@ -16,7 +16,7 @@ const Index = (props) => {
 
   return (
     <Layout>
-      <h1>Welcome to Podwee</h1>
+      <h1 className="text-red-600">Welcome to Podwee</h1>
     </Layout>
   );
 };

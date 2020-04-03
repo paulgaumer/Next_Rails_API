@@ -1,6 +1,7 @@
 import React from 'react';
 import App from 'next/app';
 import UserContextProvider from '../context/userContextProvider';
+import '../styles/styles.css';
 
 class MyApp extends App {
   render() {
