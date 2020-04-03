@@ -1,41 +1,31 @@
-// import { useContext, useEffect } from 'react';
-import Layout from '../components/MyLayout.js';
-// import fetch from 'isomorphic-unfetch';
-// import nextCookie from 'next-cookies';
-// import { UserDispatchContext } from '../context/userContextProvider';
+import fetch from 'isomorphic-unfetch';
+import PodcastLanding from '../components/podcastLanding/landing';
+import MarketingLanding from '../components/marketingLanding/landing';
 
-const Index = (props) => {
-  // const userDispatch = useContext(UserDispatchContext);
-
-  // useEffect(() => {
-  //   userDispatch({
-  //     type: 'SET_CURRENT_USER',
-  //     payload: props.user
-  //   });
-  // }, []);
-
-  return (
-    <Layout>
-      <h1 className="text-red-600">Welcome to Podwee</h1>
-    </Layout>
-  );
+const Index = ({ data }) => {
+  return data === null ? <MarketingLanding /> : <PodcastLanding data={data} />;
 };
 
 export default Index;
 
-// Index.getInitialProps = async function(ctx) {
-//   const { token } = nextCookie(ctx);
-// const apiUrl = process.env.API_HOST;
+Index.getInitialProps = async function(ctx) {
+  const subdomain = ctx.req.headers.host.split('.')[0];
+  const marketingDomains = ['lvh', 'localhost:8080', 'podwii'];
+  const apiUrl = process.env.API_HOST;
 
-//   const res = await fetch(`${apiUrl}/users/current`, {
-//     method: 'get',
-//     headers: {
-//       Authorization: `${token}`
-//     }
-//   });
-//   const data = await res.json();
-
-//   return {
-//     user: data.user
-//   };
-// };
+  if (marketingDomains.includes(subdomain)) {
+    return {
+      subdomain,
+      data: null
+    };
+  } else {
+    const res = await fetch(`${apiUrl}/api/v1/landing/${subdomain}`, {
+      method: 'get'
+    });
+    const data = await res.json();
+    return {
+      subdomain,
+      data
+    };
+  }
+};
