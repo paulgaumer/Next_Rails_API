@@ -1,6 +1,7 @@
 import fetch from 'isomorphic-unfetch';
 import PodcastLanding from '../components/podcastLanding/landing';
 import MarketingLanding from '../components/marketingLanding/landing';
+import { getSubdomain } from '../utils/subdomain';
 
 const Index = ({ data }) => {
   return data === null ? <MarketingLanding /> : <PodcastLanding data={data} />;
@@ -9,7 +10,8 @@ const Index = ({ data }) => {
 export default Index;
 
 Index.getInitialProps = async function(ctx) {
-  const subdomain = ctx.req.headers.host.split('.')[0];
+  const subdomain = getSubdomain(ctx.req);
+  console.log(subdomain);
   const marketingDomains = ['lvh', 'localhost:8080', 'podwii'];
   const apiUrl = process.env.API_HOST;
 

@@ -2,11 +2,12 @@ import React from 'react';
 // import Layout from '../components/MyLayout';
 import fetch from 'isomorphic-unfetch';
 import AudioPlayer from './audioPlayer';
+import {} from '../../utils/subdomain';
 
-const PodcastHome = ({ data }) => {
+const PodcastLanding = ({ data }) => {
   return (
     <div>
-      <h1>{data.name} Podcast Landing Page</h1>
+      <h1>Landing Page for:{data.name}</h1>
 
       <h2>Description</h2>
       <p>{data.description}</p>
@@ -15,10 +16,10 @@ const PodcastHome = ({ data }) => {
   );
 };
 
-export default PodcastHome;
+export default PodcastLanding;
 
-PodcastHome.getInitialProps = async function(ctx) {
-  const subdomain = ctx.req.headers.host.split('.')[0];
+PodcastLanding.getInitialProps = async function(ctx) {
+  const subdomain = getSubdomain(ctx.req);
   console.log(subdomain);
   const apiUrl = process.env.API_HOST;
   const res = await fetch(`${apiUrl}/api/v1/landing/${subdomain}`, {

@@ -28,6 +28,9 @@ export default function Header() {
       <Link href="/">
         <a style={linkStyle}>Home</a>
       </Link>
+      <Link href="/dashboard">
+        <a style={linkStyle}>Dashboard</a>
+      </Link>
       <Link href="/login">
         <a style={linkStyle}>Login</a>
       </Link>
