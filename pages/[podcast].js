@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '../components/MyLayout';
 import fetch from 'isomorphic-unfetch';
+import AudioPlayer from '../components/landing/audioPlayer';
 
 const PodcastHome = ({ data }) => {
   console.log(data);
@@ -10,6 +11,7 @@ const PodcastHome = ({ data }) => {
 
       <h2>Description</h2>
       <p>{data.description}</p>
+      <AudioPlayer player={data.audio_player} />
     </div>
   );
 };

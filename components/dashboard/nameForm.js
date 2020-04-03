@@ -17,6 +17,7 @@ const saveForm = async (info) => {
       podcast: { name: info }
     })
   });
+  Router.push('/dashboard');
 };
 
 const NameForm = ({ podcastName }) => {

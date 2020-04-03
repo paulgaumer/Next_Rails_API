@@ -3,17 +3,19 @@ import fetch from 'isomorphic-unfetch';
 import nextCookie from 'next-cookies';
 import Link from 'next/link';
 import NameForm from '../../components/dashboard/nameForm';
+import AudioPlayerForm from '../../components/dashboard/audioPlayerForm';
 
 const Dashboard = ({ data }) => {
   return (
     <Layout>
       <h1>Welcome to your dashboard {data.user.email}</h1>
-      <NameForm podcastName={data.name} />
-
       <h2>Here is your Landing Page</h2>
       <Link href="/[podcast]" as={`/${data.name}`}>
         <a target="_blank">{data.name}</a>
       </Link>
+
+      <NameForm podcastName={data.name} />
+      <AudioPlayerForm podcastPlayer={data.audio_player} />
     </Layout>
   );
 };
