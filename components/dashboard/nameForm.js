@@ -22,7 +22,6 @@ const saveForm = async (info) => {
 
 const NameForm = ({ podcastName }) => {
   const [name, setName] = useState(podcastName);
-  console.log(name);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

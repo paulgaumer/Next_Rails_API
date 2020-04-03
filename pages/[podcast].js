@@ -4,7 +4,6 @@ import fetch from 'isomorphic-unfetch';
 import AudioPlayer from '../components/landing/audioPlayer';
 
 const PodcastHome = ({ data }) => {
-  console.log(data);
   return (
     <div>
       <h1>{data.name} Podcast Landing Page</h1>

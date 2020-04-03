@@ -22,7 +22,6 @@ const saveForm = async (info) => {
 
 const AudioPlayerForm = ({ podcastPlayer }) => {
   const [player, setPlayer] = useState(podcastPlayer);
-  console.log(player);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
