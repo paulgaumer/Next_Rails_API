@@ -2,15 +2,16 @@ import { useState } from 'react';
 import fetch from 'isomorphic-unfetch';
 import nextCookie from 'next-cookies';
 import { getDomain } from '../../utils/subdomain';
-import DashboardShell from '../../components/dashboard/dashboardShell/dashboardShell';
+import DashboardShell from '../../components/dashboard/dashboardShell';
+import PodcastDetails from '../../components/dashboard/podcastDetails';
 
 const Dashboard = ({ initialPodcastInfo, initialDomain }) => {
   const [podcast, setPodcast] = useState(initialPodcastInfo);
   const [domain, setDomain] = useState(initialDomain);
 
   return (
-    <DashboardShell podcast={podcast} domain={domain}>
-      <h3>Hello</h3>
+    <DashboardShell podcast={podcast} currentDomain={domain}>
+      <PodcastDetails podcast={podcast} />
     </DashboardShell>
     // <Layout>
     //   <h1>Welcome to your dashboard {state.user.email}</h1>

@@ -23,7 +23,7 @@ const DashboardShell = ({ podcast, domain, children }) => {
           className="relative z-0 flex-1 pt-2 pb-6 overflow-y-auto focus:outline-none md:py-6"
           tabIndex={0}
         >
-          <div className="px-4 mx-auto max-w-7xl sm:px-6 md:px-8">
+          <div className="px-4 pb-10 mx-auto max-w-7xl sm:px-6 md:px-8">
             <h1 className="text-2xl font-semibold text-gray-900">
               Welcome {podcast.user.email}
             </h1>
