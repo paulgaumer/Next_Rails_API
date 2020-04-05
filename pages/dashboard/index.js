@@ -42,6 +42,7 @@ Dashboard.getInitialProps = async function (ctx) {
       },
     });
 
+    console.log(res);
     const data = await res.json();
 
     return {
