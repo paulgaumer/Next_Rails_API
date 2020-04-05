@@ -4,7 +4,7 @@ import Router from 'next/router';
 import cookie from 'js-cookie';
 
 const linkStyle = {
-  marginRight: 15
+  marginRight: 15,
 };
 
 export default function Header() {
@@ -16,8 +16,8 @@ export default function Header() {
     fetch(`${apiUrl}/users/sign_out`, {
       method: 'DELETE',
       headers: {
-        Authorization: token
-      }
+        Authorization: token,
+      },
     });
     cookie.remove('token');
     Router.push('/');
@@ -31,7 +31,7 @@ export default function Header() {
       <Link href="/dashboard">
         <a style={linkStyle}>Dashboard</a>
       </Link>
-      <Link href="/login">
+      <Link href="/signin">
         <a style={linkStyle}>Login</a>
       </Link>
       <Link href="/signup">

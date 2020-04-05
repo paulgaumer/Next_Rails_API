@@ -38,10 +38,7 @@ const Dashboard = ({ initialData, initialDomain }) => {
           data-todo-x-transition-leave-end="opacity-0"
           className="fixed inset-0 z-30 transition-opacity duration-300 ease-linear"
         >
-          <div
-            className="absolute inset-0 bg-gray-600 opacity-75"
-            key="transition-group-content"
-          ></div>
+          <div className="absolute inset-0 bg-gray-600 opacity-75"></div>
         </div>
         <div className="fixed inset-0 z-40 flex">
           <div
@@ -78,10 +75,7 @@ const Dashboard = ({ initialData, initialDomain }) => {
                 </svg>
               </button>
             </div>
-            <div
-              className="flex-1 h-0 pt-5 pb-4 overflow-y-auto"
-              key="transition-group-content"
-            >
+            <div className="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
               <div className="flex items-center flex-shrink-0 px-4">
                 <img
                   className="w-auto h-8"
@@ -206,10 +200,7 @@ const Dashboard = ({ initialData, initialDomain }) => {
                 </a>
               </nav>
             </div>
-            <div
-              className="flex flex-shrink-0 p-4 border-t border-indigo-700"
-              key="transition-group-content"
-            >
+            <div className="flex flex-shrink-0 p-4 border-t border-indigo-700">
               <a
                 href="/"
                 className="flex-shrink-0 block group focus:outline-none"
@@ -419,7 +410,9 @@ const Dashboard = ({ initialData, initialDomain }) => {
           tabIndex={0}
         >
           <div className="px-4 mx-auto max-w-7xl sm:px-6 md:px-8">
-            <h1 className="text-2xl font-semibold text-gray-900">Dashboard</h1>
+            <h1 className="text-2xl font-semibold text-gray-900">
+              Welcome {state.user.email}
+            </h1>
           </div>
 
           <div className="px-4 mx-auto max-w-7xl sm:px-6 md:px-8">
