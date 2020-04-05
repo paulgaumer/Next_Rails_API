@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Layout from '../components/MyLayout.js';
+import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
 import Cookies from 'js-cookie';
 import Router from 'next/router';
@@ -42,13 +42,12 @@ const LogInPage = () => {
           Sign in to your account
         </h2>
         <p className="mt-2 text-sm leading-5 text-center text-gray-600 max-w">
-          Or
-          <a
-            href="/"
-            className="font-medium text-indigo-600 transition duration-150 ease-in-out hover:text-indigo-500 focus:outline-none focus:underline"
-          >
-            start your 14-day free trial
-          </a>
+          Or{' '}
+          <Link href="/signup">
+            <a className="font-medium text-indigo-600 transition duration-150 ease-in-out hover:text-indigo-500 focus:outline-none focus:underline">
+              start your 14-day free trial
+            </a>
+          </Link>
         </p>
       </div>
 
