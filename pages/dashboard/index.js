@@ -13,16 +13,6 @@ const Dashboard = ({ initialPodcastInfo, initialDomain }) => {
     <DashboardShell podcast={podcast} currentDomain={domain}>
       <PodcastDetails podcast={podcast} />
     </DashboardShell>
-    // <Layout>
-    //   <h1>Welcome to your dashboard {state.user.email}</h1>
-    //   <h2>Here is your Landing Page</h2>
-    //   <Link href={`http://${state.subdomain}.${domain}`}>
-    //     <a target="_blank">{state.name}</a>
-    //   </Link>
-
-    //   <NameForm podcastName={state.name} />
-    //   <AudioPlayerForm podcastPlayer={state.audio_player} />
-    // </Layout>
   );
 };
 
