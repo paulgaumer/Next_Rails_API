@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import MobileSideBar from './mobileSideBar';
-import DesktopSideBar from './desktopSidebar';
+import DesktopSideBar from './desktopSideBar';
 import BurgerMenuSideBar from './burgerMenuSideBar';
 
 const DashboardShell = ({ podcast, currentDomain, children }) => {
