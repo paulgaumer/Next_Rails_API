@@ -3,7 +3,7 @@ import MobileSideBar from './mobileSideBar';
 import DesktopSideBar from './desktopSidebar';
 import BurgerMenuSideBar from './burgerMenuSideBar';
 
-const DashboardShell = ({ podcast, domain, children }) => {
+const DashboardShell = ({ podcast, currentDomain, children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -12,8 +12,13 @@ const DashboardShell = ({ podcast, domain, children }) => {
       <MobileSideBar
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
+        podcastSubdomain={podcast.subdomain}
+        currentDomain={currentDomain}
       />
-      <DesktopSideBar />
+      <DesktopSideBar
+        podcastSubdomain={podcast.subdomain}
+        currentDomain={currentDomain}
+      />
       {/* END SIDEBAR CONTENT */}
 
       {/* DASHBOARD CONTENT */}
