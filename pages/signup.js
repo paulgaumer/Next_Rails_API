@@ -9,28 +9,28 @@ const signup = async ({ email, password, subdomain }) => {
   const res = await fetch(`${apiUrl}/users`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({
       user: {
         email,
-        password
+        password,
       },
-      subdomain
-    })
+      subdomain,
+    }),
   });
   const token = res.headers.get('Authorization');
   const data = await res.json();
   console.log(data);
   Cookies.set('token', token, { expires: 1 });
-  Router.push('/dashboard');
+  Router.push('/dashboard/onboarding');
 };
 
 const SignUpPage = () => {
   const [details, setDetails] = useState({
     email: '',
     password: '',
-    subdomain: ''
+    subdomain: '',
   });
 
   const handleSubmit = (e) => {
