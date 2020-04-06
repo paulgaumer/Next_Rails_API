@@ -9,25 +9,24 @@ const Index = ({ data }) => {
 
 export default Index;
 
-Index.getInitialProps = async function(ctx) {
+Index.getInitialProps = async function (ctx) {
   const subdomain = getSubdomain(ctx.req);
-  console.log(subdomain);
   const marketingDomains = ['lvh', 'localhost:8080', 'podwii'];
   const apiUrl = process.env.API_HOST;
 
   if (marketingDomains.includes(subdomain)) {
     return {
       subdomain,
-      data: null
+      data: null,
     };
   } else {
     const res = await fetch(`${apiUrl}/api/v1/landing/${subdomain}`, {
-      method: 'get'
+      method: 'get',
     });
     const data = await res.json();
     return {
       subdomain,
-      data
+      data,
     };
   }
 };

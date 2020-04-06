@@ -2,12 +2,20 @@ import React, { useState } from 'react';
 import Router from 'next/router';
 import { editPodcast } from './handleFetch';
 
-const Index = ({ podcast }) => {
+const isEmpty = (item) => {
+  return item === '';
+};
+
+const Index = ({ podcastDb, podcastRss }) => {
+  console.log(podcastDb);
+  console.log(podcastRss);
   const [podcastDetails, setPodcastDetails] = useState({
-    name: podcast.name,
-    subdomain: podcast.subdomain,
-    description: podcast.description,
-    audio_player: podcast.audio_player,
+    name: isEmpty(podcastDb.name) ? podcastRss.title : podcastDb.name,
+    description: isEmpty(podcastDb.description)
+      ? podcastRss.description
+      : podcastDb.description,
+    audio_player: podcastDb.audio_player,
+    subdomain: podcastDb.subdomain,
   });
 
   const handleSubmit = async (e) => {

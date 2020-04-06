@@ -20,8 +20,6 @@ const signup = async ({ email, password, subdomain }) => {
     }),
   });
   const token = res.headers.get('Authorization');
-  const data = await res.json();
-  console.log(data);
   Cookies.set('token', token, { expires: 1 });
   Router.push('/dashboard/onboarding');
 };

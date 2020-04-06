@@ -6,8 +6,6 @@ import Router from 'next/router';
 const updateRss = async (rss) => {
   const token = Cookies.get('token');
   const apiUrl = process.env.API_HOST;
-  console.log(token);
-  console.log(rss);
   const res = await fetch(`${apiUrl}/api/v1/dashboard/edit`, {
     method: 'PATCH',
     headers: {

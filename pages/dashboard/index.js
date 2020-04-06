@@ -1,16 +1,20 @@
 import { useState, useEffect } from 'react';
-import fetch from 'isomorphic-unfetch';
 import nextCookie from 'next-cookies';
-import dynamic from 'next/dynamic';
 import Router from 'next/router';
+import fetch from 'isomorphic-unfetch';
 import { getDomain } from '../../utils/subdomain';
+import { parseRss } from '../../utils/parseRss';
 import DashboardShell from '../../components/dashboard/dashboardShell';
 import PodcastDetails from '../../components/dashboard/podcastDetails';
 
-const SigninPage = dynamic(() => import('../signin'));
-
-const Dashboard = ({ initialPodcastInfo, initialDomain, loggedIn }) => {
-  const [podcast, setPodcast] = useState(initialPodcastInfo);
+const Dashboard = ({
+  initialPodcastInfo,
+  initialDomain,
+  loggedIn,
+  rssFeed,
+}) => {
+  const [podcastDb, setPodcastDb] = useState(initialPodcastInfo);
+  const [podcastRss, setPodcastRss] = useState(rssFeed);
   const [domain, setDomain] = useState(initialDomain);
 
   useEffect(() => {
@@ -23,13 +27,12 @@ const Dashboard = ({ initialPodcastInfo, initialDomain, loggedIn }) => {
     return <div></div>;
   } else {
     return (
-      <DashboardShell podcast={podcast} currentDomain={domain}>
-        <PodcastDetails podcast={podcast} />
+      <DashboardShell podcast={podcastDb} currentDomain={domain}>
+        <img src={rssFeed.image.url} alt="" className="w-20 h-20 rounded" />
+        <PodcastDetails podcastDb={podcastDb} podcastRss={podcastRss} />
       </DashboardShell>
     );
   }
-
-  return <div></div>;
 };
 
 export default Dashboard;
@@ -50,14 +53,14 @@ Dashboard.getInitialProps = async function (ctx) {
         Authorization: token,
       },
     });
-
-    console.log(res);
     const data = await res.json();
+    const rssFeed = await parseRss(data.feed_url);
 
     return {
       initialPodcastInfo: data,
       initialDomain: domain,
       loggedIn: true,
+      rssFeed,
     };
   }
 };
