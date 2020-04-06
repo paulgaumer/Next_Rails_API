@@ -28,7 +28,9 @@ const Dashboard = ({
   } else {
     return (
       <DashboardShell podcast={podcastDb} currentDomain={domain}>
-        <img src={rssFeed.image.url} alt="" className="w-20 h-20 rounded" />
+        {rssFeed !== null && (
+          <img src={rssFeed.image.url} alt="" className="w-20 h-20 rounded" />
+        )}
         <PodcastDetails podcastDb={podcastDb} podcastRss={podcastRss} />
       </DashboardShell>
     );
@@ -41,6 +43,7 @@ Dashboard.getInitialProps = async function (ctx) {
   const domain = getDomain(ctx.req);
   const { token } = nextCookie(ctx);
   const apiUrl = process.env.API_HOST;
+  let rssFeed = null;
 
   if (token === undefined) {
     return {
@@ -54,7 +57,9 @@ Dashboard.getInitialProps = async function (ctx) {
       },
     });
     const data = await res.json();
-    const rssFeed = await parseRss(data.feed_url);
+    if (data.feed_url !== null) {
+      rssFeed = await parseRss(data.feed_url);
+    }
 
     return {
       initialPodcastInfo: data,

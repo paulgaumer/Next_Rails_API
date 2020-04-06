@@ -7,8 +7,6 @@ const isEmpty = (item) => {
 };
 
 const Index = ({ podcastDb, podcastRss }) => {
-  console.log(podcastDb);
-  console.log(podcastRss);
   const [podcastDetails, setPodcastDetails] = useState({
     name: isEmpty(podcastDb.name) ? podcastRss.title : podcastDb.name,
     description: isEmpty(podcastDb.description)
@@ -16,6 +14,7 @@ const Index = ({ podcastDb, podcastRss }) => {
       : podcastDb.description,
     audio_player: podcastDb.audio_player,
     subdomain: podcastDb.subdomain,
+    feed_url: podcastDb.feed_url,
   });
 
   const handleSubmit = async (e) => {
@@ -99,13 +98,31 @@ const Index = ({ podcastDb, podcastRss }) => {
                     id="description"
                     defaultValue={podcastDetails.description}
                     onChange={(e) => handleChange(e.target)}
-                    rows="3"
+                    rows="5"
                     className="block w-full transition duration-150 ease-in-out form-textarea sm:text-sm sm:leading-5"
                   ></textarea>
                 </div>
                 <p className="mt-2 text-sm text-gray-500">
                   This will be the description showing on the main page.
                 </p>
+              </div>
+            </div>
+            <div className="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+              <label
+                htmlFor="feed_url"
+                className="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"
+              >
+                Your rss feed
+              </label>
+              <div className="mt-1 sm:mt-0 sm:col-span-2">
+                <div className="flex max-w-lg rounded-md shadow-sm">
+                  <input
+                    id="feed_url"
+                    defaultValue={podcastDetails.feed_url}
+                    onChange={(e) => handleChange(e.target)}
+                    className="block w-full transition duration-150 ease-in-out form-textarea sm:text-sm sm:leading-5"
+                  ></input>
+                </div>
               </div>
             </div>
 
