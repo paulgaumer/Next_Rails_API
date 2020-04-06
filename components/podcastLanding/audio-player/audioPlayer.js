@@ -4,7 +4,7 @@ const AudioPlayer = ({ player }) => {
   return (
     <div
       dangerouslySetInnerHTML={{
-        __html: player
+        __html: player,
       }}
     />
   );
