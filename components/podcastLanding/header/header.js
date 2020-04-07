@@ -42,7 +42,7 @@ const BackgroundContainer = styled.div`
 const Index = ({ data }) => {
   return (
     <HeaderContainer className="relative flex justify-center py-24">
-      <div className="z-10 flex flex-col items-center justify-center">
+      <div className="z-10 flex flex-col items-center justify-center mx-auto max-w-7xl">
         <div className="flex justify-center max-w-3xl">
           <img
             src={data.coverUrl}
@@ -58,10 +58,10 @@ const Index = ({ data }) => {
         <div className="flex justify-center mt-20">
           {['Itunes', 'Spotify', 'Overcasr', 'RSS'].map((btn) => {
             return (
-              <span class="inline-flex rounded-md shadow-sm mx-2">
+              <span className="inline-flex mx-2 rounded-md shadow-sm">
                 <button
                   type="button"
-                  class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150"
+                  className="inline-flex items-center px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
                 >
                   {btn}
                 </button>

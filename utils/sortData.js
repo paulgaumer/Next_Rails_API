@@ -13,6 +13,7 @@ export const sortDataPodcastLanding = (db, rss) => {
     audio_player: db.audio_player,
     subdomain: db.subdomain,
     coverUrl: isEmpty(db.cover_url) ? rss.image.url : db.cover_url,
+    episodes: rss.items,
     owner: {
       name: isEmpty(dbUserName) ? rss.itunes.author : dbUserName,
     },
