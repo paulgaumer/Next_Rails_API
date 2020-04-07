@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const HeaderContainer = styled.div`
-  height: 30rem;
+  /* height: 35rem; */
 `;
 
 const BackgroundContainer = styled.div`
@@ -41,20 +41,21 @@ const BackgroundContainer = styled.div`
 
 const Index = ({ data }) => {
   return (
-    <HeaderContainer className="relative">
-      <div className="absolute inset-0 z-10 flex flex-col justify-center">
-        <div className="flex items-center justify-center mb-10">
+    <HeaderContainer className="relative flex justify-center py-24">
+      <div className="z-10 flex flex-col items-center justify-center">
+        <div className="flex justify-center max-w-3xl">
           <img
             src={data.coverUrl}
             alt="podcast logo"
-            className="w-40 h-40 rounded"
+            className="w-48 h-48 mt-6 rounded"
           />
-          <div className="pl-10">
-            <h1 className="text-5xl ">{data.name}</h1>
-            <p>by {data.owner.name}</p>
+          <div className="pl-10 text-white">
+            <h1 className="text-6xl ">{data.name}</h1>
+            <p>- by {data.owner.name}</p>
+            <p className="pt-10">{data.description}</p>
           </div>
         </div>
-        <div className="flex justify-center">
+        <div className="flex justify-center mt-20">
           {['Itunes', 'Spotify', 'Overcasr', 'RSS'].map((btn) => {
             return (
               <span class="inline-flex rounded-md shadow-sm mx-2">
