@@ -1,34 +1,60 @@
 import React from 'react';
 import styled from 'styled-components';
-import AudioPlayer from '../audio-player/audioPlayer';
 
-const Cut = styled.div`
-  /* border: 1px solid red; */
-  background: #fff;
-  position: absolute;
-  top: 250px;
-  width: 120%;
-  height: 320px;
-  transform-origin: center top;
-  transform: rotate(-5deg);
+const HeaderContainer = styled.div`
+  height: 30rem;
 `;
 
-const Index = ({ name, audioPlayer }) => {
+const BackgroundContainer = styled.div`
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  width: 100vw;
+  min-width: 100vw;
+  z-index: -1;
+  margin: 0px;
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    width: 100%;
+    min-width: 100%;
+    top: 50%;
+    left: 0px;
+    transform: translateY(-50%) scale(2);
+    filter: blur(20px);
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.55);
+  }
+`;
+
+const Index = ({ data }) => {
   return (
-    <div className="relative">
-      <div
-        className="flex flex-col justify-center bg-blue-200"
-        style={{ height: '30rem' }}
-      >
-        <div className="z-10 flex items-center justify-center mb-10">
+    <HeaderContainer className="relative">
+      <div className="absolute inset-0 z-10 flex flex-col justify-center">
+        <div className="flex items-center justify-center mb-10">
           <img
-            src="https://via.placeholder.com/300"
+            src={data.coverUrl}
             alt="podcast logo"
-            className="rounded"
+            className="w-40 h-40 rounded"
           />
-          <h1 className="pl-10 text-5xl ">{name}</h1>
+          <div className="pl-10">
+            <h1 className="text-5xl ">{data.name}</h1>
+            <p>by {data.owner.name}</p>
+          </div>
         </div>
-        <div className="z-10 flex justify-center">
+        <div className="flex justify-center">
           {['Itunes', 'Spotify', 'Overcasr', 'RSS'].map((btn) => {
             return (
               <span class="inline-flex rounded-md shadow-sm mx-2">
@@ -43,12 +69,10 @@ const Index = ({ name, audioPlayer }) => {
           })}
         </div>
       </div>
-      <div className="absolute mx-auto " style={{ bottom: '-75px' }}>
-        <div className="">
-          <AudioPlayer player={audioPlayer} />
-        </div>
-      </div>
-    </div>
+      <BackgroundContainer>
+        <img src={data.coverUrl} alt="podcast logo" />
+      </BackgroundContainer>
+    </HeaderContainer>
   );
 };
 

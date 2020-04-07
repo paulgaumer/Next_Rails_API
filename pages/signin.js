@@ -39,13 +39,12 @@ const LogInPage = () => {
           alt="Workflow"
         />
         <h2 className="mt-6 text-3xl font-extrabold leading-9 text-center text-gray-900">
-          Sign in to your account
+          Welcome Back
         </h2>
         <p className="mt-2 text-sm leading-5 text-center text-gray-600 max-w">
-          Or{' '}
           <Link href="/signup">
             <a className="font-medium text-indigo-600 transition duration-150 ease-in-out hover:text-indigo-500 focus:outline-none focus:underline">
-              start your 14-day free trial
+              Not a member yet? Start your 14-day free trial
             </a>
           </Link>
         </p>

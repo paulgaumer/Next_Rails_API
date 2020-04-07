@@ -5,7 +5,7 @@ import Header from './header/header';
 const PodcastLanding = ({ data }) => {
   return (
     <Layout>
-      <Header name={data.name} audioPlayer={data.audio_player} />
+      <Header data={data} />
     </Layout>
   );
 };
