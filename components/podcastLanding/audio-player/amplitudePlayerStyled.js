@@ -1,214 +1,8 @@
 import styled from 'styled-components';
 
 const PlayerWrapper = styled.div`
-  div#list-screen {
-    background-color: #141920;
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    z-index: 9999;
-    display: none;
-  }
-  div#list-screen div#list-screen-header {
-    background-color: #141920;
-    padding: 15px;
-    text-align: center;
-    height: 25px;
-    position: relative;
-    color: white;
-    font-family: 'Lato', sans-serif;
-    cursor: pointer;
-  }
-  div#list-screen div#list-screen-header img#up-arrow {
-    position: absolute;
-    top: 23px;
-    left: 15px;
-    cursor: pointer;
-  }
-  div#list-screen div#list-screen-header span.list-active-song-name {
-    color: #fff;
-    line-height: 25px;
-    font-size: 16px;
-    font-family: 'Lato', sans-serif;
-    letter-spacing: 0.5px;
-  }
-  div#list-screen div#list {
-    overflow-y: scroll;
-  }
-  div#list-screen div#list div.song {
-    padding: 15px;
-    background-color: #242b33;
-    margin-bottom: 1px;
-    cursor: pointer;
-    line-height: 24px;
-  }
-  div#list-screen div#list div.song span.song-number-now-playing {
-    display: inline-block;
-    width: 24px;
-    text-align: center;
-  }
-  div#list-screen div#list div.song span.song-number-now-playing span.number {
-    opacity: 0.5;
-    font-family: 'Lato', sans-serif;
-    font-size: 14px;
-    color: #fff;
-    letter-spacing: 0.5px;
-  }
-  div#list-screen
-    div#list
-    div.song
-    span.song-number-now-playing
-    img.now-playing {
-    display: none;
-  }
-  div#list-screen div#list div.song.amplitude-active-song-container {
-    background-color: #30363e;
-  }
-  div#list-screen
-    div#list
-    div.song.amplitude-active-song-container
-    span.song-number-now-playing
-    img.now-playing {
-    display: inline-block;
-  }
-  div#list-screen
-    div#list
-    div.song.amplitude-active-song-container
-    span.song-number-now-playing
-    span.number {
-    display: none;
-  }
-  div#list-screen div#list div.song div.song-meta-container {
-    display: inline-block;
-    margin-left: 8px;
-    vertical-align: middle;
-    width: calc(100% - 80px);
-  }
-  div#list-screen div#list div.song div.song-meta-container span.song-name {
-    font-family: 'Lato', sans-serif;
-    font-size: 14px;
-    line-height: 16px;
-    color: #55b560;
-    letter-spacing: 0.47px;
-    display: block;
-  }
-  div#list-screen
-    div#list
-    div.song
-    div.song-meta-container
-    span.song-artist-album {
-    font-family: 'Lato', sans-serif;
-    font-size: 12px;
-    line-height: 14px;
-    color: #fff;
-    letter-spacing: 0.47px;
-    display: block;
-  }
-  div#list-screen div#list div.song span.song-duration {
-    display: inline-block;
-    opacity: 0.5;
-    font-family: 'Lato', sans-serif;
-    font-size: 14px;
-    color: #fff;
-    letter-spacing: 0.5px;
-    width: 35px;
-    text-align: center;
-  }
-  div#list-screen div#list div.song span.song-artist-album {
-    color: #5277b0;
-  }
-  div#list-screen div#list-screen-footer {
-    height: 80px;
-    padding: 15px;
-  }
-  div#list-screen div#list-screen-footer div#list-screen-meta-container {
-    width: calc(100% - 123px);
-    float: left;
-  }
-  div#list-screen
-    div#list-screen-footer
-    div#list-screen-meta-container
-    span.song-name {
-    font-family: 'Lato', sans-serif;
-    font-size: 16px;
-    color: #fff;
-    letter-spacing: 0.5px;
-    line-height: 24px;
-  }
-  div#list-screen
-    div#list-screen-footer
-    div#list-screen-meta-container
-    div.song-artist-album {
-    opacity: 0.5;
-    font-family: 'Lato', sans-serif;
-    font-size: 14px;
-    color: #fff;
-    letter-spacing: 0.5px;
-    line-height: 16px;
-  }
-  div#list-screen div#list-screen-footer div.list-controls {
-    width: 90px;
-    float: right;
-    margin-top: 8px;
-  }
-  div#list-screen div#list-screen-footer div.list-controls div.list-previous {
-    cursor: pointer;
-    width: 15px;
-    height: 17px;
-    background-image: url('https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/small-previous.svg');
-    background-repeat: no-repeat;
-    float: left;
-    margin-right: 15px;
-    margin-top: 4px;
-  }
-  div#list-screen div#list-screen-footer div.list-controls div.list-play-pause {
-    cursor: pointer;
-    width: 17px;
-    height: 24px;
-    background-repeat: no-repeat;
-    float: left;
-  }
-  div#list-screen
-    div#list-screen-footer
-    div.list-controls
-    div.list-play-pause.amplitude-playing {
-    background-image: url('https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/small-pause.svg');
-  }
-  div#list-screen
-    div#list-screen-footer
-    div.list-controls
-    div.list-play-pause.amplitude-paused {
-    background-image: url('https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/small-play.svg');
-  }
-  div#list-screen div#list-screen-footer div.list-controls div.list-next {
-    cursor: pointer;
-    width: 15px;
-    height: 17px;
-    background-image: url('https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/small-next.svg');
-    background-repeat: no-repeat;
-    float: left;
-    margin-left: 15px;
-    margin-top: 4px;
-  }
-
-  div.player-header {
-    background-color: #141920;
-    padding: 15px;
-    text-align: center;
-    height: 25px;
-    position: relative;
-    margin-top: 40px;
-    cursor: pointer;
-    color: white;
-    font-family: 'Lato', sans-serif;
-  }
-  div.player-header img#down {
-    position: absolute;
-    top: 23px;
-    left: 15px;
-    cursor: pointer;
+  div#player-main-body {
+    background-color: #192029;
   }
 
   div#player-top {
@@ -216,7 +10,8 @@ const PlayerWrapper = styled.div`
   }
   div#player-top img[data-amplitude-song-info='cover_art_url'] {
     width: 100%;
-    height: 370px;
+    /* height: 370px; */
+    height: 70px;
   }
 
   div#player-progress-bar-container {
@@ -286,30 +81,30 @@ const PlayerWrapper = styled.div`
   }
 
   div#player-middle {
-    background-color: #000;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    text-align: center;
-    position: relative;
+    /* background-color: #000; */
+    /* padding-left: 15px; */
+    /* padding-right: 15px; */
+    /* padding-top: 20px; */
+    /* padding-bottom: 20px; */
+    /* text-align: center; */
+    /* position: relative; */
   }
   div#player-middle div#time-container {
     color: white;
     width: 100%;
-    background-color: #000;
+    /* background-color: #000; */
     font-size: 14px;
     font-weight: bold;
   }
   div#player-middle div#time-container span.amplitude-duration-time {
-    position: absolute;
-    top: 0px;
-    right: 5px;
+    /* position: absolute; */
+    /* top: 0px; */
+    /* right: 5px; */
   }
   div#player-middle div#time-container span.amplitude-current-time {
-    position: absolute;
-    top: 0px;
-    left: 5px;
+    /* position: absolute; */
+    /* top: 0px; */
+    /* left: 5px; */
   }
   div#player-middle span.song-name {
     font-family: Lato, sans-serif;
@@ -334,13 +129,14 @@ const PlayerWrapper = styled.div`
     padding-right: 25px;
   }
   div#player-bottom div#control-container {
-    height: 60px;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    /* height: 60px; */
+    /* padding-top: 40px; */
+    padding-top: 5px;
+    /* padding-bottom: 40px; */
   }
   div#player-bottom div#control-container div#shuffle-container {
-    float: left;
-    width: 20%;
+    /* float: left; */
+    /* width: 20%; */
     height: 60px;
     padding-top: 21px;
   }
@@ -378,8 +174,8 @@ const PlayerWrapper = styled.div`
     opacity: 1;
   }
   div#player-bottom div#control-container div#prev-container {
-    width: 20%;
-    float: left;
+    /* width: 20%; */
+    /* float: left; */
     height: 60px;
     padding-top: 18px;
   }
@@ -397,8 +193,8 @@ const PlayerWrapper = styled.div`
     background: url('https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/previous-hover.svg');
   }
   div#player-bottom div#control-container div#play-pause-container {
-    width: 20%;
-    float: left;
+    /* width: 20%; */
+    /* float: left; */
     height: 60px;
   }
   div#player-bottom
@@ -423,8 +219,8 @@ const PlayerWrapper = styled.div`
     background: url('https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/play.svg');
   }
   div#player-bottom div#control-container div#next-container {
-    width: 20%;
-    float: left;
+    /* width: 20%; */
+    /* float: left; */
     height: 60px;
     padding-top: 18px;
   }
@@ -439,8 +235,8 @@ const PlayerWrapper = styled.div`
     background: url('https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/next-hover.svg');
   }
   div#player-bottom div#control-container div#repeat-container {
-    float: left;
-    width: 20%;
+    /* float: left; */
+    /* width: 20%; */
     height: 60px;
     padding-top: 20px;
   }
@@ -478,7 +274,7 @@ const PlayerWrapper = styled.div`
     clear: both;
   }
   div#player-bottom div#volume-container {
-    padding-bottom: 20px;
+    /* padding-bottom: 20px; */
     text-align: center;
   }
   div#player-bottom div#volume-container img {
@@ -639,7 +435,8 @@ const PlayerWrapper = styled.div`
 
   div#flat-black-player-container {
     position: relative;
-    max-width: 400px;
+    /* max-width: 400px; */
+    max-height: 90px;
     margin: auto;
   }
 
@@ -735,20 +532,6 @@ const PlayerWrapper = styled.div`
       transform: translateY(-10px);
       opacity: 0;
     }
-  }
-
-  /*# sourceMappingURL=app.css.map */
-
-  a.learn-more {
-    background-color: #141920;
-    display: block;
-    width: 300px;
-    color: white;
-    text-align: center;
-    margin: auto;
-    margin-top: 20px;
-    text-decoration: none;
-    padding: 10px;
   }
 `;
 
