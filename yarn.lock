@@ -1233,6 +1233,11 @@ amphtml-validator@1.0.30:
     commander "2.15.1"
     promise "8.0.1"
 
+amplitudejs@^5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/amplitudejs/-/amplitudejs-5.0.3.tgz#5f45936d153d7104698f4a736dd300c28e583a5b"
+  integrity sha512-A093+9kKaOyRiSYLour7cA0zcHEhgmF4gfj0q9a5mPaSt6uACHtNHKdHnH4vG9NUZT1X4oAZ+Z0c9q005iipHw==
+
 ansi-colors@^3.0.0:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-3.2.4.tgz#e3a3da4bfbae6c86a9c285625de124a234026fbf"
