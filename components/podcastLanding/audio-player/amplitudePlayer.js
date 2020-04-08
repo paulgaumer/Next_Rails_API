@@ -9,28 +9,31 @@ const AmplitudePlayer = ({ podcastCover }) => {
   const [cover, setCover] = useState(podcastCover);
 
   useEffect(() => {
-    if (window !== null && currentAudio !== null) {
+    if (window !== null) {
       const amplitude = require('amplitudejs');
       setAmp(amplitude);
-      amplitude.init({
-        bindings: {
-          37: 'prev',
-          39: 'next',
-          32: 'play_pause',
-        },
-        songs: [
-          {
-            name: currentAudio.title,
-            artist: 'Ancient Astronauts',
-            url: currentAudio.enclosure.url,
-            cover_art_url: cover,
+      if (currentAudio !== null) {
+        amplitude.init({
+          bindings: {
+            37: 'prev',
+            39: 'next',
+            32: 'play_pause',
           },
-        ],
-      });
+          songs: [
+            {
+              name: currentAudio.title,
+              artist: 'Ancient Astronauts',
+              url: currentAudio.enclosure.url,
+              cover_art_url: cover,
+            },
+          ],
+        });
+        amplitude.play();
+      }
     }
   }, [currentAudio]);
   return (
-    <div className="">
+    <div className={`${currentAudio !== null ? 'block' : 'hidden'}`}>
       <PlayerMarkup />
     </div>
   );

@@ -42,6 +42,13 @@ const BackgroundContainer = styled.div`
 
 const Index = ({ data }) => {
   const audioDispatch = useContext(GlobalDispatchContext);
+
+  const handlePlayClick = () => {
+    audioDispatch({
+      type: 'PLAY_MOST_RECENT_EPISODE',
+      payload: data.episodes[0],
+    });
+  };
   return (
     <HeaderContainer className="relative flex justify-center py-24">
       <div className="z-10 flex flex-col items-center justify-center mx-auto max-w-7xl">
@@ -50,12 +57,7 @@ const Index = ({ data }) => {
             src={data.coverUrl}
             alt="podcast logo"
             className="w-48 h-48 mt-6 rounded"
-            onClick={() =>
-              audioDispatch({
-                type: 'PLAY_MOST_RECENT_EPISODE',
-                payload: data.episodes[0],
-              })
-            }
+            onClick={handlePlayClick}
           />
           <div className="pl-10 text-white">
             <h1 className="text-6xl ">{data.name}</h1>
@@ -66,7 +68,7 @@ const Index = ({ data }) => {
         <div className="flex justify-center mt-20">
           {['Itunes', 'Spotify', 'Overcasr', 'RSS'].map((btn) => {
             return (
-              <span className="inline-flex mx-2 rounded-md shadow-sm">
+              <span className="inline-flex mx-2 rounded-md shadow-sm" key={btn}>
                 <button
                   type="button"
                   className="inline-flex items-center px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"

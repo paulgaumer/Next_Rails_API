@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { GlobalStateContext } from '../../../context/globalContextProvider';
 import PlayerWrapper from './amplitudePlayerStyled';
 
 const wrapper = () => {
+  const { currentAudio } = useContext(GlobalStateContext);
   return (
     <PlayerWrapper>
       <div id="flat-black-player-container">
@@ -58,6 +60,14 @@ const wrapper = () => {
 
                 <div id="play-pause-container" className="mx-4">
                   <div className="amplitude-play-pause" id="play-pause"></div>
+                  {/* <div
+                    className={`${
+                      currentAudio !== null
+                        ? 'amplify-playing'
+                        : 'amplify-paused'
+                    }`}
+                    id="play-pause"
+                  ></div> */}
                 </div>
 
                 <div id="next-container" className="mx-4">

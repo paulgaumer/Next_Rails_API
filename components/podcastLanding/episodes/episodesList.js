@@ -11,7 +11,7 @@ const EpisodesList = ({ episodes, cover }) => {
         </h2>
       </div>
       {episodesList.map((ep) => {
-        return <Episode ep={ep} cover={cover} />;
+        return <Episode ep={ep} cover={cover} key={ep.guid} />;
       })}
     </div>
   );
