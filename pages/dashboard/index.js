@@ -4,7 +4,7 @@ import Router from 'next/router';
 import fetch from 'isomorphic-unfetch';
 import { getDomain } from '../../utils/subdomain';
 import { parseRss } from '../../utils/parseRss';
-import DashboardShell from '../../components/dashboard/dashboardShell';
+import DashboardShell from '../../components/dashboard/dashboardShell/dashboardShell';
 import PodcastDetails from '../../components/dashboard/podcastDetails';
 
 const Dashboard = ({

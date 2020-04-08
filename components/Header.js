@@ -20,7 +20,7 @@ export default function Header() {
       },
     });
     cookie.remove('token');
-    Router.push('/');
+    Router.push('/signin');
   };
 
   return (
