@@ -73,7 +73,7 @@ const wrapper = () => {
               <img src="https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/volume.svg" />
               <input
                 type="range"
-                className="amplitude-volume-slider"
+                className="ml-2 amplitude-volume-slider"
                 step=".1"
               />
             </div>

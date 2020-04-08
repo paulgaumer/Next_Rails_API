@@ -6,11 +6,11 @@ const navbar = () => {
   const handleClick = () => {};
 
   return (
-    <nav data-todo-x-data="{ open: true }" className="bg-white shadow">
+    <nav data-todo-x-data="{ open: true }" className="absolute z-20 w-full">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
-          <div className="flex">
-            <div className="flex items-center flex-shrink-0">
+          <div className="flex w-full">
+            <div className="flex items-center flex-shrink-0 w-1/3">
               <img
                 className="block w-auto h-8 lg:hidden"
                 src="https://tailwindui.com/img/logos/workflow-mark-on-white.svg"
@@ -22,7 +22,7 @@ const navbar = () => {
                 alt=""
               />
             </div>
-            <div className="hidden sm:ml-6 sm:flex">
+            <div className="justify-center hidden w-1/3 sm:flex sm:px-4">
               <a
                 href="/"
                 className="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 text-gray-900 transition duration-150 ease-in-out border-b-2 border-indigo-500 focus:outline-none focus:border-indigo-700"
@@ -48,9 +48,13 @@ const navbar = () => {
                 Calendar
               </a>
             </div>
+            <div className="w-1/3"></div>
           </div>
-          <div className="hidden sm:ml-6 sm:flex sm:items-center">
-            {/* <button className="p-1 text-gray-400 transition duration-150 ease-in-out border-2 border-transparent rounded-full hover:text-gray-500 focus:outline-none focus:text-gray-500 focus:bg-gray-100">
+          {/* <div className="hidden sm:ml-6 sm:flex sm:items-center">
+            <button
+              id="bell-button"
+              className="p-1 text-gray-400 transition duration-150 ease-in-out border-2 border-transparent rounded-full hover:text-gray-500 focus:outline-none focus:text-gray-500 focus:bg-gray-100"
+            >
               <svg
                 className="w-6 h-6"
                 stroke="currentColor"
@@ -64,10 +68,11 @@ const navbar = () => {
                   d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
                 />
               </svg>
-            </button> */}
-            {/* <div
+            </button>
+            <div
               data-todo-at-click-away="open = false"
               className="relative ml-3"
+              id="secondary-nav-button"
               data-todo-x-data="{ open: false }"
             >
               <div>
@@ -83,6 +88,7 @@ const navbar = () => {
                 </button>
               </div>
               <div
+                id="secondary-nav-menu"
                 data-todo-x-show="open"
                 // data-todo-x-transition-enter="transition ease-out duration-200"
                 // data-todo-x-transition-enter-start="transform opacity-0 scale-95"
@@ -113,8 +119,8 @@ const navbar = () => {
                   </a>
                 </div>
               </div>
-            </div> */}
-          </div>
+            </div>
+          </div> */}
           <div className="flex items-center -mr-2 sm:hidden">
             <button
               data-todo-at-click="open = !open"

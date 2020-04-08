@@ -112,7 +112,7 @@ const AmplitudePlayer = () => {
     }
   }, []);
   return (
-    <div className="my-16">
+    <div className="">
       <PlayerMarkup />
     </div>
   );

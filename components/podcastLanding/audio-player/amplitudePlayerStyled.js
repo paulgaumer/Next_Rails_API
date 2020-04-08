@@ -9,8 +9,9 @@ const PlayerWrapper = styled.div`
     position: relative;
   }
   div#player-top img[data-amplitude-song-info='cover_art_url'] {
-    width: 100%;
+    /* width: 100%; */
     /* height: 370px; */
+    width: 70px;
     height: 70px;
   }
 
@@ -436,7 +437,7 @@ const PlayerWrapper = styled.div`
   div#flat-black-player-container {
     position: relative;
     /* max-width: 400px; */
-    max-height: 90px;
+    /* max-height: 90px; */
     margin: auto;
   }
 

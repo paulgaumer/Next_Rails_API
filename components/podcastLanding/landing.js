@@ -7,12 +7,16 @@ import Cta from './cta/cta';
 
 const PodcastLanding = ({ data }) => {
   return (
-    <Layout>
-      <Header data={data} />
-      <AmplitudePlayer />
-      <EpisodesList episodes={data.episodes} cover={data.coverUrl} />
-      <Cta />
-    </Layout>
+    <div>
+      <Layout>
+        <Header data={data} />
+        <EpisodesList episodes={data.episodes} cover={data.coverUrl} />
+        <Cta />
+      </Layout>
+      <div className="fixed bottom-0 z-20 w-full">
+        <AmplitudePlayer />
+      </div>
+    </div>
   );
 };
 
