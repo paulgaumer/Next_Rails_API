@@ -7,9 +7,7 @@ export const sortDataPodcastLanding = (db, rss) => {
 
   return {
     name: isEmpty(db.name) ? rss.title : db.name,
-    description: isEmpty(db.description)
-      ? podcastRss.description
-      : db.description,
+    description: isEmpty(db.description) ? rss.description : db.description,
     audio_player: db.audio_player,
     subdomain: db.subdomain,
     coverUrl: isEmpty(db.cover_url) ? rss.image.url : db.cover_url,
