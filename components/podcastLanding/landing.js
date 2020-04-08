@@ -14,7 +14,7 @@ const PodcastLanding = ({ data }) => {
         <Cta />
       </Layout>
       <div className="fixed bottom-0 z-20 w-full">
-        <AmplitudePlayer />
+        <AmplitudePlayer podcastCover={data.coverUrl} />
       </div>
     </div>
   );

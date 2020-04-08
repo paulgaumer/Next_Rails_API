@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { GlobalDispatchContext } from '../../../context/globalContextProvider';
 
 const HeaderContainer = styled.div`
   /* height: 35rem; */
@@ -40,6 +41,7 @@ const BackgroundContainer = styled.div`
 `;
 
 const Index = ({ data }) => {
+  const audioDispatch = useContext(GlobalDispatchContext);
   return (
     <HeaderContainer className="relative flex justify-center py-24">
       <div className="z-10 flex flex-col items-center justify-center mx-auto max-w-7xl">
@@ -48,6 +50,12 @@ const Index = ({ data }) => {
             src={data.coverUrl}
             alt="podcast logo"
             className="w-48 h-48 mt-6 rounded"
+            onClick={() =>
+              audioDispatch({
+                type: 'PLAY_MOST_RECENT_EPISODE',
+                payload: data.episodes[0],
+              })
+            }
           />
           <div className="pl-10 text-white">
             <h1 className="text-6xl ">{data.name}</h1>

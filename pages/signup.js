@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import Layout from '../components/MyLayout.js';
-import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
 import Cookies from 'js-cookie';
 import Router from 'next/router';
