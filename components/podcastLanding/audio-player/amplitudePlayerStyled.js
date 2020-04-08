@@ -219,6 +219,7 @@ const PlayerWrapper = styled.div`
     div#play-pause.amplitude-paused {
     background: url('https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/play.svg');
   }
+
   div#player-bottom div#control-container div#next-container {
     /* width: 20%; */
     /* float: left; */

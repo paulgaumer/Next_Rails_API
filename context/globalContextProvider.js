@@ -4,7 +4,6 @@ export const GlobalStateContext = createContext();
 export const GlobalDispatchContext = createContext();
 
 const reducer = (state, action) => {
-  // console.log('h');
   switch (action.type) {
     case 'PLAY_MOST_RECENT_EPISODE':
       return { ...state, currentAudio: action.payload };
@@ -12,6 +11,8 @@ const reducer = (state, action) => {
       return { ...state, episodes: action.payload };
     case 'SET_IS_PLAYING':
       return { ...state, isPlaying: action.payload };
+    case 'SET_AMPLITUDE':
+      return { ...state, amplitude: action.payload };
     default:
       throw new Error();
   }
@@ -19,7 +20,12 @@ const reducer = (state, action) => {
 };
 
 const GlobalContextProvider = ({ children }) => {
-  const initialState = { currentAudio: null, episodes: [], isPlaying: false };
+  const initialState = {
+    currentAudio: null,
+    episodes: [],
+    isPlaying: false,
+    amplitude: null,
+  };
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
