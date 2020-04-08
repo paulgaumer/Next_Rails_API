@@ -3,7 +3,7 @@ import { GlobalStateContext } from '../../../context/globalContextProvider';
 import PlayerWrapper from './amplitudePlayerStyled';
 
 const wrapper = () => {
-  const { currentAudio } = useContext(GlobalStateContext);
+  const { isPlaying } = useContext(GlobalStateContext);
   return (
     <PlayerWrapper>
       <div id="flat-black-player-container">

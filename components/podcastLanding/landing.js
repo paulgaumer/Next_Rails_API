@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
+import { GlobalDispatchContext } from '../../context/globalContextProvider';
 import Layout from './layout/layout';
 import Header from './header/header';
 import AmplitudePlayer from './audio-player/amplitudePlayer';
@@ -6,6 +7,11 @@ import EpisodesList from './episodes/episodesList';
 import Cta from './cta/cta';
 
 const PodcastLanding = ({ data }) => {
+  const recordEpisodesList = useContext(GlobalDispatchContext);
+  useEffect(() => {
+    recordEpisodesList({ type: 'LIST_EPISODES', payload: data.episodes });
+  }, []);
+
   return (
     <div>
       <Layout>
