@@ -270,6 +270,34 @@ const PlayerWrapper = styled.div`
     div#repeat.amplitude-repeat-on:hover {
     opacity: 1;
   }
+
+  div#player-bottom div#control-container div#speed-container {
+    /* float: left; */
+    /* width: 20%; */
+    height: 60px;
+    padding-top: 20px;
+  }
+  div#player-bottom div#control-container div#speed-container div#speed {
+    width: 18px;
+    height: 20px;
+    cursor: pointer;
+    margin: auto;
+    opacity: 0.7;
+    background-color: blue;
+  }
+  div#player-bottom
+    div#control-container
+    div#speed-container
+    div#speed.amplitude-playback-speed-15 {
+    background-color: green;
+  }
+  div#player-bottom
+    div#control-container
+    div#speed-container
+    div#speed.amplitude-playback-speed-20 {
+    background-color: red;
+  }
+
   div#player-bottom div#control-container::after {
     content: '';
     display: table;

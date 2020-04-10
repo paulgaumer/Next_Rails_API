@@ -66,6 +66,10 @@ const wrapper = () => {
                 <div id="repeat-container" className="mx-4">
                   <div className="amplitude-repeat" id="repeat"></div>
                 </div>
+
+                <div id="speed-container" className="mx-4">
+                  <div className="amplitude-playback-speed" id="speed"></div>
+                </div>
               </div>
             </div>
             <div id="volume-container" className="flex items-center">
