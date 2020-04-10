@@ -1,6 +1,31 @@
+import { useContext } from 'react';
+import { GlobalStateContext } from '../../../context/globalContextProvider';
 import PlayerWrapper from './amplitudePlayerStyled';
 
 const wrapper = () => {
+  const { amplitude } = useContext(GlobalStateContext);
+
+  const handleClickBackward = () => {
+    const current = amplitude.getSongPlayedSeconds();
+    const index = amplitude.getActiveIndex();
+    const newTime = current - 15;
+    amplitude.skipTo(newTime, index);
+  };
+  const handleClickForward = () => {
+    const current = amplitude.getSongPlayedSeconds();
+    const index = amplitude.getActiveIndex();
+    const newTime = current + 30;
+    amplitude.skipTo(newTime, index);
+  };
+
+  const handClickProgress = (e) => {
+    var offset = e.target.getBoundingClientRect();
+    var x = e.pageX - offset.left;
+    amplitude.setSongPlayedPercentage(
+      (parseFloat(x) / parseFloat(e.target.offsetWidth)) * 100
+    );
+  };
+
   return (
     <PlayerWrapper>
       <div id="flat-black-player-container">
@@ -9,6 +34,7 @@ const wrapper = () => {
             <progress
               id="song-played-progress"
               className="amplitude-song-played-progress"
+              onClick={handClickProgress}
             ></progress>
             <progress
               id="song-buffered-progress"
@@ -51,6 +77,14 @@ const wrapper = () => {
                   ></div>
                 </div>
 
+                <div id="skip-backward-container" className="mx-4">
+                  <div
+                    className="skip-backward"
+                    id="backward"
+                    onClick={handleClickBackward}
+                  ></div>
+                </div>
+
                 <div id="prev-container" className="mx-4">
                   <div className="amplitude-prev" id="previous"></div>
                 </div>
@@ -61,6 +95,14 @@ const wrapper = () => {
 
                 <div id="next-container" className="mx-4">
                   <div className="amplitude-next" id="next"></div>
+                </div>
+
+                <div id="skip-forward-container" className="mx-4">
+                  <div
+                    className="skip-forward"
+                    id="forward"
+                    onClick={handleClickForward}
+                  ></div>
                 </div>
 
                 <div id="repeat-container" className="mx-4">

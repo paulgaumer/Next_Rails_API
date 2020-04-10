@@ -174,6 +174,30 @@ const PlayerWrapper = styled.div`
     div#shuffle.amplitude-shuffle-on:hover {
     opacity: 1;
   }
+
+  div#player-bottom div#control-container div#skip-backward-container {
+    /* width: 20%; */
+    /* float: left; */
+    height: 60px;
+    padding-top: 18px;
+  }
+  div#player-bottom
+    div#control-container
+    div#skip-backward-container
+    div#backward {
+    background: url('https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/previous.svg');
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin: auto;
+  }
+  div#player-bottom
+    div#control-container
+    div#skip-backward-container
+    div#backward:hover {
+    background: url('https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/previous-hover.svg');
+  }
+
   div#player-bottom div#control-container div#prev-container {
     /* width: 20%; */
     /* float: left; */
@@ -236,6 +260,30 @@ const PlayerWrapper = styled.div`
   div#player-bottom div#control-container div#next-container div#next:hover {
     background: url('https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/next-hover.svg');
   }
+
+  div#player-bottom div#control-container div#skip-forward-container {
+    /* width: 20%; */
+    /* float: left; */
+    height: 60px;
+    padding-top: 18px;
+  }
+  div#player-bottom
+    div#control-container
+    div#skip-forward-container
+    div#forward {
+    background: url('https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/next.svg');
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin: auto;
+  }
+  div#player-bottom
+    div#control-container
+    div#skip-forward-container
+    div#forward:hover {
+    background: url('https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/next-hover.svg');
+  }
+
   div#player-bottom div#control-container div#repeat-container {
     /* float: left; */
     /* width: 20%; */
