@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import nextCookie from 'next-cookies';
 import fetch from 'isomorphic-unfetch';
 import { getDomain } from '../../../utils/subdomain';
 import { parseRss } from '../../../utils/parseRss';
+
+const getTranscript = async () => {
+  const apiUrl = process.env.API_HOST;
+  const res = await fetch(`${apiUrl}/api/v1/gettranscription`, {
+    method: 'get',
+  });
+  const data = await res.json();
+};
 
 const Episode = ({
   initialPodcastInfo,
@@ -15,11 +23,23 @@ const Episode = ({
   const episode = episodes.find((ep) => ep.guid === id);
   const apiUrl = process.env.API_HOST;
 
+  const [uploaded, setUploaded] = useState(false);
+  const [transcript, setTranscript] = useState(null);
+
   const handleClick = async () => {
+    setUploaded('loading');
     const res = await fetch(`${apiUrl}/api/v1/uploadaudio`, {
       method: 'get',
     });
     const data = await res.json();
+    if (res.status === 200) {
+      setUploaded(true);
+      const resTrans = await fetch(`${apiUrl}/api/v1/gettranscription`, {
+        method: 'get',
+      });
+      const dataTrans = await resTrans.json();
+      setTranscript(dataTrans.transcriptFileUri);
+    }
     console.log(data);
   };
 
@@ -30,6 +50,12 @@ const Episode = ({
       <button className="p-4 border border-black" onClick={handleClick}>
         Get transcription
       </button>
+      {uploaded === 'loading' && <p>Loading...</p>}
+      {uploaded === true && <p>Transcription has started!</p>}
+      <div className="mt-12">
+        <h3>TRANSCRIPT</h3>
+        {transcript !== null && <p>{transcript}</p>}
+      </div>
     </div>
   );
 };
