@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import nextCookie from 'next-cookies';
 import Router from 'next/router';
+import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
 import { getDomain } from '../../utils/subdomain';
 import { parseRss } from '../../utils/parseRss';
@@ -13,9 +14,9 @@ const Dashboard = ({
   loggedIn,
   rssFeed,
 }) => {
-  const [podcastDb, setPodcastDb] = useState(initialPodcastInfo);
-  const [podcastRss, setPodcastRss] = useState(rssFeed);
-  const [domain, setDomain] = useState(initialDomain);
+  const [podcastDb] = useState(initialPodcastInfo);
+  const [podcastRss] = useState(rssFeed);
+  const [domain] = useState(initialDomain);
 
   useEffect(() => {
     if (!loggedIn) {
@@ -31,6 +32,22 @@ const Dashboard = ({
         {rssFeed !== null && (
           <img src={rssFeed.image.url} alt="" className="w-20 h-20 rounded" />
         )}
+        <div>
+          <ul>
+            {podcastRss.items.map((episode) => {
+              return (
+                <li>
+                  <Link
+                    href="/dashboard/episodes/[id]"
+                    as={`/dashboard/episodes/${episode.guid}`}
+                  >
+                    <a target="_blank">{episode.title}</a>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
         <PodcastDetails podcastDb={podcastDb} podcastRss={podcastRss} />
       </DashboardShell>
     );
