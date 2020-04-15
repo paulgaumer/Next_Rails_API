@@ -13,12 +13,23 @@ const Episode = ({
 }) => {
   const episodes = rssFeed.items;
   const episode = episodes.find((ep) => ep.guid === id);
+  const apiUrl = process.env.API_HOST;
+
+  const handleClick = async () => {
+    const res = await fetch(`${apiUrl}/api/v1/uploadaudio`, {
+      method: 'get',
+    });
+    const data = await res.json();
+    console.log(data);
+  };
 
   return (
     <div>
       <h2>{episode.title}</h2>
       <p className="py-6">{episode.contentSnippet}</p>
-      <button className="p-4 border border-black">Get transcription</button>
+      <button className="p-4 border border-black" onClick={handleClick}>
+        Get transcription
+      </button>
     </div>
   );
 };
