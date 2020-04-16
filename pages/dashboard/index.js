@@ -4,7 +4,7 @@ import Router from 'next/router';
 import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
 import { getDomain } from '../../utils/subdomain';
-import { parseRss } from '../../utils/parseRss';
+// import { parseRss } from '../../utils/parseRss';
 import DashboardShell from '../../components/dashboard/dashboardShell/dashboardShell';
 import PodcastDetails from '../../components/dashboard/podcastDetails';
 
@@ -36,7 +36,7 @@ const Dashboard = ({
           <ul>
             {podcastRss.items.map((episode) => {
               return (
-                <li>
+                <li key={episode.guid}>
                   <Link
                     href="/dashboard/episodes/[id]"
                     as={`/dashboard/episodes/${episode.guid}`}
@@ -60,7 +60,7 @@ Dashboard.getInitialProps = async function (ctx) {
   const domain = getDomain(ctx.req);
   const { token } = nextCookie(ctx);
   const apiUrl = process.env.API_HOST;
-  let rssFeed = null;
+  // let rssFeed = null;
 
   if (token === undefined) {
     return {
@@ -75,14 +75,14 @@ Dashboard.getInitialProps = async function (ctx) {
     },
   });
   const data = await res.json();
-  if (data.feed_url !== null) {
-    rssFeed = await parseRss(data.feed_url);
-  }
+  // if (data.feed_url !== null) {
+  //   rssFeed = await parseRss(data.feed_url);
+  // }
 
   return {
     initialPodcastInfo: data,
     initialDomain: domain,
     loggedIn: true,
-    rssFeed,
+    rssFeed: data.feed,
   };
 };

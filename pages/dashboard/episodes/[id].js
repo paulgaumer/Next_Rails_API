@@ -28,15 +28,11 @@ const Episode = ({
 
   const handleClick = async () => {
     setUploaded('loading');
-    const res = await fetch(`${apiUrl}/api/v1/uploadaudio`, {
-      method: 'get',
-    });
+    const res = await fetch(`${apiUrl}/api/v1/uploadaudio`);
     const data = await res.json();
     if (res.status === 200) {
       setUploaded(true);
-      const resTrans = await fetch(`${apiUrl}/api/v1/gettranscription`, {
-        method: 'get',
-      });
+      const resTrans = await fetch(`${apiUrl}/api/v1/gettranscription`);
       const dataTrans = await resTrans.json();
       console.log(dataTrans);
       setTranscript(dataTrans.transcript);
@@ -56,6 +52,13 @@ const Episode = ({
       <div className="mt-12">
         <h3>TRANSCRIPT</h3>
         {transcript !== null && <p>{transcript}</p>}
+        <form>
+          <textarea
+            type="text"
+            value={transcript}
+            placeholder="No transcript yet"
+          />
+        </form>
       </div>
     </div>
   );
