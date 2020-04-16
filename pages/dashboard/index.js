@@ -66,23 +66,23 @@ Dashboard.getInitialProps = async function (ctx) {
     return {
       loggedIn: false,
     };
-  } else {
-    const res = await fetch(`${apiUrl}/api/v1/dashboard`, {
-      method: 'get',
-      headers: {
-        Authorization: token,
-      },
-    });
-    const data = await res.json();
-    if (data.feed_url !== null) {
-      rssFeed = await parseRss(data.feed_url);
-    }
-
-    return {
-      initialPodcastInfo: data,
-      initialDomain: domain,
-      loggedIn: true,
-      rssFeed,
-    };
   }
+
+  const res = await fetch(`${apiUrl}/api/v1/dashboard`, {
+    method: 'get',
+    headers: {
+      Authorization: token,
+    },
+  });
+  const data = await res.json();
+  if (data.feed_url !== null) {
+    rssFeed = await parseRss(data.feed_url);
+  }
+
+  return {
+    initialPodcastInfo: data,
+    initialDomain: domain,
+    loggedIn: true,
+    rssFeed,
+  };
 };
