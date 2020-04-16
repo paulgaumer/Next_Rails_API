@@ -38,7 +38,8 @@ const Episode = ({
         method: 'get',
       });
       const dataTrans = await resTrans.json();
-      setTranscript(dataTrans.transcriptFileUri);
+      console.log(dataTrans);
+      setTranscript(dataTrans.transcript);
     }
     console.log(data);
   };

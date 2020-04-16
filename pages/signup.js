@@ -18,9 +18,13 @@ const signup = async ({ email, password, subdomain }) => {
       subdomain,
     }),
   });
-  const token = res.headers.get('Authorization');
-  Cookies.set('token', token, { expires: 1 });
-  Router.push('/dashboard/onboarding');
+  if (res.status === 201) {
+    const token = res.headers.get('Authorization');
+    Cookies.set('token', token, { expires: 1 });
+    Router.push('/dashboard/onboarding');
+  } else {
+    alert('Error');
+  }
 };
 
 const SignUpPage = () => {
@@ -34,11 +38,11 @@ const SignUpPage = () => {
     e.preventDefault();
     signup(user);
   };
-  const handleChange = (e) => {
-    const key = e.target.name;
-    const value = e.target.value;
-    setUser({ ...user, [key]: value });
-  };
+  // const handleChange = (e) => {
+  //   const key = e.target.name;
+  //   const value = e.target.value;
+  //   setUser({ ...user, [key]: value });
+  // };
 
   return (
     <div className="flex flex-col justify-center min-h-screen py-12 bg-gray-50 sm:px-6 lg:px-8">
@@ -97,7 +101,7 @@ const SignUpPage = () => {
             </div>
             <div className="mt-6">
               <label
-                htmlFor="password"
+                htmlFor="subdomain"
                 className="block text-sm font-medium leading-5 text-gray-700"
               >
                 Choose your personal url
@@ -105,11 +109,11 @@ const SignUpPage = () => {
               <div className="flex mt-1 rounded-md shadow-sm">
                 <input
                   required
-                  id="password"
-                  type="password"
-                  value={user.password}
+                  id="subdomain"
+                  type="text"
+                  value={user.subdomain}
                   onChange={(e) =>
-                    setUser({ ...user, password: e.target.value })
+                    setUser({ ...user, subdomain: e.target.value })
                   }
                   className="block w-full px-3 py-2 placeholder-gray-400 transition duration-150 ease-in-out border border-gray-300 appearance-none rounded-l-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5"
                 />

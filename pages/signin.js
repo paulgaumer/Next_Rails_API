@@ -17,7 +17,6 @@ const login = async (user) => {
     }),
   });
   const token = res.headers.get('Authorization');
-  // const data = await res.json();
   Cookies.set('token', token, { expires: 1 });
   Router.push('/dashboard');
 };
