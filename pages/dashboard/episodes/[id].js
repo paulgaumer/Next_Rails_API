@@ -1,77 +1,28 @@
 import React, { useState } from 'react';
 import nextCookie from 'next-cookies';
 import fetch from 'isomorphic-unfetch';
+import DashboardLayout from '../../../components/dashboard/dashboardLayout/dashboardLayout';
 import { getDomain } from '../../../utils/subdomain';
-import { parseRss } from '../../../utils/parseRss';
+import EpisodeDetails from '../../../components/dashboard/episodes/episodeDetails';
 
-const getTranscript = async () => {
-  const apiUrl = process.env.API_HOST;
-  const res = await fetch(`${apiUrl}/api/v1/gettranscription`, {
-    method: 'get',
-  });
-  const data = await res.json();
-};
-
-const Episode = ({
-  initialPodcastInfo,
-  initialDomain,
-  loggedIn,
-  rssFeed,
-  id,
-}) => {
-  const episodes = rssFeed.items;
+const EpisodePage = ({ podcastDb, initialDomain, podcastRss, id }) => {
+  const episodes = podcastRss.items;
   const episode = episodes.find((ep) => ep.guid === id);
-  const apiUrl = process.env.API_HOST;
-
-  const [uploaded, setUploaded] = useState(false);
-  const [transcript, setTranscript] = useState(null);
-
-  const handleClick = async () => {
-    setUploaded('loading');
-    const res = await fetch(`${apiUrl}/api/v1/uploadaudio`);
-    const data = await res.json();
-    if (res.status === 200) {
-      setUploaded(true);
-      const resTrans = await fetch(`${apiUrl}/api/v1/gettranscription`);
-      const dataTrans = await resTrans.json();
-      console.log(dataTrans);
-      setTranscript(dataTrans.transcript);
-    }
-    console.log(data);
-  };
 
   return (
-    <div>
-      <h2>{episode.title}</h2>
-      <p className="py-6">{episode.contentSnippet}</p>
-      <button className="p-4 border border-black" onClick={handleClick}>
-        Get transcription
-      </button>
-      {uploaded === 'loading' && <p>Loading...</p>}
-      {uploaded === true && <p>Transcription has started!</p>}
-      <div className="mt-12">
-        <h3>TRANSCRIPT</h3>
-        {transcript !== null && <p>{transcript}</p>}
-        <form>
-          <textarea
-            type="text"
-            value={transcript}
-            placeholder="No transcript yet"
-          />
-        </form>
-      </div>
-    </div>
+    <DashboardLayout podcast={podcastDb} currentDomain={initialDomain}>
+      <EpisodeDetails episode={episode} />
+    </DashboardLayout>
   );
 };
 
-export default Episode;
+export default EpisodePage;
 
-Episode.getInitialProps = async function (ctx) {
+EpisodePage.getInitialProps = async function (ctx) {
   const { id } = ctx.query;
   const domain = getDomain(ctx.req);
   const { token } = nextCookie(ctx);
   const apiUrl = process.env.API_HOST;
-  let rssFeed = null;
 
   if (token === undefined) {
     return {
@@ -85,15 +36,12 @@ Episode.getInitialProps = async function (ctx) {
       },
     });
     const data = await res.json();
-    if (data.feed_url !== null) {
-      rssFeed = await parseRss(data.feed_url);
-    }
 
     return {
-      initialPodcastInfo: data,
+      podcastDb: data,
       initialDomain: domain,
       loggedIn: true,
-      rssFeed,
+      podcastRss: data.feed,
       id,
     };
   }
