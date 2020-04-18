@@ -14,16 +14,16 @@ const Dashboard = ({ podcastDb, initialDomain, loggedIn, podcastRss }) => {
     }
   }, []);
 
-  console.log(podcastRss);
   const episodes = podcastRss.items;
 
   return !loggedIn ? (
     <div />
   ) : (
-    <DashboardLayout podcast={podcastDb} currentDomain={initialDomain}>
-      {podcastRss !== null && (
-        <img src={podcastRss.image.url} alt="" className="w-20 h-20 rounded" />
-      )}
+    <DashboardLayout
+      podcastDb={podcastDb}
+      podcastRss={podcastRss}
+      currentDomain={initialDomain}
+    >
       <EpisodesList episodes={episodes} />
     </DashboardLayout>
   );

@@ -21,7 +21,11 @@ const PodcastDetailsPage = ({
   return !loggedIn ? (
     <div />
   ) : (
-    <DashboardLayout podcast={podcastDb} currentDomain={initialDomain}>
+    <DashboardLayout
+      podcastDb={podcastDb}
+      podcastRss={podcastRss}
+      currentDomain={initialDomain}
+    >
       <PodcastDetails podcastDb={podcastDb} podcastRss={podcastRss} />
     </DashboardLayout>
   );

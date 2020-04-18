@@ -3,7 +3,7 @@ import MobileSideBar from './mobileSideBar';
 import DesktopSideBar from './desktopSideBar';
 import BurgerMenuSideBar from './burgerMenuSideBar';
 
-const DashboardShell = ({ podcast, currentDomain, children }) => {
+const DashboardShell = ({ podcastDb, podcastRss, currentDomain, children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -12,11 +12,11 @@ const DashboardShell = ({ podcast, currentDomain, children }) => {
       <MobileSideBar
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
-        podcastSubdomain={podcast.subdomain}
+        podcastSubdomain={podcastDb.subdomain}
         currentDomain={currentDomain}
       />
       <DesktopSideBar
-        podcastSubdomain={podcast.subdomain}
+        podcastSubdomain={podcastDb.subdomain}
         currentDomain={currentDomain}
       />
       {/* END SIDEBAR CONTENT */}
@@ -28,9 +28,16 @@ const DashboardShell = ({ podcast, currentDomain, children }) => {
           className="relative z-0 flex-1 pt-2 pb-6 overflow-y-auto focus:outline-none md:py-6"
           tabIndex={0}
         >
-          <div className="px-4 pb-10 mx-auto max-w-7xl sm:px-6 md:px-8">
-            <h1 className="text-2xl font-semibold text-gray-900">
-              Welcome {podcast.user.email}
+          <div className="flex items-center px-4 pb-10 mx-auto max-w-7xl sm:px-6 md:px-8">
+            {podcastRss !== null && (
+              <img
+                src={podcastRss.image.url}
+                alt=""
+                className="w-20 h-20 rounded"
+              />
+            )}
+            <h1 className="px-6 text-4xl font-semibold text-gray-700">
+              {podcastRss.title}
             </h1>
           </div>
 

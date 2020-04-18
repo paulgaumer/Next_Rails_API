@@ -25,7 +25,11 @@ const EpisodePage = ({
   return !loggedIn ? (
     <div />
   ) : (
-    <DashboardLayout podcast={podcastDb} currentDomain={initialDomain}>
+    <DashboardLayout
+      podcastDb={podcastDb}
+      podcastRss={podcastRss}
+      currentDomain={initialDomain}
+    >
       <EpisodeDetails episode={episode} />
     </DashboardLayout>
   );
