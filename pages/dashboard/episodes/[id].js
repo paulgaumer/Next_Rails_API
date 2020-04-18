@@ -1,15 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import nextCookie from 'next-cookies';
 import fetch from 'isomorphic-unfetch';
+import Router from 'next/router';
 import DashboardLayout from '../../../components/dashboard/dashboardLayout/dashboardLayout';
 import { getDomain } from '../../../utils/subdomain';
 import EpisodeDetails from '../../../components/dashboard/episodes/episodeDetails';
 
-const EpisodePage = ({ podcastDb, initialDomain, podcastRss, id }) => {
+const EpisodePage = ({
+  podcastDb,
+  initialDomain,
+  podcastRss,
+  id,
+  loggedIn,
+}) => {
   const episodes = podcastRss.items;
   const episode = episodes.find((ep) => ep.guid === id);
 
-  return (
+  useEffect(() => {
+    if (!loggedIn) {
+      Router.push('/signin');
+    }
+  }, []);
+
+  return !loggedIn ? (
+    <div />
+  ) : (
     <DashboardLayout podcast={podcastDb} currentDomain={initialDomain}>
       <EpisodeDetails episode={episode} />
     </DashboardLayout>

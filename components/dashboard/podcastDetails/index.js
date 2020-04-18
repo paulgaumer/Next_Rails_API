@@ -36,7 +36,7 @@ const Index = ({ podcastDb, podcastRss }) => {
         <div>
           <div>
             <h3 className="text-lg font-medium leading-6 text-gray-900">
-              Podcast Page Details
+              Podcast Details
             </h3>
             <p className="max-w-2xl mt-1 text-sm leading-5 text-gray-500">
               This information will be displayed publicly so be careful what you
