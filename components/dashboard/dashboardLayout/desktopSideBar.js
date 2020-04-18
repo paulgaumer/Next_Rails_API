@@ -1,7 +1,25 @@
 import React from 'react';
 import Link from 'next/link';
+import fetch from 'isomorphic-unfetch';
+import Router from 'next/router';
+import cookie from 'js-cookie';
 
 const DesktopSideBar = ({ podcastSubdomain, currentDomain }) => {
+  const handleLogOut = (e) => {
+    const token = cookie.get('token');
+    const apiUrl = process.env.API_HOST;
+
+    e.preventDefault();
+    fetch(`${apiUrl}/users/sign_out`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: token,
+      },
+    });
+    cookie.remove('token');
+    Router.push('/signin');
+  };
+
   return (
     <div className="hidden md:flex md:flex-shrink-0">
       <div className="flex flex-col w-64 bg-indigo-800 border-r border-gray-200">
@@ -52,25 +70,25 @@ const DesktopSideBar = ({ podcastSubdomain, currentDomain }) => {
               </svg>
               Episodes
             </a>
+            {/* <Link> */}
             <a
               href="/"
               className="flex items-center px-2 py-2 mt-1 text-sm font-medium leading-5 text-indigo-300 transition duration-150 ease-in-out rounded-md group hover:text-white hover:bg-indigo-700 focus:outline-none focus:text-white focus:bg-indigo-700"
             >
               <svg
-                className="w-6 h-6 mr-3 text-indigo-400 transition duration-150 ease-in-out group-hover:text-indigo-300 group-focus:text-indigo-300"
-                stroke="currentColor"
                 fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 viewBox="0 0 24 24"
+                class="w-6 h-6 mr-3 text-indigo-400 transition duration-150 ease-in-out group-hover:text-indigo-300 group-focus:text-indigo-300"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
-                />
+                <path d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
               </svg>
-              Projects
+              Podcast Details
             </a>
+            {/* </Link> */}
             <a
               href="/"
               className="flex items-center px-2 py-2 mt-1 text-sm font-medium leading-5 text-indigo-300 transition duration-150 ease-in-out rounded-md group hover:text-white hover:bg-indigo-700 focus:outline-none focus:text-white focus:bg-indigo-700"
@@ -150,25 +168,23 @@ const DesktopSideBar = ({ podcastSubdomain, currentDomain }) => {
             </div>
           </nav>
         </div>
-        <div className="flex flex-shrink-0 p-4 border-t border-indigo-700">
-          <a href="/" className="flex-shrink-0 block w-full group">
-            <div className="flex items-center">
-              <div>
-                <img
-                  className="inline-block rounded-full h-9 w-9"
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                  alt=""
-                />
-              </div>
-              <div className="ml-3">
-                <p className="text-sm font-medium leading-5 text-white">
-                  Tom Cook
-                </p>
-                <p className="text-xs font-medium leading-4 text-indigo-300 transition duration-150 ease-in-out group-hover:text-indigo-100">
-                  View profile
-                </p>
-              </div>
-            </div>
+        <div className="p-4 border-t border-indigo-700 ">
+          <a
+            onClick={handleLogOut}
+            className="flex items-center px-2 py-2 mt-1 text-sm font-medium leading-5 text-indigo-300 transition duration-150 ease-in-out rounded-md cursor-pointer group hover:text-white hover:bg-indigo-700 focus:outline-none focus:text-white focus:bg-indigo-700"
+          >
+            <svg
+              fill="none"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+              class="w-6 h-6 mr-3 text-indigo-400 transition duration-150 ease-in-out group-hover:text-indigo-300 group-focus:text-indigo-300"
+            >
+              <path d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
+            </svg>
+            LOG OUT
           </a>
         </div>
       </div>
