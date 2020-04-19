@@ -1,25 +1,39 @@
 import React, { useState } from 'react';
 import fetch from 'isomorphic-unfetch';
+import { createEpisode, updateEpisode } from '../apiCalls/handleFetch';
 
-const EpisodeDetails = ({ episodeRss, episodeDb }) => {
+const EpisodeDetails = ({ episodeRss, episodeDb, podcastId }) => {
   const apiUrl = process.env.API_HOST;
 
   const initialState = {
+    podcast_id: podcastId,
+    guid: !episodeDb ? episodeRss.guid : episodeDb.guid,
     title: !episodeDb ? episodeRss.title : episodeDb.title,
     summary: !episodeDb ? episodeRss.description : episodeDb.summary,
-    showNotes: !episodeDb ? episodeRss.description : episodeDb.show_notes,
+    show_notes: !episodeDb ? episodeRss.description : episodeDb.show_notes,
     transcription: !episodeDb ? null : episodeDb.transcription,
   };
 
   const [episode, setEpisode] = useState(initialState);
-  const [uploaded, setUploaded] = useState(false);
   const [transcript, setTranscript] = useState(initialState.transcription);
+  const [uploaded, setUploaded] = useState(false);
 
   const handleChange = (target, e) => {
     setEpisode({
       ...episode,
       [target.id]: target.value,
     });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (episodeDb) {
+      const episodeId = episodeDb.id;
+      const res = await updateEpisode(episode, episodeId);
+    } else {
+      const res = await createEpisode(episode);
+    }
+    // res !== 204 alert('There has been an error');
   };
 
   const handleUploadAudio = async () => {
@@ -38,7 +52,7 @@ const EpisodeDetails = ({ episodeRss, episodeDb }) => {
 
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
           <div>
             <div>

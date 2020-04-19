@@ -30,7 +30,11 @@ const EpisodePage = ({
       podcastRss={podcastRss}
       currentDomain={initialDomain}
     >
-      <EpisodeDetails episodeRss={episodeRss} episodeDb={episodeDb} />
+      <EpisodeDetails
+        episodeRss={episodeRss}
+        episodeDb={episodeDb}
+        podcastId={podcastDb.id}
+      />
     </DashboardLayout>
   );
 };

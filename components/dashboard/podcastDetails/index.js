@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Router from 'next/router';
-import { editPodcast } from './handleFetch';
+import { editPodcast } from '../apiCalls/handleFetch';
 
 const isEmpty = (item) => {
   return item === '';
