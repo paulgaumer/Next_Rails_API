@@ -7,7 +7,7 @@ const isEmpty = (item) => {
 };
 
 const Index = ({ podcastDb, podcastRss }) => {
-  const [podcastDetails, setPodcastDetails] = useState({
+  const initialState = {
     name: isEmpty(podcastDb.name) ? podcastRss.title : podcastDb.name,
     description: isEmpty(podcastDb.description)
       ? podcastRss.description
@@ -15,7 +15,9 @@ const Index = ({ podcastDb, podcastRss }) => {
     audio_player: podcastDb.audio_player,
     subdomain: podcastDb.subdomain,
     feed_url: podcastDb.feed_url,
-  });
+  };
+
+  const [podcastDetails, setPodcastDetails] = useState(initialState);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

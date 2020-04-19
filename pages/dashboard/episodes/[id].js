@@ -13,8 +13,8 @@ const EpisodePage = ({
   id,
   loggedIn,
 }) => {
-  const episodes = podcastRss.items;
-  const episode = episodes.find((ep) => ep.guid === id);
+  const episodeRss = podcastRss.items.find((ep) => ep.guid === id);
+  const episodeDb = podcastDb.episodes.find((ep) => ep.guid === id);
 
   useEffect(() => {
     if (!loggedIn) {
@@ -30,7 +30,7 @@ const EpisodePage = ({
       podcastRss={podcastRss}
       currentDomain={initialDomain}
     >
-      <EpisodeDetails episode={episode} />
+      <EpisodeDetails episodeRss={episodeRss} episodeDb={episodeDb} />
     </DashboardLayout>
   );
 };

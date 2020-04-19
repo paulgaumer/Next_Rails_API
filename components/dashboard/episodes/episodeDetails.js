@@ -1,13 +1,28 @@
 import React, { useState } from 'react';
 import fetch from 'isomorphic-unfetch';
 
-const EpisodeDetails = ({ episode }) => {
+const EpisodeDetails = ({ episodeRss, episodeDb }) => {
   const apiUrl = process.env.API_HOST;
 
-  const [uploaded, setUploaded] = useState(false);
-  const [transcript, setTranscript] = useState(null);
+  const initialState = {
+    title: !episodeDb ? episodeRss.title : episodeDb.title,
+    summary: !episodeDb ? episodeRss.description : episodeDb.summary,
+    showNotes: !episodeDb ? episodeRss.description : episodeDb.show_notes,
+    transcription: !episodeDb ? null : episodeDb.transcription,
+  };
 
-  const handleClick = async () => {
+  const [episode, setEpisode] = useState(initialState);
+  const [uploaded, setUploaded] = useState(false);
+  const [transcript, setTranscript] = useState(initialState.transcription);
+
+  const handleChange = (target, e) => {
+    setEpisode({
+      ...episode,
+      [target.id]: target.value,
+    });
+  };
+
+  const handleUploadAudio = async () => {
     setUploaded('loading');
     const res = await fetch(`${apiUrl}/api/v1/uploadaudio`);
     const data = await res.json();
@@ -48,23 +63,25 @@ const EpisodeDetails = ({ episode }) => {
                     type="text"
                     value={episode.title}
                     className="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
+                    onChange={(e) => handleChange(e.target)}
                   />
                 </div>
               </div>
 
               <div className="sm:col-span-6">
                 <label
-                  htmlFor="about"
+                  htmlFor="summary"
                   className="block text-sm font-medium leading-5 text-gray-700"
                 >
                   Summary
                 </label>
                 <div className="mt-1 rounded-md shadow-sm">
                   <textarea
-                    id="about"
+                    id="summary"
                     rows="5"
-                    value={episode.description}
+                    value={episode.summary}
                     className="block w-full transition duration-150 ease-in-out form-textarea sm:text-sm sm:leading-5"
+                    onChange={(e) => handleChange(e.target)}
                   ></textarea>
                 </div>
                 <p className="mt-2 text-sm text-gray-500">
@@ -73,17 +90,18 @@ const EpisodeDetails = ({ episode }) => {
               </div>
               <div className="sm:col-span-6">
                 <label
-                  htmlFor="about"
+                  htmlFor="showNotes"
                   className="block text-sm font-medium leading-5 text-gray-700"
                 >
                   Show notes
                 </label>
                 <div className="mt-1 rounded-md shadow-sm">
                   <textarea
-                    id="about"
+                    id="showNotes"
                     rows="10"
-                    value={episode.description}
+                    value={episode.showNotes}
                     className="block w-full transition duration-150 ease-in-out form-textarea sm:text-sm sm:leading-5"
+                    onChange={(e) => handleChange(e.target)}
                   ></textarea>
                 </div>
                 {/* <p className="mt-2 text-sm text-gray-500">
@@ -92,14 +110,14 @@ const EpisodeDetails = ({ episode }) => {
               </div>
               <div className="sm:col-span-6">
                 <label
-                  htmlFor="about"
+                  htmlFor="transcription"
                   className="block pb-4 text-sm font-medium leading-5 text-gray-700"
                 >
                   Transcription
                 </label>
                 <button
                   type="button"
-                  onClick={handleClick}
+                  onClick={handleUploadAudio}
                   className="inline-flex items-center px-4 py-2 text-base font-medium leading-6 text-indigo-700 transition duration-150 ease-in-out bg-indigo-100 border border-transparent rounded-md hover:bg-indigo-50 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo active:bg-indigo-200"
                 >
                   Get your transcription now
@@ -109,10 +127,11 @@ const EpisodeDetails = ({ episode }) => {
                 {transcript !== null && (
                   <div className="mt-1 rounded-md shadow-sm">
                     <textarea
-                      id="about"
+                      id="transcription"
                       rows="10"
                       value={transcript}
                       className="block w-full transition duration-150 ease-in-out form-textarea sm:text-sm sm:leading-5"
+                      onChange={(e) => handleChange(e.target)}
                     ></textarea>
                   </div>
                 )}
