@@ -13,7 +13,7 @@ export default Index;
 
 Index.getInitialProps = async function (ctx) {
   const subdomain = getSubdomain(ctx.req);
-  const marketingDomains = ['lvh', 'localhost:8080', 'podwii'];
+  const marketingDomains = ['lvh', 'localhost:8080', 'podwii', 'podwee'];
   const apiUrl = process.env.API_HOST;
   let rssFeed = null;
 
