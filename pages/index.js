@@ -23,7 +23,7 @@ Index.getInitialProps = async function (ctx) {
       data: null,
     };
   } else {
-    const res = await fetch(`${apiUrl}/api/v1/landing/${subdomain}`, {
+    const res = await fetch(`${apiUrl}api/v1/landing/${subdomain}`, {
       method: 'get',
     });
     const data = await res.json();
