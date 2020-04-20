@@ -3,6 +3,7 @@ import { GlobalDispatchContext } from '../../context/globalContextProvider';
 import Layout from './layout/layout';
 import Header from './header/header';
 import AmplitudePlayer from './audio-player/amplitudePlayer';
+import FeaturedEpisode from './episodes/featured-episode';
 import EpisodesList from './episodes/episodesList';
 import Cta from './cta/cta';
 
