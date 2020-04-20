@@ -23,7 +23,7 @@ const Episode = ({ ep, cover }) => {
             {ep.title}
           </h2>
           <p className="mt-3 text-base leading-7 text-gray-300">
-            {truncateText(ep.contentSnippet, 290)}
+            {truncateText(ep.description, 290)}
           </p>
         </div>
       </div>

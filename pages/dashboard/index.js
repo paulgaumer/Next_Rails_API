@@ -49,6 +49,7 @@ Dashboard.getInitialProps = async function (ctx) {
     },
   });
   const data = await res.json();
+  console.log(data);
 
   return {
     podcastDb: data,
