@@ -96,6 +96,7 @@ const PlayerWrapper = styled.div`
     /* background-color: #000; */
     font-size: 14px;
     font-weight: bold;
+    font-family: Lato, sans-serif;
   }
   div#player-middle div#time-container span.amplitude-duration-time {
     /* position: absolute; */
@@ -326,12 +327,18 @@ const PlayerWrapper = styled.div`
     padding-top: 20px;
   }
   div#player-bottom div#control-container div#speed-container div#speed {
-    width: 18px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
     cursor: pointer;
     margin: auto;
-    opacity: 0.7;
-    background-color: blue;
+    /* opacity: 0.7; */
+    background: blue;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
   }
   div#player-bottom
     div#control-container

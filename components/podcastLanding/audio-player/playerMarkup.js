@@ -43,7 +43,7 @@ const wrapper = () => {
             ></progress>
           </div>
           <div id="player-main-body" className="flex justify-around py-4">
-            <div className="flex">
+            <div className="flex mx-10">
               <div id="player-top">
                 <img
                   data-amplitude-song-info="cover_art_url"
@@ -70,13 +70,6 @@ const wrapper = () => {
             </div>
             <div id="player-bottom" className="flex">
               <div id="control-container" className="flex">
-                <div id="shuffle-container" className="mx-4">
-                  <div
-                    className="amplitude-shuffle amplitude-shuffle-off"
-                    id="shuffle"
-                  ></div>
-                </div>
-
                 <div id="skip-backward-container" className="mx-4">
                   <div
                     className="skip-backward"
@@ -105,23 +98,19 @@ const wrapper = () => {
                   ></div>
                 </div>
 
-                <div id="repeat-container" className="mx-4">
-                  <div className="amplitude-repeat" id="repeat"></div>
-                </div>
-
                 <div id="speed-container" className="mx-4">
                   <div className="amplitude-playback-speed" id="speed"></div>
                 </div>
               </div>
             </div>
-            <div id="volume-container" className="flex items-center">
+            {/* <div id="volume-container" className="flex items-center">
               <img src="https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/volume.svg" />
               <input
                 type="range"
                 className="ml-2 amplitude-volume-slider"
                 step=".1"
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
