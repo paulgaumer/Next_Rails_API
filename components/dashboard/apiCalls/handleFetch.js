@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 export const editPodcast = async (info) => {
   const apiUrl = process.env.API_HOST;
   const token = Cookies.get('token');
-  const res = await fetch(`${apiUrl}/api/v1/dashboard/edit`, {
+  const res = await fetch(`${apiUrl}api/v1/dashboard/edit`, {
     method: 'PATCH',
     headers: {
       Accept: 'application/json',
@@ -20,7 +20,7 @@ export const editPodcast = async (info) => {
 export const createEpisode = async (info) => {
   const apiUrl = process.env.API_HOST;
   const token = Cookies.get('token');
-  const res = await fetch(`${apiUrl}/api/v1/episodes`, {
+  const res = await fetch(`${apiUrl}api/v1/episodes`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -37,7 +37,7 @@ export const createEpisode = async (info) => {
 export const updateEpisode = async (info, episodeId) => {
   const apiUrl = process.env.API_HOST;
   const token = Cookies.get('token');
-  const res = await fetch(`${apiUrl}/api/v1/episodes/${episodeId}`, {
+  const res = await fetch(`${apiUrl}api/v1/episodes/${episodeId}`, {
     method: 'PATCH',
     headers: {
       Accept: 'application/json',

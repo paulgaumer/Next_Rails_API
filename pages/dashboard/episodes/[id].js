@@ -52,7 +52,7 @@ EpisodePage.getInitialProps = async function (ctx) {
       loggedIn: false,
     };
   } else {
-    const res = await fetch(`${apiUrl}/api/v1/dashboard`, {
+    const res = await fetch(`${apiUrl}api/v1/dashboard`, {
       method: 'get',
       headers: {
         Authorization: token,

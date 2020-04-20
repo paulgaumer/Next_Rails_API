@@ -10,7 +10,7 @@ const DesktopSideBar = ({ podcastSubdomain, currentDomain }) => {
     const apiUrl = process.env.API_HOST;
 
     e.preventDefault();
-    fetch(`${apiUrl}/users/sign_out`, {
+    fetch(`${apiUrl}users/sign_out`, {
       method: 'DELETE',
       headers: {
         Authorization: token,

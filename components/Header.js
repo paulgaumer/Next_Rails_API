@@ -13,7 +13,7 @@ export default function Header() {
     const apiUrl = process.env.API_HOST;
 
     e.preventDefault();
-    fetch(`${apiUrl}/users/sign_out`, {
+    fetch(`${apiUrl}users/sign_out`, {
       method: 'DELETE',
       headers: {
         Authorization: token,

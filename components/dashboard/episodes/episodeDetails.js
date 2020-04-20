@@ -38,11 +38,11 @@ const EpisodeDetails = ({ episodeRss, episodeDb, podcastId }) => {
 
   const handleUploadAudio = async () => {
     setUploaded('loading');
-    const res = await fetch(`${apiUrl}/api/v1/uploadaudio`);
+    const res = await fetch(`${apiUrl}api/v1/uploadaudio`);
     const data = await res.json();
     if (res.status === 200) {
       setUploaded(true);
-      const resTrans = await fetch(`${apiUrl}/api/v1/gettranscription`);
+      const resTrans = await fetch(`${apiUrl}api/v1/gettranscription`);
       const dataTrans = await resTrans.json();
       // console.log(dataTrans);
       setTranscript(dataTrans.transcript);
