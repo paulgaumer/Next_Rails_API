@@ -5,10 +5,14 @@ import BackwardBtn from './backwardBtn';
 import ForwardBtn from './forwardBtn';
 import PlayBtn from './playBtn';
 import PauseBtn from './pauseBtn';
+import Speed10 from './speed10';
+import Speed15 from './speed15';
+import Speed20 from './speed20';
 
 const wrapper = () => {
   const { amplitude } = useContext(GlobalStateContext);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [speed, setSpeed] = useState(10);
 
   const handleClickBackward = () => {
     const current = amplitude.getSongPlayedSeconds();
@@ -35,6 +39,15 @@ const wrapper = () => {
     e.currentTarget.className.includes('playing')
       ? setIsPlaying(true)
       : setIsPlaying(false);
+  };
+  const handleSpeedClick = (e) => {
+    if (e.currentTarget.className.includes('15')) {
+      setSpeed(15);
+    } else if (e.currentTarget.className.includes('20')) {
+      setSpeed(20);
+    } else {
+      setSpeed(10);
+    }
   };
 
   return (
@@ -130,8 +143,16 @@ const wrapper = () => {
                   </div>
                 </div>
 
-                <div id="speed-container" className="mx-4">
-                  <div className="amplitude-playback-speed" id="speed"></div>
+                <div id="speed-container" className="flex items-center mx-4">
+                  <div
+                    className="amplitude-playback-speed"
+                    id="speed"
+                    onClick={handleSpeedClick}
+                  >
+                    {speed === 10 && <Speed10 />}
+                    {speed === 15 && <Speed15 />}
+                    {speed === 20 && <Speed20 />}
+                  </div>
                 </div>
               </div>
             </div>

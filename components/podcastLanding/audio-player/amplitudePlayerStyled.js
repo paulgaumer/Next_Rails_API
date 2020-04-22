@@ -324,23 +324,23 @@ const PlayerWrapper = styled.div`
     /* float: left; */
     /* width: 20%; */
     height: 60px;
-    padding-top: 20px;
+    /* padding-top: 20px; */
   }
   div#player-bottom div#control-container div#speed-container div#speed {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
     cursor: pointer;
     margin: auto;
+    /* width: 25px;
+    height: 25px; */
+    /* border-radius: 50%; */
     /* opacity: 0.7; */
-    background: blue;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
+    /* background: blue; */
+    /* color: white; */
+    /* display: flex; */
+    /* justify-content: center;
+    align-items: center; */
+    /* font-size: 14px; */
   }
-  div#player-bottom
+  /* div#player-bottom
     div#control-container
     div#speed-container
     div#speed.amplitude-playback-speed-15 {
@@ -351,7 +351,7 @@ const PlayerWrapper = styled.div`
     div#speed-container
     div#speed.amplitude-playback-speed-20 {
     background-color: red;
-  }
+  } */
 
   div#player-bottom div#control-container::after {
     content: '';
