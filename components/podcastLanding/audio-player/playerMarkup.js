@@ -67,8 +67,8 @@ const wrapper = () => {
             ></progress>
           </div>
           <div id="player-main-body" className="flex justify-around py-4">
-            <div className="flex mx-10">
-              <div id="player-top">
+            <div className="flex ml-4 sm:mx-10">
+              <div id="player-top" className="flex-shrink-0">
                 <img
                   data-amplitude-song-info="cover_art_url"
                   className="rounded shadow"
@@ -76,27 +76,28 @@ const wrapper = () => {
               </div>
 
               <div id="player-middle" className="ml-6">
-                <div id="time-container" className="flex justify-between">
+                <div id="time-container" className="flex sm:justify-between">
                   <span className="amplitude-current-time time-container"></span>
+                  <span className="px-1 sm:hidden">/</span>
                   <span className="amplitude-duration-time time-container"></span>
                 </div>
-                <div id="meta-container">
+                <div id="meta-container" className="">
                   <span
                     data-amplitude-song-info="name"
-                    className="song-name"
+                    className="text-sm song-name sm:text-base"
                   ></span>
 
-                  <div className="song-artist-album">
+                  <div className="hidden song-artist-album md:block">
                     <span data-amplitude-song-info="artist"></span>
                   </div>
                 </div>
               </div>
             </div>
-            <div id="player-bottom" className="flex">
+            <div id="player-bottom" className="flex mr-4 sm:mx-6">
               <div id="control-container" className="flex">
                 <div
                   id="skip-backward-container"
-                  className="flex items-center mx-4"
+                  className="items-center hidden mx-4 sm:flex"
                   // onClick={handleClickBackward}
                 >
                   <div
@@ -114,7 +115,7 @@ const wrapper = () => {
 
                 <div
                   id="play-pause-container"
-                  className="flex items-center mx-4"
+                  className="flex items-center sm:mx-4"
                 >
                   <div
                     className="amplitude-play-pause"
@@ -132,7 +133,7 @@ const wrapper = () => {
 
                 <div
                   id="skip-forward-container"
-                  className="flex items-center mx-4"
+                  className="items-center hidden mx-4 sm:flex"
                 >
                   <div
                     className="skip-forward"
@@ -143,7 +144,10 @@ const wrapper = () => {
                   </div>
                 </div>
 
-                <div id="speed-container" className="flex items-center mx-4">
+                <div
+                  id="speed-container"
+                  className="items-center hidden mx-4 sm:flex"
+                >
                   <div
                     className="amplitude-playback-speed"
                     id="speed"

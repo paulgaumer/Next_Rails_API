@@ -110,7 +110,7 @@ const PlayerWrapper = styled.div`
   }
   div#player-middle span.song-name {
     font-family: Lato, sans-serif;
-    font-size: 16px;
+    /* font-size: 16px; */
     color: #fff;
     letter-spacing: 0.5px;
     line-height: 24px;
@@ -127,8 +127,8 @@ const PlayerWrapper = styled.div`
 
   div#player-bottom {
     background-color: #192029;
-    padding-left: 25px;
-    padding-right: 25px;
+    /* padding-left: 25px; */
+    /* padding-right: 25px; */
   }
   div#player-bottom div#control-container {
     /* height: 60px; */
