@@ -1,14 +1,19 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { GlobalStateContext } from '../../../context/globalContextProvider';
 import PlayerWrapper from './amplitudePlayerStyled';
+import BackwardBtn from './backwardBtn';
+import ForwardBtn from './forwardBtn';
+import PlayBtn from './playBtn';
+import PauseBtn from './pauseBtn';
 
 const wrapper = () => {
   const { amplitude } = useContext(GlobalStateContext);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const handleClickBackward = () => {
     const current = amplitude.getSongPlayedSeconds();
     const index = amplitude.getActiveIndex();
-    const newTime = current - 15;
+    const newTime = current - 10;
     amplitude.skipTo(newTime, index);
   };
   const handleClickForward = () => {
@@ -18,12 +23,18 @@ const wrapper = () => {
     amplitude.skipTo(newTime, index);
   };
 
-  const handClickProgress = (e) => {
+  const handleClickProgress = (e) => {
     var offset = e.target.getBoundingClientRect();
     var x = e.pageX - offset.left;
     amplitude.setSongPlayedPercentage(
       (parseFloat(x) / parseFloat(e.target.offsetWidth)) * 100
     );
+  };
+
+  const handlePlayClick = (e) => {
+    e.currentTarget.className.includes('playing')
+      ? setIsPlaying(true)
+      : setIsPlaying(false);
   };
 
   return (
@@ -34,7 +45,7 @@ const wrapper = () => {
             <progress
               id="song-played-progress"
               className="amplitude-song-played-progress"
-              onClick={handClickProgress}
+              onClick={handleClickProgress}
             ></progress>
             <progress
               id="song-buffered-progress"
@@ -70,32 +81,53 @@ const wrapper = () => {
             </div>
             <div id="player-bottom" className="flex">
               <div id="control-container" className="flex">
-                <div id="skip-backward-container" className="mx-4">
+                <div
+                  id="skip-backward-container"
+                  className="flex items-center mx-4"
+                  // onClick={handleClickBackward}
+                >
                   <div
                     className="skip-backward"
                     id="backward"
                     onClick={handleClickBackward}
-                  ></div>
+                  >
+                    <BackwardBtn />
+                  </div>
                 </div>
 
-                <div id="prev-container" className="mx-4">
+                {/* <div id="prev-container" className="mx-4">
                   <div className="amplitude-prev" id="previous"></div>
+                </div> */}
+
+                <div
+                  id="play-pause-container"
+                  className="flex items-center mx-4"
+                >
+                  <div
+                    className="amplitude-play-pause"
+                    id="play-pause"
+                    onClick={handlePlayClick}
+                  >
+                    {isPlaying && <PauseBtn />}
+                    {!isPlaying && <PlayBtn />}
+                  </div>
                 </div>
 
-                <div id="play-pause-container" className="flex mx-4">
-                  <div className="amplitude-play-pause" id="play-pause"></div>
-                </div>
-
-                <div id="next-container" className="mx-4">
+                {/* <div id="next-container" className="mx-4">
                   <div className="amplitude-next" id="next"></div>
-                </div>
+                </div> */}
 
-                <div id="skip-forward-container" className="mx-4">
+                <div
+                  id="skip-forward-container"
+                  className="flex items-center mx-4"
+                >
                   <div
                     className="skip-forward"
                     id="forward"
                     onClick={handleClickForward}
-                  ></div>
+                  >
+                    <ForwardBtn />
+                  </div>
                 </div>
 
                 <div id="speed-container" className="mx-4">
