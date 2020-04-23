@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import fetch from 'isomorphic-unfetch';
+import styled from 'styled-components';
 import { createEpisode, updateEpisode } from '../apiCalls/handleFetch';
+const ReactQuill =
+  typeof window === 'object' ? require('react-quill') : () => false;
+
+const EditorContainer = styled.div``;
 
 const EpisodeDetails = ({ episodeRss, episodeDb, podcastId }) => {
   const apiUrl = process.env.API_HOST;
@@ -15,6 +20,7 @@ const EpisodeDetails = ({ episodeRss, episodeDb, podcastId }) => {
   };
 
   const [episode, setEpisode] = useState(initialState);
+  const [showNotes, setShowNotes] = useState(initialState.show_notes);
   const [transcript, setTranscript] = useState(initialState.transcription);
   const [uploaded, setUploaded] = useState(false);
 
@@ -27,11 +33,12 @@ const EpisodeDetails = ({ episodeRss, episodeDb, podcastId }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const newEpisode = { ...episode, show_notes: showNotes };
     if (episodeDb) {
       const episodeId = episodeDb.id;
-      const res = await updateEpisode(episode, episodeId);
+      const res = await updateEpisode(newEpisode, episodeId);
     } else {
-      const res = await createEpisode(episode);
+      const res = await createEpisode(newEpisode);
     }
     // res !== 204 alert('There has been an error');
   };
@@ -109,15 +116,16 @@ const EpisodeDetails = ({ episodeRss, episodeDb, podcastId }) => {
                 >
                   Show notes
                 </label>
-                <div className="mt-1 rounded-md shadow-sm">
-                  <textarea
+                <EditorContainer className="mt-1">
+                  <ReactQuill
+                    theme="snow"
                     id="showNotes"
-                    rows="10"
-                    value={episode.showNotes}
-                    className="block w-full transition duration-150 ease-in-out form-textarea sm:text-sm sm:leading-5"
-                    onChange={(e) => handleChange(e.target)}
-                  ></textarea>
-                </div>
+                    value={showNotes}
+                    onChange={setShowNotes}
+                  >
+                    <div className="text-base bg-white sm:text-sm" />
+                  </ReactQuill>
+                </EditorContainer>
                 {/* <p className="mt-2 text-sm text-gray-500">
                   Write a few sentences about yourself.
                 </p> */}
@@ -139,15 +147,14 @@ const EpisodeDetails = ({ episodeRss, episodeDb, podcastId }) => {
                 {uploaded === 'loading' && <p>Loading...</p>}
                 {uploaded === true && <p>Transcription has started!</p>}
                 {transcript !== null && (
-                  <div className="mt-1 rounded-md shadow-sm">
-                    <textarea
-                      id="transcription"
-                      rows="10"
-                      value={transcript}
-                      className="block w-full transition duration-150 ease-in-out form-textarea sm:text-sm sm:leading-5"
-                      onChange={(e) => handleChange(e.target)}
-                    ></textarea>
-                  </div>
+                  <ReactQuill
+                    theme="snow"
+                    id="transcription"
+                    value={transcript}
+                    onChange={setTranscript}
+                  >
+                    <div className="text-base bg-white sm:text-sm" />
+                  </ReactQuill>
                 )}
               </div>
             </div>
