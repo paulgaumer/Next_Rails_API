@@ -33,7 +33,11 @@ const EpisodeDetails = ({ episodeRss, episodeDb, podcastId }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newEpisode = { ...episode, show_notes: showNotes };
+    const newEpisode = {
+      ...episode,
+      show_notes: showNotes,
+      transcription: transcript,
+    };
     if (episodeDb) {
       const episodeId = episodeDb.id;
       const res = await updateEpisode(newEpisode, episodeId);
