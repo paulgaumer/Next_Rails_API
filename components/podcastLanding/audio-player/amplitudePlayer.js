@@ -19,7 +19,7 @@ const AmplitudePlayer = ({ podcastCover }) => {
       const episodesList = episodes.map((ep) => {
         return {
           name: ep.title,
-          artist: 'Ancient Astronauts',
+          artist: ep.podcast_title,
           url: ep.enclosure.url,
           cover_art_url: cover,
         };
