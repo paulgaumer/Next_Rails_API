@@ -64,7 +64,7 @@ const Index = ({ data }) => {
           />
           <div className="pl-10 text-white">
             <h1 className="text-6xl ">{data.name}</h1>
-            <p>- by {data.owner.name}</p>
+            {/* <p>- by {data.owner.name}</p> */}
             <p className="pt-10">{data.description}</p>
           </div>
         </div>

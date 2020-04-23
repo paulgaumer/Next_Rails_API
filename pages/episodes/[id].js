@@ -1,13 +1,14 @@
 import fetch from 'isomorphic-unfetch';
 import Layout from '../../components/podcastLanding/layout/layout';
+import EpisodeShow from '../../components/podcastLanding/episodes/episodeShow';
 import { getSubdomain } from '../../utils/subdomain';
+import Header from '../../components/podcastLanding/header/header';
 
-const EpisodePage = ({ episode }) => {
-  const ep =
-    episode.episodeDb === null ? episode.episodeRss : episode.episodeDb;
+const EpisodePage = ({ episode, podcast }) => {
   return (
     <Layout>
-      <p>{ep.title}</p>
+      <Header data={podcast} />
+      <EpisodeShow episode={episode} />
     </Layout>
   );
 };
@@ -23,8 +24,10 @@ EpisodePage.getInitialProps = async function (ctx) {
     method: 'get',
   });
   const data = await res.json();
+  const episode = data.episodeDb === null ? data.episodeRss : data.episodeDb;
 
   return {
-    episode: data,
+    episode,
+    podcast: data.podcast,
   };
 };
