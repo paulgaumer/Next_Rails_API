@@ -5,11 +5,7 @@ import { createEpisode, updateEpisode } from '../apiCalls/handleFetch';
 const ReactQuill =
   typeof window === 'object' ? require('react-quill') : () => false;
 
-const EditorContainer = styled.div`
-  .ql-toolbar {
-    border-radius: 20px;
-  }
-`;
+const EditorContainer = styled.div``;
 
 const EpisodeDetails = ({ episodeRss, episodeDb, podcastId }) => {
   const apiUrl = process.env.API_HOST;
