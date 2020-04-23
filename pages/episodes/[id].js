@@ -1,40 +1,30 @@
 import fetch from 'isomorphic-unfetch';
 import Layout from '../../components/podcastLanding/layout/layout';
-// import { getSubdomain } from '../utils/subdomain';
-// import { parseRss } from '../utils/parseRss';
-// import { sortDataPodcastLanding } from '../utils/sortData';
+import { getSubdomain } from '../../utils/subdomain';
 
-const EpisodePage = ({ data }) => {
+const EpisodePage = ({ episode }) => {
+  const ep =
+    episode.episodeDb === null ? episode.episodeRss : episode.episodeDb;
   return (
     <Layout>
-      <p>Hello</p>
+      <p>{ep.title}</p>
     </Layout>
   );
 };
 
 export default EpisodePage;
 
-// EpisodePage.getInitialProps = async function (ctx) {
-//   const subdomain = getSubdomain(ctx.req);
-//   const marketingDomains = ['lvh', 'localhost:8080', 'podwii', 'podwee'];
-//   const apiUrl = process.env.API_HOST;
-//   // let rssFeed = null;
+EpisodePage.getInitialProps = async function (ctx) {
+  const { id } = ctx.query;
+  const subdomain = getSubdomain(ctx.req);
+  const apiUrl = process.env.API_HOST;
 
-//   if (marketingDomains.includes(subdomain)) {
-//     return {
-//       subdomain,
-//       data: null,
-//     };
-//   } else {
-//     const res = await fetch(`${apiUrl}api/v1/landing/${subdomain}`, {
-//       method: 'get',
-//     });
-//     const data = await res.json();
-//     const rssFeed = data.feed;
-//     const podcastInfo = sortDataPodcastLanding(data, rssFeed);
+  const res = await fetch(`${apiUrl}api/v1/landing/${subdomain}/${id}`, {
+    method: 'get',
+  });
+  const data = await res.json();
 
-//     return {
-//       data: podcastInfo,
-//     };
-//   }
-// };
+  return {
+    episode: data,
+  };
+};

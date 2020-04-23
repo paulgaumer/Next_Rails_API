@@ -2,7 +2,6 @@ import Link from 'next/link';
 
 const FeaturedCard = ({ episode }) => {
   const ep = episode;
-  console.log(ep);
   return (
     <>
       <div className="mx-auto my-20 max-w-7xl">

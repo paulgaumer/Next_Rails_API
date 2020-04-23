@@ -35,13 +35,8 @@ const CardImage = styled.div`
 `;
 
 const EpisodeCard = ({ ep }) => {
-  console.log(ep);
   return (
-    <Link
-      href="/episodes/[id]"
-      as={`/episodes/${ep.guid}`}
-      className="hover:cursor-pointer"
-    >
+    <Link href="/episodes/[id]" as={`/episodes/${ep.guid}`}>
       <a>
         <div className="flex mb-10">
           <CardImage
