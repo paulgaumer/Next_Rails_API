@@ -6,7 +6,7 @@ import { GlobalDispatchContext } from '../../../context/globalContextProvider';
 const AmplitudePlayer = ({ podcastCover }) => {
   const { currentAudio } = useContext(GlobalStateContext);
   const { episodes } = useContext(GlobalStateContext);
-  const [cover, setCover] = useState(podcastCover);
+  const [cover] = useState(podcastCover);
 
   const isPlayingDispatch = useContext(GlobalDispatchContext);
   const amplitudeDispatch = useContext(GlobalDispatchContext);

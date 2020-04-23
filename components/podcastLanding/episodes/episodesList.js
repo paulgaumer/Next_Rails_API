@@ -1,5 +1,5 @@
 import React from 'react';
-import Episode from './episode';
+import EpisodeCard from './episodeCard';
 
 const EpisodesList = ({ episodes, cover }) => {
   const episodesList = episodes.slice(0, 4);
@@ -12,7 +12,7 @@ const EpisodesList = ({ episodes, cover }) => {
           </h2>
         </div>
         {episodesList.map((ep) => {
-          return <Episode ep={ep} key={ep.guid} />;
+          return <EpisodeCard ep={ep} key={ep.guid} />;
         })}
       </div>
     </div>
