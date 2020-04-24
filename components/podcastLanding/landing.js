@@ -3,7 +3,7 @@ import { GlobalDispatchContext } from '../../context/globalContextProvider';
 import Layout from './layout/layout';
 import Header from './header/header';
 import AmplitudePlayer from './audio-player/amplitudePlayer';
-// import FeaturedEpisode from './episodes/featured-episode';
+import HeaderContentIndex from './header/headerContentIndex';
 import EpisodesList from './episodes/episodesList';
 import Cta from './cta/cta';
 
@@ -16,7 +16,9 @@ const PodcastLanding = ({ data }) => {
   return (
     <div>
       <Layout>
-        <Header data={data} />
+        <Header data={data}>
+          <HeaderContentIndex data={data} />
+        </Header>
         <EpisodesList episodes={data.episodes} cover={data.coverUrl} />
         <Cta />
       </Layout>

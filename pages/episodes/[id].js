@@ -3,11 +3,14 @@ import Layout from '../../components/podcastLanding/layout/layout';
 import EpisodeShow from '../../components/podcastLanding/episodes/episodeShow';
 import { getSubdomain } from '../../utils/subdomain';
 import Header from '../../components/podcastLanding/header/header';
+import HeaderContentShow from '../../components/podcastLanding/header/headerContentShow';
 
 const EpisodePage = ({ episode, podcast }) => {
   return (
     <Layout>
-      <Header data={podcast} />
+      <Header data={podcast}>
+        <HeaderContentShow episode={episode} podcast={podcast} />
+      </Header>
       <EpisodeShow episode={episode} />
     </Layout>
   );

@@ -1,7 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { GlobalDispatchContext } from '../../../context/globalContextProvider';
-import { GlobalStateContext } from '../../../context/globalContextProvider';
 
 const HeaderContainer = styled.div`
   /* height: 35rem; */
@@ -41,33 +39,11 @@ const BackgroundContainer = styled.div`
   }
 `;
 
-const Index = ({ data }) => {
-  const audioDispatch = useContext(GlobalDispatchContext);
-  const { amplitude } = useContext(GlobalStateContext);
-
-  const handlePlayClick = () => {
-    audioDispatch({
-      type: 'PLAY_MOST_RECENT_EPISODE',
-      payload: data.episodes[0],
-    });
-    amplitude.playSongAtIndex(0);
-  };
+const Index = ({ data, children }) => {
   return (
     <HeaderContainer className="relative flex justify-center py-24">
       <div className="z-10 flex flex-col items-center justify-center mx-auto max-w-7xl">
-        <div className="flex justify-center max-w-3xl">
-          <img
-            src={data.coverUrl}
-            alt="podcast logo"
-            className="w-48 h-48 mt-6 rounded"
-            onClick={handlePlayClick}
-          />
-          <div className="pl-10 text-white">
-            <h1 className="text-6xl ">{data.name}</h1>
-            {/* <p>- by {data.owner.name}</p> */}
-            <p className="pt-10">{data.description}</p>
-          </div>
-        </div>
+        {children}
         <div className="flex justify-center mt-20">
           {['Itunes', 'Spotify', 'Overcasr', 'RSS'].map((btn) => {
             return (
