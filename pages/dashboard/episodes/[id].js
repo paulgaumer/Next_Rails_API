@@ -6,15 +6,8 @@ import DashboardLayout from '../../../components/dashboard/dashboardLayout/dashb
 import { getDomain } from '../../../utils/subdomain';
 import EpisodeDetails from '../../../components/dashboard/episodes/episodeDetails';
 
-const EpisodePage = ({
-  podcastDb,
-  initialDomain,
-  podcastRss,
-  id,
-  loggedIn,
-}) => {
-  const episodeRss = podcastRss.items.find((ep) => ep.guid === id);
-  const episodeDb = podcastDb.episodes.find((ep) => ep.guid === id);
+const EpisodePage = ({ podcastData, currentDomain, loggedIn }) => {
+  const { episode, id } = podcastData.podcast;
 
   useEffect(() => {
     if (!loggedIn) {
@@ -25,16 +18,8 @@ const EpisodePage = ({
   return !loggedIn ? (
     <div />
   ) : (
-    <DashboardLayout
-      podcastDb={podcastDb}
-      podcastRss={podcastRss}
-      currentDomain={initialDomain}
-    >
-      <EpisodeDetails
-        episodeRss={episodeRss}
-        episodeDb={episodeDb}
-        podcastId={podcastDb.id}
-      />
+    <DashboardLayout podcastData={podcastData} currentDomain={currentDomain}>
+      <EpisodeDetails podEpisode={episode} podId={id} />
     </DashboardLayout>
   );
 };
@@ -52,7 +37,7 @@ EpisodePage.getInitialProps = async function (ctx) {
       loggedIn: false,
     };
   } else {
-    const res = await fetch(`${apiUrl}api/v1/dashboard`, {
+    const res = await fetch(`${apiUrl}api/v1/dashboard/${id}`, {
       method: 'get',
       headers: {
         Authorization: token,
@@ -61,11 +46,9 @@ EpisodePage.getInitialProps = async function (ctx) {
     const data = await res.json();
 
     return {
-      podcastDb: data,
-      initialDomain: domain,
+      podcastData: data,
+      currentDomain: domain,
       loggedIn: true,
-      podcastRss: data.feed,
-      id,
     };
   }
 };

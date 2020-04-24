@@ -34,10 +34,11 @@ export const createEpisode = async (info) => {
   return res.status;
 };
 
-export const updateEpisode = async (info, episodeId) => {
+export const updateEpisode = async (info) => {
   const apiUrl = process.env.API_HOST;
   const token = Cookies.get('token');
-  const res = await fetch(`${apiUrl}api/v1/episodes/${episodeId}`, {
+  const epId = info.db_id;
+  const res = await fetch(`${apiUrl}api/v1/episodes/${epId}`, {
     method: 'PATCH',
     headers: {
       Accept: 'application/json',

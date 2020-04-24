@@ -6,12 +6,7 @@ import { getDomain } from '../../utils/subdomain';
 import DashboardLayout from '../../components/dashboard/dashboardLayout/dashboardLayout';
 import PodcastDetails from '../../components/dashboard/podcastDetails';
 
-const PodcastDetailsPage = ({
-  podcastDb,
-  initialDomain,
-  loggedIn,
-  podcastRss,
-}) => {
+const PodcastDetailsPage = ({ podcastData, currentDomain, loggedIn }) => {
   useEffect(() => {
     if (!loggedIn) {
       Router.push('/signin');
@@ -21,12 +16,8 @@ const PodcastDetailsPage = ({
   return !loggedIn ? (
     <div />
   ) : (
-    <DashboardLayout
-      podcastDb={podcastDb}
-      podcastRss={podcastRss}
-      currentDomain={initialDomain}
-    >
-      <PodcastDetails podcastDb={podcastDb} podcastRss={podcastRss} />
+    <DashboardLayout podcastData={podcastData} currentDomain={currentDomain}>
+      <PodcastDetails podcastData={podcastData} />
     </DashboardLayout>
   );
 };
@@ -52,9 +43,8 @@ PodcastDetailsPage.getInitialProps = async function (ctx) {
   const data = await res.json();
 
   return {
-    podcastDb: data,
-    initialDomain: domain,
+    podcastData: data,
+    currentDomain: domain,
     loggedIn: true,
-    podcastRss: data.feed,
   };
 };

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Router from 'next/router';
 import fetch from 'isomorphic-unfetch';
 import styled from 'styled-components';
 import { createEpisode, updateEpisode } from '../apiCalls/handleFetch';
@@ -7,21 +8,12 @@ const ReactQuill =
 
 const EditorContainer = styled.div``;
 
-const EpisodeDetails = ({ episodeRss, episodeDb, podcastId }) => {
+const EpisodeDetails = ({ podEpisode, podId }) => {
   const apiUrl = process.env.API_HOST;
 
-  const initialState = {
-    podcast_id: podcastId,
-    guid: !episodeDb ? episodeRss.guid : episodeDb.guid,
-    title: !episodeDb ? episodeRss.title : episodeDb.title,
-    summary: !episodeDb ? episodeRss.description : episodeDb.summary,
-    show_notes: !episodeDb ? episodeRss.description : episodeDb.show_notes,
-    transcription: !episodeDb ? null : episodeDb.transcription,
-  };
-
-  const [episode, setEpisode] = useState(initialState);
-  const [showNotes, setShowNotes] = useState(initialState.show_notes);
-  const [transcript, setTranscript] = useState(initialState.transcription);
+  const [episode, setEpisode] = useState(podEpisode);
+  const [showNotes, setShowNotes] = useState(podEpisode.show_notes);
+  const [transcription, setTranscription] = useState(podEpisode.transcription);
   const [uploaded, setUploaded] = useState(false);
 
   const handleChange = (target, e) => {
@@ -36,15 +28,21 @@ const EpisodeDetails = ({ episodeRss, episodeDb, podcastId }) => {
     const newEpisode = {
       ...episode,
       show_notes: showNotes,
-      transcription: transcript,
+      transcription,
+      podcast_id: podId,
     };
-    if (episodeDb) {
-      const episodeId = episodeDb.id;
-      const res = await updateEpisode(newEpisode, episodeId);
+
+    if (newEpisode.db_id) {
+      const res = await updateEpisode(newEpisode);
+      res === 204
+        ? Router.push(`/dashboard/episodes/${newEpisode}`)
+        : alert('There has been an error');
     } else {
       const res = await createEpisode(newEpisode);
+      res === 204
+        ? Router.push(`/dashboard/episodes/${newEpisode}`)
+        : alert('There has been an error');
     }
-    // res !== 204 alert('There has been an error');
   };
 
   const handleUploadAudio = async () => {
@@ -56,7 +54,7 @@ const EpisodeDetails = ({ episodeRss, episodeDb, podcastId }) => {
       const resTrans = await fetch(`${apiUrl}api/v1/gettranscription`);
       const dataTrans = await resTrans.json();
       // console.log(dataTrans);
-      setTranscript(dataTrans.transcript);
+      setTranscription(dataTrans.transcript);
     }
     // console.log(data);
   };
@@ -150,16 +148,16 @@ const EpisodeDetails = ({ episodeRss, episodeDb, podcastId }) => {
                 </button>
                 {uploaded === 'loading' && <p>Loading...</p>}
                 {uploaded === true && <p>Transcription has started!</p>}
-                {transcript !== null && (
+                {/* {transcription !== null && (
                   <ReactQuill
                     theme="snow"
                     id="transcription"
-                    value={transcript}
-                    onChange={setTranscript}
+                    value={transcription}
+                    onChange={setTranscription}
                   >
                     <div className="text-base bg-white sm:text-sm" />
                   </ReactQuill>
-                )}
+                )} */}
               </div>
             </div>
           </div>

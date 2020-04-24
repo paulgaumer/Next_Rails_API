@@ -6,8 +6,6 @@ const HeaderContentShow = ({ episode, podcast }) => {
   const audioDispatch = useContext(GlobalDispatchContext);
   const { amplitude } = useContext(GlobalStateContext);
 
-  console.log(episode);
-
   const handlePlayClick = () => {
     audioDispatch({
       type: 'PLAY_MOST_RECENT_EPISODE',

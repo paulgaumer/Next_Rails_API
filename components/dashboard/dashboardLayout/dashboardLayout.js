@@ -3,7 +3,8 @@ import MobileSideBar from './mobileSideBar';
 import DesktopSideBar from './desktopSideBar';
 import BurgerMenuSideBar from './burgerMenuSideBar';
 
-const DashboardShell = ({ podcastDb, podcastRss, currentDomain, children }) => {
+const DashboardShell = ({ podcastData, currentDomain, children }) => {
+  const { podcast } = podcastData;
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -12,11 +13,11 @@ const DashboardShell = ({ podcastDb, podcastRss, currentDomain, children }) => {
       <MobileSideBar
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
-        podcastSubdomain={podcastDb.subdomain}
+        podcastSubdomain={podcast.subdomain}
         currentDomain={currentDomain}
       />
       <DesktopSideBar
-        podcastSubdomain={podcastDb.subdomain}
+        podcastSubdomain={podcast.subdomain}
         currentDomain={currentDomain}
       />
       {/* END SIDEBAR CONTENT */}
@@ -29,15 +30,15 @@ const DashboardShell = ({ podcastDb, podcastRss, currentDomain, children }) => {
           tabIndex={0}
         >
           <div className="flex items-center px-4 pb-10 mx-auto max-w-7xl sm:px-6 md:px-8">
-            {podcastRss !== null && (
+            {podcast !== null && (
               <img
-                src={podcastRss.image.url}
+                src={podcast.cover_image.url}
                 alt=""
                 className="w-20 h-20 rounded"
               />
             )}
             <h1 className="px-6 text-4xl font-semibold text-gray-700">
-              {podcastRss.title}
+              {podcast.title}
             </h1>
           </div>
 

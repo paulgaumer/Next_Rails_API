@@ -2,27 +2,22 @@ import React, { useState } from 'react';
 import Router from 'next/router';
 import { editPodcast } from '../apiCalls/handleFetch';
 
-const isEmpty = (item) => {
-  return item === '';
-};
-
-const Index = ({ podcastDb, podcastRss }) => {
-  const initialState = {
-    name: isEmpty(podcastDb.name) ? podcastRss.title : podcastDb.name,
-    description: isEmpty(podcastDb.description)
-      ? podcastRss.description
-      : podcastDb.description,
-    audio_player: podcastDb.audio_player,
-    subdomain: podcastDb.subdomain,
-    feed_url: podcastDb.feed_url,
-  };
-
-  const [podcastDetails, setPodcastDetails] = useState(initialState);
+const Index = ({ podcastData }) => {
+  const { podcast } = podcastData;
+  const [podcastDetails, setPodcastDetails] = useState(podcast);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await editPodcast(podcastDetails);
-    res === 200 ? Router.push('/dashboard') : alert('There has been an error');
+    const updates = {
+      title: podcastDetails.title,
+      description: podcastDetails.description,
+      subdomain: podcastDetails.subdomain,
+      feed_url: podcastDetails.feed_url,
+    };
+    const res = await editPodcast(updates);
+    res === 200
+      ? Router.push('/dashboard/podcast')
+      : alert('There has been an error');
   };
 
   const handleChange = (target, e) => {
@@ -48,7 +43,7 @@ const Index = ({ podcastDb, podcastRss }) => {
           <div className="mt-6 sm:mt-5">
             <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
               <label
-                htmlFor="name"
+                htmlFor="title"
                 className="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"
               >
                 Name of your podcast
@@ -56,8 +51,8 @@ const Index = ({ podcastDb, podcastRss }) => {
               <div className="mt-1 sm:mt-0 sm:col-span-2">
                 <div className="flex max-w-lg rounded-md shadow-sm">
                   <input
-                    id="name"
-                    defaultValue={podcastDetails.name}
+                    id="title"
+                    defaultValue={podcastDetails.title}
                     onChange={(e) => handleChange(e.target)}
                     className="flex-1 block w-full transition duration-150 ease-in-out rounded-none rounded-md form-input sm:text-sm sm:leading-5"
                   />
@@ -128,7 +123,7 @@ const Index = ({ podcastDb, podcastRss }) => {
               </div>
             </div>
 
-            <div className="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+            {/* <div className="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
               <label
                 htmlFor="audio_player"
                 className="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"
@@ -158,9 +153,9 @@ const Index = ({ podcastDb, podcastRss }) => {
                   />
                 </div>
               </div>
-            </div>
+            </div> */}
 
-            <div className="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-center sm:border-t sm:border-gray-200 sm:pt-5">
+            {/* <div className="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-center sm:border-t sm:border-gray-200 sm:pt-5">
               <label
                 htmlFor="photo"
                 className="block text-sm font-medium leading-5 text-gray-700"
@@ -188,9 +183,9 @@ const Index = ({ podcastDb, podcastRss }) => {
                   </span>
                 </div>
               </div>
-            </div>
+            </div> */}
 
-            <div className="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+            {/* <div className="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
               <label
                 htmlFor="cover_photo"
                 className="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"
@@ -228,7 +223,7 @@ const Index = ({ podcastDb, podcastRss }) => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
