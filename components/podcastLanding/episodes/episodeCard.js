@@ -65,14 +65,16 @@ const EpisodeCard = ({ ep }) => {
           <div className="self-center pl-6" data-name="card-content">
             <h3 className="text-xl font-semibold ">{ep.title}</h3>
             <div className="flex items-center mt-3">
-              <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 bg-red-400 rounded-full">
+              <div className="flex items-center justify-center flex-shrink-0 w-12 h-12">
                 <svg
-                  viewBox="0 0 320.001 320.001"
-                  className="w-8 h-8 pl-2 text-white"
-                  fill="currentColor"
-                  stroke="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512"
+                  className="text-red-400"
                 >
-                  <path d="M295.84 146.049l-256-144a16.026 16.026 0 00-15.904.128A15.986 15.986 0 0016 16.001v288a15.986 15.986 0 007.936 13.824A16.144 16.144 0 0032 320.001c2.688 0 5.408-.672 7.84-2.048l256-144c5.024-2.848 8.16-8.16 8.16-13.952s-3.136-11.104-8.16-13.952z" />
+                  <path
+                    fill="currentColor"
+                    d="M256 0C114.833 0 0 114.844 0 256s114.833 256 256 256 256-114.844 256-256S397.167 0 256 0zm101.771 264.969l-149.333 96a10.62 10.62 0 01-5.771 1.698c-1.75 0-3.521-.438-5.104-1.302A10.653 10.653 0 01192 352V160c0-3.906 2.125-7.49 5.563-9.365 3.375-1.854 7.604-1.74 10.875.396l149.333 96c3.042 1.958 4.896 5.344 4.896 8.969s-1.854 7.01-4.896 8.969z"
+                  />
                 </svg>
               </div>
               <p className="pl-4 text-base leading-tight leading-7 text-gray-900">
