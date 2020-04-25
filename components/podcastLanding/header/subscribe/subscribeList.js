@@ -14,7 +14,7 @@ const SubscribeList = () => {
   const height = 'w-8';
 
   return (
-    <ListContainer className="inline-block px-4 mt-12 rounded shadow-inner">
+    <ListContainer className="inline-block px-4 rounded shadow-inner">
       {/* <h3 className="text-lg font-light text-center">Subscribe</h3> */}
       <div className="flex justify-center py-4">
         <div className="pr-3">

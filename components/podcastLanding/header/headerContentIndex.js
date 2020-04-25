@@ -23,9 +23,11 @@ const HeaderContentIndex = ({ data }) => {
         className="w-56 h-56 mt-6 rounded"
         onClick={handlePlayClick}
       />
-      <div className="pl-20 text-white">
+      <div className="flex flex-col justify-center pl-20 text-white">
         <h1 className="text-6xl ">{data.title}</h1>
-        <SubscribeList />
+        <div className="flex justify-center mt-10 ">
+          <SubscribeList />
+        </div>
         {/* <p>- by {data.owner.name}</p> */}
         {/* <p className="pt-10">{data.description}</p> */}
       </div>
