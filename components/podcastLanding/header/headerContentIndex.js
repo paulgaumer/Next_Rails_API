@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { GlobalDispatchContext } from '../../../context/globalContextProvider';
 import { GlobalStateContext } from '../../../context/globalContextProvider';
+import SubscribeList from './subscribe/subscribeList';
 
 const HeaderContentIndex = ({ data }) => {
   const audioDispatch = useContext(GlobalDispatchContext);
@@ -15,17 +16,18 @@ const HeaderContentIndex = ({ data }) => {
   };
 
   return (
-    <div className="flex justify-center max-w-3xl">
+    <div className="flex justify-center max-w-4xl">
       <img
-        src={data.coverUrl}
+        src={data.cover_image.url}
         alt="podcast logo"
-        className="w-48 h-48 mt-6 rounded"
+        className="w-56 h-56 mt-6 rounded"
         onClick={handlePlayClick}
       />
-      <div className="pl-10 text-white">
-        <h1 className="text-6xl ">{data.name}</h1>
+      <div className="pl-20 text-white">
+        <h1 className="text-6xl ">{data.title}</h1>
+        <SubscribeList />
         {/* <p>- by {data.owner.name}</p> */}
-        <p className="pt-10">{data.description}</p>
+        {/* <p className="pt-10">{data.description}</p> */}
       </div>
     </div>
   );

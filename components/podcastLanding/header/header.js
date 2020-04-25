@@ -44,23 +44,9 @@ const Index = ({ data, children }) => {
     <HeaderContainer className="relative flex justify-center py-24">
       <div className="z-10 flex flex-col items-center justify-center mx-auto max-w-7xl">
         {children}
-        <div className="flex justify-center mt-20">
-          {['Itunes', 'Spotify', 'Overcasr', 'RSS'].map((btn) => {
-            return (
-              <span className="inline-flex mx-2 rounded-md shadow-sm" key={btn}>
-                <button
-                  type="button"
-                  className="inline-flex items-center px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
-                >
-                  {btn}
-                </button>
-              </span>
-            );
-          })}
-        </div>
       </div>
       <BackgroundContainer>
-        <img src={data.coverUrl} alt="podcast logo" />
+        <img src={data.cover_image.url} alt="podcast logo" />
       </BackgroundContainer>
     </HeaderContainer>
   );

@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import nextCookie from 'next-cookies';
 import Router from 'next/router';
-import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
 import { getDomain } from '../../utils/subdomain';
 import DashboardLayout from '../../components/dashboard/dashboardLayout/dashboardLayout';
@@ -14,7 +13,7 @@ const Dashboard = ({ podcastData, currentDomain, loggedIn }) => {
     }
   }, []);
 
-  const episodes = podcastData.podcast.items;
+  const episodes = podcastData.podcast.episodes;
 
   return !loggedIn ? (
     <div />

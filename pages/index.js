@@ -3,10 +3,14 @@ import PodcastLanding from '../components/podcastLanding/landing';
 import MarketingLanding from '../components/marketingLanding/landing';
 import { getSubdomain } from '../utils/subdomain';
 // import { parseRss } from '../utils/parseRss';
-import { sortDataPodcastLanding } from '../utils/sortData';
+// import { sortDataPodcastLanding } from '../utils/sortData';
 
-const Index = ({ data }) => {
-  return data === null ? <MarketingLanding /> : <PodcastLanding data={data} />;
+const Index = ({ podData }) => {
+  return podData === null ? (
+    <MarketingLanding />
+  ) : (
+    <PodcastLanding data={podData} />
+  );
 };
 
 export default Index;
@@ -20,18 +24,16 @@ Index.getInitialProps = async function (ctx) {
   if (marketingDomains.includes(subdomain)) {
     return {
       subdomain,
-      data: null,
+      podData: null,
     };
   } else {
     const res = await fetch(`${apiUrl}api/v1/landing/${subdomain}`, {
       method: 'get',
     });
     const data = await res.json();
-    const rssFeed = data.feed;
-    const podcastInfo = sortDataPodcastLanding(data, rssFeed);
 
     return {
-      data: podcastInfo,
+      podData: data.podcast,
     };
   }
 };

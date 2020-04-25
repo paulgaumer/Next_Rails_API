@@ -46,19 +46,19 @@ const EpisodeCard = ({ ep }) => {
             <img
               className="absolute inset-0 object-cover w-full h-full rounded shadow"
               data-name="image-one"
-              src={ep.podcastCover.url}
+              src={ep.cover_image.url}
               alt={ep.title}
             />
             <img
-              className="absolute object-cover rounded"
+              className="absolute object-cover rounded shadow"
               data-name="image-two"
-              src={ep.podcastCover.url}
+              src={ep.cover_image.url}
               alt={ep.title}
             />
             <img
-              className="absolute object-cover rounded"
+              className="absolute object-cover rounded shadow"
               data-name="image-three"
-              src={ep.podcastCover.url}
+              src={ep.cover_image.url}
               alt={ep.title}
             />
           </CardImage>
@@ -76,7 +76,7 @@ const EpisodeCard = ({ ep }) => {
                 </svg>
               </div>
               <p className="pl-4 text-base leading-tight leading-7 text-gray-900">
-                {truncateText(ep.description, 290)}
+                {truncateText(ep.summary, 290)}
               </p>
             </div>
             <div className="pt-3 text-sm text-gray-400">

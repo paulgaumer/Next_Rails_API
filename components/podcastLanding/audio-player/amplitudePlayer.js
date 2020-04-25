@@ -1,12 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import PlayerMarkup from './playerMarkup';
 import { GlobalStateContext } from '../../../context/globalContextProvider';
 import { GlobalDispatchContext } from '../../../context/globalContextProvider';
 
-const AmplitudePlayer = ({ podcastCover }) => {
+const AmplitudePlayer = () => {
   const { currentAudio } = useContext(GlobalStateContext);
   const { episodes } = useContext(GlobalStateContext);
-  const [cover] = useState(podcastCover);
 
   const isPlayingDispatch = useContext(GlobalDispatchContext);
   const amplitudeDispatch = useContext(GlobalDispatchContext);
@@ -21,7 +20,7 @@ const AmplitudePlayer = ({ podcastCover }) => {
           name: ep.title,
           artist: ep.podcast_title,
           url: ep.enclosure.url,
-          cover_art_url: cover,
+          cover_art_url: ep.cover_image.url,
         };
       });
 
