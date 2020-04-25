@@ -12,6 +12,17 @@ const truncateText = (text, length) => {
   return text.substr(0, length) + '\u2026';
 };
 
+const CardContainer = styled.div`
+  &:hover {
+    img[data-name='image-two'] {
+      bottom: 0px;
+    }
+    img[data-name='image-three'] {
+      bottom: 0px;
+    }
+  }
+`;
+
 const CardImage = styled.div`
   img[data-name='image-two'] {
     width: 140px;
@@ -23,6 +34,7 @@ const CardImage = styled.div`
     margin-right: auto;
     opacity: 0.5;
     z-index: -1;
+    transition: bottom 0.2s ease-in-out;
   }
   img[data-name='image-three'] {
     width: 120px;
@@ -34,6 +46,7 @@ const CardImage = styled.div`
     margin-right: auto;
     opacity: 0.3;
     z-index: -2;
+    transition: bottom 0.2s ease-in-out 0.1s;
   }
 `;
 
@@ -50,7 +63,7 @@ const EpisodeCard = ({ ep, epIndex }) => {
   };
 
   return (
-    <div className="flex mb-10">
+    <CardContainer className="flex mb-10">
       <Link href="/episodes/[id]" as={`/episodes/${ep.guid}`}>
         <a>
           <CardImage
@@ -112,7 +125,7 @@ const EpisodeCard = ({ ep, epIndex }) => {
           <p>61 min | {formatDate(ep.enclosure.pubDate)}</p>
         </div>
       </div>
-    </div>
+    </CardContainer>
   );
 };
 
