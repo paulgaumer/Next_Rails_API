@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react';
+import Link from 'next/link';
 import { GlobalStateContext } from '../../../context/globalContextProvider';
 import PlayerWrapper from './amplitudePlayerStyled';
 import BackwardBtn from './backwardBtn';
@@ -10,7 +11,7 @@ import Speed15 from './speed15';
 import Speed20 from './speed20';
 
 const wrapper = () => {
-  const { amplitude } = useContext(GlobalStateContext);
+  const { amplitude, currentAudio } = useContext(GlobalStateContext);
   const [isPlaying, setIsPlaying] = useState(true);
   const [speed, setSpeed] = useState(10);
 
@@ -83,10 +84,15 @@ const wrapper = () => {
                     <span className="amplitude-duration-time time-container"></span>
                   </div>
                   <div id="meta-container" className="">
-                    <span
-                      data-amplitude-song-info="name"
-                      className="text-sm song-name sm:text-base"
-                    ></span>
+                    <Link
+                      href={`/episodes/[id]`}
+                      as={`/episodes/${currentAudio ? currentAudio.guid : ''}`}
+                    >
+                      <span
+                        data-amplitude-song-info="name"
+                        className="text-sm cursor-pointer song-name sm:text-base hover:underline"
+                      ></span>
+                    </Link>
 
                     <div className="hidden song-artist-album md:block">
                       <span data-amplitude-song-info="artist"></span>

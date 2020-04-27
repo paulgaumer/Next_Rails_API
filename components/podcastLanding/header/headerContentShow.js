@@ -28,7 +28,7 @@ const HeaderContentShow = ({ data }) => {
         <h1 className="text-2xl">{episode.title}</h1>
         <Link href="/">
           <a>
-            <p className="pt-10">{data.title}</p>
+            <p className="inline-block pt-10 pb-1 border-b">{data.title}</p>
           </a>
         </Link>
       </div>

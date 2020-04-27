@@ -21,6 +21,7 @@ const PodcastLanding = ({ data }) => {
         <Header data={data}>
           <HeaderContentIndex data={data} />
         </Header>
+        <Cta />
         <EpisodesList episodes={data.episodes} cover={data.coverUrl} />
         <Cta />
       </Layout>

@@ -41,7 +41,7 @@ const BackgroundContainer = styled.div`
 
 const Index = ({ data, children }) => {
   return (
-    <HeaderContainer className="relative flex justify-center py-24">
+    <HeaderContainer className="relative flex justify-center pt-24 pb-12">
       <div className="z-10 flex flex-col items-center justify-center mx-auto max-w-7xl">
         {children}
       </div>
