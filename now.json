@@ -8,12 +8,7 @@
   },
   "builds": [
     { "src": "dashboard/package.json", "use": "@now/next" },
-    { "src": "landing/package.json", "use": "@now/next" },
-    {
-      "env": {
-        "API_HOST": "@api-host"
-      }
-    }
+    { "src": "landing/package.json", "use": "@now/next" }
   ],
   "routes": [
     { "src": "/dashboard/_next(.*)", "dest": "dashboard/_next$1" },
