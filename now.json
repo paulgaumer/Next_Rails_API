@@ -2,12 +2,18 @@
   "version": 2,
   "build": {
     "env": {
-      "BUILDING_FOR_NOW": "true"
+      "BUILDING_FOR_NOW": "true",
+      "API_HOST": "@api-host"
     }
   },
   "builds": [
     { "src": "dashboard/package.json", "use": "@now/next" },
-    { "src": "landing/package.json", "use": "@now/next" }
+    { "src": "landing/package.json", "use": "@now/next" },
+    {
+      "env": {
+        "API_HOST": "@api-host"
+      }
+    }
   ],
   "routes": [
     { "src": "/dashboard/_next(.*)", "dest": "dashboard/_next$1" },
