@@ -94,7 +94,7 @@ const EpisodeCard = ({ ep, epIndex }) => {
       <div className="self-center pl-6" data-name="card-content">
         <Link href="/episodes/[id]" as={`/episodes/${ep.guid}`}>
           <a>
-            <h3 className="text-xl font-semibold ">{ep.title}</h3>
+            <h3 className="text-xl font-semibold text-gray-800 ">{ep.title}</h3>
           </a>
         </Link>
         <div className="flex items-center mt-3">
@@ -115,7 +115,7 @@ const EpisodeCard = ({ ep, epIndex }) => {
           </div>
           <Link href="/episodes/[id]" as={`/episodes/${ep.guid}`}>
             <a>
-              <p className="pl-4 text-base leading-tight leading-7 text-gray-900">
+              <p className="pl-4 text-sm leading-tight leading-7 text-gray-900">
                 {truncateText(ep.summary, 290)}
               </p>
             </a>
