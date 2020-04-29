@@ -6,6 +6,7 @@ import Header from './header/header';
 import HeaderContentIndex from './header/headerContentIndex';
 import EpisodesList from './episodes/episodesList';
 import Cta from './cta/cta';
+import InstagramSection from './instagram-section/instagramSection';
 
 const PodcastLanding = ({ data }) => {
   const episodesList = useContext(GlobalStateContext).episodes;
@@ -23,6 +24,7 @@ const PodcastLanding = ({ data }) => {
         </Header>
         <Cta />
         <EpisodesList episodes={data.episodes} cover={data.coverUrl} />
+        <InstagramSection />
         <Cta />
       </Layout>
     </div>

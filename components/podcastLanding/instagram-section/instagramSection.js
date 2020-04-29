@@ -1,0 +1,28 @@
+import React from 'react';
+
+const InstagramSection = ({}) => {
+  return (
+    <div className="mx-auto mt-32 mb-20 max-w-7xl">
+      <div className="mx-20">
+        <div className="flex items-center mb-10 border-b border-gray-300">
+          <h2 className="inline-block px-2 text-3xl font-semibold text-gray-600 border-b-2 border-red-400">
+            Fresh on Instagram
+          </h2>
+          <div className="pl-4">
+            <span className="inline-flex rounded-md shadow-sm">
+              <button
+                type="button"
+                className="inline-flex items-center px-2.5 py-1.5 border border-gray-300 text-xs leading-4 font-medium rounded text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150"
+              >
+                Follow
+              </button>
+            </span>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+  );
+};
+
+export default InstagramSection;
