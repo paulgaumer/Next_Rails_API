@@ -11,6 +11,9 @@ const EditorContainer = styled.div``;
 const EpisodeDetails = ({ podEpisode, podId }) => {
   const apiUrl = process.env.API_HOST;
 
+  // Needed to wait for user input stop
+  let inputTimer = null;
+
   const [episode, setEpisode] = useState(podEpisode);
   const [showNotes, setShowNotes] = useState(podEpisode.show_notes);
   const [transcription, setTranscription] = useState(podEpisode.transcription);
@@ -21,6 +24,14 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
       ...episode,
       [target.id]: target.value,
     });
+  };
+
+  const handleShowNotesChange = (e) => {
+    const duration = 1000;
+    clearTimeout(inputTimer);
+    inputTimer = setTimeout(() => {
+      setShowNotes(e);
+    }, duration);
   };
 
   const handleSubmit = async (e) => {
@@ -123,7 +134,7 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
                     theme="snow"
                     id="showNotes"
                     value={showNotes}
-                    onChange={setShowNotes}
+                    onChange={handleShowNotesChange}
                   >
                     <div className="text-base bg-white sm:text-sm" />
                   </ReactQuill>
