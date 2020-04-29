@@ -53,7 +53,7 @@ const SignUpPage = () => {
           alt="Workflow"
         />
         <h2 className="mt-6 text-3xl font-extrabold leading-9 text-center text-gray-900">
-          Create your account
+          Create your Podwii account
         </h2>
       </div>
 
