@@ -28,12 +28,8 @@ Index.getInitialProps = async function (ctx) {
     const res = await fetch(`${apiUrl}api/v1/landing/${subdomain}`);
     const data = await res.json();
 
-    // const instaRes = await fetch(`${apiUrl}/api/v1/fetch_instagram`);
-    // const instaData = await instaRes.json();
-
     return {
       podData: data.podcast,
-      // instagram: instaData.instagram,
     };
   }
 };

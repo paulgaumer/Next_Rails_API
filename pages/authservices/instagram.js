@@ -1,5 +1,7 @@
 import fetch from 'isomorphic-unfetch';
-import { editPodcast } from '../../components/dashboard/apiCalls/handleFetch';
+import Router from 'next/router';
+import nextCookie from 'next-cookies';
+// import { editPodcast } from '../../components/dashboard/apiCalls/handleFetch';
 
 const InstagramAuth = ({ data }) => {
   return (
@@ -16,8 +18,11 @@ const InstagramAuth = ({ data }) => {
 
 export default InstagramAuth;
 
-InstagramAuth.getInitialProps = async function ({ query }) {
-  console.log(query.code);
+InstagramAuth.getInitialProps = async function (ctx) {
+  const apiUrl = process.env.API_HOST;
+  const { query } = ctx;
+  const { token } = nextCookie(ctx);
+
   if (query.code === undefined) {
     return { data: null };
   }
@@ -54,12 +59,28 @@ InstagramAuth.getInitialProps = async function ({ query }) {
     return { data: null };
   }
 
+  const expirationDate = new Date();
+  expirationDate.setUTCSeconds(longToken.expires_in);
+
   const updates = {
-    instagram_access_token: longToken,
+    instagram_access_token: {
+      access_token: longToken.access_token,
+      expires_in: expirationDate,
+    },
   };
 
-  const res = await editPodcast(updates);
-  res === 200
+  const res = await fetch(`${apiUrl}api/v1/dashboard/edit`, {
+    method: 'PATCH',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: token,
+    },
+    body: JSON.stringify({
+      podcast: { ...updates },
+    }),
+  });
+  res.status === 200
     ? Router.push('/dashboard/podcast')
     : console.log('There has been an error');
 
