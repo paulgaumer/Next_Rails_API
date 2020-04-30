@@ -87,9 +87,12 @@ const Index = ({ podcastData }) => {
                 htmlFor="description"
                 className="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"
               >
-                What is your podcast about?
+                Describe your podcast
               </label>
               <div className="mt-1 sm:mt-0 sm:col-span-2">
+                <p className="mb-2 text-sm text-gray-500 sm:pt-2">
+                  This will be the description showing on the main page.
+                </p>
                 <div className="flex max-w-lg rounded-md shadow-sm">
                   <textarea
                     id="description"
@@ -99,9 +102,6 @@ const Index = ({ podcastData }) => {
                     className="block w-full transition duration-150 ease-in-out form-textarea sm:text-sm sm:leading-5"
                   ></textarea>
                 </div>
-                <p className="mt-2 text-sm text-gray-500">
-                  This will be the description showing on the main page.
-                </p>
               </div>
             </div>
             <div className="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
