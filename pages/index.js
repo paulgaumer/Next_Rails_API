@@ -2,14 +2,12 @@ import fetch from 'isomorphic-unfetch';
 import PodcastLanding from '../components/podcastLanding/landing';
 import MarketingLanding from '../components/marketingLanding/landing';
 import { getSubdomain } from '../utils/subdomain';
-// import { parseRss } from '../utils/parseRss';
-// import { sortDataPodcastLanding } from '../utils/sortData';
 
-const Index = ({ podData }) => {
+const Index = ({ podData, instagram }) => {
   return podData === null ? (
     <MarketingLanding />
   ) : (
-    <PodcastLanding data={podData} />
+    <PodcastLanding data={podData} instagram={instagram} />
   );
 };
 
@@ -19,21 +17,23 @@ Index.getInitialProps = async function (ctx) {
   const subdomain = getSubdomain(ctx.req);
   const marketingDomains = ['lvh', 'localhost:8080', 'podwii', 'podwee'];
   const apiUrl = process.env.API_HOST;
-  // let rssFeed = null;
 
   if (marketingDomains.includes(subdomain)) {
     return {
       subdomain,
       podData: null,
+      instagram: null,
     };
   } else {
-    const res = await fetch(`${apiUrl}api/v1/landing/${subdomain}`, {
-      method: 'get',
-    });
+    const res = await fetch(`${apiUrl}api/v1/landing/${subdomain}`);
     const data = await res.json();
+
+    // const instaRes = await fetch(`${apiUrl}/api/v1/fetch_instagram`);
+    // const instaData = await instaRes.json();
 
     return {
       podData: data.podcast,
+      // instagram: instaData.instagram,
     };
   }
 };

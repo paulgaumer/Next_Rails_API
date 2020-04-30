@@ -1,6 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import fetch from 'isomorphic-unfetch';
 
 const InstagramSection = ({}) => {
+  const apiUrl = process.env.API_HOST;
+  const [instagram, setInstagram] = useState([]);
+
+  useEffect(async () => {
+    async function fetchInstagram() {
+      const res = await fetch(`${apiUrl}/api/v1/fetch_instagram`);
+      const data = await res.json();
+      return data;
+    }
+    const insta = await fetchInstagram();
+    console.log(insta);
+    setInstagram(insta);
+  }, []);
+
   return (
     <div className="mx-auto mt-32 mb-20 max-w-7xl">
       <div className="mx-20">
@@ -19,7 +34,29 @@ const InstagramSection = ({}) => {
             </span>
           </div>
         </div>
-        <div></div>
+        <div className="grid grid-cols-4 row-gap-2 col-gap-2">
+          {instagram.length > 0 &&
+            instagram.map((pic) => {
+              return (
+                <a href={pic.permalink} key={pic.id} target="_blank">
+                  {pic.media_type === 'IMAGE' && (
+                    <img
+                      src={pic.media_url}
+                      alt={pic.id}
+                      className="object-cover object-center w-full h-64"
+                    />
+                  )}
+                  {pic.media_type === 'VIDEO' && (
+                    <video
+                      src={pic.media_url}
+                      controls
+                      className="object-cover object-center w-full h-64"
+                    ></video>
+                  )}
+                </a>
+              );
+            })}
+        </div>
       </div>
     </div>
   );
