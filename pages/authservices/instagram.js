@@ -50,6 +50,10 @@ InstagramAuth.getInitialProps = async function ({ query }) {
   const longToken = await longRes.json();
   console.log(longToken);
 
+  if (longToken.access_token === undefined) {
+    return { data: null };
+  }
+
   return {
     data: longToken,
   };
