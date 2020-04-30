@@ -5,6 +5,7 @@ const InstagramAuth = ({ data }) => {
   return (
     <div>
       <p>Auth</p>
+      <p>Token: {data !== null ? data.access_token : 'No token'}</p>
 
       {/* <button onClick={handleClick} className="p-4 border">
         Fetch Instagram
