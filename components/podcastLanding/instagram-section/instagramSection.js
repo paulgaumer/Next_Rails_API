@@ -5,15 +5,13 @@ const InstagramSection = ({}) => {
   const apiUrl = process.env.API_HOST;
   const [instagram, setInstagram] = useState([]);
 
-  useEffect(async () => {
+  useEffect(() => {
     async function fetchInstagram() {
       const res = await fetch(`${apiUrl}/api/v1/fetch_instagram`);
       const data = await res.json();
-      return data;
+      setInstagram(data.instagram);
     }
-    const insta = await fetchInstagram();
-    console.log(insta);
-    setInstagram(insta);
+    fetchInstagram();
   }, []);
 
   return (

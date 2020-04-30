@@ -6,8 +6,8 @@ const ApplePodcastIcon = ({ width, height }) => {
       {/* <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300">
         <defs>
           <linearGradient id="a">
-            <stop offset="0" stop-color="#822cbe" />
-            <stop offset="1" stop-color="#d772fb" />
+            <stop offset="0" stopColor="#822cbe" />
+            <stop offset="1" stopColor="#d772fb" />
           </linearGradient>
           <linearGradient
             id="b"
@@ -45,8 +45,8 @@ const ApplePodcastIcon = ({ width, height }) => {
       >
         <defs>
           <linearGradient id="a">
-            <stop offset="0" stop-color="#822cbe" />
-            <stop offset="1" stop-color="#d772fb" />
+            <stop offset="0" stopColor="#822cbe" />
+            <stop offset="1" stopColor="#d772fb" />
           </linearGradient>
           <linearGradient
             id="b"
