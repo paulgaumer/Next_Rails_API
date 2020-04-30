@@ -61,7 +61,7 @@ InstagramAuth.getInitialProps = async function ({ query }) {
   const res = await editPodcast(updates);
   res === 200
     ? Router.push('/dashboard/podcast')
-    : alert('There has been an error');
+    : console.log('There has been an error');
 
   return {
     data: longToken,
