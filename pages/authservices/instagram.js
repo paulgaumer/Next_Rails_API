@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
 import fetch from 'isomorphic-unfetch';
+import { editPodcast } from '../../components/dashboard/apiCalls/handleFetch';
 
 const InstagramAuth = ({ data }) => {
   return (
@@ -53,6 +53,15 @@ InstagramAuth.getInitialProps = async function ({ query }) {
   if (longToken.access_token === undefined) {
     return { data: null };
   }
+
+  const updates = {
+    instagram_access_token: longToken,
+  };
+
+  const res = await editPodcast(updates);
+  res === 200
+    ? Router.push('/dashboard/podcast')
+    : alert('There has been an error');
 
   return {
     data: longToken,
