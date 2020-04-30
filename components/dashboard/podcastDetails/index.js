@@ -122,6 +122,31 @@ const Index = ({ podcastData }) => {
                 </div>
               </div>
             </div>
+            <div className="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+              <label
+                htmlFor="feed_url"
+                className="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"
+              >
+                Instagram
+              </label>
+              <div className="mt-1 sm:mt-0 sm:col-span-2">
+                <div className="flex max-w-lg rounded-md">
+                  {/* <input
+                    id="feed_url"
+                    defaultValue={podcastDetails.feed_url}
+                    onChange={(e) => handleChange(e.target)}
+                    className="block w-full transition duration-150 ease-in-out form-textarea sm:text-sm sm:leading-5"
+                  ></input> */}
+                  <a
+                    href={`https://api.instagram.com/oauth/authorize?client_id=${process.env.INSTAGRAM_CLIENT_ID}&redirect_uri=${process.env.INSTAGRAM_OAUTH_REDIRECT}&scope=user_profile,user_media&response_type=code`}
+                    target="_blank"
+                    className="inline-flex justify-center px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+                  >
+                    Connect now
+                  </a>
+                </div>
+              </div>
+            </div>
 
             {/* <div className="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
               <label
