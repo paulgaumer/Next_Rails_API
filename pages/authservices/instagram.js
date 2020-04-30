@@ -22,18 +22,19 @@ InstagramAuth.getInitialProps = async function ({ query }) {
     return { data: null };
   }
 
-  const formBody = new FormData();
-  formBody.set('client_id', process.env.INSTAGRAM_CLIENT_ID);
-  formBody.set('client_secret', process.env.INSTAGRAM_CLIENT_SECRET);
-  formBody.set('grant_type', authorization_code);
-  formBody.set('redirect_uri', process.env.INSTAGRAM_OAUTH_REDIRECT);
-  formBody.set('code', query.code);
+  const searchParams = new URLSearchParams();
+  searchParams.set('client_id', process.env.INSTAGRAM_CLIENT_ID);
+  searchParams.set('client_secret', process.env.INSTAGRAM_CLIENT_SECRET);
+  searchParams.set('grant_type', authorization_code);
+  searchParams.set('redirect_uri', process.env.INSTAGRAM_OAUTH_REDIRECT);
+  searchParams.set('code', query.code);
 
   const shortRes = await fetch('https://api.instagram.com/oauth/access_token', {
     method: 'POST',
-    body: formBody,
+    body: searchParams,
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
+      Accept: 'application/json, application/xml, text/plain, text/html, *.*',
+      'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
     },
   });
   const shortToken = await shortRes.json();
