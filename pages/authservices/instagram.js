@@ -25,7 +25,7 @@ InstagramAuth.getInitialProps = async function ({ query }) {
   const searchParams = new URLSearchParams();
   searchParams.set('client_id', process.env.INSTAGRAM_CLIENT_ID);
   searchParams.set('client_secret', process.env.INSTAGRAM_CLIENT_SECRET);
-  searchParams.set('grant_type', authorization_code);
+  searchParams.set('grant_type', 'authorization_code');
   searchParams.set('redirect_uri', process.env.INSTAGRAM_OAUTH_REDIRECT);
   searchParams.set('code', query.code);
 
