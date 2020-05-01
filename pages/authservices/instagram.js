@@ -1,17 +1,19 @@
-import fetch from 'isomorphic-unfetch';
+import { useEffect } from 'react';
 import Router from 'next/router';
+import fetch from 'isomorphic-unfetch';
 import nextCookie from 'next-cookies';
-// import { editPodcast } from '../../components/dashboard/apiCalls/handleFetch';
 
 const InstagramAuth = ({ data }) => {
+  useEffect(() => {
+    data.access_token !== undefined ? Router.push('/dashboard/podcast') : null;
+  }, []);
+
   return (
     <div>
-      <p>Auth</p>
-      <p>Token: {data !== null ? data.access_token : 'No token'}</p>
-
-      {/* <button onClick={handleClick} className="p-4 border">
-        Fetch Instagram
-      </button> */}
+      <h2 className="text-lg">Instagram Connection</h2>
+      <p className="pt-2">
+        Token: {data !== null ? 'Success' : 'Something went wrong'}
+      </p>
     </div>
   );
 };
@@ -77,12 +79,14 @@ InstagramAuth.getInitialProps = async function (ctx) {
       Authorization: token,
     },
     body: JSON.stringify({
-      podcast: { ...updates },
+      podcast: {
+        ...updates,
+      },
     }),
   });
   res.status === 200
-    ? Router.push('/dashboard/podcast')
-    : console.log('There has been an error');
+    ? console.log('Instagram connection ok')
+    : console.log('Instagram connection error');
 
   return {
     data: longToken,

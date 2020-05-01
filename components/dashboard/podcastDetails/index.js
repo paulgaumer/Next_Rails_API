@@ -5,6 +5,7 @@ import { editPodcast } from '../apiCalls/handleFetch';
 const Index = ({ podcastData }) => {
   const { podcast } = podcastData;
   const [podcastDetails, setPodcastDetails] = useState(podcast);
+  const isInstagramConnected = podcast.instagram_access_token !== null;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -131,13 +132,20 @@ const Index = ({ podcastData }) => {
               </label>
               <div className="mt-1 sm:mt-0 sm:col-span-2">
                 <div className="flex max-w-lg rounded-md">
-                  <a
-                    href={`https://api.instagram.com/oauth/authorize?client_id=${process.env.INSTAGRAM_CLIENT_ID}&redirect_uri=${process.env.INSTAGRAM_OAUTH_REDIRECT}&scope=user_profile,user_media&response_type=code`}
-                    target="_blank"
-                    className="inline-flex justify-center px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
-                  >
-                    Connect now
-                  </a>
+                  {!isInstagramConnected && (
+                    <a
+                      href={`https://api.instagram.com/oauth/authorize?client_id=${process.env.INSTAGRAM_CLIENT_ID}&redirect_uri=${process.env.INSTAGRAM_OAUTH_REDIRECT}&scope=user_profile,user_media&response_type=code`}
+                      target="_blank"
+                      className="inline-flex justify-center px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+                    >
+                      Connect now
+                    </a>
+                  )}
+                  {isInstagramConnected && (
+                    <p className="text-sm leading-5 text-green-500 opacity-75 sm:mt-px sm:pt-2">
+                      Connected
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
