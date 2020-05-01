@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import fetch from 'isomorphic-unfetch';
 
-const InstagramSection = ({}) => {
+const InstagramSection = ({ podcastId }) => {
   const apiUrl = process.env.API_HOST;
   const [instagram, setInstagram] = useState([]);
 
   useEffect(() => {
     async function fetchInstagram() {
-      const res = await fetch(`${apiUrl}/api/v1/fetch_instagram`);
+      const res = await fetch(`${apiUrl}/api/v1/fetch_instagram/${podcastId}`);
       const data = await res.json();
       setInstagram(data.instagram);
     }
