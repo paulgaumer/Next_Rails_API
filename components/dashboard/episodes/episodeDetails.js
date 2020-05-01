@@ -59,16 +59,24 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
 
   const handleUploadAudio = async () => {
     setUploaded('loading');
-    const res = await fetch(`${apiUrl}api/v1/uploadaudio`);
+    const res = await fetch(`${apiUrl}api/v1/uploadaudio`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        transcription: { speakers: speakerNumber },
+      }),
+    });
     const data = await res.json();
-    if (res.status === 200) {
+    if (data.status === 'QUEUED' || data.status === 'IN_PROGRESS') {
       setUploaded(true);
       const resTrans = await fetch(`${apiUrl}api/v1/gettranscription`);
       const dataTrans = await resTrans.json();
       // console.log(dataTrans);
       setTranscription(dataTrans.transcript);
     }
-    // console.log(data);
   };
 
   return (
