@@ -17,6 +17,7 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
   const [episode, setEpisode] = useState(podEpisode);
   const [showNotes, setShowNotes] = useState(podEpisode.show_notes);
   const [transcription, setTranscription] = useState(podEpisode.transcription);
+  const [speakerNumber, setSpeakerNumber] = useState(1);
   const [uploaded, setUploaded] = useState(false);
 
   const handleChange = (target, e) => {
@@ -150,6 +151,19 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
                 >
                   Transcription
                 </label>
+                <div class="max-w-xs rounded-md shadow-sm">
+                  <select
+                    id="speakers"
+                    class="block form-select w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                    onChange={(e) => setSpeakerNumber(parseInt(e.target.value))}
+                    value={speakerNumber}
+                  >
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                  </select>
+                </div>
                 <button
                   type="button"
                   onClick={handleUploadAudio}
