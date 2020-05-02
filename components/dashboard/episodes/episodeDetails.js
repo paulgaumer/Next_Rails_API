@@ -20,6 +20,19 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
   const [speakerNumber, setSpeakerNumber] = useState(1);
   const [uploaded, setUploaded] = useState(false);
 
+  const downloadTranscription = async () => {
+    const res = await fetch(`${apiUrl}api/v1/gettranscription`);
+    const data = await res.json();
+    console.log(data);
+    data.status === 'COMPLETED' && setTranscription(data.transcript);
+  };
+
+  useEffect(() => {
+    if (transcription === 'IN_PROGRESS') {
+      downloadTranscription();
+    }
+  }, []);
+
   const handleChange = (target, e) => {
     setEpisode({
       ...episode,
@@ -44,7 +57,7 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
     };
     console.log(newEpisode);
 
-    if (newEpisode.db_id !== null) {
+    if (newEpisode.id !== null) {
       const res = await updateEpisode(newEpisode);
       res === 204
         ? Router.push(`/dashboard/episodes/${newEpisode.guid}`)
@@ -63,7 +76,6 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
   };
 
   const handleUploadAudio = async () => {
-    // setUploaded('Uploading...');
     const res = await fetch(`${apiUrl}api/v1/uploadaudio`, {
       method: 'POST',
       headers: {
@@ -79,9 +91,6 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
       setUploaded(true);
       setTranscription('IN_PROGRESS');
       saveEpisode('IN_PROGRESS');
-      // const resTrans = await fetch(`${apiUrl}api/v1/gettranscription`);
-      // const dataTrans = await resTrans.json();
-      // setTranscription(dataTrans.transcript);
     }
   };
 
