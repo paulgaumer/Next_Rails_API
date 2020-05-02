@@ -11,8 +11,8 @@ import Speed15 from './speed15';
 import Speed20 from './speed20';
 
 const wrapper = () => {
-  const { amplitude, currentAudio } = useContext(GlobalStateContext);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const { amplitude, currentAudio, isPlaying } = useContext(GlobalStateContext);
+  // const [isPlaying] = useState(true);
   const [speed, setSpeed] = useState(10);
 
   const handleClickBackward = () => {
@@ -36,11 +36,6 @@ const wrapper = () => {
     );
   };
 
-  const handlePlayClick = (e) => {
-    e.currentTarget.className.includes('playing')
-      ? setIsPlaying(true)
-      : setIsPlaying(false);
-  };
   const handleSpeedClick = (e) => {
     if (e.currentTarget.className.includes('15')) {
       setSpeed(15);
@@ -124,11 +119,7 @@ const wrapper = () => {
                     id="play-pause-container"
                     className="flex items-center sm:mx-4"
                   >
-                    <div
-                      className="amplitude-play-pause"
-                      id="play-pause"
-                      onClick={handlePlayClick}
-                    >
+                    <div className="amplitude-play-pause" id="play-pause">
                       {isPlaying && <PauseBtn />}
                       {!isPlaying && <PlayBtn />}
                     </div>
