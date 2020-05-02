@@ -29,6 +29,7 @@ export const createEpisode = async (info) => {
     },
     body: JSON.stringify({
       episode: { ...info },
+      transcription: {},
     }),
   });
   return res.status;
@@ -47,6 +48,7 @@ export const updateEpisode = async (info) => {
     },
     body: JSON.stringify({
       episode: { ...info },
+      transcription: {},
     }),
   });
   return res.status;
