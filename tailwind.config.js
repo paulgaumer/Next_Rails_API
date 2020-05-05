@@ -1,6 +1,10 @@
 module.exports = {
   theme: {
     extend: {
+      fontFamily: {
+        sansLanding: 'Montserrat',
+        titleLanding: 'Roboto',
+      },
       screens: {
         altsm: '640px',
         // => @media (min-width: 640px) { ... }
