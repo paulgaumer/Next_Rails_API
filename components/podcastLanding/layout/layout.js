@@ -4,7 +4,7 @@ import Footer from './footer';
 
 const layout = ({ children }) => {
   return (
-    <div>
+    <div className="font-sansLanding">
       {/* <Navbar /> */}
       <div>{children}</div>
       <Footer />

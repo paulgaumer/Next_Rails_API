@@ -25,7 +25,7 @@ const HeaderContentIndex = ({ data }) => {
           onClick={handlePlayClick}
         />
         <div className="flex flex-col justify-center pl-20 text-white">
-          <h1 className="text-6xl ">{data.title}</h1>
+          <h1 className="text-6xl font-titleLanding">{data.title}</h1>
           <div className="flex justify-center mt-10 ">
             <SubscribeList />
           </div>

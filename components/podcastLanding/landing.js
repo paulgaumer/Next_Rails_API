@@ -3,6 +3,7 @@ import { GlobalDispatchContext } from '../../context/globalContextProvider';
 import { GlobalStateContext } from '../../context/globalContextProvider';
 import Layout from './layout/layout';
 import Header from './header/header';
+import NewHeader from './header/newHeader';
 import HeaderContentIndex from './header/headerContentIndex';
 import EpisodesList from './episodes/episodesList';
 import Cta from './cta/cta';
@@ -19,9 +20,10 @@ const PodcastLanding = ({ data }) => {
   return (
     <div>
       <Layout>
-        <Header data={data}>
+        {/* <Header data={data}>
           <HeaderContentIndex data={data} />
-        </Header>
+        </Header> */}
+        <NewHeader data={data} />
         <Cta />
         <EpisodesList episodes={data.episodes} cover={data.coverUrl} />
         <InstagramSection podcastId={data.id} />

@@ -6,12 +6,12 @@ const InstagramSection = ({ podcastId }) => {
   const [instagram, setInstagram] = useState([]);
 
   useEffect(() => {
-    async function fetchInstagram() {
-      const res = await fetch(`${apiUrl}/api/v1/fetch_instagram/${podcastId}`);
-      const data = await res.json();
-      setInstagram(data.instagram);
-    }
-    fetchInstagram();
+    // async function fetchInstagram() {
+    //   const res = await fetch(`${apiUrl}/api/v1/fetch_instagram/${podcastId}`);
+    //   const data = await res.json();
+    //   setInstagram(data.instagram);
+    // }
+    // fetchInstagram();
   }, []);
 
   return (
