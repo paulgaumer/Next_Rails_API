@@ -5,6 +5,9 @@ import Router from 'next/router';
 
 const signup = async ({ email, password, subdomain }) => {
   const apiUrl = process.env.API_HOST;
+  console.log(email);
+  console.log(password);
+  console.log(subdomain);
   const res = await fetch(`${apiUrl}users`, {
     method: 'POST',
     headers: {

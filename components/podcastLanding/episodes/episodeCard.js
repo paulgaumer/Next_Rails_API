@@ -56,7 +56,7 @@ const EpisodeCard = ({ ep, epIndex }) => {
 
   const handlePlayClick = () => {
     audioDispatch({
-      type: 'PLAY_MOST_RECENT_EPISODE',
+      type: 'PLAY_EPISODE',
       payload: ep,
     });
     amplitude.playSongAtIndex(epIndex);

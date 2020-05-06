@@ -5,7 +5,7 @@ export const GlobalDispatchContext = createContext();
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'PLAY_MOST_RECENT_EPISODE':
+    case 'PLAY_EPISODE':
       return { ...state, currentAudio: action.payload };
     case 'LIST_EPISODES':
       return { ...state, episodes: action.payload };

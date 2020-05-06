@@ -9,7 +9,7 @@ const HeaderContentIndex = ({ data }) => {
 
   const handlePlayClick = () => {
     audioDispatch({
-      type: 'PLAY_MOST_RECENT_EPISODE',
+      type: 'PLAY_EPISODE',
       payload: data.episodes[0],
     });
     amplitude.playSongAtIndex(0);

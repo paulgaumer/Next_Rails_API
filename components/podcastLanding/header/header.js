@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { GlobalDispatchContext } from '../../../context/globalContextProvider';
+import { GlobalStateContext } from '../../../context/globalContextProvider';
 import { formatDate } from '../../../utils/formatDate';
 import SubscribeList from './subscribe/subscribeList';
 
@@ -55,6 +57,17 @@ const HeroImage = styled.div`
 `;
 
 const NewHeader = ({ data }) => {
+  const audioDispatch = useContext(GlobalDispatchContext);
+  const { amplitude } = useContext(GlobalStateContext);
+
+  const handlePlayClick = () => {
+    audioDispatch({
+      type: 'PLAY_EPISODE',
+      payload: data.episodes[0],
+    });
+    amplitude.playSongAtIndex(0);
+  };
+
   return (
     <HeaderContainer>
       <div className="py-20 mx-auto max-w-7xl">
@@ -71,6 +84,7 @@ const NewHeader = ({ data }) => {
                 <button
                   type="button"
                   className="inline-flex items-center px-4 py-3 text-sm font-medium leading-6 text-white transition duration-150 ease-in-out bg-red-400 border border-transparent rounded-full hover:bg-red-500 focus:outline-none focus:border-red-500 focus:shadow-outline-red active:bg-red-500"
+                  onClick={handlePlayClick}
                 >
                   <svg
                     x="0px"
@@ -132,7 +146,7 @@ const NewHeader = ({ data }) => {
             <span className="inline-flex flex-shrink-0 rounded-md">
               <button
                 type="button"
-                className="inline-flex items-center px-4 py-3 text-sm font-medium leading-6 text-white transition duration-150 ease-in-out bg-white border border-transparent rounded-full bg-opacity-25 hover:bg-opacity-50 focus:outline-none focus:border-white focus:shadow-outline-white active:bg-white active:bg-opacity-50"
+                className="inline-flex items-center px-4 py-3 text-sm font-medium leading-6 text-white transition duration-150 ease-in-out bg-white bg-opacity-25 border border-transparent rounded-full hover:bg-opacity-50 focus:outline-none focus:border-white focus:shadow-outline-white active:bg-white active:bg-opacity-50"
               >
                 <span className="flex">
                   <svg
