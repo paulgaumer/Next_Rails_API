@@ -18,7 +18,7 @@ const SubscribeList = () => {
       {/* ABOVE SM SIZE */}
       <ListContainer className="hidden px-8 rounded shadow-inner sm:inline-block sm:px-4 md:px-2">
         <p className="pt-2 text-center text-white md:hidden">Listen on</p>
-        <div className="py-6 text-gray-100 space-y-6 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-8 sm:grid-cols-3 md:py-4 md:flex md:justify-around">
+        <div className="py-6 space-y-6 text-gray-100 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-8 sm:grid-cols-3 md:py-4 md:flex md:justify-around">
           <div className="flex items-center md:px-4">
             <ApplePodcastIcon width={width} height={height} />
             <div className="pl-2 text-xs leading-tight ">
@@ -54,7 +54,7 @@ const SubscribeList = () => {
                 fill="currentColor"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                stroke-Width="2"
+                strokeWidth="2"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
                 className="w-6 h-6 text-white"
