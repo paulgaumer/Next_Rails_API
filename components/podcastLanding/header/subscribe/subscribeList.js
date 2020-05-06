@@ -49,7 +49,7 @@ const SubscribeList = () => {
         <div className="flex space-x-6">
           <ListContainer className="flex items-center px-4 py-2 text-white rounded">
             {/* <ApplePodcastIcon width="w-8" height="w-8" /> */}
-            <div className="flex items-center pl-2 text-xs leading-tight">
+            <div className="flex items-center text-xs leading-tight">
               <svg
                 fill="currentColor"
                 strokeLinecap="round"
