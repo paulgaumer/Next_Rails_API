@@ -173,11 +173,11 @@ const NewHeader = ({ data }) => {
           className="flex items-center justify-center mt-10 sm:mx-20 lg:mt-0 lg:justify-start"
         >
           <SubscribeList />
-          <div className="hidden pl-10 lg:block">
+          <div className="pl-10 lg:block">
             <span className="inline-flex flex-shrink-0 rounded-md">
               <button
                 type="button"
-                className="inline-flex items-center px-4 py-3 text-sm font-medium leading-6 text-white transition duration-150 ease-in-out bg-white border border-transparent rounded-full bg-opacity-25 hover:bg-opacity-50 focus:outline-none focus:border-white focus:shadow-outline-white active:bg-white active:bg-opacity-50"
+                className="inline-flex items-center px-3 py-2 text-sm font-medium leading-6 text-white transition duration-150 ease-in-out bg-white border border-transparent rounded md:px-4 md:py-3 md:rounded-full bg-opacity-25 hover:bg-opacity-50 focus:outline-none focus:border-white focus:shadow-outline-white active:bg-white active:bg-opacity-50"
               >
                 <span className="flex">
                   <svg
@@ -191,7 +191,10 @@ const NewHeader = ({ data }) => {
                   >
                     <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                   </svg>
-                  <span className="pl-2">Support the show</span>
+                  <span className="hidden pl-2 md:inline-block">
+                    Support the show
+                  </span>
+                  <span className="pl-2 text-xs md:hidden">Support</span>
                 </span>
               </button>
             </span>

@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { GlobalDispatchContext } from '../../../context/globalContextProvider';
-import { GlobalStateContext } from '../../../context/globalContextProvider';
-import { formatDate } from '../../../utils/formatDate';
+import { GlobalDispatchContext } from '../../../../context/globalContextProvider';
+import { GlobalStateContext } from '../../../../context/globalContextProvider';
+import { formatDate } from '../../../../utils/formatDate';
 
 const truncateText = (text, length) => {
   if (text.length <= length) {
@@ -50,7 +50,7 @@ const CardImage = styled.div`
   }
 `;
 
-const EpisodeCard = ({ ep, epIndex }) => {
+const CardDesktop = ({ ep, epIndex }) => {
   const audioDispatch = useContext(GlobalDispatchContext);
   const { amplitude } = useContext(GlobalStateContext);
 
@@ -129,4 +129,4 @@ const EpisodeCard = ({ ep, epIndex }) => {
   );
 };
 
-export default EpisodeCard;
+export default CardDesktop;

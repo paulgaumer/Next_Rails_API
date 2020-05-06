@@ -47,16 +47,21 @@ const SubscribeList = () => {
       {/* BELOW SM SIZE */}
       <div className="sm:hidden">
         <div className="flex space-x-6">
-          <ListContainer className="flex items-center px-4 py-2 text-white rounded shadow-inner">
+          <ListContainer className="flex items-center px-4 py-2 text-white rounded">
             {/* <ApplePodcastIcon width="w-8" height="w-8" /> */}
-            <div className="pl-2 text-xs leading-tight ">
-              <p className="">Apple</p>
-              <p>Podcasts</p>
-            </div>
-          </ListContainer>
-          <ListContainer className="flex items-center px-4 py-2 text-white rounded shadow-inner">
-            <div className="pl-2 text-xs leading-tight ">
-              <p className="">More Options</p>
+            <div className="flex items-center pl-2 text-xs leading-tight">
+              <svg
+                fill="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                stroke-Width="2"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                className="w-6 h-6 text-white"
+              >
+                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+              </svg>
+              <p className="pl-2">Subscribe</p>
             </div>
           </ListContainer>
         </div>
