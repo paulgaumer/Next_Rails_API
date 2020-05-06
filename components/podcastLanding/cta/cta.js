@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.section`
@@ -15,7 +15,27 @@ const Container = styled.section`
   );
 `;
 
-const MailCta = () => {
+const MailCta = ({ data }) => {
+  const apiUrl = process.env.API_HOST;
+  const [email, setEmail] = useState('');
+  const [podcast_id] = useState(data.id);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const res = await fetch(`${apiUrl}api/v1/crm_items`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        crm_item: { email, podcast_id },
+      }),
+    });
+    const resData = await res.json();
+    res.status === 200 ? setEmail('') : console.log(resData);
+  };
+
   return (
     <Container className="flex justify-center">
       <div className="max-w-screen-xl py-6 sm:mx-20 lg:flex lg:justify-center lg:items-center">
@@ -25,13 +45,15 @@ const MailCta = () => {
           </p>
         </div>
         <div className="mt-2 lg:mt-0 lg:ml-12">
-          <form className="relative sm:flex">
+          <form className="relative sm:flex" onSubmit={handleSubmit}>
             <input
               aria-label="Email address"
               type="email"
+              value={email}
               required
               className="w-full py-2 pl-3 pr-12 text-sm leading-6 text-gray-900 placeholder-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md appearance-none sm:px-3 focus:outline-none focus:placeholder-gray-400 sm:max-w-xs"
               placeholder="Subscribe with your email"
+              onChange={(e) => setEmail(e.target.value)}
             />
             <svg
               fill="none"
@@ -46,7 +68,10 @@ const MailCta = () => {
               <path d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
             <div className="hidden mt-3 rounded-md shadow sm:block sm:mt-0 sm:ml-3 sm:flex-shrink-0">
-              <button className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium leading-6 text-white transition duration-150 ease-in-out bg-blue-900 border border-transparent rounded-md hover:bg-gray-400 focus:outline-none focus:bg-gray-400">
+              <button
+                type="submit"
+                className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium leading-6 text-white transition duration-150 ease-in-out bg-blue-900 border border-transparent rounded-md hover:bg-gray-400 focus:outline-none focus:bg-gray-400"
+              >
                 Join Now
               </button>
             </div>

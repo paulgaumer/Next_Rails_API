@@ -20,11 +20,11 @@ const PodcastLanding = ({ data }) => {
     <div>
       <Layout>
         <Header data={data} />
-        <Cta />
+        <Cta data={data} />
         <AboutPodcast data={data} />
         <EpisodesList episodes={data.episodes} cover={data.coverUrl} />
         <InstagramSection podcastId={data.id} />
-        <Cta />
+        <Cta data={data} />
       </Layout>
     </div>
   );
