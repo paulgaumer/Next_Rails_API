@@ -2,8 +2,8 @@ import React from 'react';
 
 const AboutPodcast = ({ data }) => {
   return (
-    <section className="py-16 mx-auto max-w-7xl ">
-      <div className="p-12 mx-20 bg-white shadow">
+    <section className="mx-auto sm:py-10 md:py-16 max-w-7xl">
+      <div className="p-12 bg-white shadow-inner sm:shadow sm:mx-20">
         <div className="mb-10 text-center">
           <h2 className="inline-block px-2 text-3xl font-semibold text-red-400 ">
             About us

@@ -18,22 +18,34 @@ const Container = styled.section`
 const MailCta = () => {
   return (
     <Container className="flex justify-center">
-      <div className="max-w-screen-xl py-6 mx-20 lg:flex lg:justify-center lg:items-center">
+      <div className="max-w-screen-xl py-6 sm:mx-20 lg:flex lg:justify-center lg:items-center">
         <div className="text-center">
           <p className="text-lg font-bold leading-9 tracking-tight text-gray-800 sm:leading-10">
             Join the Community
           </p>
         </div>
         <div className="mt-2 lg:mt-0 lg:ml-12">
-          <form className="sm:flex">
+          <form className="relative sm:flex">
             <input
               aria-label="Email address"
               type="email"
               required
-              className="w-full px-3 py-2 text-sm leading-6 text-gray-900 placeholder-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md appearance-none focus:outline-none focus:placeholder-gray-400 sm:max-w-xs"
-              placeholder="Enter your email"
+              className="w-full py-2 pl-3 pr-12 text-sm leading-6 text-gray-900 placeholder-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md appearance-none sm:px-3 focus:outline-none focus:placeholder-gray-400 sm:max-w-xs"
+              placeholder="Subscribe with your email"
             />
-            <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
+            <svg
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              className="absolute w-6 h-6 text-gray-900 right-2 sm:hidden"
+              style={{ top: '10px' }}
+            >
+              <path d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <div className="hidden mt-3 rounded-md shadow sm:block sm:mt-0 sm:ml-3 sm:flex-shrink-0">
               <button className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium leading-6 text-white transition duration-150 ease-in-out bg-blue-900 border border-transparent rounded-md hover:bg-gray-400 focus:outline-none focus:bg-gray-400">
                 Join Now
               </button>

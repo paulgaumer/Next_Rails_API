@@ -9,6 +9,12 @@ const HeaderContainer = styled.header`
   background: #06beb6; /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #68c7cd, #7fddd9);
   background: linear-gradient(to right, #68c7cd, #7fddd9);
+
+  @media (max-width: 1024px) {
+    background: #06beb6; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #68c7cd, #7fddd9);
+    background: linear-gradient(to top, #68c7cd, #7fddd9);
+  }
 `;
 
 const HeroImage = styled.div`
@@ -54,6 +60,26 @@ const HeroImage = styled.div`
     right: -70%;
     z-index: 1;
   }
+
+  @media (max-width: 640px) {
+    width: 12rem;
+
+    div[data-name='cover-2'] {
+      width: 14rem;
+      height: 14rem;
+      top: -1rem;
+      right: -1rem;
+    }
+    div[data-name='cover-3'] {
+      width: 16rem;
+      height: 16rem;
+      top: -2rem;
+      right: -2rem;
+    }
+    div[data-name='cover-4'] {
+      display: none;
+    }
+  }
 `;
 
 const NewHeader = ({ data }) => {
@@ -70,20 +96,20 @@ const NewHeader = ({ data }) => {
 
   return (
     <HeaderContainer>
-      <div className="py-20 mx-auto max-w-7xl">
+      <div className="py-12 mx-auto lg:py-20 max-w-7xl">
         <div
           data-name="top-part"
-          className="grid grid-cols-12 gap-20 mx-20 xl:gap-28"
+          className="flex flex-col-reverse items-center sm:mx-20 lg:grid lg:grid-cols-12 lg:gap-20 xl:gap-28"
         >
-          <div className="col-span-7">
-            <h1 className="pb-12 text-6xl text-white xl:text-7xl font-titleLanding">
+          <div className="col-span-7 mt-12 lg:mt-0">
+            <h1 className="pb-8 text-4xl text-center text-white sm:text-5xl md:text-6xl lg:pb-12 xl:text-7xl font-titleLanding lg:text-left">
               Japan Life Stories
             </h1>
-            <div className="flex items-center">
-              <span className="inline-flex flex-shrink-0 rounded-md">
+            <div className="lg:flex lg:items-center">
+              <span className="flex justify-center flex-shrink-0 rounded-md lg:inline-flex">
                 <button
                   type="button"
-                  className="inline-flex items-center px-4 py-3 text-sm font-medium leading-6 text-white transition duration-150 ease-in-out bg-red-400 border border-transparent rounded-full hover:bg-red-500 focus:outline-none focus:border-red-500 focus:shadow-outline-red active:bg-red-500"
+                  className="inline-flex items-center px-4 py-3 text-sm font-medium leading-6 text-white transition duration-150 ease-in-out bg-red-400 border border-transparent rounded-full md:px-6 md:py-4 lg:px-4 lg:py-3 hover:bg-red-500 focus:outline-none focus:border-red-500 focus:shadow-outline-red active:bg-red-500"
                   onClick={handlePlayClick}
                 >
                   <svg
@@ -116,10 +142,12 @@ const NewHeader = ({ data }) => {
                     <g></g>
                     <g></g>
                   </svg>
-                  <span className="pl-2">PLAY LATEST</span>
+                  <span className="pl-2 text-sm sm:text-lg lg:text-base">
+                    PLAY LATEST
+                  </span>
                 </button>
               </span>
-              <div className="pl-4 text-white">
+              <div className="hidden pl-4 text-white lg:block">
                 <p>{data.episodes[0].title}</p>
                 <p className="text-sm font-light">
                   - {formatDate(data.episodes[0].enclosure.pubDate)}
@@ -140,9 +168,12 @@ const NewHeader = ({ data }) => {
             </HeroImage>
           </div>
         </div>
-        <div data-name="bottom-part" className="flex items-center mx-20">
+        <div
+          data-name="bottom-part"
+          className="flex items-center justify-center mt-10 sm:mx-20 lg:mt-0 lg:justify-start"
+        >
           <SubscribeList />
-          <div className="pl-10">
+          <div className="hidden pl-10 lg:block">
             <span className="inline-flex flex-shrink-0 rounded-md">
               <button
                 type="button"
