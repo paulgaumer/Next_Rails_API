@@ -1,28 +1,69 @@
 import React from 'react';
 import styled from 'styled-components';
 import { formatDate } from '../../../utils/formatDate';
+import SubscribeList from './subscribe/subscribeList';
 
 const HeaderContainer = styled.header`
   background: #06beb6; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #68c7cd,
-    #7fddd9
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #68c7cd,
-    #7fddd9
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: -webkit-linear-gradient(to right, #68c7cd, #7fddd9);
+  background: linear-gradient(to right, #68c7cd, #7fddd9);
+`;
+
+const HeroImage = styled.div`
+  position: relative;
+  width: 18rem;
+
+  img {
+    width: 100%;
+    border-radius: 0.375rem;
+    position: relative;
+    z-index: 4;
+  }
+  div[data-name='cover-2'] {
+    position: absolute;
+    width: 22rem;
+    height: 22rem;
+    background-color: white;
+    opacity: 0.2;
+    border-radius: 50%;
+    top: -2rem;
+    right: -2rem;
+    z-index: 3;
+  }
+  div[data-name='cover-3'] {
+    position: absolute;
+    width: 23rem;
+    height: 23rem;
+    background-color: white;
+    opacity: 0.15;
+    border-radius: 50%;
+    top: -2.5rem;
+    right: -40%;
+    z-index: 2;
+  }
+  div[data-name='cover-4'] {
+    position: absolute;
+    width: 25rem;
+    height: 25rem;
+    background-color: white;
+    opacity: 0.1;
+    border-radius: 50%;
+    top: -3.5rem;
+    right: -70%;
+    z-index: 1;
+  }
 `;
 
 const NewHeader = ({ data }) => {
   return (
     <HeaderContainer>
-      <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-12 gap-20 py-20 mx-20">
+      <div className="py-20 mx-auto max-w-7xl">
+        <div
+          data-name="top-part"
+          className="grid grid-cols-12 gap-20 mx-20 xl:gap-28"
+        >
           <div className="col-span-7">
-            <h1 className="pb-12 text-6xl text-white font-titleLanding">
+            <h1 className="pb-12 text-6xl text-white xl:text-7xl font-titleLanding">
               Japan Life Stories
             </h1>
             <div className="flex items-center">
@@ -73,22 +114,29 @@ const NewHeader = ({ data }) => {
             </div>
           </div>
           <div className="pt-6">
-            <div className="relative w-48">
+            <HeroImage className="">
               <img
                 src={data.cover_image.url}
-                className="relative w-full rounded-md"
                 alt={data.cover_image.title}
-                style={{ zIndex: '3' }}
+                className="shadow-md"
               />
-              <div
-                className="absolute w-48 h-48 bg-white opacity-50"
-                style={{ top: '-5px', right: '-5px', zIndex: '2' }}
-              ></div>
-              <div
-                className="absolute w-48 h-48 bg-white opacity-25"
-                style={{ top: '-10px', right: '-10px' }}
-              ></div>
-            </div>
+              <div data-name="cover-2"></div>
+              <div data-name="cover-3"></div>
+              <div data-name="cover-4"></div>
+            </HeroImage>
+          </div>
+        </div>
+        <div data-name="bottom-part" className="flex items-center mx-20">
+          <SubscribeList />
+          <div>
+            <span className="inline-flex flex-shrink-0 rounded-md">
+              <button
+                type="button"
+                className="inline-flex items-center px-4 py-3 text-sm font-medium leading-6 text-white transition duration-150 ease-in-out bg-white border border-transparent rounded-full bg-opacity-25 hover:bg-red-500 focus:outline-none focus:border-red-500 focus:shadow-outline-red active:bg-red-500"
+              >
+                <span className="pl-2">Support the show</span>
+              </button>
+            </span>
           </div>
         </div>
       </div>

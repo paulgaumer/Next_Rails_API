@@ -5,6 +5,12 @@ module.exports = {
         sansLanding: 'Montserrat',
         titleLanding: 'Roboto',
       },
+      fontSize: {
+        '7xl': '5rem',
+      },
+      gap: {
+        '28': '7rem',
+      },
       screens: {
         altsm: '640px',
         // => @media (min-width: 640px) { ... }
