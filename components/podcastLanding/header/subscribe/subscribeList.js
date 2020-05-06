@@ -19,8 +19,8 @@ const SubscribeList = () => {
       <div className="flex justify-center py-4 text-gray-100">
         <div className="flex items-center pr-4">
           <ApplePodcastIcon width={width} height={height} />
-          <div className="pl-2 text-xs leading-tight">
-            <p>Apple</p>
+          <div className="pl-2 text-xs leading-tight ">
+            <p className="">Apple</p>
             <p>Podcasts</p>
           </div>
         </div>

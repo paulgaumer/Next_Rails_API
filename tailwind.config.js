@@ -11,22 +11,11 @@ module.exports = {
       gap: {
         '28': '7rem',
       },
-      screens: {
-        altsm: '640px',
-        // => @media (min-width: 640px) { ... }
-
-        altmd: '768px',
-        // => @media (min-width: 768px) { ... }
-
-        altlg: '1024px',
-        // => @media (min-width: 1024px) { ... }
-
-        altxl: '1280px',
-        // => @media (min-width: 1280px) { ... }
-      },
     },
   },
-  variants: {},
+  variants: {
+    scale: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
+  },
   plugins: [
     require('@tailwindcss/ui'),
     // require('@tailwindcss/ui')({
