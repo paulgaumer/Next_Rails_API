@@ -146,7 +146,7 @@ const NewHeader = ({ data }) => {
             <span className="inline-flex flex-shrink-0 rounded-md">
               <button
                 type="button"
-                className="inline-flex items-center px-4 py-3 text-sm font-medium leading-6 text-white transition duration-150 ease-in-out bg-white bg-opacity-25 border border-transparent rounded-full hover:bg-opacity-50 focus:outline-none focus:border-white focus:shadow-outline-white active:bg-white active:bg-opacity-50"
+                className="inline-flex items-center px-4 py-3 text-sm font-medium leading-6 text-white transition duration-150 ease-in-out bg-white border border-transparent rounded-full bg-opacity-25 hover:bg-opacity-50 focus:outline-none focus:border-white focus:shadow-outline-white active:bg-white active:bg-opacity-50"
               >
                 <span className="flex">
                   <svg
