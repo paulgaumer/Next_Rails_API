@@ -4,20 +4,13 @@ import fetch from 'isomorphic-unfetch';
 import Router from 'next/router';
 import DashboardLayout from '../../../components/dashboard/dashboardLayout/dashboardLayout';
 import { getDomain } from '../../../utils/subdomain';
+import { redirect } from '../../../utils/redirect';
 import EpisodeDetails from '../../../components/dashboard/episodes/episodeDetails';
 
-const EpisodePage = ({ podcastData, currentDomain, loggedIn }) => {
+const EpisodePage = ({ podcastData, currentDomain }) => {
   const { episode, id } = podcastData.podcast;
 
-  useEffect(() => {
-    if (!loggedIn) {
-      Router.push('/signin');
-    }
-  }, []);
-
-  return !loggedIn ? (
-    <div />
-  ) : (
+  return (
     <DashboardLayout podcastData={podcastData} currentDomain={currentDomain}>
       <EpisodeDetails podEpisode={episode} podId={id} />
     </DashboardLayout>
@@ -33,22 +26,19 @@ EpisodePage.getInitialProps = async function (ctx) {
   const apiUrl = process.env.API_HOST;
 
   if (token === undefined) {
-    return {
-      loggedIn: false,
-    };
-  } else {
-    const res = await fetch(`${apiUrl}api/v1/dashboard/${id}`, {
-      method: 'get',
-      headers: {
-        Authorization: token,
-      },
-    });
-    const data = await res.json();
-
-    return {
-      podcastData: data,
-      currentDomain: domain,
-      loggedIn: true,
-    };
+    redirect(ctx, '/signin');
   }
+
+  const res = await fetch(`${apiUrl}api/v1/dashboard/${id}`, {
+    method: 'get',
+    headers: {
+      Authorization: token,
+    },
+  });
+  const data = await res.json();
+
+  return {
+    podcastData: data,
+    currentDomain: domain,
+  };
 };

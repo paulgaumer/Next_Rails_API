@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Router from 'next/router';
 import fetch from 'isomorphic-unfetch';
 import styled from 'styled-components';
@@ -17,7 +17,21 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
   const [episode, setEpisode] = useState(podEpisode);
   const [showNotes, setShowNotes] = useState(podEpisode.show_notes);
   const [transcription, setTranscription] = useState(podEpisode.transcription);
+  const [speakerNumber, setSpeakerNumber] = useState(1);
   const [uploaded, setUploaded] = useState(false);
+
+  const downloadTranscription = async () => {
+    const res = await fetch(`${apiUrl}api/v1/gettranscription`);
+    const data = await res.json();
+    console.log(data);
+    data.status === 'COMPLETED' && setTranscription(data.transcript);
+  };
+
+  useEffect(() => {
+    if (transcription === 'IN_PROGRESS') {
+      downloadTranscription();
+    }
+  }, []);
 
   const handleChange = (target, e) => {
     setEpisode({
@@ -34,40 +48,50 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
     }, duration);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const saveEpisode = async (transcription) => {
     const newEpisode = {
       ...episode,
       show_notes: showNotes,
       transcription,
       podcast_id: podId,
     };
+    console.log(newEpisode);
 
-    if (newEpisode.db_id) {
+    if (newEpisode.id !== null) {
       const res = await updateEpisode(newEpisode);
       res === 204
-        ? Router.push(`/dashboard/episodes/${newEpisode}`)
+        ? Router.push(`/dashboard/episodes/${newEpisode.guid}`)
         : alert('There has been an error');
     } else {
       const res = await createEpisode(newEpisode);
       res === 204
-        ? Router.push(`/dashboard/episodes/${newEpisode}`)
+        ? Router.push(`/dashboard/episodes/${newEpisode.guid}`)
         : alert('There has been an error');
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    saveEpisode();
+  };
+
   const handleUploadAudio = async () => {
-    setUploaded('loading');
-    const res = await fetch(`${apiUrl}api/v1/uploadaudio`);
+    const res = await fetch(`${apiUrl}api/v1/uploadaudio`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        transcription: { speakers: speakerNumber },
+      }),
+    });
     const data = await res.json();
-    if (res.status === 200) {
+    if (data.status === 'QUEUED' || data.status === 'IN_PROGRESS') {
       setUploaded(true);
-      const resTrans = await fetch(`${apiUrl}api/v1/gettranscription`);
-      const dataTrans = await resTrans.json();
-      // console.log(dataTrans);
-      setTranscription(dataTrans.transcript);
+      setTranscription('IN_PROGRESS');
+      saveEpisode('IN_PROGRESS');
     }
-    // console.log(data);
   };
 
   return (
@@ -150,16 +174,37 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
                 >
                   Transcription
                 </label>
-                <button
-                  type="button"
-                  onClick={handleUploadAudio}
-                  className="inline-flex items-center px-4 py-2 text-base font-medium leading-6 text-indigo-700 transition duration-150 ease-in-out bg-indigo-100 border border-transparent rounded-md hover:bg-indigo-50 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo active:bg-indigo-200"
-                >
-                  Get your transcription now
-                </button>
-                {uploaded === 'loading' && <p>Loading...</p>}
-                {uploaded === true && <p>Transcription has started!</p>}
-                {/* {transcription !== null && (
+                {!transcription && !uploaded && (
+                  <>
+                    <div className="max-w-xs rounded-md shadow-sm">
+                      <select
+                        id="speakers"
+                        class="block form-select w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                        onChange={(e) =>
+                          setSpeakerNumber(parseInt(e.target.value))
+                        }
+                        value={speakerNumber}
+                      >
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                      </select>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={handleUploadAudio}
+                      className="inline-flex items-center px-4 py-2 text-base font-medium leading-6 text-indigo-700 transition duration-150 ease-in-out bg-indigo-100 border border-transparent rounded-md hover:bg-indigo-50 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo active:bg-indigo-200"
+                    >
+                      Get your transcription now
+                    </button>
+                  </>
+                )}
+                {transcription === 'IN_PROGRESS' && (
+                  <p>Transcription has started...</p>
+                )}
+                {uploaded && <p>Transcription has started...</p>}
+                {transcription !== null && transcription !== 'IN_PROGRESS' && (
                   <ReactQuill
                     theme="snow"
                     id="transcription"
@@ -168,7 +213,7 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
                   >
                     <div className="text-base bg-white sm:text-sm" />
                   </ReactQuill>
-                )} */}
+                )}
               </div>
             </div>
           </div>

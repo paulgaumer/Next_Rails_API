@@ -1,21 +1,12 @@
-import { useEffect } from 'react';
 import nextCookie from 'next-cookies';
-import Router from 'next/router';
 import fetch from 'isomorphic-unfetch';
 import { getDomain } from '../../utils/subdomain';
+import { redirect } from '../../utils/redirect';
 import DashboardLayout from '../../components/dashboard/dashboardLayout/dashboardLayout';
 import PodcastDetails from '../../components/dashboard/podcastDetails';
 
-const PodcastDetailsPage = ({ podcastData, currentDomain, loggedIn }) => {
-  useEffect(() => {
-    if (!loggedIn) {
-      Router.push('/signin');
-    }
-  }, []);
-
-  return !loggedIn ? (
-    <div />
-  ) : (
+const PodcastDetailsPage = ({ podcastData, currentDomain }) => {
+  return (
     <DashboardLayout podcastData={podcastData} currentDomain={currentDomain}>
       <PodcastDetails podcastData={podcastData} />
     </DashboardLayout>
@@ -29,9 +20,7 @@ PodcastDetailsPage.getInitialProps = async function (ctx) {
   const apiUrl = process.env.API_HOST;
 
   if (token === undefined) {
-    return {
-      loggedIn: false,
-    };
+    redirect(ctx, '/signin');
   }
 
   const res = await fetch(`${apiUrl}api/v1/dashboard`, {
@@ -45,6 +34,5 @@ PodcastDetailsPage.getInitialProps = async function (ctx) {
   return {
     podcastData: data,
     currentDomain: domain,
-    loggedIn: true,
   };
 };

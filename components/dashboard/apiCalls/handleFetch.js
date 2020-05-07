@@ -37,7 +37,7 @@ export const createEpisode = async (info) => {
 export const updateEpisode = async (info) => {
   const apiUrl = process.env.API_HOST;
   const token = Cookies.get('token');
-  const epId = info.db_id;
+  const epId = info.id;
   const res = await fetch(`${apiUrl}api/v1/episodes/${epId}`, {
     method: 'PATCH',
     headers: {
