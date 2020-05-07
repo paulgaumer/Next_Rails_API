@@ -23,7 +23,6 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
   const downloadTranscription = async () => {
     const res = await fetch(`${apiUrl}api/v1/gettranscription`);
     const data = await res.json();
-    console.log(data);
     data.status === 'COMPLETED' && setTranscription(data.transcript);
   };
 
@@ -55,7 +54,6 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
       transcription,
       podcast_id: podId,
     };
-    console.log(newEpisode);
 
     if (newEpisode.id !== null) {
       const res = await updateEpisode(newEpisode);

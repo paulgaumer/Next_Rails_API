@@ -38,7 +38,6 @@ CrmPage.getInitialProps = async function (ctx) {
     },
   });
   const dataCrm = await resCrm.json();
-  console.log(dataCrm);
 
   return {
     podcastData: data,
