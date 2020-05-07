@@ -170,7 +170,7 @@ const NewHeader = ({ data }) => {
         </div>
         <div
           data-name="bottom-part"
-          className="flex items-center justify-center mt-10 sm:mx-20 lg:mt-0 lg:justify-start"
+          className="flex items-center justify-center mt-10 sm:mx-20 lg:mt-12 lg:justify-start"
         >
           <SubscribeList />
           <div className="pl-10 lg:block">

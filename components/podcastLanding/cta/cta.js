@@ -70,7 +70,7 @@ const MailCta = ({ data }) => {
             <div className="hidden mt-3 rounded-md shadow sm:block sm:mt-0 sm:ml-3 sm:flex-shrink-0">
               <button
                 type="submit"
-                className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium leading-6 text-white transition duration-150 ease-in-out bg-blue-900 border border-transparent rounded-md hover:bg-gray-400 focus:outline-none focus:bg-gray-400"
+                className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium leading-6 text-white transition duration-150 ease-in-out bg-gray-900 border border-transparent rounded-md hover:bg-blue-900 focus:outline-none focus:bg-blue-900"
               >
                 Join Now
               </button>
