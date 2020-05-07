@@ -103,7 +103,7 @@ const NewHeader = ({ data }) => {
         >
           <div className="col-span-7 mt-12 lg:mt-0">
             <h1 className="pb-8 text-4xl text-center text-white sm:text-5xl md:text-6xl lg:pb-12 xl:text-7xl font-titleLanding lg:text-left">
-              Japan Life Stories
+              {data.title}
             </h1>
             <div className="lg:flex lg:items-center">
               <span className="flex justify-center flex-shrink-0 rounded-md lg:inline-flex">
