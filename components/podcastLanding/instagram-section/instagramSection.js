@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import fetch from 'isomorphic-unfetch';
+import Spinner from './Spinner.js';
 
 const InstagramSection = ({ podcastId }) => {
   const apiUrl = process.env.API_HOST;
   const [instagram, setInstagram] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // async function fetchInstagram() {
     //   const res = await fetch(`${apiUrl}/api/v1/fetch_instagram/${podcastId}`);
     //   const data = await res.json();
+    //   setLoading(false);
     //   setInstagram(data.instagram);
     // }
     // fetchInstagram();
@@ -32,6 +35,11 @@ const InstagramSection = ({ podcastId }) => {
             </span>
           </div>
         </div>
+        {loading && (
+          <div className="flex justify-center">
+            <Spinner />
+          </div>
+        )}
         <div className="grid grid-cols-4 row-gap-2 col-gap-2">
           {instagram.length > 0 &&
             instagram.map((pic) => {
@@ -41,14 +49,14 @@ const InstagramSection = ({ podcastId }) => {
                     <img
                       src={pic.media_url}
                       alt={pic.id}
-                      className="object-cover object-center w-full h-64"
+                      className="object-cover object-center w-full h-64 rounded-sm"
                     />
                   )}
                   {pic.media_type === 'VIDEO' && (
                     <video
                       src={pic.media_url}
                       controls
-                      className="object-cover object-center w-full h-64"
+                      className="object-cover object-center w-full h-64 rounded-sm"
                     ></video>
                   )}
                 </a>
