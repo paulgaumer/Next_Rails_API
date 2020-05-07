@@ -15,6 +15,7 @@ const Spinner = () => {
         height="200px"
         viewBox="0 0 100 100"
         preserveAspectRatio="xMidYMid"
+        className="text-red-400"
       >
         <g transform="rotate(0 50 50)">
           <rect
@@ -24,7 +25,7 @@ const Spinner = () => {
             ry="6"
             width="6"
             height="12"
-            fill="#fe718d"
+            fill="currentColor"
           >
             <animate
               attributeName="opacity"
@@ -44,7 +45,7 @@ const Spinner = () => {
             ry="6"
             width="6"
             height="12"
-            fill="#fe718d"
+            fill="currentColor"
           >
             <animate
               attributeName="opacity"
@@ -64,7 +65,7 @@ const Spinner = () => {
             ry="6"
             width="6"
             height="12"
-            fill="#fe718d"
+            fill="currentColor"
           >
             <animate
               attributeName="opacity"
@@ -84,7 +85,7 @@ const Spinner = () => {
             ry="6"
             width="6"
             height="12"
-            fill="#fe718d"
+            fill="currentColor"
           >
             <animate
               attributeName="opacity"
@@ -104,7 +105,7 @@ const Spinner = () => {
             ry="6"
             width="6"
             height="12"
-            fill="#fe718d"
+            fill="currentColor"
           >
             <animate
               attributeName="opacity"
@@ -124,7 +125,7 @@ const Spinner = () => {
             ry="6"
             width="6"
             height="12"
-            fill="#fe718d"
+            fill="currentColor"
           >
             <animate
               attributeName="opacity"
@@ -144,7 +145,7 @@ const Spinner = () => {
             ry="6"
             width="6"
             height="12"
-            fill="#fe718d"
+            fill="currentColor"
           >
             <animate
               attributeName="opacity"
@@ -164,7 +165,7 @@ const Spinner = () => {
             ry="6"
             width="6"
             height="12"
-            fill="#fe718d"
+            fill="currentColor"
           >
             <animate
               attributeName="opacity"
@@ -184,7 +185,7 @@ const Spinner = () => {
             ry="6"
             width="6"
             height="12"
-            fill="#fe718d"
+            fill="currentColor"
           >
             <animate
               attributeName="opacity"
@@ -204,7 +205,7 @@ const Spinner = () => {
             ry="6"
             width="6"
             height="12"
-            fill="#fe718d"
+            fill="currentColor"
           >
             <animate
               attributeName="opacity"
@@ -224,7 +225,7 @@ const Spinner = () => {
             ry="6"
             width="6"
             height="12"
-            fill="#fe718d"
+            fill="currentColor"
           >
             <animate
               attributeName="opacity"
@@ -244,7 +245,7 @@ const Spinner = () => {
             ry="6"
             width="6"
             height="12"
-            fill="#fe718d"
+            fill="currentColor"
           >
             <animate
               attributeName="opacity"
