@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import Router from 'next/router';
-import { editPodcast } from '../apiCalls/handleFetch';
+import { editPodcast, editTheme } from '../apiCalls/handleFetch';
 import { ChromePicker } from 'react-color';
 
 const Index = ({ podcastData }) => {
   const { podcast } = podcastData;
   const [podcastDetails, setPodcastDetails] = useState(podcast);
+
   const isInstagramConnected = podcast.instagram_access_token !== null;
 
-  const [primaryColor, setPrimaryColor] = useState('#F97F7F');
+  const defaultPrimaryColor = '#F97F7F';
+  const checkThemeColor =
+    podcast.theme !== null ? podcast.theme.colors.primary : defaultPrimaryColor;
+
+  const [primaryColor, setPrimaryColor] = useState(checkThemeColor);
   const [displayColorPicker, setDisplayColorPicker] = useState(false);
 
   const handleColorChange = (color) => {
@@ -35,14 +40,21 @@ const Index = ({ podcastData }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const updates = {
+
+    const updatedTheme = {
+      colors: {
+        primary: primaryColor,
+      },
+    };
+    const updatedPodcast = {
       title: podcastDetails.title,
       description: podcastDetails.description,
       subdomain: podcastDetails.subdomain,
       feed_url: podcastDetails.feed_url,
     };
-    const res = await editPodcast(updates);
-    res === 200
+    const resPodcast = await editPodcast(updatedPodcast);
+    const resTheme = await editTheme(updatedTheme, podcast.theme.id);
+    resPodcast === 200 && resTheme === 204
       ? Router.push('/dashboard/podcast')
       : alert('There has been an error');
   };
@@ -159,13 +171,19 @@ const Index = ({ podcastData }) => {
               <div className="mt-1 sm:mt-0 sm:col-span-2">
                 <div className="flex max-w-lg rounded-md">
                   {!isInstagramConnected && (
-                    <a
-                      href={`https://api.instagram.com/oauth/authorize?client_id=${process.env.INSTAGRAM_CLIENT_ID}&redirect_uri=${process.env.INSTAGRAM_OAUTH_REDIRECT}&scope=user_profile,user_media&response_type=code`}
-                      target="_blank"
-                      className="inline-flex justify-center px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
-                    >
-                      Connect now
-                    </a>
+                    <span className="inline-flex rounded-md shadow-sm">
+                      <button
+                        type="button"
+                        className="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-700 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50"
+                      >
+                        <a
+                          href={`https://api.instagram.com/oauth/authorize?client_id=${process.env.INSTAGRAM_CLIENT_ID}&redirect_uri=${process.env.INSTAGRAM_OAUTH_REDIRECT}&scope=user_profile,user_media&response_type=code`}
+                          target="_blank"
+                        >
+                          Connect Now
+                        </a>
+                      </button>
+                    </span>
                   )}
                   {isInstagramConnected && (
                     <p className="text-sm leading-5 text-green-500 opacity-75 sm:mt-px sm:pt-2">
@@ -182,22 +200,22 @@ const Index = ({ podcastData }) => {
               >
                 Primary theme color
               </label>
-              <div className="flex items-center mt-1 sm:mt-0 sm:col-span-2">
+              <div className="relative flex items-center mt-1 sm:mt-0 sm:col-span-2">
                 <div
-                  className="relative w-24 h-10 rounded-md"
+                  className="w-24 h-10 rounded-md"
                   style={{ backgroundColor: primaryColor }}
-                >
-                  {displayColorPicker ? (
-                    <div style={popover}>
-                      <div style={cover} onClick={handleColorPickerClose} />
-                      <ChromePicker
-                        color={primaryColor}
-                        onChange={handleColorChange}
-                      />
-                    </div>
-                  ) : null}
-                </div>
-                <span className="inline-flex pl-4 rounded-md shadow-sm">
+                  onClick={handleColorPickerClick}
+                ></div>
+                {displayColorPicker ? (
+                  <div style={popover}>
+                    <div style={cover} onClick={handleColorPickerClose} />
+                    <ChromePicker
+                      color={primaryColor}
+                      onChange={handleColorChange}
+                    />
+                  </div>
+                ) : null}
+                <span className="inline-flex ml-4 rounded-md shadow-sm">
                   <button
                     type="button"
                     className="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-700 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50"

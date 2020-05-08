@@ -17,6 +17,23 @@ export const editPodcast = async (info) => {
   return res.status;
 };
 
+export const editTheme = async (info, id) => {
+  const apiUrl = process.env.API_HOST;
+  const token = Cookies.get('token');
+  const res = await fetch(`${apiUrl}api/v1/themes/${id}`, {
+    method: 'PATCH',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: token,
+    },
+    body: JSON.stringify({
+      theme: { ...info },
+    }),
+  });
+  return res.status;
+};
+
 export const createEpisode = async (info) => {
   const apiUrl = process.env.API_HOST;
   const token = Cookies.get('token');
