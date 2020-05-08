@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import fetch from 'isomorphic-unfetch';
 import PodcastLanding from '../components/podcastLanding/landing';
 import MarketingLanding from '../components/marketingLanding/landing';
@@ -8,9 +8,6 @@ import { GlobalDispatchContext } from '../context/globalContextProvider';
 const Index = ({ podData, instagram, theme }) => {
   const setTheme = useContext(GlobalDispatchContext);
   setTheme({ type: 'SET_THEME', payload: theme });
-
-  // useEffect(() => {
-  // }, []);
 
   return podData === null ? (
     <MarketingLanding />
@@ -38,11 +35,7 @@ Index.getInitialProps = async function (ctx) {
 
     return {
       podData: data.podcast,
-      theme: {
-        colors: {
-          primary: '#0DCF0F',
-        },
-      },
+      theme: data.podcast.theme,
     };
   }
 };
