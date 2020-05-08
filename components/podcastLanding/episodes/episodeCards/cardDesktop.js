@@ -109,6 +109,8 @@ const CardDesktop = ({ ep, epIndex }) => {
               viewBox="0 0 512 512"
               className={`${themeOff(isThemed, 'text-red-400')}`}
               style={{ color: themeOn(isThemed, colors.primary) }}
+              width="100%"
+              height="100%"
             >
               <path
                 fill="currentColor"
