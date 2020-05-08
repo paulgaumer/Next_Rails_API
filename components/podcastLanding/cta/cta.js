@@ -41,7 +41,7 @@ const MailCta = ({ data }) => {
       <div className="max-w-screen-xl py-6 sm:mx-20 lg:flex lg:justify-center lg:items-center">
         <div className="text-center">
           <p className="text-lg font-bold leading-9 tracking-tight text-gray-800 sm:leading-10">
-            Join the Community
+            Join our Newsletter
           </p>
         </div>
         <div className="mt-2 lg:mt-0 lg:ml-12">
@@ -72,7 +72,7 @@ const MailCta = ({ data }) => {
                 type="submit"
                 className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium leading-6 text-white transition duration-150 ease-in-out bg-gray-900 border border-transparent rounded-md hover:bg-blue-900 focus:outline-none focus:bg-blue-900"
               >
-                Join Now
+                Subscribe Now
               </button>
             </div>
           </form>
