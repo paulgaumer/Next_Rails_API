@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { GlobalDispatchContext } from '../../../../context/globalContextProvider';
 import { GlobalStateContext } from '../../../../context/globalContextProvider';
 import { formatDate } from '../../../../utils/formatDate';
+import { themeOn, themeOff } from '../../../../utils/themeHandlers';
 
 const truncateText = (text, length) => {
   if (text.length <= length) {
@@ -52,7 +53,8 @@ const CardImage = styled.div`
 
 const CardDesktop = ({ ep, epIndex }) => {
   const audioDispatch = useContext(GlobalDispatchContext);
-  const { amplitude } = useContext(GlobalStateContext);
+  const { amplitude, theme, isThemed } = useContext(GlobalStateContext);
+  const colors = isThemed ? theme.colors : '';
 
   const handlePlayClick = () => {
     audioDispatch({
@@ -105,7 +107,8 @@ const CardDesktop = ({ ep, epIndex }) => {
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
-              className="text-red-400"
+              className={`${themeOff(isThemed, 'text-red-400')}`}
+              style={{ color: themeOn(isThemed, colors.primary) }}
             >
               <path
                 fill="currentColor"

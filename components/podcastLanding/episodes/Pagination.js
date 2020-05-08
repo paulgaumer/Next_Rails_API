@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { GlobalStateContext } from '../../../context/globalContextProvider';
+import { themeOn, themeOff } from '../../../utils/themeHandlers';
 
 const Pagination = ({
   episodesPerPage,
@@ -6,14 +8,19 @@ const Pagination = ({
   paginate,
   currentPage,
 }) => {
+  const { theme, isThemed } = useContext(GlobalStateContext);
+  const colors = isThemed ? theme.colors : '';
+
   const pageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(totalEpisodes / episodesPerPage); i++) {
     pageNumbers.push(i);
   }
 
-  const activeNumber =
-    'text-red-400 border-red-400 focus:text-indigo-800 focus:border-indigo-700';
+  const activeNumber = themeOff(
+    isThemed,
+    'text-red-400 border-red-400 focus:text-indigo-800 focus:border-indigo-700'
+  );
   const passiveNumber =
     'hover:text-gray-700 hover:border-gray-300 focus:text-gray-700 focus:border-gray-400 text-gray-500';
 
@@ -48,6 +55,14 @@ const Pagination = ({
               className={`cursor-pointer inline-flex items-center px-4 pt-4 -mt-px text-sm font-medium leading-5 transition duration-150 ease-in-out border-t-2 border-transparent focus:outline-none ${
                 number === currentPage ? activeNumber : passiveNumber
               }`}
+              style={
+                number === currentPage
+                  ? {
+                      color: themeOn(isThemed, colors.primary),
+                      borderColor: themeOn(isThemed, colors.primary),
+                    }
+                  : {}
+              }
             >
               {number}
             </a>

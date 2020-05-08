@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { GlobalStateContext } from '../../../context/globalContextProvider';
+import { themeOn, themeOff } from '../../../utils/themeHandlers';
 
 const Spinner = () => {
+  const { theme, isThemed } = useContext(GlobalStateContext);
+  const colors = isThemed ? theme.colors : '';
+
   return (
     <div>
       <svg
@@ -15,7 +20,8 @@ const Spinner = () => {
         height="200px"
         viewBox="0 0 100 100"
         preserveAspectRatio="xMidYMid"
-        className="text-red-400"
+        className={`${themeOff(isThemed, 'text-red-400')}`}
+        style={{ color: themeOn(isThemed, colors.primary) }}
       >
         <g transform="rotate(0 50 50)">
           <rect

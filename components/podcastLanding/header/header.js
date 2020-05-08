@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { GlobalDispatchContext } from '../../../context/globalContextProvider';
 import { GlobalStateContext } from '../../../context/globalContextProvider';
 import { formatDate } from '../../../utils/formatDate';
+import { themeOn, themeOff } from '../../../utils/themeHandlers';
 import SubscribeList from './subscribe/subscribeList';
 
 const HeaderContainer = styled.header`
@@ -84,7 +85,8 @@ const HeroImage = styled.div`
 
 const NewHeader = ({ data }) => {
   const audioDispatch = useContext(GlobalDispatchContext);
-  const { amplitude } = useContext(GlobalStateContext);
+  const { amplitude, theme, isThemed } = useContext(GlobalStateContext);
+  const colors = isThemed ? theme.colors : '';
 
   const handlePlayClick = () => {
     audioDispatch({
@@ -109,7 +111,11 @@ const NewHeader = ({ data }) => {
               <span className="flex justify-center flex-shrink-0 rounded-md lg:inline-flex">
                 <button
                   type="button"
-                  className="inline-flex items-center px-4 py-3 text-sm font-medium leading-6 text-white transition duration-150 ease-in-out bg-red-400 border border-transparent rounded-full md:px-6 md:py-4 lg:px-4 lg:py-3 hover:bg-red-500 focus:outline-none focus:border-red-500 focus:shadow-outline-red active:bg-red-500"
+                  className={`inline-flex items-center px-4 py-3 text-sm font-medium leading-6 text-white transition duration-150 ease-in-out border border-transparent rounded-full md:px-6 md:py-4 lg:px-4 lg:py-3 hover:bg-red-500 focus:outline-none focus:border-red-500 focus:shadow-outline-red active:bg-red-500 ${themeOff(
+                    isThemed,
+                    'bg-red-400'
+                  )}`}
+                  style={{ backgroundColor: themeOn(isThemed, colors.primary) }}
                   onClick={handlePlayClick}
                 >
                   <svg

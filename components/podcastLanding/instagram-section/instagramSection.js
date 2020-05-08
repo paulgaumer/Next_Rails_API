@@ -1,11 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import fetch from 'isomorphic-unfetch';
 import Spinner from './Spinner.js';
+import { GlobalStateContext } from '../../../context/globalContextProvider';
+import { themeOn, themeOff } from '../../../utils/themeHandlers';
 
 const InstagramSection = ({ podcastId }) => {
   const apiUrl = process.env.API_HOST;
   const [instagram, setInstagram] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const { theme, isThemed } = useContext(GlobalStateContext);
+  const colors = isThemed ? theme.colors : '';
 
   useEffect(() => {
     // async function fetchInstagram() {
@@ -20,20 +25,17 @@ const InstagramSection = ({ podcastId }) => {
   return (
     <div className="mx-auto mt-32 mb-20 max-w-7xl">
       <div className="mx-6 sm:mx-20">
-        <div className="flex items-center mb-10 border-b border-gray-300">
-          <h2 className="inline-block px-2 text-2xl font-semibold text-gray-600 border-b-2 border-red-400 md:text-3xl">
+        <div className="flex mb-10">
+          <h2
+            className={`flex-shrink-0 inline-block px-2 text-2xl font-semibold text-gray-600 border-b-2  md:text-3xl ${themeOff(
+              isThemed,
+              'border-red-400'
+            )}`}
+            style={{ borderColor: themeOn(isThemed, colors.primary) }}
+          >
             Fresh on Instagram
           </h2>
-          <div className="pl-4">
-            <span className="inline-flex rounded-md shadow-sm">
-              <button
-                type="button"
-                className="inline-flex items-center px-2.5 py-1.5 border border-gray-300 text-xs leading-4 font-medium rounded text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150"
-              >
-                Follow
-              </button>
-            </span>
-          </div>
+          <div className="w-full border-b border-gray-300"></div>
         </div>
         {loading && (
           <div className="flex justify-center">

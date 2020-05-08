@@ -13,6 +13,12 @@ const reducer = (state, action) => {
       return { ...state, isPlaying: action.payload };
     case 'SET_AMPLITUDE':
       return { ...state, amplitude: action.payload };
+    case 'SET_THEME':
+      return {
+        ...state,
+        theme: action.payload,
+        isThemed: action.payload !== null,
+      };
     default:
       throw new Error();
   }
@@ -25,6 +31,8 @@ const GlobalContextProvider = ({ children }) => {
     episodes: [],
     isPlaying: false,
     amplitude: null,
+    theme: null,
+    isThemed: null,
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
