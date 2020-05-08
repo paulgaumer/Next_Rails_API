@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import Link from 'next/link';
 import styled from 'styled-components';
 import { GlobalDispatchContext } from '../../../context/globalContextProvider';
 import { GlobalStateContext } from '../../../context/globalContextProvider';
@@ -83,15 +84,16 @@ const HeroImage = styled.div`
   }
 `;
 
-const NewHeader = ({ data }) => {
+const NewHeader = ({ data, pageType }) => {
   const audioDispatch = useContext(GlobalDispatchContext);
   const { amplitude, theme, isThemed } = useContext(GlobalStateContext);
   const colors = isThemed ? theme.colors : '';
+  const isEp = pageType === 'ep';
 
   const handlePlayClick = () => {
     audioDispatch({
       type: 'PLAY_EPISODE',
-      payload: data.episodes[0],
+      payload: isEp ? data.episode : data.episodes[0],
     });
     amplitude.playSongAtIndex(0);
   };
@@ -104,9 +106,16 @@ const NewHeader = ({ data }) => {
           className="flex flex-col-reverse items-center sm:mx-20 lg:grid lg:grid-cols-12 lg:gap-20 xl:gap-28"
         >
           <div className="col-span-7 mt-12 lg:mt-0">
-            <h1 className="pb-8 text-4xl text-center text-white sm:text-5xl md:text-6xl lg:pb-12 xl:text-7xl font-titleLanding lg:text-left">
-              {data.title}
-            </h1>
+            {isEp && (
+              <h1 className="pb-8 text-3xl text-center text-white sm:text-4xl md:text-4xl lg:pb-12 xl:text-5xl font-titleLanding lg:text-left">
+                {data.episode.title}
+              </h1>
+            )}
+            {!isEp && (
+              <h1 className="pb-8 text-4xl text-center text-white sm:text-5xl md:text-6xl lg:pb-12 xl:text-7xl font-titleLanding lg:text-left">
+                {data.title}
+              </h1>
+            )}
             <div className="lg:flex lg:items-center">
               <span className="flex justify-center flex-shrink-0 rounded-md lg:inline-flex">
                 <button
@@ -148,15 +157,34 @@ const NewHeader = ({ data }) => {
                     <g></g>
                     <g></g>
                   </svg>
-                  <span className="pl-2 text-sm sm:text-lg lg:text-base">
-                    PLAY LATEST
-                  </span>
+                  {isEp && (
+                    <span className="pl-2 text-sm sm:text-lg lg:text-base">
+                      PLAY NOW
+                    </span>
+                  )}
+                  {!isEp && (
+                    <span className="pl-2 text-sm sm:text-lg lg:text-base">
+                      PLAY LATEST
+                    </span>
+                  )}
                 </button>
               </span>
               <div className="hidden pl-4 text-white lg:block">
-                <p>{data.episodes[0].title}</p>
+                {isEp && (
+                  <Link href="/">
+                    <a>
+                      <p className="text-xl">{data.title}</p>
+                    </a>
+                  </Link>
+                )}
+                {!isEp && <p>{data.episodes[0].title}</p>}
                 <p className="text-sm font-light">
-                  - {formatDate(data.episodes[0].enclosure.pubDate)}
+                  -{' '}
+                  {formatDate(
+                    isEp
+                      ? data.episode.enclosure.pubDate
+                      : data.episodes[0].enclosure.pubDate
+                  )}
                 </p>
               </div>
             </div>
@@ -183,7 +211,7 @@ const NewHeader = ({ data }) => {
             <span className="inline-flex flex-shrink-0 rounded-md">
               <button
                 type="button"
-                className="inline-flex items-center px-3 py-2 text-sm font-medium leading-6 text-white transition duration-150 ease-in-out bg-white border border-transparent rounded md:px-4 md:py-3 md:rounded-full bg-opacity-25 hover:bg-opacity-50 focus:outline-none focus:border-white focus:shadow-outline-white active:bg-white active:bg-opacity-50"
+                className="inline-flex items-center px-3 py-2 text-sm font-medium leading-6 text-white transition duration-150 ease-in-out bg-white bg-opacity-25 border border-transparent rounded md:px-4 md:py-3 md:rounded-full hover:bg-opacity-50 focus:outline-none focus:border-white focus:shadow-outline-white active:bg-white active:bg-opacity-50"
               >
                 <span className="flex">
                   <svg

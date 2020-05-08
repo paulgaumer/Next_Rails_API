@@ -2,10 +2,10 @@ import { useContext } from 'react';
 import fetch from 'isomorphic-unfetch';
 import Layout from '../../components/podcastLanding/layout/layout';
 import EpisodeShow from '../../components/podcastLanding/episodes/episodeShow';
-import { getSubdomain } from '../../utils/subdomain';
 import Header from '../../components/podcastLanding/header/header';
-import HeaderContentShow from '../../components/podcastLanding/header/headerContentShow';
+import Cta from '../../components/podcastLanding/cta/cta';
 import { GlobalDispatchContext } from '../../context/globalContextProvider';
+import { getSubdomain } from '../../utils/subdomain';
 
 const EpisodePage = ({ podData, theme }) => {
   const setTheme = useContext(GlobalDispatchContext);
@@ -14,9 +14,8 @@ const EpisodePage = ({ podData, theme }) => {
   const { episode } = podData;
   return (
     <Layout>
-      <Header data={podData}>
-        <HeaderContentShow data={podData} />
-      </Header>
+      <Header data={podData} pageType={'ep'} />
+      <Cta data={podData} />
       <EpisodeShow episode={episode} />
     </Layout>
   );

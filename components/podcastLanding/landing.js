@@ -19,7 +19,7 @@ const PodcastLanding = ({ data }) => {
   return (
     <div>
       <Layout>
-        <Header data={data} />
+        <Header data={data} pageType={'landing'} />
         <Cta data={data} />
         <AboutPodcast data={data} />
         <EpisodesList episodes={data.episodes} cover={data.coverUrl} />
