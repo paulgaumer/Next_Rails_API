@@ -1,11 +1,37 @@
 import React, { useState } from 'react';
 import Router from 'next/router';
 import { editPodcast } from '../apiCalls/handleFetch';
+import { ChromePicker } from 'react-color';
 
 const Index = ({ podcastData }) => {
   const { podcast } = podcastData;
   const [podcastDetails, setPodcastDetails] = useState(podcast);
   const isInstagramConnected = podcast.instagram_access_token !== null;
+
+  const [primaryColor, setPrimaryColor] = useState('#F97F7F');
+  const [displayColorPicker, setDisplayColorPicker] = useState(false);
+
+  const handleColorChange = (color) => {
+    setPrimaryColor(color.hex);
+  };
+  const handleColorPickerClick = () => {
+    setDisplayColorPicker(!displayColorPicker);
+  };
+  const handleColorPickerClose = () => {
+    setDisplayColorPicker(false);
+  };
+  const popover = {
+    position: 'absolute',
+    zIndex: '2',
+    top: '50px',
+  };
+  const cover = {
+    position: 'fixed',
+    top: '0px',
+    right: '0px',
+    bottom: '0px',
+    left: '0px',
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -147,6 +173,39 @@ const Index = ({ podcastData }) => {
                     </p>
                   )}
                 </div>
+              </div>
+            </div>
+            <div className="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+              <label
+                htmlFor="instagram"
+                className="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"
+              >
+                Primary theme color
+              </label>
+              <div className="flex items-center mt-1 sm:mt-0 sm:col-span-2">
+                <div
+                  className="relative w-24 h-10 rounded-md"
+                  style={{ backgroundColor: primaryColor }}
+                >
+                  {displayColorPicker ? (
+                    <div style={popover}>
+                      <div style={cover} onClick={handleColorPickerClose} />
+                      <ChromePicker
+                        color={primaryColor}
+                        onChange={handleColorChange}
+                      />
+                    </div>
+                  ) : null}
+                </div>
+                <span className="inline-flex pl-4 rounded-md shadow-sm">
+                  <button
+                    type="button"
+                    className="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-700 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50"
+                    onClick={handleColorPickerClick}
+                  >
+                    Pick a new color
+                  </button>
+                </span>
               </div>
             </div>
 
