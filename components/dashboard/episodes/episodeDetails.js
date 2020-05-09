@@ -32,6 +32,26 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
     }
   }, []);
 
+  const quillHistory = {
+    delay: 2000,
+    maxStack: 500,
+    userOnly: true,
+  };
+  const quillToolbarOptions = [
+    ['bold', 'italic', 'underline'], // toggled buttons
+
+    [{ header: [1, 2, 3, 4, false] }],
+    [{ align: [] }],
+    [
+      { list: 'ordered' },
+      { list: 'bullet' },
+      { indent: '-1' },
+      { indent: '+1' },
+    ],
+    ['link', 'image', 'video'],
+    ['clean'], // remove formatting button
+  ];
+
   const handleChange = (target, e) => {
     setEpisode({
       ...episode,
@@ -155,6 +175,10 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
                   <ReactQuill
                     theme="snow"
                     id="showNotes"
+                    modules={{
+                      toolbar: quillToolbarOptions,
+                      history: quillHistory,
+                    }}
                     value={showNotes}
                     onChange={handleShowNotesChange}
                   >
