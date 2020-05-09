@@ -85,11 +85,12 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
       }),
     });
     const data = await res.json();
-    if (data.status === 'QUEUED' || data.status === 'IN_PROGRESS') {
-      setUploaded(true);
-      setTranscription('IN_PROGRESS');
-      saveEpisode('IN_PROGRESS');
-    }
+    console.log(data);
+    // if (data.status === 'QUEUED' || data.status === 'IN_PROGRESS') {
+    //   setUploaded(true);
+    //   setTranscription('IN_PROGRESS');
+    //   saveEpisode('IN_PROGRESS');
+    // }
   };
 
   return (
