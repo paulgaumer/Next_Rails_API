@@ -2,11 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Router from 'next/router';
 import fetch from 'isomorphic-unfetch';
 import styled from 'styled-components';
-import { createEpisode, updateEpisode } from '../apiCalls/handleFetch';
 import { Editor } from '@tinymce/tinymce-react';
-
-// const ReactQuill =
-//   typeof window === 'object' ? require('react-quill') : () => false;
+import { createEpisode, updateEpisode } from '../apiCalls/handleFetch';
 
 const EditorContainer = styled.div`
   .tox-statusbar__branding {
@@ -16,9 +13,7 @@ const EditorContainer = styled.div`
 
 const EpisodeDetails = ({ podEpisode, podId }) => {
   const apiUrl = process.env.API_HOST;
-
-  // Needed to wait for user input stop
-  let inputTimer = null;
+  const tinyKey = process.env.TINYMCE_API_KEY;
 
   const [episode, setEpisode] = useState(podEpisode);
   const [showNotes, setShowNotes] = useState(podEpisode.show_notes);
@@ -27,7 +22,7 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
   const [uploaded, setUploaded] = useState(false);
 
   const handleEditorChange = (content, editor) => {
-    console.log('Content was updated:', content);
+    // console.log('Content was updated:', content);
     setShowNotes(content);
   };
 
@@ -48,14 +43,6 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
       ...episode,
       [target.id]: target.value,
     });
-  };
-
-  const handleShowNotesChange = (e) => {
-    const duration = 1000;
-    clearTimeout(inputTimer);
-    inputTimer = setTimeout(() => {
-      setShowNotes(e);
-    }, duration);
   };
 
   const saveEpisode = async (transcription) => {
@@ -165,7 +152,7 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
                 <EditorContainer className="mt-1">
                   <Editor
                     initialValue={showNotes}
-                    apiKey={process.env.TINYMCE_API_KEY}
+                    apiKey={tinyKey}
                     init={{
                       height: 500,
                       menubar: false,
@@ -237,19 +224,6 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
                     onEditorChange={handleEditorChange}
                   />
                 </EditorContainer>
-                {/* <EditorContainer className="mt-1">
-                  <ReactQuill
-                    theme="snow"
-                    id="showNotes"
-                    value={showNotes}
-                    onChange={handleShowNotesChange}
-                  >
-                    <div className="text-base bg-white sm:text-sm" />
-                  </ReactQuill>
-                </EditorContainer> */}
-                {/* <p className="mt-2 text-sm text-gray-500">
-                  Write a few sentences about yourself.
-                </p> */}
               </div>
               <div className="sm:col-span-6">
                 <label
