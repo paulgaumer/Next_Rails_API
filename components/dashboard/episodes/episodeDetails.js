@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Router from 'next/router';
 import fetch from 'isomorphic-unfetch';
 import styled from 'styled-components';
-import { Editor } from '@tinymce/tinymce-react';
+import TinyEditor from '../text-editor/TinyEditor';
 import { createEpisode, updateEpisode } from '../apiCalls/handleFetch';
 
 const EditorContainer = styled.div`
@@ -13,30 +13,12 @@ const EditorContainer = styled.div`
 
 const EpisodeDetails = ({ podEpisode, podId }) => {
   const apiUrl = process.env.API_HOST;
-  const tinyKey = process.env.TINYMCE_API_KEY;
 
   const [episode, setEpisode] = useState(podEpisode);
   const [showNotes, setShowNotes] = useState(podEpisode.show_notes);
   const [transcription, setTranscription] = useState(podEpisode.transcription);
   const [speakerNumber, setSpeakerNumber] = useState(1);
   const [uploaded, setUploaded] = useState(false);
-
-  const handleEditorChange = (content, editor) => {
-    // console.log('Content was updated:', content);
-    setShowNotes(content);
-  };
-
-  const downloadTranscription = async () => {
-    const res = await fetch(`${apiUrl}api/v1/gettranscription`);
-    const data = await res.json();
-    data.status === 'COMPLETED' && setTranscription(data.transcript);
-  };
-
-  useEffect(() => {
-    if (transcription === 'IN_PROGRESS') {
-      downloadTranscription();
-    }
-  }, []);
 
   const handleChange = (target, e) => {
     setEpisode({
@@ -75,7 +57,7 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
     const newEpisode = {
       ...episode,
       show_notes: showNotes,
-      transcription,
+      transcription: 'In Progress',
       podcast_id: podId,
     };
 
@@ -101,11 +83,9 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
     });
     const data = await res.json();
     console.log(data);
-    // if (data.status === 'QUEUED' || data.status === 'IN_PROGRESS') {
-    //   setUploaded(true);
-    //   setTranscription('IN_PROGRESS');
-    //   saveEpisode('IN_PROGRESS');
-    // }
+    setUploaded(true);
+    setTranscription('IN_PROGRESS');
+    // saveEpisode('IN_PROGRESS');
   };
 
   return (
@@ -168,79 +148,7 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
                   Show notes
                 </label>
                 <EditorContainer className="mt-1">
-                  <Editor
-                    initialValue={showNotes}
-                    apiKey={tinyKey}
-                    init={{
-                      height: 500,
-                      menubar: false,
-                      elementpath: false,
-                      body_class: 'editor-body',
-                      content_style: '.editor-body { font-size: 0.875rem }',
-                      plugins: [
-                        'advlist autolink lists link image charmap print preview anchor',
-                        'searchreplace visualblocks code fullscreen',
-                        'insertdatetime media table paste code help wordcount',
-                      ],
-                      toolbar:
-                        'undo redo | formatselect | bold italic | \
-             alignleft aligncenter alignright alignjustify | \
-             bullist numlist outdent indent | link image media |',
-                      media_alt_source: false,
-                      media_poster: false,
-                      default_link_target: '_blank',
-                      link_context_toolbar: true,
-                      image_title: false,
-                      /* enable automatic uploads of images represented by blob or data URIs*/
-                      automatic_uploads: true,
-                      /*
-    URL of our upload handler (for more details check: https://www.tiny.cloud/docs/configure/file-image-upload/#images_upload_url)
-    images_upload_url: 'postAcceptor.php',
-    here we add custom filepicker only to Image dialog
-  */
-                      file_picker_types: 'image',
-                      /* and here's our custom image picker*/
-                      file_picker_callback: function (cb, value, meta) {
-                        var input = document.createElement('input');
-                        input.setAttribute('type', 'file');
-                        input.setAttribute('accept', 'image/*');
-
-                        /*
-      Note: In modern browsers input[type="file"] is functional without
-      even adding it to the DOM, but that might not be the case in some older
-      or quirky browsers like IE, so you might want to add it to the DOM
-      just in case, and visually hide it. And do not forget do remove it
-      once you do not need it anymore.
-    */
-
-                        input.onchange = function () {
-                          var file = this.files[0];
-
-                          var reader = new FileReader();
-                          reader.onload = function () {
-                            /*
-          Note: Now we need to register the blob in TinyMCEs image blob
-          registry. In the next release this part hopefully won't be
-          necessary, as we are looking to handle it internally.
-        */
-                            var id = 'blobid' + new Date().getTime();
-                            var blobCache =
-                              tinymce.activeEditor.editorUpload.blobCache;
-                            var base64 = reader.result.split(',')[1];
-                            var blobInfo = blobCache.create(id, file, base64);
-                            blobCache.add(blobInfo);
-
-                            /* call the callback and populate the Title field with the file name */
-                            cb(blobInfo.blobUri(), { title: file.name });
-                          };
-                          reader.readAsDataURL(file);
-                        };
-
-                        input.click();
-                      },
-                    }}
-                    onEditorChange={handleEditorChange}
-                  />
+                  <TinyEditor value={showNotes} setValue={setShowNotes} />
                 </EditorContainer>
               </div>
               <div className="sm:col-span-6">
@@ -276,20 +184,16 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
                     </button>
                   </>
                 )}
-                {transcription === 'IN_PROGRESS' && (
+                {transcription === 'In Progress' && (
                   <p>Transcription has started...</p>
                 )}
                 {uploaded && <p>Transcription has started...</p>}
-                {/* {transcription !== null && transcription !== 'IN_PROGRESS' && (
-                  <ReactQuill
-                    theme="snow"
-                    id="transcription"
+                {transcription !== null && transcription !== 'In Progress' && (
+                  <TinyEditor
                     value={transcription}
-                    onChange={setTranscription}
-                  >
-                    <div className="text-base bg-white sm:text-sm" />
-                  </ReactQuill>
-                )} */}
+                    setValue={setTranscription}
+                  />
+                )}
               </div>
             </div>
           </div>
