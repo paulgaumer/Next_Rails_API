@@ -1,15 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Router from 'next/router';
 import fetch from 'isomorphic-unfetch';
-import styled from 'styled-components';
 import TinyEditor from '../text-editor/TinyEditor';
 import { createEpisode, updateEpisode } from '../apiCalls/handleFetch';
-
-const EditorContainer = styled.div`
-  .tox-statusbar__branding {
-    display: none;
-  }
-`;
 
 const EpisodeDetails = ({ podEpisode, podId }) => {
   const apiUrl = process.env.API_HOST;
@@ -147,9 +140,8 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
                 >
                   Show notes
                 </label>
-                <EditorContainer className="mt-1">
-                  <TinyEditor value={showNotes} setValue={setShowNotes} />
-                </EditorContainer>
+
+                <TinyEditor value={showNotes} setValue={setShowNotes} />
               </div>
               <div className="sm:col-span-6">
                 <label
