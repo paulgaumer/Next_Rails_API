@@ -1,15 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import Head from 'next/head';
 import Router from 'next/router';
 import fetch from 'isomorphic-unfetch';
 import TinyEditor from '../text-editor/TinyEditor';
 import { createEpisode, updateEpisode } from '../apiCalls/handleFetch';
 
 const EpisodeDetails = ({ podEpisode, podId }) => {
-  const apiUrl = process.env.API_HOST;
+  const headlinerUrl = (url) => {
+    if (url.includes('?')) {
+      return url.split('?')[0];
+    } else {
+      return url;
+    }
+  };
 
+  const apiUrl = process.env.API_HOST;
   const [episode, setEpisode] = useState(podEpisode);
   const [showNotes, setShowNotes] = useState(podEpisode.show_notes);
   const [transcription, setTranscription] = useState(podEpisode.transcription);
+  const [audioUrl] = useState(headlinerUrl(podEpisode.enclosure.url));
   const [speakerNumber, setSpeakerNumber] = useState(1);
   const [uploaded, setUploaded] = useState(false);
 
@@ -82,6 +91,15 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
 
   return (
     <>
+      <Head>
+        <script
+          async
+          defer
+          src="https://widget.headliner.app/js/sdk.js"
+          type="text/javascript"
+          data-widget-key="tTP9DYAnxhPmp9KGsBQxGNvw6"
+        ></script>
+      </Head>
       <form onSubmit={handleSubmit}>
         <div>
           <div>
@@ -99,6 +117,27 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
                   htmlFor="title"
                   className="block text-sm font-medium leading-5 text-gray-700"
                 >
+                  Your Audiogram with Headliner
+                </label>
+                <div
+                  className="mt-1 rounded-md shadow-sm"
+                  style={{ maxWidth: '22rem' }}
+                >
+                  <div
+                    className="headliner-share"
+                    data-audio-url={audioUrl}
+                    data-clip-title={podEpisode.title}
+                    data-color="rgb(55, 231, 185)"
+                    data-image-url={podEpisode.cover_image.url}
+                    // data-transcript-url="http://url.to/transcript.vtt"
+                  ></div>
+                </div>
+              </div>
+              <div className="sm:col-span-4">
+                <label
+                  htmlFor="title"
+                  className="block text-sm font-medium leading-5 text-gray-700 uppercase"
+                >
                   Title
                 </label>
                 <div className="mt-1 rounded-md shadow-sm">
@@ -115,14 +154,14 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
               <div className="sm:col-span-6">
                 <label
                   htmlFor="summary"
-                  className="block text-sm font-medium leading-5 text-gray-700"
+                  className="block text-sm font-medium leading-5 text-gray-700 uppercase"
                 >
                   Summary
                 </label>
                 <div className="mt-1 rounded-md shadow-sm">
                   <textarea
                     id="summary"
-                    rows="5"
+                    rows="7"
                     value={episode.summary}
                     className="block w-full transition duration-150 ease-in-out form-textarea sm:text-sm sm:leading-5"
                     onChange={(e) => handleChange(e.target)}
@@ -135,7 +174,7 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
               <div className="sm:col-span-6">
                 <label
                   htmlFor="showNotes"
-                  className="block text-sm font-medium leading-5 text-gray-700"
+                  className="block text-sm font-medium leading-5 text-gray-700 uppercase"
                 >
                   Show notes
                 </label>
@@ -145,7 +184,7 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
               <div className="sm:col-span-6">
                 <label
                   htmlFor="transcription"
-                  className="block pb-4 text-sm font-medium leading-5 text-gray-700"
+                  className="block pb-4 text-sm font-medium leading-5 text-gray-700 uppercase"
                 >
                   Transcription
                 </label>

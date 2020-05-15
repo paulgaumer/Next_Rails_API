@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import nextCookie from 'next-cookies';
 import fetch from 'isomorphic-unfetch';
-import Router from 'next/router';
 import DashboardLayout from '../../../components/dashboard/dashboardLayout/dashboardLayout';
 import { getDomain } from '../../../utils/subdomain';
 import { redirect } from '../../../utils/redirect';
