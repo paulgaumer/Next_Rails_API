@@ -101,19 +101,19 @@ const NewHeader = ({ data, pageType }) => {
 
   return (
     <HeaderContainer>
-      <div className="py-12 mx-auto lg:py-20 max-w-7xl">
+      <div className="py-12 mx-auto max-w-7xl">
         <div
           data-name="top-part"
           className="flex flex-col-reverse items-center sm:mx-20 lg:grid lg:grid-cols-12 lg:gap-20 xl:gap-28"
         >
           <div className="col-span-7 mt-12 lg:mt-0">
             {isEp && (
-              <h1 className="pb-8 text-3xl text-center text-white sm:text-4xl md:text-4xl lg:pb-12 xl:text-5xl font-titleLanding lg:text-left">
+              <h1 className="pb-8 text-3xl leading-tight text-center text-white sm:text-4xl md:text-4xl lg:pb-12 xl:text-5xl font-titleLanding lg:text-left">
                 {data.episode.title}
               </h1>
             )}
             {!isEp && (
-              <h1 className="pb-8 text-4xl text-center text-white sm:text-5xl md:text-6xl lg:pb-12 xl:text-7xl font-titleLanding lg:text-left">
+              <h1 className="pb-8 text-4xl leading-tight text-center text-white sm:text-5xl md:text-6xl lg:pb-12 xl:text-7xl font-titleLanding lg:text-left">
                 {data.title}
               </h1>
             )}
