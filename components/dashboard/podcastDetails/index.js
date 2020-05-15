@@ -11,7 +11,9 @@ const Index = ({ podcastData }) => {
 
   const defaultPrimaryColor = '#F97F7F';
   const checkThemeColor =
-    podcast.theme !== null ? podcast.theme.colors.primary : defaultPrimaryColor;
+    podcast.theme.colors !== null
+      ? podcast.theme.colors.primary
+      : defaultPrimaryColor;
 
   const [primaryColor, setPrimaryColor] = useState(checkThemeColor);
   const [displayColorPicker, setDisplayColorPicker] = useState(false);
