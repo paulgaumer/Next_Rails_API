@@ -13,13 +13,13 @@ const InstagramSection = ({ podcastId }) => {
   const colors = isThemed ? theme.colors : '';
 
   useEffect(() => {
-    // async function fetchInstagram() {
-    //   const res = await fetch(`${apiUrl}/api/v1/fetch_instagram/${podcastId}`);
-    //   const data = await res.json();
-    //   setLoading(false);
-    //   setInstagram(data.instagram);
-    // }
-    // fetchInstagram();
+    async function fetchInstagram() {
+      const res = await fetch(`${apiUrl}/api/v1/fetch_instagram/${podcastId}`);
+      const data = await res.json();
+      setLoading(false);
+      setInstagram(data.instagram);
+    }
+    fetchInstagram();
   }, []);
 
   return (
