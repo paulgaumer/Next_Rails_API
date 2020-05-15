@@ -1,13 +1,42 @@
 import React from 'react';
+import { CSVLink, CSVDownload } from 'react-csv';
 import { formatDate } from '../../../utils/formatDate';
 
 const CrmSection = ({ crmItems }) => {
+  const csvHeader = ['email'];
+  const csvContent = crmItems.map((item) => [item.email]);
+  const csvData = [csvHeader, ...csvContent];
+  console.log(csvData);
+
   return (
     <div>
       <div>
-        <h3 className="text-lg font-medium leading-6 text-gray-900">
-          Manage your mailing list
-        </h3>
+        <div className="flex items-center">
+          <h3 className="pr-4 text-lg font-medium leading-6 text-gray-900">
+            Download mailing list
+          </h3>
+          <CSVLink data={csvData} filename={'podwii-crm-contacts.csv'}>
+            <span class="inline-flex rounded-md shadow-sm">
+              <button
+                type="button"
+                class="inline-flex items-center px-2.5 py-1.5 border border-indigo-500 text-xs leading-4 font-medium rounded text-indigo-500 hover:text-indigo-600 hover:border-indigo-600 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-indigo-700 transition ease-in-out duration-150"
+              >
+                <svg
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  className="w-4 h-4"
+                >
+                  <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                </svg>
+                <span className="ml-1">CSV</span>
+              </button>
+            </span>
+          </CSVLink>
+        </div>
         <div className="mt-6 sm:mt-5">
           <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"></div>
         </div>
@@ -22,7 +51,7 @@ const CrmSection = ({ crmItems }) => {
                     Email
                   </th>
                   <th className="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                    Date
+                    Added Date
                   </th>
                 </tr>
               </thead>
