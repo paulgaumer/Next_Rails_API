@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import fetch from 'isomorphic-unfetch';
+import SEO from '../../components/seo/seo';
 import Layout from '../../components/podcastLanding/layout/layout';
 import EpisodeShow from '../../components/podcastLanding/episodes/episodeShow';
 import Header from '../../components/podcastLanding/header/header';
@@ -12,8 +13,16 @@ const EpisodePage = ({ podData, theme }) => {
   setTheme({ type: 'SET_THEME', payload: theme });
 
   const { episode } = podData;
+  console.log(podData);
   return (
     <Layout>
+      <SEO
+        title={podData.title}
+        description={podData.description}
+        subdomain={podData.subdomain}
+        cover={episode.cover_image}
+        path={`/episodes/${episode.guid}`}
+      />
       <Header data={podData} pageType={'ep'} />
       <Cta data={podData} />
       <EpisodeShow episode={episode} />

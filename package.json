@@ -17,6 +17,7 @@
     "js-cookie": "^2.2.1",
     "next": "latest",
     "next-cookies": "^2.0.3",
+    "next-seo": "^4.4.0",
     "now": "^17.1.1",
     "postcss-preset-env": "^6.7.0",
     "react": "^16.12.0",
