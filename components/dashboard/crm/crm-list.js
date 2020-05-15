@@ -6,7 +6,6 @@ const CrmSection = ({ crmItems }) => {
   const csvHeader = ['email'];
   const csvContent = crmItems.map((item) => [item.email]);
   const csvData = [csvHeader, ...csvContent];
-  console.log(csvData);
 
   return (
     <div>
@@ -16,7 +15,7 @@ const CrmSection = ({ crmItems }) => {
             Download mailing list
           </h3>
           <CSVLink data={csvData} filename={'podwii-crm-contacts.csv'}>
-            <span class="inline-flex rounded-md shadow-sm">
+            <span className="inline-flex rounded-md shadow-sm">
               <button
                 type="button"
                 class="inline-flex items-center px-2.5 py-1.5 border border-indigo-500 text-xs leading-4 font-medium rounded text-indigo-500 hover:text-indigo-600 hover:border-indigo-600 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-indigo-700 transition ease-in-out duration-150"

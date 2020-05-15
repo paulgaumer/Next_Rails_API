@@ -1,9 +1,10 @@
 import React from 'react';
 import App from 'next/app';
 import GlobalContextProvider from '../context/globalContextProvider';
-import 'react-quill/dist/quill.snow.css';
 import '../styles/styles.css';
 import AmplitudePlayer from '../components/podcastLanding/audio-player/amplitudePlayer';
+require('typeface-montserrat');
+require('typeface-roboto');
 
 class MyApp extends App {
   render() {

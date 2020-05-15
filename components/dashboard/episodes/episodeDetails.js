@@ -75,7 +75,6 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
       }),
     });
     const data = await res.json();
-    console.log(data);
     setUploaded(true);
     setTranscription('IN_PROGRESS');
     // saveEpisode('IN_PROGRESS');

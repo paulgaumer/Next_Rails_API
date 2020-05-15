@@ -48,9 +48,10 @@ const Pagination = ({
         </a>
       </div>
       <div className="hidden md:flex">
-        {pageNumbers.map((number) => {
+        {pageNumbers.map((number, i) => {
           return (
             <a
+              key={`page-${i}`}
               onClick={() => paginate(number)}
               className={`cursor-pointer inline-flex items-center px-4 pt-4 -mt-px text-sm font-medium leading-5 transition duration-150 ease-in-out border-t-2 border-transparent focus:outline-none ${
                 number === currentPage ? activeNumber : passiveNumber

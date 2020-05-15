@@ -11,6 +11,7 @@ const HeaderContainer = styled.header`
   background: #06beb6; /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #68c7cd, #7fddd9);
   background: linear-gradient(to right, #68c7cd, #7fddd9);
+  overflow: hidden;
 
   @media (max-width: 1024px) {
     background: #06beb6; /* fallback for old browsers */

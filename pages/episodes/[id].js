@@ -13,7 +13,6 @@ const EpisodePage = ({ podData, theme }) => {
   setTheme({ type: 'SET_THEME', payload: theme });
 
   const { episode } = podData;
-  console.log(podData);
   return (
     <Layout>
       <SEO

@@ -2,8 +2,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sansLanding: 'Montserrat',
-        titleLanding: 'Roboto',
+        sansLanding: ['Montserrat', 'sans-serif'],
+        titleLanding: ['Roboto', 'sans-serif'],
       },
       fontSize: {
         '7xl': '5rem',
