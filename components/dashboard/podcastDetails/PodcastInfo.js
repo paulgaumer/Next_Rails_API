@@ -1,43 +1,31 @@
 import React, { useState } from 'react';
 import Router from 'next/router';
 import { editPodcast, editTheme } from '../apiCalls/handleFetch';
-import { ChromePicker } from 'react-color';
+import ColorPicker from '../../utils/colorPicker/ColorPicker';
 
 const PodcastInfo = ({ podcastData }) => {
   const { podcast } = podcastData;
+  const { theme } = podcast;
   const [podcastDetails, setPodcastDetails] = useState(podcast);
 
   const isInstagramConnected = podcast.instagram_access_token !== null;
 
-  const defaultPrimaryColor = '#F97F7F';
-  const checkThemeColor =
-    podcast.theme.colors !== null
-      ? podcast.theme.colors.primary
-      : defaultPrimaryColor;
+  const [primaryColor, setPrimaryColor] = useState(theme.colors.primary);
+  const [headerTextColor, setHeaderTextColor] = useState(
+    theme.colors.headerText ? theme.colors.headerText : '#ffffff'
+  );
+  const [headerBackgroundColor, setHeaderBackgroundColor] = useState(
+    theme.colors.headerBackground ? theme.colors.headerBackground : '#000000'
+  );
 
-  const [primaryColor, setPrimaryColor] = useState(checkThemeColor);
-  const [displayColorPicker, setDisplayColorPicker] = useState(false);
-
-  const handleColorChange = (color) => {
+  const handlePrimaryColorChange = (color) => {
     setPrimaryColor(color.hex);
   };
-  const handleColorPickerClick = () => {
-    setDisplayColorPicker(!displayColorPicker);
+  const handleHeaderTextColorChange = (color) => {
+    setHeaderTextColor(color.hex);
   };
-  const handleColorPickerClose = () => {
-    setDisplayColorPicker(false);
-  };
-  const popover = {
-    position: 'absolute',
-    zIndex: '2',
-    bottom: '50px',
-  };
-  const cover = {
-    position: 'fixed',
-    top: '0px',
-    right: '0px',
-    bottom: '0px',
-    left: '0px',
+  const handleHeaderBackgroundColorChange = (color) => {
+    setHeaderBackgroundColor(color.hex);
   };
 
   const handleSubmit = async (e) => {
@@ -203,136 +191,45 @@ const PodcastInfo = ({ podcastData }) => {
                 Primary theme color
               </label>
               <div className="relative flex items-center mt-1 sm:mt-0 sm:col-span-2">
-                <div
-                  className="w-24 h-10 rounded-md"
-                  style={{ backgroundColor: primaryColor }}
-                  onClick={handleColorPickerClick}
-                ></div>
-                {displayColorPicker ? (
-                  <div style={popover}>
-                    <div style={cover} onClick={handleColorPickerClose} />
-                    <ChromePicker
-                      color={primaryColor}
-                      onChange={handleColorChange}
-                    />
-                  </div>
-                ) : null}
-                <span className="inline-flex ml-4 rounded-md shadow-sm">
-                  <button
-                    type="button"
-                    className="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-700 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50"
-                    onClick={handleColorPickerClick}
-                  >
-                    Pick a new color
-                  </button>
-                </span>
+                <ColorPicker
+                  color={primaryColor}
+                  handleColorChange={handlePrimaryColorChange}
+                />
               </div>
             </div>
-
-            {/* <div className="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+            <div className="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
               <label
-                htmlFor="audio_player"
+                htmlFor="instagram"
                 className="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"
               >
-                Insert your podcast player
+                Header Text color
               </label>
-              <div className="mt-1 sm:mt-0 sm:col-span-2">
-                <div className="flex max-w-lg rounded-md shadow-sm">
-                  <textarea
-                    id="audio_player"
-                    defaultValue={podcastDetails.audio_player}
-                    onChange={(e) => handleChange(e.target)}
-                    rows="5"
-                    className="block w-full transition duration-150 ease-in-out form-textarea sm:text-sm sm:leading-5"
-                  ></textarea>
-                </div>
-                <p className="mt-2 text-sm text-gray-500">
-                  Check with your podcast host for a snippet of code starting
-                  with "script"
-                </p>
-                <div className="max-w-lg mt-6">
-                  <p className="pb-3 text-sm text-gray-500">Preview:</p>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: podcastDetails.audio_player,
-                    }}
-                  />
-                </div>
+              <div className="relative flex items-center mt-1 sm:mt-0 sm:col-span-2">
+                <ColorPicker
+                  color={headerTextColor}
+                  handleColorChange={handleHeaderTextColorChange}
+                />
               </div>
-            </div> */}
-
-            {/* <div className="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-center sm:border-t sm:border-gray-200 sm:pt-5">
+            </div>
+            <div className="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
               <label
-                htmlFor="photo"
-                className="block text-sm font-medium leading-5 text-gray-700"
-              >
-                Logo
-              </label>
-              <div className="mt-2 sm:mt-0 sm:col-span-2">
-                <div className="flex items-center">
-                  <span className="w-12 h-12 overflow-hidden bg-gray-100 rounded-full">
-                    <svg
-                      className="w-full h-full text-gray-300"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-                    </svg>
-                  </span>
-                  <span className="ml-5 rounded-md shadow-sm">
-                    <button
-                      type="button"
-                      className="px-3 py-2 text-sm font-medium leading-4 text-gray-700 transition duration-150 ease-in-out border border-gray-300 rounded-md hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800"
-                    >
-                      Change
-                    </button>
-                  </span>
-                </div>
-              </div>
-            </div> */}
-
-            {/* <div className="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-              <label
-                htmlFor="cover_photo"
+                htmlFor="instagram"
                 className="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"
               >
-                Cover photo
+                Header Background color
               </label>
-              <div className="mt-2 sm:mt-0 sm:col-span-2">
-                <div className="flex justify-center max-w-lg px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-                  <div className="text-center">
-                    <svg
-                      className="w-12 h-12 mx-auto text-gray-400"
-                      stroke="currentColor"
-                      fill="none"
-                      viewBox="0 0 48 48"
-                    >
-                      <path
-                        d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                    <p className="mt-1 text-sm text-gray-600">
-                      <button
-                        type="button"
-                        className="font-medium text-indigo-600 transition duration-150 ease-in-out hover:text-indigo-500 focus:outline-none focus:underline"
-                      >
-                        Upload a file
-                      </button>
-                      or drag and drop
-                    </p>
-                    <p className="mt-1 text-xs text-gray-500">
-                      PNG, JPG, GIF up to 10MB
-                    </p>
-                  </div>
-                </div>
+              <div className="relative flex items-center mt-1 sm:mt-0 sm:col-span-2">
+                <ColorPicker
+                  color={headerBackgroundColor}
+                  handleColorChange={handleHeaderBackgroundColorChange}
+                />
               </div>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
+      {/* *************** */}
+      {/* SAVE BUTTONS */}
       <div className="pt-5 mt-8 border-t border-gray-200">
         <div className="flex justify-end">
           <span className="inline-flex rounded-md shadow-sm">

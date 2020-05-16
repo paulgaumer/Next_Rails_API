@@ -2,17 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.section`
-  background: #06beb6; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    rgb(104, 199, 205, 0.4),
-    rgb(127, 221, 217, 0.4)
-  );
-  background: linear-gradient(
-    to right,
-    rgb(104, 199, 205, 0.4),
-    rgb(127, 221, 217, 0.4)
-  );
+  color: #d17c78;
+  background: #181d46; /* fallback for old browsers */
 `;
 
 const MailCta = ({ data }) => {
@@ -38,10 +29,15 @@ const MailCta = ({ data }) => {
 
   return (
     <Container className="flex justify-center">
-      <div className="max-w-screen-xl py-6 sm:mx-20 lg:flex lg:justify-center lg:items-center">
+      <div
+        className="max-w-screen-xl pt-6 pb-6 mt-6 sm:px-20 lg:flex lg:justify-center lg:items-center"
+        style={{
+          borderTop: '1px dashed #D17C78',
+        }}
+      >
         <div className="text-center">
-          <p className="text-lg font-bold leading-9 tracking-tight text-gray-800 sm:leading-10">
-            Join our Newsletter
+          <p className="text-lg font-bold leading-9 tracking-tight sm:leading-10">
+            Never miss our updates
           </p>
         </div>
         <div className="mt-2 lg:mt-0 lg:ml-12">
@@ -70,7 +66,8 @@ const MailCta = ({ data }) => {
             <div className="hidden mt-3 rounded-md shadow sm:block sm:mt-0 sm:ml-3 sm:flex-shrink-0">
               <button
                 type="submit"
-                className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium leading-6 text-white transition duration-150 ease-in-out bg-gray-900 border border-transparent rounded-md hover:bg-blue-900 focus:outline-none focus:bg-blue-900"
+                className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium leading-6 text-white transition duration-150 ease-in-out border border-transparent rounded-md hover:bg-blue-900 focus:outline-none focus:bg-blue-900"
+                style={{ background: '#D17C78' }}
               >
                 Subscribe Now
               </button>

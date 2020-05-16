@@ -1,22 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { GlobalDispatchContext } from '../../../context/globalContextProvider';
 import { GlobalStateContext } from '../../../context/globalContextProvider';
 import { formatDate } from '../../../utils/formatDate';
-import { themeOn, themeOff } from '../../../utils/themeHandlers';
+// import { themeOn, themeOff } from '../../../utils/themeHandlers';
 import SubscribeList from './subscribe/subscribeList';
 
 const HeaderContainer = styled.header`
-  background: #06beb6; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #68c7cd, #7fddd9);
-  background: linear-gradient(to right, #68c7cd, #7fddd9);
   overflow: hidden;
+  background: ${(props) => props.backgroundColor};
+  color: ${(props) => props.textColor};
 
-  @media (max-width: 1024px) {
-    background: #06beb6; /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #68c7cd, #7fddd9);
-    background: linear-gradient(to top, #68c7cd, #7fddd9);
+  #header-play-button {
   }
 `;
 
@@ -88,7 +84,8 @@ const HeroImage = styled.div`
 const NewHeader = ({ data, pageType }) => {
   const audioDispatch = useContext(GlobalDispatchContext);
   const { amplitude, theme, isThemed } = useContext(GlobalStateContext);
-  const colors = isThemed ? theme.colors : '';
+  const [headerText] = useState(data.theme.colors.headerText);
+  const [headerBackground] = useState(data.theme.colors.headerBackground);
   const isEp = pageType === 'ep';
 
   const handlePlayClick = () => {
@@ -100,7 +97,7 @@ const NewHeader = ({ data, pageType }) => {
   };
 
   return (
-    <HeaderContainer>
+    <HeaderContainer textColor={headerText} backgroundColor={headerBackground}>
       <div className="py-12 mx-auto max-w-7xl">
         <div
           data-name="top-part"
@@ -108,31 +105,28 @@ const NewHeader = ({ data, pageType }) => {
         >
           <div className="col-span-7 mt-12 lg:mt-0">
             {isEp && (
-              <h1 className="pb-8 text-3xl leading-tight text-center text-white sm:text-4xl md:text-4xl lg:pb-12 xl:text-5xl font-titleLanding lg:text-left">
+              <h1 className="pb-8 text-3xl leading-tight text-center sm:text-4xl md:text-4xl lg:pb-12 xl:text-5xl font-titleLanding lg:text-left">
                 {data.episode.title}
               </h1>
             )}
             {!isEp && (
-              <h1 className="pb-8 text-4xl leading-tight text-center text-white sm:text-5xl md:text-6xl lg:pb-12 xl:text-7xl font-titleLanding lg:text-left">
+              <h1 className="pb-8 text-4xl font-bold leading-tight text-center sm:text-5xl md:text-6xl lg:pb-12 xl:text-7xl font-titleLanding lg:text-left">
                 {data.title}
               </h1>
             )}
-            <div className="lg:flex lg:items-center">
+            <div id="header-play-button" className="lg:flex lg:items-center">
               <span className="flex justify-center flex-shrink-0 rounded-md lg:inline-flex">
                 <button
                   type="button"
-                  className={`inline-flex items-center px-4 py-3 text-sm font-medium leading-6 text-white transition duration-150 ease-in-out border border-transparent rounded-full md:px-6 md:py-4 lg:px-4 lg:py-3 hover:bg-red-500 focus:outline-none focus:border-red-500 focus:shadow-outline-red active:bg-red-500 ${themeOff(
-                    isThemed,
-                    'bg-red-400'
-                  )}`}
-                  style={{ backgroundColor: themeOn(isThemed, colors.primary) }}
+                  className={`inline-flex items-center px-4 py-3 text-sm font-medium leading-6 transition duration-150 ease-in-out rounded-full md:px-6 md:py-4 lg:px-4 lg:py-3 hover:bg-red-500 focus:outline-none focus:border-red-500 focus:shadow-outline-red active:bg-red-500`}
+                  style={{ border: '2px solid #D17C78' }}
                   onClick={handlePlayClick}
                 >
                   <svg
                     x="0px"
                     y="0px"
-                    className="w-5 h-5 text-white"
-                    fill="currentColor"
+                    className="w-5 h-5"
+                    fill="#D17C78"
                     viewBox="0 0 320.001 320.001"
                     style={{ enableBackground: 'new 0 0 320.001 320.001' }}
                     xmlSpace="preserve"
@@ -170,7 +164,7 @@ const NewHeader = ({ data, pageType }) => {
                   )}
                 </button>
               </span>
-              <div className="hidden pl-4 text-white lg:block">
+              <div className="hidden pl-4 lg:block">
                 {isEp && (
                   <Link href="/">
                     <a>
