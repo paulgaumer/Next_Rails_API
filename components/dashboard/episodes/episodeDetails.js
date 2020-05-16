@@ -85,7 +85,7 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
     });
     const data = await res.json();
     setUploaded(true);
-    setTranscription('IN_PROGRESS');
+    setTranscription('In Progress');
     // saveEpisode('IN_PROGRESS');
   };
 
@@ -190,10 +190,11 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
                 </label>
                 {!transcription && !uploaded && (
                   <>
-                    <div className="max-w-xs rounded-md shadow-sm">
+                    <div className="flex items-center max-w-xs rounded-md">
+                      <p className="pr-2 text-gray-700">Number of speakers</p>
                       <select
                         id="speakers"
-                        class="block form-select w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                        class="block form-select transition duration-150 ease-in-out sm:text-sm sm:leading-5 shadow-sm"
                         onChange={(e) =>
                           setSpeakerNumber(parseInt(e.target.value))
                         }
@@ -208,16 +209,32 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
                     <button
                       type="button"
                       onClick={handleUploadAudio}
-                      className="inline-flex items-center px-4 py-2 text-base font-medium leading-6 text-indigo-700 transition duration-150 ease-in-out bg-indigo-100 border border-transparent rounded-md hover:bg-indigo-50 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo active:bg-indigo-200"
+                      className="inline-flex items-center px-4 py-2 mt-4 text-base font-medium leading-6 text-indigo-700 transition duration-150 ease-in-out bg-indigo-100 border border-transparent rounded-md hover:bg-indigo-50 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo active:bg-indigo-200"
                     >
                       Get your transcription now
                     </button>
                   </>
                 )}
                 {transcription === 'In Progress' && (
-                  <p>Transcription has started...</p>
+                  <div className="flex items-center">
+                    <svg
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      className="w-6 h-6 mr-2 text-blue-500"
+                    >
+                      <path d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <p>
+                      Awesome, your transcription is being processed! Long
+                      episodes can take up to 1h, come back in a bit...
+                    </p>
+                  </div>
                 )}
-                {uploaded && <p>Transcription has started...</p>}
+                {/* {uploaded && <p>Transcription has started...</p>} */}
                 {transcription !== null && transcription !== 'In Progress' && (
                   <TinyEditor
                     value={transcription}
