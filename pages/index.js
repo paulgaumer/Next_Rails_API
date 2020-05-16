@@ -7,7 +7,7 @@ import { GlobalDispatchContext } from '../context/globalContextProvider';
 
 const Index = ({ podData, instagram, theme }) => {
   const setTheme = useContext(GlobalDispatchContext);
-  setTheme({ type: 'SET_THEME', payload: theme });
+  podData !== null && setTheme({ type: 'SET_THEME', payload: theme });
 
   return podData === null ? (
     <MarketingLanding />

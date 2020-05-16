@@ -42,7 +42,7 @@ const InstagramSection = ({ podcastId }) => {
             <Spinner />
           </div>
         )}
-        <div className="grid grid-cols-4 row-gap-2 col-gap-2">
+        <div className="grid grid-cols-2 row-gap-2 col-gap-2 lg:grid-cols-4">
           {instagram.length > 0 &&
             instagram.map((pic) => {
               return (
