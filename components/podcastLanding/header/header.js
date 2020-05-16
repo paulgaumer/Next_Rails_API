@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { GlobalDispatchContext } from '../../../context/globalContextProvider';
 import { GlobalStateContext } from '../../../context/globalContextProvider';
 import { formatDate } from '../../../utils/formatDate';
-// import { themeOn, themeOff } from '../../../utils/themeHandlers';
 import SubscribeList from './subscribe/subscribeList';
+import SupportButton from './support/SupportButton';
 
 const HeaderContainer = styled.header`
   overflow: hidden;
@@ -13,6 +13,9 @@ const HeaderContainer = styled.header`
   color: ${(props) => props.textColor};
 
   #header-play-button {
+    button {
+      border: 2px solid ${(props) => props.textColor};
+    }
   }
 `;
 
@@ -118,15 +121,14 @@ const NewHeader = ({ data, pageType }) => {
               <span className="flex justify-center flex-shrink-0 rounded-md lg:inline-flex">
                 <button
                   type="button"
-                  className={`inline-flex items-center px-4 py-3 text-sm font-medium leading-6 transition duration-150 ease-in-out rounded-full md:px-6 md:py-4 lg:px-4 lg:py-3 hover:bg-red-500 focus:outline-none focus:border-red-500 focus:shadow-outline-red active:bg-red-500`}
-                  style={{ border: '2px solid #D17C78' }}
+                  className={`inline-flex items-center px-4 py-3 text-sm font-medium leading-6 transition duration-150 ease-in-out rounded-full md:px-6 md:py-4 lg:px-4 lg:py-3 focus:outline-none focus:border-red-500 focus:shadow-outline-red`}
                   onClick={handlePlayClick}
                 >
                   <svg
                     x="0px"
                     y="0px"
                     className="w-5 h-5"
-                    fill="#D17C78"
+                    fill={headerText}
                     viewBox="0 0 320.001 320.001"
                     style={{ enableBackground: 'new 0 0 320.001 320.001' }}
                     xmlSpace="preserve"
@@ -172,15 +174,7 @@ const NewHeader = ({ data, pageType }) => {
                     </a>
                   </Link>
                 )}
-                {!isEp && <p>{data.episodes[0].title}</p>}
-                <p className="text-sm font-light">
-                  -{' '}
-                  {formatDate(
-                    isEp
-                      ? data.episode.enclosure.pubDate
-                      : data.episodes[0].enclosure.pubDate
-                  )}
-                </p>
+                {!isEp && <p className="text-lg">{data.episodes[0].title}</p>}
               </div>
             </div>
           </div>
@@ -203,30 +197,7 @@ const NewHeader = ({ data, pageType }) => {
         >
           <SubscribeList />
           <div className="pl-10 lg:block">
-            <span className="inline-flex flex-shrink-0 rounded-md">
-              <button
-                type="button"
-                className="inline-flex items-center px-3 py-2 text-sm font-medium leading-6 text-white transition duration-150 ease-in-out bg-white bg-opacity-25 border border-transparent rounded md:px-4 md:py-3 md:rounded-full hover:bg-opacity-50 focus:outline-none focus:border-white focus:shadow-outline-white active:bg-white active:bg-opacity-50"
-              >
-                <span className="flex">
-                  <svg
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    className="w-6 h-6"
-                  >
-                    <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
-                  <span className="hidden pl-2 md:inline-block">
-                    Support the show
-                  </span>
-                  <span className="pl-2 text-xs md:hidden">Support</span>
-                </span>
-              </button>
-            </span>
+            <SupportButton />
           </div>
         </div>
       </div>

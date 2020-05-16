@@ -2,14 +2,24 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.section`
-  color: #d17c78;
-  background: #181d46; /* fallback for old browsers */
+  color: ${(props) => props.textColor};
+  background: ${(props) => props.backgroundColor};
+
+  & > div {
+    border-top: 2px dotted ${(props) => props.textColor};
+  }
+
+  button {
+    background: ${(props) => props.textColor};
+  }
 `;
 
 const MailCta = ({ data }) => {
   const apiUrl = process.env.API_HOST;
   const [email, setEmail] = useState('');
   const [podcast_id] = useState(data.id);
+  const [headerTextColor] = useState(data.theme.colors.headerText);
+  const [headerBackgroundColor] = useState(data.theme.colors.headerBackground);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,13 +38,12 @@ const MailCta = ({ data }) => {
   };
 
   return (
-    <Container className="flex justify-center">
-      <div
-        className="max-w-screen-xl pt-6 pb-6 mt-6 sm:px-20 lg:flex lg:justify-center lg:items-center"
-        style={{
-          borderTop: '1px dashed #D17C78',
-        }}
-      >
+    <Container
+      className="flex justify-center"
+      textColor={headerTextColor}
+      backgroundColor={headerBackgroundColor}
+    >
+      <div className="max-w-screen-xl pt-6 pb-6 mt-6 sm:px-20 lg:flex lg:justify-center lg:items-center">
         <div className="text-center">
           <p className="text-lg font-bold leading-9 tracking-tight sm:leading-10">
             Never miss our updates
@@ -67,7 +76,6 @@ const MailCta = ({ data }) => {
               <button
                 type="submit"
                 className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium leading-6 text-white transition duration-150 ease-in-out border border-transparent rounded-md hover:bg-blue-900 focus:outline-none focus:bg-blue-900"
-                style={{ background: '#D17C78' }}
               >
                 Subscribe Now
               </button>

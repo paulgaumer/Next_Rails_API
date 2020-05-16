@@ -34,6 +34,8 @@ const PodcastInfo = ({ podcastData }) => {
     const updatedTheme = {
       colors: {
         primary: primaryColor,
+        headerText: headerTextColor,
+        headerBackground: headerBackgroundColor,
       },
     };
     const updatedPodcast = {
