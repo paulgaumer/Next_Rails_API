@@ -121,7 +121,7 @@ const NewHeader = ({ data, pageType }) => {
               <span className="flex justify-center flex-shrink-0 rounded-md lg:inline-flex">
                 <button
                   type="button"
-                  className={`inline-flex items-center px-4 py-3 text-sm font-medium leading-6 transition duration-150 ease-in-out rounded-full md:px-6 md:py-4 lg:px-4 lg:py-3 focus:outline-none focus:border-red-500 focus:shadow-outline-red`}
+                  className={`inline-flex items-center px-4 py-3 text-sm font-medium leading-6 transition duration-150 ease-in-out rounded-full md:px-6 md:py-4 lg:px-4 lg:py-3 focus:outline-none focus:border-red-500 transform hover:scale-105 focus:shadow-outline-red`}
                   onClick={handlePlayClick}
                 >
                   <svg
@@ -156,12 +156,12 @@ const NewHeader = ({ data, pageType }) => {
                   </svg>
                   {isEp && (
                     <span className="pl-2 text-sm sm:text-lg lg:text-base">
-                      PLAY NOW
+                      PLAY THE EPISODE
                     </span>
                   )}
                   {!isEp && (
                     <span className="pl-2 text-sm sm:text-lg lg:text-base">
-                      PLAY LATEST
+                      PLAY NOW
                     </span>
                   )}
                 </button>
@@ -170,7 +170,9 @@ const NewHeader = ({ data, pageType }) => {
                 {isEp && (
                   <Link href="/">
                     <a>
-                      <p className="text-xl">{data.title}</p>
+                      <p className="text-xl hover:underline">
+                        - by {data.title}
+                      </p>
                     </a>
                   </Link>
                 )}
@@ -195,7 +197,10 @@ const NewHeader = ({ data, pageType }) => {
           data-name="bottom-part"
           className="flex items-center justify-center mt-10 sm:mx-20 lg:mt-12 lg:justify-start"
         >
-          <SubscribeList />
+          <SubscribeList
+            directoriesList={data.directories}
+            rss={data.feed_url}
+          />
           <div className="pl-10 lg:block">
             <SupportButton />
           </div>

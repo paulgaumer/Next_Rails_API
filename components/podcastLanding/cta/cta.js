@@ -6,7 +6,8 @@ const Container = styled.section`
   background: ${(props) => props.backgroundColor};
 
   & > div {
-    border-top: 2px dotted ${(props) => props.textColor};
+    border-top: ${(props) =>
+      props.border ? `2px dotted ${props.textColor}` : ''};
   }
 
   button {
@@ -14,7 +15,7 @@ const Container = styled.section`
   }
 `;
 
-const MailCta = ({ data }) => {
+const MailCta = ({ data, border }) => {
   const apiUrl = process.env.API_HOST;
   const [email, setEmail] = useState('');
   const [podcast_id] = useState(data.id);
@@ -42,8 +43,13 @@ const MailCta = ({ data }) => {
       className="flex justify-center"
       textColor={headerTextColor}
       backgroundColor={headerBackgroundColor}
+      border={border}
     >
-      <div className="max-w-screen-xl pt-6 pb-6 mt-6 sm:px-20 lg:flex lg:justify-center lg:items-center">
+      <div
+        className={`max-w-screen-xl pb-6 mt-6 sm:px-20 lg:flex lg:justify-center lg:items-center ${
+          border ? 'pt-6' : ''
+        }`}
+      >
         <div className="text-center">
           <p className="text-lg font-bold leading-9 tracking-tight sm:leading-10">
             Never miss our updates
@@ -75,9 +81,9 @@ const MailCta = ({ data }) => {
             <div className="hidden mt-3 rounded-md shadow sm:block sm:mt-0 sm:ml-3 sm:flex-shrink-0">
               <button
                 type="submit"
-                className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium leading-6 text-white transition duration-150 ease-in-out border border-transparent rounded-md hover:bg-blue-900 focus:outline-none focus:bg-blue-900"
+                className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium leading-6 text-white transition duration-150 ease-in-out border border-transparent rounded-md focus:outline-none"
               >
-                Subscribe Now
+                <span className="transform hover:scale-105">Subscribe Now</span>
               </button>
             </div>
           </form>

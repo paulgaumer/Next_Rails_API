@@ -53,6 +53,12 @@ const Footer = () => {
           </a>
         </div>
         <div className="flex items-center mt-8 md:mt-0 md:order-1">
+          <p className="text-base leading-6 text-center text-gray-400">
+            Proudly powered by{' '}
+            <a href="https://podwii.com" target="_blank" className="underline">
+              Podwii
+            </a>
+          </p>
           <svg
             fill="currentColor"
             strokeLinecap="round"
@@ -60,16 +66,10 @@ const Footer = () => {
             strokeWidth="2"
             stroke="currentColor"
             viewBox="0 0 24 24"
-            className="w-4 h-4 mr-1 text-red-300"
+            className="w-4 h-4 ml-1 text-red-300"
           >
             <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
           </svg>
-          <p className="text-base leading-6 text-center text-gray-400">
-            Proudly powered by{' '}
-            <a href="https://podwii.com" target="_blank" className="underline">
-              Podwii
-            </a>
-          </p>
         </div>
       </div>
     </div>

@@ -24,9 +24,11 @@ const PodcastInfo = ({ podcastData }) => {
   };
   const handleHeaderTextColorChange = (color) => {
     setHeaderTextColor(color.hex);
+    setSelectedColorTheme('');
   };
   const handleHeaderBackgroundColorChange = (color) => {
     setHeaderBackgroundColor(color.hex);
+    setSelectedColorTheme('');
   };
 
   const handleSubmit = async (e) => {

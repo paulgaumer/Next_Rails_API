@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ApplePodcastIcon from '../../../icons/directories/applePodcastIcon';
 import GooglePodcastIcon from '../../../icons/directories/googlePodcastIcon';
 import SpotifyIcon from '../../../icons/directories/spotifyIcon';
@@ -9,7 +9,10 @@ const ListContainer = styled.div`
   background-color: rgba(255, 255, 255, 0.25);
 `;
 
-const SubscribeList = () => {
+const SubscribeList = ({ directoriesList, rss }) => {
+  const [directories] = useState(
+    directoriesList === null ? {} : directoriesList
+  );
   const width = 'w-8';
   const height = 'w-8';
 
@@ -19,27 +22,53 @@ const SubscribeList = () => {
       <ListContainer className="hidden px-8 rounded shadow-inner sm:inline-block sm:px-4 md:px-2">
         <p className="pt-2 text-center text-white md:hidden">Listen on</p>
         <div className="py-6 space-y-6 text-gray-100 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-8 sm:grid-cols-3 md:py-4 md:flex md:justify-around">
-          <div className="flex items-center md:px-4">
-            <ApplePodcastIcon width={width} height={height} />
-            <div className="pl-2 text-xs leading-tight ">
-              <p className="">Apple</p>
-              <p>Podcasts</p>
+          {directories['apple_podcasts'] && (
+            <div className="transform md:px-4 hover:scale-105">
+              <a
+                href={directories['apple_podcasts']}
+                target="_blank"
+                className="flex items-center"
+              >
+                <ApplePodcastIcon width={width} height={height} />
+                <div className="pl-2 text-xs leading-tight ">
+                  <p className="">Apple</p>
+                  <p>Podcasts</p>
+                </div>
+              </a>
             </div>
-          </div>
-          <div className="flex items-center md:px-4">
-            <GooglePodcastIcon width={width} height={height} />
-            <div className="pl-2 text-xs leading-tight">
-              <p>Google</p>
-              <p>Podcasts</p>
+          )}
+          {directories['google_podcasts'] && (
+            <div className="transform md:px-4 hover:scale-105">
+              <a
+                href={directories['google_podcasts']}
+                target="_blank"
+                className="flex items-center"
+              >
+                <GooglePodcastIcon width={width} height={height} />
+                <div className="pl-2 text-xs leading-tight">
+                  <p>Google</p>
+                  <p>Podcasts</p>
+                </div>
+              </a>
             </div>
-          </div>
-          <div className="flex items-center md:px-4">
-            <SpotifyIcon width={width} height={height} />
-            <span className="pl-2 text-xs leading-tight">Spotify</span>
-          </div>
-          <div className="flex items-center md:px-4">
-            <RssIcon width={width} height={height} />
-            <span className="pl-2 text-xs leading-tight">Rss</span>
+          )}
+          {directories['spotify'] && (
+            <div className="transform md:px-4 hover:scale-105">
+              <a
+                href={directories['spotify']}
+                target="_blank"
+                className="flex items-center"
+              >
+                <SpotifyIcon width={width} height={height} />
+                <span className="pl-2 text-xs leading-tight">Spotify</span>
+              </a>
+            </div>
+          )}
+          <div className="transform md:px-4 hover:scale-105">
+            <a href={rss} target="_blank" className="flex items-center">
+              <RssIcon width={width} height={height} />
+              <span className="pl-2 text-xs leading-tight">Rss</span>
+            </a>
           </div>
         </div>
       </ListContainer>

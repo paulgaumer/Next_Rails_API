@@ -28,7 +28,7 @@ const PodcastLanding = ({ data }) => {
           cover={data.cover_image}
         />
         <Header data={data} pageType={'landing'} />
-        <Cta data={data} />
+        <Cta data={data} border={true} />
         <AboutPodcast data={data} />
         <EpisodesList episodes={data.episodes} cover={data.coverUrl} />
 
@@ -37,7 +37,7 @@ const PodcastLanding = ({ data }) => {
           <InstagramSection podcastId={data.id} />
         )}
 
-        <Cta data={data} />
+        <Cta data={data} border={false} />
       </Layout>
     </div>
   );
