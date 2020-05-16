@@ -1,8 +1,8 @@
 import React from 'react';
-import ApplePodcastIcon from './applePodcastIcon';
-import GooglePodcastIcon from './googlePodcastIcon';
-import SpotifyIcon from './spotifyIcon';
-import RssIcon from './rssIcon';
+import ApplePodcastIcon from '../../../icons/directories/applePodcastIcon';
+import GooglePodcastIcon from '../../../icons/directories/googlePodcastIcon';
+import SpotifyIcon from '../../../icons/directories/spotifyIcon';
+import RssIcon from '../../../icons/directories/rssIcon';
 import styled from 'styled-components';
 
 const ListContainer = styled.div`

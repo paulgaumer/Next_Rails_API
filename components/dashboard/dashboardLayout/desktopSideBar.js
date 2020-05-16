@@ -30,8 +30,8 @@ const DesktopSideBar = ({ podcastSubdomain, currentDomain }) => {
           <div className="flex items-center flex-shrink-0 px-4">
             <img
               className="w-auto h-8"
-              src="https://tailwindui.com/img/logos/workflow-logo-on-brand.svg"
-              alt="Workflow"
+              src="/podwii-logo-white.png"
+              alt="Podwii"
             />
           </div>
           {/* Sidebar component, swap this element with another sidebar if you like */}
