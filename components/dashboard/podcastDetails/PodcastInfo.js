@@ -17,6 +17,7 @@ const PodcastInfo = ({ podcastData }) => {
   const [headerBackgroundColor, setHeaderBackgroundColor] = useState(
     theme.colors.headerBackground ? theme.colors.headerBackground : '#000000'
   );
+  const [selectedColorTheme, setSelectedColorTheme] = useState('theme1');
 
   const handlePrimaryColorChange = (color) => {
     setPrimaryColor(color.hex);
@@ -225,6 +226,124 @@ const PodcastInfo = ({ podcastData }) => {
                   color={headerBackgroundColor}
                   handleColorChange={handleHeaderBackgroundColorChange}
                 />
+              </div>
+            </div>
+            <div className="mt-6 sm:mt-5 sm:grid sm:grid-cols-5 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+              <div className="flex items-center h-full">
+                <label
+                  htmlFor="instagram"
+                  className="block text-sm font-medium leading-5 text-gray-700 sm:mt-px"
+                >
+                  Or pick an existing them
+                </label>
+              </div>
+              <div className="flex items-center">
+                <input
+                  id="push_everything"
+                  name="theme1"
+                  type="radio"
+                  className="w-4 h-4 text-indigo-600 transition duration-150 ease-in-out form-radio"
+                  checked={selectedColorTheme === 'theme1'}
+                  onChange={() => {
+                    setHeaderBackgroundColor('#181D46');
+                    setHeaderTextColor('#D27D78');
+                    setSelectedColorTheme('theme1');
+                  }}
+                />
+                <div className="flex ml-3">
+                  <div
+                    className="flex items-center justify-center w-32 h-16 rounded-md"
+                    style={{ background: '#181D46' }}
+                  >
+                    <p
+                      className="text-2xl font-bold"
+                      style={{ color: '#D27D78 ' }}
+                    >
+                      Hello
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center">
+                <input
+                  id="push_everything"
+                  name="theme2"
+                  type="radio"
+                  className="w-4 h-4 text-indigo-600 transition duration-150 ease-in-out form-radio"
+                  checked={selectedColorTheme === 'theme2'}
+                  onChange={() => {
+                    setHeaderBackgroundColor('#0B516B');
+                    setHeaderTextColor('#FFBA01');
+                    setSelectedColorTheme('theme2');
+                  }}
+                />
+                <div className="flex ml-3">
+                  <div
+                    className="flex items-center justify-center w-32 h-16 rounded-md"
+                    style={{ background: '#0B516B' }}
+                  >
+                    <p
+                      className="text-2xl font-bold"
+                      style={{ color: '#FFBA01 ' }}
+                    >
+                      Hello
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center">
+                <input
+                  id="push_everything"
+                  name="theme3"
+                  type="radio"
+                  className="w-4 h-4 text-indigo-600 transition duration-150 ease-in-out form-radio"
+                  checked={selectedColorTheme === 'theme3'}
+                  onChange={() => {
+                    setHeaderBackgroundColor('#266692');
+                    setHeaderTextColor('#FD674A');
+                    setSelectedColorTheme('theme3');
+                  }}
+                />
+                <div className="flex ml-3">
+                  <div
+                    className="flex items-center justify-center w-32 h-16 rounded-md"
+                    style={{ background: '#266692' }}
+                  >
+                    <p
+                      className="text-2xl font-bold"
+                      style={{ color: '#FD674A ' }}
+                    >
+                      Hello
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center">
+                <input
+                  id="push_everything"
+                  name="theme4"
+                  type="radio"
+                  className="w-4 h-4 text-indigo-600 transition duration-150 ease-in-out form-radio"
+                  checked={selectedColorTheme === 'theme4'}
+                  onChange={() => {
+                    setHeaderBackgroundColor('#019BC6');
+                    setHeaderTextColor('#FFD15F');
+                    setSelectedColorTheme('theme4');
+                  }}
+                />
+                <div className="flex ml-3">
+                  <div
+                    className="flex items-center justify-center w-32 h-16 rounded-md"
+                    style={{ background: '#019BC6' }}
+                  >
+                    <p
+                      className="text-2xl font-bold"
+                      style={{ color: '#FFD15F' }}
+                    >
+                      Hello
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
