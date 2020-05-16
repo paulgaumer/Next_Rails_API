@@ -42,7 +42,7 @@ const DashboardShell = ({ podcastData, currentDomain, children }) => {
             </h1>
           </div>
 
-          <div className="px-4 mx-auto max-w-7xl sm:px-6 md:px-8">
+          <div className="px-4 pb-10 mx-auto max-w-7xl sm:px-6 md:px-8">
             {children}
           </div>
         </main>

@@ -30,7 +30,7 @@ const Index = ({ podcastData }) => {
   const popover = {
     position: 'absolute',
     zIndex: '2',
-    top: '50px',
+    bottom: '50px',
   };
   const cover = {
     position: 'fixed',

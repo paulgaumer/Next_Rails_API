@@ -17,7 +17,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         theme: action.payload,
-        isThemed: action.payload !== null,
+        isThemed: action.payload.colors !== null,
       };
     default:
       throw new Error();

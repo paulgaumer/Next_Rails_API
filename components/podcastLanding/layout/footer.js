@@ -3,58 +3,8 @@ import React from 'react';
 const Footer = () => {
   return (
     <div className="bg-white">
-      <div className="max-w-screen-xl px-4 py-12 mx-auto overflow-hidden sm:px-6 lg:px-8">
-        <nav className="flex flex-wrap justify-center -mx-5 -my-2">
-          <div className="px-5 py-2">
-            <a
-              href="/"
-              className="text-base leading-6 text-gray-500 hover:text-gray-900"
-            >
-              About
-            </a>
-          </div>
-          <div className="px-5 py-2">
-            <a
-              href="/"
-              className="text-base leading-6 text-gray-500 hover:text-gray-900"
-            >
-              Blog
-            </a>
-          </div>
-          <div className="px-5 py-2">
-            <a
-              href="/"
-              className="text-base leading-6 text-gray-500 hover:text-gray-900"
-            >
-              Jobs
-            </a>
-          </div>
-          <div className="px-5 py-2">
-            <a
-              href="/"
-              className="text-base leading-6 text-gray-500 hover:text-gray-900"
-            >
-              Press
-            </a>
-          </div>
-          <div className="px-5 py-2">
-            <a
-              href="/"
-              className="text-base leading-6 text-gray-500 hover:text-gray-900"
-            >
-              Accessibility
-            </a>
-          </div>
-          <div className="px-5 py-2">
-            <a
-              href="/"
-              className="text-base leading-6 text-gray-500 hover:text-gray-900"
-            >
-              Partners
-            </a>
-          </div>
-        </nav>
-        <div className="flex justify-center mt-8">
+      <div className="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
+        <div className="flex justify-center md:order-2">
           <a href="/" className="text-gray-400 hover:text-gray-500">
             <span className="sr-only">Facebook</span>
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -102,9 +52,23 @@ const Footer = () => {
             </svg>
           </a>
         </div>
-        <div className="mt-8">
+        <div className="flex items-center mt-8 md:mt-0 md:order-1">
+          <svg
+            fill="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            className="w-4 h-4 mr-1 text-red-300"
+          >
+            <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+          </svg>
           <p className="text-base leading-6 text-center text-gray-400">
-            &copy; 2020 Workflow, Inc. All rights reserved.
+            Proudly powered by{' '}
+            <a href="https://podwii.com" target="_blank" className="underline">
+              Podwii
+            </a>
           </p>
         </div>
       </div>
