@@ -176,7 +176,12 @@ const NewHeader = ({ data, pageType }) => {
                     </a>
                   </Link>
                 )}
-                {!isEp && <p className="text-lg">{data.episodes[0].title}</p>}
+                {!isEp && (
+                  <>
+                    <p className="text-xs font-thin">LATEST</p>
+                    <p className="text-lg">{data.episodes[0].title}</p>
+                  </>
+                )}
               </div>
             </div>
           </div>

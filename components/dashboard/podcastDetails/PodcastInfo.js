@@ -24,11 +24,11 @@ const PodcastInfo = ({ podcastData }) => {
   };
   const handleHeaderTextColorChange = (color) => {
     setHeaderTextColor(color.hex);
-    setSelectedColorTheme('');
+    setSelectedColorTheme('custom');
   };
   const handleHeaderBackgroundColorChange = (color) => {
     setHeaderBackgroundColor(color.hex);
-    setSelectedColorTheme('');
+    setSelectedColorTheme('custom');
   };
 
   const handleSubmit = async (e) => {
@@ -241,8 +241,7 @@ const PodcastInfo = ({ podcastData }) => {
               </div>
               <div className="flex items-center">
                 <input
-                  id="push_everything"
-                  name="theme1"
+                  id="theme1"
                   type="radio"
                   className="w-4 h-4 text-indigo-600 transition duration-150 ease-in-out form-radio"
                   checked={selectedColorTheme === 'theme1'}
@@ -252,24 +251,23 @@ const PodcastInfo = ({ podcastData }) => {
                     setSelectedColorTheme('theme1');
                   }}
                 />
-                <div className="flex ml-3">
-                  <div
-                    className="flex items-center justify-center w-32 h-16 rounded-md"
-                    style={{ background: '#181D46' }}
+
+                <label
+                  for="theme1"
+                  className="flex items-center justify-center w-32 h-16 ml-3 rounded-md"
+                  style={{ background: '#181D46' }}
+                >
+                  <p
+                    className="text-2xl font-bold"
+                    style={{ color: '#D27D78 ' }}
                   >
-                    <p
-                      className="text-2xl font-bold"
-                      style={{ color: '#D27D78 ' }}
-                    >
-                      Hello
-                    </p>
-                  </div>
-                </div>
+                    Hello
+                  </p>
+                </label>
               </div>
               <div className="flex items-center">
                 <input
-                  id="push_everything"
-                  name="theme2"
+                  id="theme2"
                   type="radio"
                   className="w-4 h-4 text-indigo-600 transition duration-150 ease-in-out form-radio"
                   checked={selectedColorTheme === 'theme2'}
@@ -279,24 +277,23 @@ const PodcastInfo = ({ podcastData }) => {
                     setSelectedColorTheme('theme2');
                   }}
                 />
-                <div className="flex ml-3">
-                  <div
-                    className="flex items-center justify-center w-32 h-16 rounded-md"
-                    style={{ background: '#0B516B' }}
+
+                <label
+                  for="theme2"
+                  className="flex items-center justify-center w-32 h-16 ml-3 rounded-md"
+                  style={{ background: '#0B516B' }}
+                >
+                  <p
+                    className="text-2xl font-bold"
+                    style={{ color: '#FFBA01 ' }}
                   >
-                    <p
-                      className="text-2xl font-bold"
-                      style={{ color: '#FFBA01 ' }}
-                    >
-                      Hello
-                    </p>
-                  </div>
-                </div>
+                    Hello
+                  </p>
+                </label>
               </div>
               <div className="flex items-center">
                 <input
-                  id="push_everything"
-                  name="theme3"
+                  id="theme3"
                   type="radio"
                   className="w-4 h-4 text-indigo-600 transition duration-150 ease-in-out form-radio"
                   checked={selectedColorTheme === 'theme3'}
@@ -306,24 +303,23 @@ const PodcastInfo = ({ podcastData }) => {
                     setSelectedColorTheme('theme3');
                   }}
                 />
-                <div className="flex ml-3">
-                  <div
-                    className="flex items-center justify-center w-32 h-16 rounded-md"
-                    style={{ background: '#266692' }}
+
+                <label
+                  for="theme3"
+                  className="flex items-center justify-center w-32 h-16 ml-3 rounded-md"
+                  style={{ background: '#266692' }}
+                >
+                  <p
+                    className="text-2xl font-bold"
+                    style={{ color: '#FD674A ' }}
                   >
-                    <p
-                      className="text-2xl font-bold"
-                      style={{ color: '#FD674A ' }}
-                    >
-                      Hello
-                    </p>
-                  </div>
-                </div>
+                    Hello
+                  </p>
+                </label>
               </div>
               <div className="flex items-center">
                 <input
-                  id="push_everything"
-                  name="theme4"
+                  id="theme4"
                   type="radio"
                   className="w-4 h-4 text-indigo-600 transition duration-150 ease-in-out form-radio"
                   checked={selectedColorTheme === 'theme4'}
@@ -333,19 +329,19 @@ const PodcastInfo = ({ podcastData }) => {
                     setSelectedColorTheme('theme4');
                   }}
                 />
-                <div className="flex ml-3">
-                  <div
-                    className="flex items-center justify-center w-32 h-16 rounded-md"
-                    style={{ background: '#019BC6' }}
+
+                <label
+                  for="theme4"
+                  className="flex items-center justify-center w-32 h-16 ml-3 rounded-md"
+                  style={{ background: '#019BC6' }}
+                >
+                  <p
+                    className="text-2xl font-bold"
+                    style={{ color: '#FFD15F' }}
                   >
-                    <p
-                      className="text-2xl font-bold"
-                      style={{ color: '#FFD15F' }}
-                    >
-                      Hello
-                    </p>
-                  </div>
-                </div>
+                    Hello
+                  </p>
+                </label>
               </div>
             </div>
           </div>

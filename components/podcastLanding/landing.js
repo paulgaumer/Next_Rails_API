@@ -29,8 +29,12 @@ const PodcastLanding = ({ data }) => {
         />
         <Header data={data} pageType={'landing'} />
         <Cta data={data} border={true} />
-        <AboutPodcast data={data} />
-        <EpisodesList episodes={data.episodes} cover={data.coverUrl} />
+        <div className="bg-gray-50">
+          <AboutPodcast data={data} />
+        </div>
+        <div className="bg-gray-50">
+          <EpisodesList episodes={data.episodes} cover={data.coverUrl} />
+        </div>
 
         {/* Display of Instagram is setup */}
         {data.instagram_access_token && (
