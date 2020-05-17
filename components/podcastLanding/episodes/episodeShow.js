@@ -36,7 +36,7 @@ const EpisodeShow = ({ episode }) => {
             dangerouslySetInnerHTML={{ __html: episode.show_notes }}
           />
         </div>
-        {episode.transcription && (
+        {episode.transcription && episode.transcription !== 'In Progress' && (
           <div className="mb-14">
             <Transcription episode={episode} />
           </div>

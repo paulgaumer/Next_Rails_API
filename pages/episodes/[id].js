@@ -23,7 +23,7 @@ const EpisodePage = ({ podData, theme }) => {
         path={`/episodes/${episode.guid}`}
       />
       <Header data={podData} pageType={'ep'} />
-      <Cta data={podData} />
+      <Cta data={podData} border={true} />
       <EpisodeShow episode={episode} />
     </Layout>
   );
