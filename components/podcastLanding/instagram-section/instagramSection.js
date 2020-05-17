@@ -51,7 +51,7 @@ const InstagramSection = ({ podcastId }) => {
                     <img
                       src={pic.media_url}
                       alt={pic.id}
-                      className="object-cover object-center w-full h-64 rounded-sm"
+                      className="object-cover object-center w-full rounded-sm md:h-64"
                     />
                   )}
                   {pic.media_type === 'VIDEO' && (

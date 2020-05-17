@@ -12,7 +12,7 @@ const InstagramAuth = ({ data }) => {
     <div>
       <h2 className="text-lg">Instagram Connection</h2>
       <p className="pt-2">
-        Token: {data === 200 ? 'Success' : 'Something went wrong'}
+        {data === 200 ? 'Success' : 'Something went wrong'}
       </p>
     </div>
   );

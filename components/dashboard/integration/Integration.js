@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { editPodcast, updateEpisode } from '../apiCalls/handleFetch';
 
 const IntegrationSection = ({ podcastData }) => {
   const { podcast } = podcastData;
   const instaClientId = process.env.INSTAGRAM_CLIENT_ID;
   const instaOauthRedirect = process.env.INSTAGRAM_OAUTH_REDIRECT;
-  const isInstagramConnected = podcast.instagram_access_token !== null;
+  const [isInstagramConnected, setIsInstagramConnected] = useState(
+    podcast.instagram_access_token !== null
+  );
+
+  const handleInstagramDisconnect = async (e) => {
+    e.preventDefault();
+    const updatedPodcast = {
+      ...podcast,
+      instagram_access_token: null,
+    };
+    const res = await editPodcast(updatedPodcast);
+    console.log(res);
+    res === 200 && setIsInstagramConnected(false);
+  };
+
   return (
     <div>
       <form>
@@ -27,7 +42,7 @@ const IntegrationSection = ({ podcastData }) => {
                 Instagram
               </label>
               <div className="mt-1 sm:mt-0 sm:col-span-2">
-                <div className="flex max-w-lg rounded-md sm:mt-2">
+                <div className="flex items-center max-w-lg rounded-md sm:mt-2">
                   {!isInstagramConnected && (
                     <span className="inline-flex rounded-md shadow-sm">
                       <button
@@ -44,19 +59,27 @@ const IntegrationSection = ({ podcastData }) => {
                     </span>
                   )}
                   {isInstagramConnected && (
-                    <div className="flex items-center justify-center px-2 text-green-500 border border-green-500 rounded opacity-75 sm:mt-px">
-                      <svg
-                        fill="none"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        className="w-4 h-4 mr-1"
+                    <div className="flex items-end">
+                      <div className="flex items-center justify-center px-2 text-green-500 border border-green-500 rounded opacity-75 sm:mt-px">
+                        <svg
+                          fill="none"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          className="w-4 h-4 mr-1"
+                        >
+                          <path d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <p className="text-sm leading-5 ">Connected</p>
+                      </div>
+                      <button
+                        className="ml-4 text-xs text-gray-500 underline"
+                        onClick={handleInstagramDisconnect}
                       >
-                        <path d="M5 13l4 4L19 7"></path>
-                      </svg>
-                      <p className="text-sm leading-5 ">Connected</p>
+                        Disconnect
+                      </button>
                     </div>
                   )}
                 </div>
