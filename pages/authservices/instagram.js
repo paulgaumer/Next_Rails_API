@@ -5,7 +5,7 @@ import nextCookie from 'next-cookies';
 
 const InstagramAuth = ({ data }) => {
   useEffect(() => {
-    data === 200 ? Router.push('/dashboard/podcast') : null;
+    data === 200 ? Router.push('/dashboard/integration') : null;
   }, []);
 
   return (

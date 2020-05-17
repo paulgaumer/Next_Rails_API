@@ -2,6 +2,8 @@ import React from 'react';
 
 const IntegrationSection = ({ podcastData }) => {
   const { podcast } = podcastData;
+  const instaClientId = process.env.INSTAGRAM_CLIENT_ID;
+  const instaOauthRedirect = process.env.INSTAGRAM_OAUTH_REDIRECT;
   const isInstagramConnected = podcast.instagram_access_token !== null;
   return (
     <div>
@@ -25,7 +27,7 @@ const IntegrationSection = ({ podcastData }) => {
                 Instagram
               </label>
               <div className="mt-1 sm:mt-0 sm:col-span-2">
-                <div className="flex max-w-lg rounded-md">
+                <div className="flex max-w-lg rounded-md sm:mt-2">
                   {!isInstagramConnected && (
                     <span className="inline-flex rounded-md shadow-sm">
                       <button
@@ -33,7 +35,7 @@ const IntegrationSection = ({ podcastData }) => {
                         className="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-700 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50"
                       >
                         <a
-                          href={`https://api.instagram.com/oauth/authorize?client_id=${process.env.INSTAGRAM_CLIENT_ID}&redirect_uri=${process.env.INSTAGRAM_OAUTH_REDIRECT}&scope=user_profile,user_media&response_type=code`}
+                          href={`https://api.instagram.com/oauth/authorize?client_id=${instaClientId}&redirect_uri=${instaOauthRedirect}&scope=user_profile,user_media&response_type=code`}
                           target="_blank"
                         >
                           Connect Now
@@ -42,7 +44,7 @@ const IntegrationSection = ({ podcastData }) => {
                     </span>
                   )}
                   {isInstagramConnected && (
-                    <div className="flex items-center justify-center px-2 text-green-500 border border-green-500 rounded opacity-75 sm:mt-px sm:mt-2">
+                    <div className="flex items-center justify-center px-2 text-green-500 border border-green-500 rounded opacity-75 sm:mt-px">
                       <svg
                         fill="none"
                         strokeLinecap="round"

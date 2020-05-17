@@ -42,7 +42,7 @@ const InstagramSection = ({ podcastId }) => {
             <Spinner />
           </div>
         )}
-        <div className="grid grid-cols-2 row-gap-2 col-gap-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 row-gap-2 col-gap-2 md:grid-cols-4">
           {instagram.length > 0 &&
             instagram.map((pic) => {
               return (
@@ -58,7 +58,7 @@ const InstagramSection = ({ podcastId }) => {
                     <video
                       src={pic.media_url}
                       controls
-                      className="object-cover object-center w-full h-64 rounded-sm"
+                      className="object-cover object-center w-full rounded-sm md:h-64"
                     ></video>
                   )}
                 </a>
