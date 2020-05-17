@@ -108,12 +108,12 @@ const NewHeader = ({ data, pageType }) => {
         >
           <div className="col-span-7 mt-12 lg:mt-0">
             {isEp && (
-              <h1 className="pb-8 text-3xl leading-tight text-center sm:text-4xl md:text-4xl lg:pb-12 xl:text-5xl font-titleLanding lg:text-left">
+              <h1 className="pb-8 text-3xl leading-none text-center sm:text-4xl md:text-4xl lg:pb-12 xl:text-5xl font-titleLanding lg:text-left">
                 {data.episode.title}
               </h1>
             )}
             {!isEp && (
-              <h1 className="pb-8 text-4xl font-bold leading-tight text-center sm:text-5xl md:text-6xl lg:pb-12 xl:text-7xl font-titleLanding lg:text-left">
+              <h1 className="pb-8 text-4xl font-bold leading-none text-center sm:text-5xl md:text-6xl lg:pb-12 xl:text-7xl font-titleLanding lg:text-left">
                 {data.title}
               </h1>
             )}
