@@ -106,6 +106,28 @@ const DesktopSideBar = ({ podcastSubdomain, currentDomain }) => {
                 CRM
               </a>
             </Link>
+            <Link href="/dashboard/integration">
+              <a
+                className={`${
+                  currentPath === '/dashboard/integration'
+                    ? 'text-white bg-indigo-900'
+                    : 'mt-1 text-indigo-300 hover:text-white hover:bg-indigo-700 focus:text-white'
+                } group flex items-center px-2 py-2 text-sm leading-5 font-medium rounded-md focus:outline-none focus:bg-indigo-700 transition ease-in-out duration-150`}
+              >
+                <svg
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  className="w-6 h-6 mr-3 text-indigo-400 transition duration-150 ease-in-out group-hover:text-indigo-300 group-focus:text-indigo-300"
+                >
+                  <path d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"></path>
+                </svg>
+                Integration
+              </a>
+            </Link>
 
             <div className="mt-2 border-t border-indigo-700">
               <a
@@ -124,7 +146,7 @@ const DesktopSideBar = ({ podcastSubdomain, currentDomain }) => {
                 >
                   <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                 </svg>
-                Visit your page
+                Visit your website
               </a>
             </div>
           </nav>

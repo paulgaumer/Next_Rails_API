@@ -9,10 +9,10 @@ const CrmSection = ({ crmItems }) => {
 
   return (
     <div>
-      <div>
+      <div className="pt-8 mt-8 sm:mt-5 sm:pt-10">
         <div className="flex items-center">
           <h3 className="pr-4 text-lg font-medium leading-6 text-gray-900">
-            Download mailing list
+            Download your mailing list
           </h3>
           <CSVLink data={csvData} filename={'podwii-crm-contacts.csv'}>
             <span className="inline-flex rounded-md shadow-sm">

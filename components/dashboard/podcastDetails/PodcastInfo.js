@@ -8,7 +8,7 @@ const PodcastInfo = ({ podcastData }) => {
   const { theme } = podcast;
   const [podcastDetails, setPodcastDetails] = useState(podcast);
 
-  const isInstagramConnected = podcast.instagram_access_token !== null;
+  // const isInstagramConnected = podcast.instagram_access_token !== null;
 
   const [primaryColor, setPrimaryColor] = useState(theme.colors.primary);
   const [headerTextColor, setHeaderTextColor] = useState(
@@ -64,7 +64,7 @@ const PodcastInfo = ({ podcastData }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <div>
+        <div className="pt-8 mt-8 sm:mt-5 sm:pt-10">
           <div>
             <h3 className="text-lg font-medium leading-6 text-gray-900">
               Podcast Basic Info
@@ -102,15 +102,15 @@ const PodcastInfo = ({ podcastData }) => {
                 Url for your podcast page
               </label>
               <div className="mt-1 sm:mt-0 sm:col-span-2">
-                <div className="flex max-w-lg rounded-md shadow-sm">
+                <div className="flex max-w-lg rounded-md">
                   <input
                     id="subdomain"
                     defaultValue={podcastDetails.subdomain}
                     onChange={(e) => handleChange(e.target)}
-                    className="flex-1 block w-full transition duration-150 ease-in-out rounded-none form-input rounded-l-md sm:text-sm sm:leading-5"
+                    className="block transition duration-150 ease-in-out rounded-none shadow-sm form-input rounded-l-md sm:text-sm sm:leading-5"
                   />
-                  <span className="inline-flex items-center px-3 text-gray-500 border border-l-0 border-gray-300 rounded-r-md bg-gray-50 sm:text-sm">
-                    .podwii.xyz
+                  <span className="inline-flex items-center px-3 text-gray-500 border border-l-0 border-gray-300 shadow-sm rounded-r-md bg-gray-50 sm:text-sm">
+                    .podwii.com
                   </span>
                 </div>
               </div>
@@ -156,7 +156,7 @@ const PodcastInfo = ({ podcastData }) => {
                 </div>
               </div>
             </div>
-            <div className="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+            {/* <div className="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
               <label
                 htmlFor="instagram"
                 className="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"
@@ -187,7 +187,7 @@ const PodcastInfo = ({ podcastData }) => {
                   )}
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
               <label
                 htmlFor="instagram"
