@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { editPodcast, updateEpisode } from '../apiCalls/handleFetch';
+import { editPodcast } from '../apiCalls/handleFetch';
 
 const IntegrationSection = ({ podcastData }) => {
   const { podcast } = podcastData;
