@@ -12,11 +12,9 @@ const IntegrationSection = ({ podcastData }) => {
   const handleInstagramDisconnect = async (e) => {
     e.preventDefault();
     const updatedPodcast = {
-      ...podcast,
       instagram_access_token: null,
     };
     const res = await editPodcast(updatedPodcast);
-    console.log(res);
     res === 200 && setIsInstagramConnected(false);
   };
 
