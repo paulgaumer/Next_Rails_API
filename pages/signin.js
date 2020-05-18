@@ -43,7 +43,7 @@ const LogInPage = () => {
         <p className="mt-2 text-sm leading-5 text-center text-gray-600 max-w">
           <Link href="/signup">
             <a className="font-medium text-indigo-600 transition duration-150 ease-in-out hover:text-indigo-500 focus:outline-none focus:underline">
-              Not a member yet? Start your 14-day free trial
+              Not a member yet? Start enhancing your podcast now!
             </a>
           </Link>
         </p>

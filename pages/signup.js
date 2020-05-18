@@ -2,6 +2,7 @@ import { useState } from 'react';
 import fetch from 'isomorphic-unfetch';
 import Cookies from 'js-cookie';
 import Router from 'next/router';
+import Link from 'next/link';
 
 const signup = async ({ email, password, subdomain }) => {
   const apiUrl = process.env.API_HOST;
@@ -28,6 +29,10 @@ const signup = async ({ email, password, subdomain }) => {
 };
 
 const SignUpPage = () => {
+  const [earlyAccessCode, setEarlyAccessCode] = useState('');
+  const [canSignUp, setCanSignUp] = useState(
+    earlyAccessCode === process.env.EARLY_ACCESS_CODE
+  );
   const [user, setUser] = useState({
     email: '',
     password: '',
@@ -36,7 +41,13 @@ const SignUpPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    signup(user);
+    if (canSignUp) {
+      signup(user);
+    } else {
+      alert(
+        'Podwii is still being deployed as a private release. Claim your ealry access code on https://podwii.com'
+      );
+    }
   };
   // const handleChange = (e) => {
   //   const key = e.target.name;
@@ -55,6 +66,13 @@ const SignUpPage = () => {
         <h2 className="mt-6 text-3xl font-extrabold leading-9 text-center text-gray-900">
           Create your Podwii account
         </h2>
+        <p className="mt-2 text-sm leading-5 text-center text-gray-600 max-w">
+          <Link href="/signin">
+            <a className="font-medium text-indigo-600 transition duration-150 ease-in-out hover:text-indigo-500 focus:outline-none focus:underline">
+              Already a member? Let's log in!
+            </a>
+          </Link>
+        </p>
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
@@ -123,28 +141,22 @@ const SignUpPage = () => {
               </div>
             </div>
 
-            <div className="flex items-center justify-between mt-6">
-              <div className="flex items-center">
+            <div className="mt-6">
+              <label
+                htmlFor="early-code"
+                className="block text-sm font-medium leading-5 text-gray-700"
+              >
+                Early Access Code
+              </label>
+              <div className="mt-1 rounded-md shadow-sm">
                 <input
-                  id="remember_me"
-                  type="checkbox"
-                  className="w-4 h-4 text-indigo-600 transition duration-150 ease-in-out form-checkbox"
+                  required
+                  id="early-code"
+                  type="password"
+                  value={earlyAccessCode}
+                  onChange={(e) => setEarlyAccessCode(e.target.value)}
+                  className="block w-full px-3 py-2 placeholder-gray-400 transition duration-150 ease-in-out border border-gray-300 rounded-md appearance-none focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5"
                 />
-                <label
-                  htmlFor="remember_me"
-                  className="block ml-2 text-sm leading-5 text-gray-900"
-                >
-                  Remember me
-                </label>
-              </div>
-
-              <div className="text-sm leading-5">
-                <a
-                  href="/"
-                  className="font-medium text-indigo-600 transition duration-150 ease-in-out hover:text-indigo-500 focus:outline-none focus:underline"
-                >
-                  Forgot your password?
-                </a>
               </div>
             </div>
 
@@ -152,7 +164,9 @@ const SignUpPage = () => {
               <span className="block w-full rounded-md shadow-sm">
                 <button
                   type="submit"
-                  className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+                  className={`flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 ${
+                    !canSignUp ? 'cursor-not-allowed' : ''
+                  }`}
                 >
                   Get started
                 </button>
