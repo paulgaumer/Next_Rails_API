@@ -230,7 +230,7 @@ const Hero = () => {
               </h2>
               <p className="mt-8 text-base text-gray-100 sm:text-xl lg:text-lg xl:text-xl">
                 Your time should be spent on creating high-value content for
-                your podcast. Podwii takes care of the rest.
+                your show. Podwii takes care of the rest.
               </p>
               <div className="mt-10 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
                 <p className="text-base font-medium text-red-100">

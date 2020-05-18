@@ -49,8 +49,14 @@ const LogoCloud = () => {
             />
           </div>
           <div className="flex items-center justify-center col-span-1 px-8 py-8 bg-gray-50">
-            <p className="text-lg text-gray-400 font-titleMarketing">
-              and many others...
+            <p className="text-lg text-gray-400 font-titleMarketing group">
+              And yours?{' '}
+              <a
+                href="mailto:contact@podwii.com?subject=Tell me more about Podwii"
+                className="inline-block text-purple-600 underline transform group-hover:scale-105"
+              >
+                Ask us!
+              </a>
             </p>
           </div>
         </div>
