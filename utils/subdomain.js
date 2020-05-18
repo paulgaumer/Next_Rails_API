@@ -1,6 +1,7 @@
 const getSubdomainFromBrowser = () => {
   return window.location.hostname.split('.')[0];
 };
+
 const getDomainFromBrowser = () => {
   const domain = window.location.hostname;
   const port = window.location.port;
