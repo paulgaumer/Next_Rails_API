@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from './components/layout';
-import SEO from './components/seo';
+import SEO from './components/seoMarketing';
 import Hero from './components/hero';
 import Features from './components/features';
 import LogoCloud from './components/logo-cloud';
@@ -10,7 +10,7 @@ import Footer from './components/footer';
 const MarketingLanding = () => {
   return (
     <Layout>
-      {/* <SEO /> */}
+      <SEO />
       <Hero />
       <Features />
       <LogoCloud />
