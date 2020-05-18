@@ -137,19 +137,18 @@ const Hero = () => {
 
         {/* MOBILE MENU */}
         <div
-          data-todo-colon-className="{'block': open, 'hidden': !open}"
           className={`absolute inset-x-0 top-0 ${
             isOpen ? 'block' : 'hidden'
           } p-2 md:hidden`}
         >
           <div
-            data-todo-x-show="open"
-            data-todo-x-transition-enter="duration-150 ease-out"
-            data-todo-x-transition-enter-start="opacity-0 scale-95"
-            data-todo-x-transition-enter-end="opacity-100 scale-100"
-            data-todo-x-transition-leave="duration-100 ease-in"
-            data-todo-x-transition-leave-start="opacity-100 scale-100"
-            data-todo-x-transition-leave-end="opacity-0 scale-95"
+            // data-todo-x-show="open"
+            // data-todo-x-transition-enter="duration-150 ease-out"
+            // data-todo-x-transition-enter-start="opacity-0 scale-95"
+            // data-todo-x-transition-enter-end="opacity-100 scale-100"
+            // data-todo-x-transition-leave="duration-100 ease-in"
+            // data-todo-x-transition-leave-start="opacity-100 scale-100"
+            // data-todo-x-transition-leave-end="opacity-0 scale-95"
             className="transition origin-top-right transform rounded-lg shadow-md"
           >
             <div className="overflow-hidden bg-white rounded-lg shadow-xs">
@@ -241,7 +240,7 @@ const Hero = () => {
                   onSubmit={handleSubmit}
                   className="mt-3 sm:flex"
                 >
-                  <p class="hidden">
+                  <p className="hidden">
                     <label>
                       Don’t fill this out if you're human:{' '}
                       <input

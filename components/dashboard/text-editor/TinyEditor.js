@@ -7,19 +7,19 @@ const EditorContainer = styled.div`
   }
 `;
 
-const TinyEditor = ({ value, setValue }) => {
+const TinyEditor = ({ value, setValue, height }) => {
   const handleEditorChange = (content, editor) => {
     // console.log('Content was updated:', content);
     setValue(content);
   };
 
   return (
-    <EditorContainer>
+    <EditorContainer className="w-full">
       <Editor
         initialValue={value}
         apiKey="8x3vvwrmu2i8lsnqgmtjyojtxkbnk2tbo618a7ki34gxqtdh"
         init={{
-          height: 500,
+          height: height,
           menubar: false,
           elementpath: false,
           body_class: 'editor-body',

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Router from 'next/router';
+import TinyEditor from '../text-editor/TinyEditor';
 import { editPodcast, editTheme } from '../apiCalls/handleFetch';
 import ColorPicker from '../../utils/colorPicker/ColorPicker';
 
@@ -7,6 +8,9 @@ const PodcastInfo = ({ podcastData }) => {
   const { podcast } = podcastData;
   const { theme } = podcast;
   const [podcastDetails, setPodcastDetails] = useState(podcast);
+  const [podcastDescription, setPodcastDescription] = useState(
+    podcastDetails.description
+  );
 
   // const isInstagramConnected = podcast.instagram_access_token !== null;
 
@@ -43,7 +47,7 @@ const PodcastInfo = ({ podcastData }) => {
     };
     const updatedPodcast = {
       title: podcastDetails.title,
-      description: podcastDetails.description,
+      description: podcastDescription,
       subdomain: podcastDetails.subdomain,
       feed_url: podcastDetails.feed_url,
     };
@@ -128,13 +132,11 @@ const PodcastInfo = ({ podcastData }) => {
                   This will be the description showing on the main page.
                 </p>
                 <div className="flex max-w-lg rounded-md shadow-sm">
-                  <textarea
-                    id="description"
-                    defaultValue={podcastDetails.description}
-                    onChange={(e) => handleChange(e.target)}
-                    rows="5"
-                    className="block w-full transition duration-150 ease-in-out form-textarea sm:text-sm sm:leading-5"
-                  ></textarea>
+                  <TinyEditor
+                    value={podcastDescription}
+                    setValue={setPodcastDescription}
+                    height={200}
+                  />
                 </div>
               </div>
             </div>
@@ -156,38 +158,7 @@ const PodcastInfo = ({ podcastData }) => {
                 </div>
               </div>
             </div>
-            {/* <div className="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-              <label
-                htmlFor="instagram"
-                className="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"
-              >
-                Instagram
-              </label>
-              <div className="mt-1 sm:mt-0 sm:col-span-2">
-                <div className="flex max-w-lg rounded-md">
-                  {!isInstagramConnected && (
-                    <span className="inline-flex rounded-md shadow-sm">
-                      <button
-                        type="button"
-                        className="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-700 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50"
-                      >
-                        <a
-                          href={`https://api.instagram.com/oauth/authorize?client_id=${process.env.INSTAGRAM_CLIENT_ID}&redirect_uri=${process.env.INSTAGRAM_OAUTH_REDIRECT}&scope=user_profile,user_media&response_type=code`}
-                          target="_blank"
-                        >
-                          Connect Now
-                        </a>
-                      </button>
-                    </span>
-                  )}
-                  {isInstagramConnected && (
-                    <p className="text-sm leading-5 text-green-500 opacity-75 sm:mt-px sm:pt-2">
-                      Connected
-                    </p>
-                  )}
-                </div>
-              </div>
-            </div> */}
+
             <div className="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
               <label
                 htmlFor="instagram"

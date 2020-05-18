@@ -89,7 +89,7 @@ const IntegrationSection = ({ podcastData }) => {
                   htmlFor="first_name"
                   className="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"
                 >
-                  Facebook ID
+                  Facebook App ID
                 </label>
                 <div className="mt-1 sm:mt-0 sm:col-span-2">
                   <div className="max-w-xs rounded-md shadow-sm">
@@ -101,7 +101,22 @@ const IntegrationSection = ({ podcastData }) => {
                   </div>
                 </div>
               </div>
-
+              <div className="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                <label
+                  htmlFor="last_name"
+                  className="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"
+                >
+                  Support Link (Patreon...)
+                </label>
+                <div className="mt-1 sm:mt-0 sm:col-span-2">
+                  <div className="max-w-xs rounded-md shadow-sm">
+                    <input
+                      id="financial_support"
+                      className="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
+                    />
+                  </div>
+                </div>
+              </div>
               <div className="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                 <label
                   htmlFor="last_name"
@@ -120,23 +135,6 @@ const IntegrationSection = ({ podcastData }) => {
                     Already done! Start creating awesome audiograms from your
                     episode pages
                   </p>
-                </div>
-              </div>
-
-              <div className="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-                <label
-                  htmlFor="last_name"
-                  className="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"
-                >
-                  Support Link (Patreon...)
-                </label>
-                <div className="mt-1 sm:mt-0 sm:col-span-2">
-                  <div className="max-w-xs rounded-md shadow-sm">
-                    <input
-                      id="financial_support"
-                      className="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
-                    />
-                  </div>
                 </div>
               </div>
               <div className="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">

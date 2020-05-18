@@ -179,7 +179,11 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
                   Show notes
                 </label>
 
-                <TinyEditor value={showNotes} setValue={setShowNotes} />
+                <TinyEditor
+                  value={showNotes}
+                  setValue={setShowNotes}
+                  height={500}
+                />
               </div>
               <div className="sm:col-span-6">
                 <label
@@ -239,6 +243,7 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
                   <TinyEditor
                     value={transcription}
                     setValue={setTranscription}
+                    height={800}
                   />
                 )}
               </div>
