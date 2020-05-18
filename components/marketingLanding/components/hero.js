@@ -215,19 +215,23 @@ const Hero = () => {
 
         <div className="max-w-screen-xl px-4 mx-auto mt-8 sm:mt-12 sm:px-6 md:mt-20 xl:mt-24">
           <div className="lg:grid lg:grid-cols-12 lg:gap-8">
-            <div className="sm:text-center md:max-w-2xl md:mx-auto lg:mx-0 lg:col-span-6 lg:text-left">
+            <div className="mb-16 lg:mb-0 sm:text-center md:max-w-2xl md:mx-auto lg:mx-0 lg:col-span-6 lg:text-left">
               {/* <div className="text-sm font-semibold tracking-wide text-red-200 uppercase sm:text-base lg:text-sm xl:text-base">
                 Early Access
               </div> */}
-              <h1 className="text-4xl font-extrabold leading-10 tracking-tight font-titleMarketing text-cool-gray-100 sm:leading-none sm:text-6xl lg:text-5xl xl:text-5xl">
-                Transcribe and turn your podcast into a blog{' '}
-                {/* <br className="hidden md:inline" /> */}
-                <span className="text-purple-600">in one click</span>
+              <h1 className="text-4xl font-extrabold leading-10 tracking-tight font-titleMarketing text-cool-gray-100 sm:leading-none sm:text-6xl lg:text-5xl xl:text-6xl">
+                Give {/* <br className="hidden md:inline" /> */}
+                <span className="text-purple-600">superpowers</span> to your
+                podcast
               </h1>
-              <h2 className="mt-6 text-base text-gray-100 sm:text-xl lg:text-lg xl:text-xl">
+              <h2 className="mt-10 text-xl text-white sm:text-2xl">
+                Transcribe and turn your podcast into a blog,{' '}
+                <span className="border-b-2 border-white">in one click</span>.
+              </h2>
+              <p className="mt-8 text-base text-gray-100 sm:text-xl lg:text-lg xl:text-xl">
                 Your time should be spent on creating high-value content for
                 your podcast. Podwii takes care of the rest.
-              </h2>
+              </p>
               <div className="mt-10 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
                 <p className="text-base font-medium text-red-100">
                   Get early access to our private release.
@@ -293,7 +297,7 @@ const Hero = () => {
                 </p> */}
               </div>
             </div>
-            <div className="relative mt-12 sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6">
+            <div className="relative mt-12 sm:max-w-lg sm:mx-auto lg:mt-2 lg:max-w-none lg:mx-0 lg:col-span-6">
               <svg
                 className="absolute top-0 origin-top transform scale-75 -translate-x-1/2 -translate-y-8 left-1/2 sm:scale-100 lg:hidden"
                 width="640"
