@@ -25,7 +25,7 @@ const Transcription = ({ episode }) => {
 const EpisodeShow = ({ episode }) => {
   return (
     <div className="mx-auto max-w-7xl">
-      <div className="pt-12 mx-20">
+      <div className="px-6 pt-12 md:mx-20">
         <div className="mb-14">
           <div className="mb-10 border-b border-gray-300">
             <h2 className="inline-block px-2 text-2xl text-3xl font-semibold text-gray-600 border-b-2 border-red-400">

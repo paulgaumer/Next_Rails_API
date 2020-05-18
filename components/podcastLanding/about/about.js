@@ -17,7 +17,10 @@ const AboutPodcast = ({ data }) => {
             Welcome to the show
           </h2>
         </div>
-        <p className="text-gray-700">{data.description}</p>
+        <div
+          className="text-gray-700"
+          dangerouslySetInnerHTML={{ __html: data.description }}
+        />
       </div>
     </section>
   );
