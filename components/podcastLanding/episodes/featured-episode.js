@@ -29,7 +29,7 @@ const FeaturedCard = ({ episode }) => {
             /> */}
             </div>
             <div className="py-4 pl-8 pr-4 lg:w-2/3">
-              <h3 className="text-2xl font-semibold text-gray-900 md:text-3xl font-titles">
+              <h3 className="text-2xl font-semibold text-gray-900 md:text-3xl font-titleLanding">
                 {ep.title}
               </h3>
               <p className="text-xl text-gray-700 font-titles">

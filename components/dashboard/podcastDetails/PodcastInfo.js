@@ -224,7 +224,7 @@ const PodcastInfo = ({ podcastData }) => {
                 />
 
                 <label
-                  for="theme1"
+                  htmlFor="theme1"
                   className="flex items-center justify-center w-32 h-16 ml-3 rounded-md"
                   style={{ background: '#181D46' }}
                 >
@@ -250,7 +250,7 @@ const PodcastInfo = ({ podcastData }) => {
                 />
 
                 <label
-                  for="theme2"
+                  htmlFor="theme2"
                   className="flex items-center justify-center w-32 h-16 ml-3 rounded-md"
                   style={{ background: '#0B516B' }}
                 >
@@ -276,7 +276,7 @@ const PodcastInfo = ({ podcastData }) => {
                 />
 
                 <label
-                  for="theme3"
+                  htmlFor="theme3"
                   className="flex items-center justify-center w-32 h-16 ml-3 rounded-md"
                   style={{ background: '#266692' }}
                 >
@@ -292,7 +292,7 @@ const PodcastInfo = ({ podcastData }) => {
                 <input
                   id="theme4"
                   type="radio"
-                  className="w-4 h-4 text-indigo-600 transition duration-150 ease-in-out form-radio"
+                  className="w-4 h-4 text-indigo-600 transition duration-150 ease-in-out htmlForm-radio"
                   checked={selectedColorTheme === 'theme4'}
                   onChange={() => {
                     setHeaderBackgroundColor('#019BC6');

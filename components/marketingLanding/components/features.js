@@ -40,7 +40,7 @@ const Features = () => {
         </svg>
 
         <div className="relative">
-          <h3 className="text-3xl font-extrabold leading-8 tracking-tight text-center text-gray-600 font-title sm:text-4xl sm:leading-10">
+          <h3 className="text-3xl font-extrabold leading-8 tracking-tight text-center text-gray-600 font-titleMarketing sm:text-4xl sm:leading-10">
             Grow your audience faster
           </h3>
           <p className="max-w-3xl mx-auto mt-4 text-xl leading-7 text-center text-gray-500">
@@ -53,7 +53,7 @@ const Features = () => {
 
         <div className="relative mt-16 lg:mt-24 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
           <div className="relative">
-            <h4 className="text-2xl font-extrabold leading-8 tracking-tight text-gray-800 font-title sm:text-3xl sm:leading-9">
+            <h4 className="text-2xl font-extrabold leading-8 tracking-tight text-gray-800 font-titleMarketing sm:text-3xl sm:leading-9">
               Optimized for podcasting
             </h4>
             <p className="mt-3 text-lg leading-7 text-gray-500">
@@ -82,7 +82,7 @@ const Features = () => {
                     </div>
                   </div>
                   <div className="ml-4">
-                    <h5 className="text-lg font-medium leading-6 text-gray-900 font-title">
+                    <h5 className="text-lg font-medium leading-6 text-gray-900 font-titleMarketing">
                       Engage with your audience
                     </h5>
                     <p className="mt-2 text-base leading-6 text-gray-500">
@@ -115,7 +115,7 @@ const Features = () => {
                     </div>
                   </div>
                   <div className="ml-4">
-                    <h5 className="text-lg font-medium leading-6 text-gray-900 font-title">
+                    <h5 className="text-lg font-medium leading-6 text-gray-900 font-titleMarketing">
                       Generate transcripts instantly
                     </h5>
                     <p className="mt-2 text-base leading-6 text-gray-500">
@@ -147,7 +147,7 @@ const Features = () => {
                     </div>
                   </div>
                   <div className="ml-4">
-                    <h5 className="text-lg font-medium leading-6 text-gray-900 font-title">
+                    <h5 className="text-lg font-medium leading-6 text-gray-900 font-titleMarketing">
                       Use your own domain name
                     </h5>
                     <p className="mt-2 text-base leading-6 text-gray-500">
@@ -239,7 +239,7 @@ const Features = () => {
         <div className="relative mt-20 lg:mt-24">
           <div className="lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-8 lg:items-center">
             <div className="lg:col-start-2">
-              <h4 className="text-2xl font-extrabold leading-8 tracking-tight text-gray-800 font-title sm:text-3xl sm:leading-9">
+              <h4 className="text-2xl font-extrabold leading-8 tracking-tight text-gray-800 font-titleMarketing sm:text-3xl sm:leading-9">
                 You are in control
               </h4>
               <p className="mt-3 text-lg leading-7 text-gray-500">
@@ -270,7 +270,7 @@ const Features = () => {
                       </div>
                     </div>
                     <div className="ml-4">
-                      <h5 className="text-lg font-medium leading-6 text-gray-900 font-title">
+                      <h5 className="text-lg font-medium leading-6 text-gray-900 font-titleMarketing">
                         Fine Tune your SEO strategy
                       </h5>
                       <p className="mt-2 text-base leading-6 text-gray-500">
@@ -295,7 +295,7 @@ const Features = () => {
                       </div>
                     </div>
                     <div className="ml-4">
-                      <h5 className="text-lg font-medium leading-6 text-gray-900 font-title">
+                      <h5 className="text-lg font-medium leading-6 text-gray-900 font-titleMarketing">
                         Share on your social networks
                       </h5>
                       <p className="mt-2 text-base leading-6 text-gray-500">

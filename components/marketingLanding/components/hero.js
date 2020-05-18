@@ -105,7 +105,7 @@ const Hero = () => {
                 </button>
               </div>
             </div>
-            <div className="hidden font-title md:block md:ml-10">
+            <div className="hidden font-titleMarketing md:block md:ml-10">
               <a
                 href="#features"
                 className="inline-block pb-1 font-medium text-gray-100 transform hover:border-purple-500 hover:border-b-2 focus:outline-none focus:text-white hover:scale-105"
@@ -183,7 +183,7 @@ const Hero = () => {
                   </button>
                 </div>
               </div>
-              <div className="px-2 pt-2 pb-3 font-title">
+              <div className="px-2 pt-2 pb-3 font-titleMarketing">
                 <a
                   href="#features"
                   className="block px-3 py-2 text-base font-medium text-gray-700 transition duration-150 ease-in-out rounded-md hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50"
@@ -219,12 +219,10 @@ const Hero = () => {
               {/* <div className="text-sm font-semibold tracking-wide text-red-200 uppercase sm:text-base lg:text-sm xl:text-base">
                 Early Access
               </div> */}
-              <h1 className="text-4xl font-extrabold leading-10 tracking-tight font-title text-cool-gray-100 sm:leading-none sm:text-6xl lg:text-5xl xl:text-6xl">
+              <h1 className="text-4xl font-extrabold leading-10 tracking-tight font-titleMarketing text-cool-gray-100 sm:leading-none sm:text-6xl lg:text-5xl xl:text-5xl">
                 Transcribe and turn your podcast into a blog{' '}
                 {/* <br className="hidden md:inline" /> */}
-                <span className="text-purple-600 xl:leading-normal">
-                  in one click
-                </span>
+                <span className="text-purple-600">in one click</span>
               </h1>
               <h2 className="mt-6 text-base text-gray-100 sm:text-xl lg:text-lg xl:text-xl">
                 Your time should be spent on creating high-value content for
@@ -295,7 +293,7 @@ const Hero = () => {
                 </p> */}
               </div>
             </div>
-            <div className="relative mt-12 sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
+            <div className="relative mt-12 sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6">
               <svg
                 className="absolute top-0 origin-top transform scale-75 -translate-x-1/2 -translate-y-8 left-1/2 sm:scale-100 lg:hidden"
                 width="640"
@@ -343,7 +341,7 @@ const Hero = () => {
           </div>
         </div>
         {/* <div class="relative -mt-12 lg:-mt-24"> */}
-        <div class="relative">
+        <div className="relative">
           <svg
             viewBox="0 0 1428 174"
             version="1.1"

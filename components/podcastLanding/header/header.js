@@ -170,7 +170,7 @@ const NewHeader = ({ data, pageType }) => {
                 {isEp && (
                   <Link href="/">
                     <a>
-                      <p className="text-xl hover:underline">
+                      <p className="text-xl hover:underline font-titleLanding">
                         - by {data.title}
                       </p>
                     </a>
@@ -178,8 +178,8 @@ const NewHeader = ({ data, pageType }) => {
                 )}
                 {!isEp && (
                   <>
-                    <p className="text-xs font-thin">LATEST</p>
-                    <p className="text-lg">{data.episodes[0].title}</p>
+                    <p className="text-xs font-thin ">LATEST</p>
+                    <p className="text-lg ">{data.episodes[0].title}</p>
                   </>
                 )}
               </div>

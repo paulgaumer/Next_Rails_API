@@ -4,6 +4,7 @@ module.exports = {
       fontFamily: {
         sansLanding: ['Montserrat', 'sans-serif'],
         titleLanding: ['Roboto', 'sans-serif'],
+        titleMarketing: ['Poppins', 'sans-serif'],
       },
       fontSize: {
         '7xl': '5rem',

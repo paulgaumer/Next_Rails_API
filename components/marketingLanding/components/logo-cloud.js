@@ -9,7 +9,7 @@ const LogoCloud = () => {
   return (
     <div id="integration" className="bg-white">
       <div className="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:py-16 lg:px-8">
-        <p className="text-base font-semibold leading-6 tracking-wider text-center text-gray-600 uppercase font-title">
+        <p className="text-base font-semibold leading-6 tracking-wider text-center text-gray-600 uppercase font-titleMarketing">
           Fast integration with most podcast hosting services
         </p>
         <div className="mt-6 grid grid-cols-2 gap-0.5 md:grid-cols-3 lg:mt-8">
@@ -49,7 +49,7 @@ const LogoCloud = () => {
             />
           </div>
           <div className="flex items-center justify-center col-span-1 px-8 py-8 bg-gray-50">
-            <p className="text-lg text-gray-400 font-title">
+            <p className="text-lg text-gray-400 font-titleMarketing">
               and many others...
             </p>
           </div>

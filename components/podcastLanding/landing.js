@@ -21,12 +21,14 @@ const PodcastLanding = ({ data }) => {
   return (
     <div>
       <Layout>
+        {/* *** Meta tags *** */}
         <SEO
           title={data.title}
           description={data.description}
           subdomain={data.subdomain}
           cover={data.cover_image}
         />
+        {/* ************ */}
         <Header data={data} pageType={'landing'} />
         <Cta data={data} border={true} />
         <div className="bg-gray-50">
@@ -36,7 +38,7 @@ const PodcastLanding = ({ data }) => {
           <EpisodesList episodes={data.episodes} cover={data.coverUrl} />
         </div>
 
-        {/* Display of Instagram is setup */}
+        {/* Display if Instagram is setup */}
         {data.instagram_access_token && (
           <InstagramSection podcastId={data.id} />
         )}

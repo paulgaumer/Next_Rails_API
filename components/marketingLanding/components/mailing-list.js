@@ -58,7 +58,7 @@ const MailingList = () => {
       >
         <div className="relative max-w-xl mx-auto">
           <div className="text-center">
-            <h2 className="text-4xl font-extrabold leading-9 tracking-tight text-white font-title lg:text-5xl sm:leading-10">
+            <h2 className="text-4xl font-extrabold leading-9 tracking-tight text-white font-titleMarketing lg:text-5xl sm:leading-10">
               Get Early Access
             </h2>
             <p className="mt-6 text-lg leading-6 text-gray-50">
