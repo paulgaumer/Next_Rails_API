@@ -68,9 +68,7 @@ const InstagramSection = ({ podcastId }) => {
                   )}
                   {pic.media_type === 'VIDEO' && (
                     <video
-                      controls
-                      autoplay
-                      loop
+                      autoPlay
                       muted
                       playsInline
                       className="object-cover object-center w-full h-32 rounded-sm md:h-64 video"
