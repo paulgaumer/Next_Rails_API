@@ -5,6 +5,8 @@ import TwitterIcon from '../../icons/social/TwitterIcon';
 
 const Footer = ({ socialsList }) => {
   const [socials] = useState(socialsList ? socialsList : {});
+  const width = 'w-6';
+  const height = 'h-6';
   return (
     <div className="bg-white">
       <div className="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
@@ -16,7 +18,7 @@ const Footer = ({ socialsList }) => {
               className="text-gray-400 hover:text-gray-500"
             >
               <span className="sr-only">Facebook</span>
-              <FacebookIcon />
+              <FacebookIcon width={width} height={height} />
             </a>
           )}
           {socials['instagram'] && (
@@ -26,7 +28,7 @@ const Footer = ({ socialsList }) => {
               className="ml-6 text-gray-400 hover:text-gray-500"
             >
               <span className="sr-only">Instagram</span>
-              <InstagramIcon />
+              <InstagramIcon width={width} height={height} />
             </a>
           )}
           {socials['twitter'] && (
@@ -36,7 +38,7 @@ const Footer = ({ socialsList }) => {
               className="ml-6 text-gray-400 hover:text-gray-500"
             >
               <span className="sr-only">Twitter</span>
-              <TwitterIcon />
+              <TwitterIcon width={width} height={height} />
             </a>
           )}
         </div>

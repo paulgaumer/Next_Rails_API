@@ -5,6 +5,7 @@ import { GlobalDispatchContext } from '../../../context/globalContextProvider';
 import { GlobalStateContext } from '../../../context/globalContextProvider';
 import { formatDate } from '../../../utils/formatDate';
 import SubscribeList from './subscribe/subscribeList';
+import SocialsList from './socials/socialsList';
 import SupportButton from './support/SupportButton';
 
 const HeaderContainer = styled.header`
@@ -206,8 +207,13 @@ const NewHeader = ({ data, pageType }) => {
             directoriesList={data.directories}
             rss={data.feed_url}
           />
+          {data.socials && (
+            <div className="mx-10 lg:block" s>
+              <SocialsList socialsList={data.socials} />
+            </div>
+          )}
           {data.financial_support && (
-            <div className="pl-10 lg:block">
+            <div className="lg:block">
               <SupportButton link={data.financial_support} />
             </div>
           )}
