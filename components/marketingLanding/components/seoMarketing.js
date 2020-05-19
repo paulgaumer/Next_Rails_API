@@ -19,7 +19,7 @@ export default () => {
         site_name: title,
         images: [
           {
-            url: '/marketing/banner-seo.png',
+            url: 'https://podwii.com/marketing/banner-seo.png',
             width: 2400,
             height: 1260,
             alt: title,
