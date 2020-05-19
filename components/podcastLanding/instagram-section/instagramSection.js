@@ -73,7 +73,7 @@ const InstagramSection = ({ podcastId }) => {
                       playsInline
                       className="object-cover object-center w-full h-32 rounded-sm md:h-64 video"
                     >
-                      <source src={pic.media_url} />{' '}
+                      <source src={pic.media_url} />
                     </video>
                   )}
                 </a>
