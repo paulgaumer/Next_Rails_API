@@ -34,8 +34,21 @@ const SubscribeModal = ({ isOpen, setModalIsOpen, directories, rss }) => {
       contentLabel="Example Modal"
     >
       <div className="">
-        <p className="pt-2 text-center text-gray-800 uppercase">Listen on</p>
-        <div className="grid grid-cols-2 row-gap-6 col-gap-10 pb-2 space-y-8 text-gray-700">
+        <p className="flex items-center justify-center pt-2 font-bold text-center text-gray-800 uppercase">
+          <svg
+            fill="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            className="w-6 h-6 mr-2 text-red-400"
+          >
+            <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+          </svg>
+          <span>Listen on</span>
+        </p>
+        <div className="grid grid-cols-2 row-gap-12 pt-10 pb-2 text-gray-700 col-gap-14">
           {directories['apple_podcasts'] && (
             <div className="transform hover:scale-105">
               <a
@@ -43,7 +56,7 @@ const SubscribeModal = ({ isOpen, setModalIsOpen, directories, rss }) => {
                 target="_blank"
                 className="flex items-center"
               >
-                <ApplePodcastIcon width={width} height={height} />
+                <img src="/apple_podcast_icon.png" alt="" className="w-8 h-8" />
                 <div className="pl-2 text-xs leading-tight ">
                   <p className="">Apple</p>
                   <p>Podcasts</p>
