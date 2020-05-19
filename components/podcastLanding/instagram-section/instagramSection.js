@@ -7,6 +7,7 @@ import { themeOn, themeOff } from '../../../utils/themeHandlers';
 const InstagramSection = ({ podcastId }) => {
   const apiUrl = process.env.API_HOST;
   const [instagram, setInstagram] = useState([]);
+  const [instagramUserName, setInstagramUserName] = useState('');
   const [loading, setLoading] = useState(true);
 
   const { theme, isThemed } = useContext(GlobalStateContext);
@@ -18,6 +19,7 @@ const InstagramSection = ({ podcastId }) => {
       const data = await res.json();
       setLoading(false);
       setInstagram(data.instagram);
+      setInstagramUserName(data.instagram[0].username);
     }
     fetchInstagram();
   }, []);
@@ -34,7 +36,12 @@ const InstagramSection = ({ podcastId }) => {
             style={{ borderColor: themeOn(isThemed, colors.primary) }}
           >
             <img src="/instagram-colors.png" alt="" className="w-6 h-6 mr-2" />
-            <span>Fresh from Instagram</span>
+            <a
+              href={`https://www.instagram.com/${instagramUserName}/`}
+              target="_blank"
+            >
+              @{instagramUserName}
+            </a>
           </h2>
           <div className="w-full border-b border-gray-300"></div>
         </div>
