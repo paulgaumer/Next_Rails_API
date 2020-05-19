@@ -10,8 +10,8 @@ const ApplePodcastIcon = ({ width, height }) => {
       >
         <defs>
           <linearGradient id="a" x1="1.53" x2="1.521" y1="1.013">
-            <stop stop-color="#822cbe" offset="0" />
-            <stop stop-color="#d772fb" offset="1" />
+            <stop stopColor="#822cbe" offset="0" />
+            <stop stopColor="#d772fb" offset="1" />
           </linearGradient>
         </defs>
         <path

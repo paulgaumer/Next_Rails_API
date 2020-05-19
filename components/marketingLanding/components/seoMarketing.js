@@ -2,7 +2,7 @@ import React from 'react';
 import { NextSeo } from 'next-seo';
 
 export default () => {
-  const title = 'Podwii';
+  const title = 'Supercharge your podcast - Podwii';
   const description = `The best way to generate an optimized website for your podcast, transcribe your episodes and engage with your audience`;
   const url = `https://podwii.com`;
 

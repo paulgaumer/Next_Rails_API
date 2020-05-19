@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import nextCookie from 'next-cookies';
 import fetch from 'isomorphic-unfetch';
 import styled from 'styled-components';
@@ -11,6 +12,9 @@ const FormContainer = styled.div``;
 const SupportPage = ({ podcastData, currentDomain }) => {
   return (
     <DashboardLayout podcastData={podcastData} currentDomain={currentDomain}>
+      <Head>
+        <title>Support | Podwii</title>
+      </Head>
       <FormContainer>
         <iframe
           class="airtable-embed"

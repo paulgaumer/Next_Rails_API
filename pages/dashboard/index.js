@@ -1,4 +1,5 @@
 import nextCookie from 'next-cookies';
+import Head from 'next/head';
 import fetch from 'isomorphic-unfetch';
 import { getDomain } from '../../utils/subdomain';
 import { redirect } from '../../utils/redirect';
@@ -10,6 +11,9 @@ const Dashboard = ({ podcastData, currentDomain }) => {
 
   return (
     <DashboardLayout podcastData={podcastData} currentDomain={currentDomain}>
+      <Head>
+        <title>Dashboard | Podwii</title>
+      </Head>
       <EpisodesList episodes={episodes} />
     </DashboardLayout>
   );

@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import nextCookie from 'next-cookies';
 import fetch from 'isomorphic-unfetch';
 import { getDomain } from '../../utils/subdomain';
@@ -9,6 +10,9 @@ import CrmSection from '../../components/dashboard/crm/crm-list';
 const CrmPage = ({ podcastData, currentDomain, crmItems }) => {
   return (
     <DashboardLayout podcastData={podcastData} currentDomain={currentDomain}>
+      <Head>
+        <title>CRM | Podwii</title>
+      </Head>
       <CrmSection crmItems={crmItems} />
     </DashboardLayout>
   );

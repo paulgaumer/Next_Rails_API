@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import nextCookie from 'next-cookies';
 import fetch from 'isomorphic-unfetch';
 import { getDomain } from '../../utils/subdomain';
@@ -9,6 +10,9 @@ import IntegrationSection from '../../components/dashboard/integration/Integrati
 const IntegrationPage = ({ podcastData, currentDomain }) => {
   return (
     <DashboardLayout podcastData={podcastData} currentDomain={currentDomain}>
+      <Head>
+        <title>Integration | Podwii</title>
+      </Head>
       <IntegrationSection podcastData={podcastData} />
     </DashboardLayout>
   );

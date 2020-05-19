@@ -14,7 +14,7 @@ class MyApp extends App {
     return (
       <GlobalContextProvider>
         <Head>
-          <link rel="shortcut icon" href="/favicon.svg" />
+          <link rel="shortcut icon" href="/favicon.png" />
         </Head>
         <Component {...pageProps} />
         <div className="fixed bottom-0 z-20 w-full">
