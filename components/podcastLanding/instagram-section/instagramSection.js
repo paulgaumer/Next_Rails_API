@@ -29,7 +29,7 @@ const InstagramSection = ({ podcastId }) => {
       <div className="mx-6 sm:mx-20">
         <div className="flex mb-10">
           <h2
-            className={`flex-shrink-0 flex items-center inline-block pr-2 text-2xl font-semibold text-gray-50 border-b-2 ${themeOff(
+            className={`flex-shrink-0 flex items-center inline-block pr-2 text-xl md:text-2xl font-semibold text-gray-50 border-b-2 ${themeOff(
               isThemed,
               'border-red-400'
             )}`}
@@ -71,6 +71,7 @@ const InstagramSection = ({ podcastId }) => {
                       controls
                       playsinline
                       loop
+                      muted
                       className="object-cover object-center w-full h-32 rounded-sm md:h-64 video"
                     >
                       <source src={pic.media_url} />{' '}
