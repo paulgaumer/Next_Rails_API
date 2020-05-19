@@ -70,7 +70,6 @@ const InstagramSection = ({ podcastId }) => {
                     <video
                       autoPlay={false}
                       muted
-                      controls
                       playsInline
                       className="object-cover object-center w-full h-32 rounded-sm md:h-64 video"
                     >
