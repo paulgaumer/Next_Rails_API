@@ -20,7 +20,7 @@ const PodcastLanding = ({ data }) => {
 
   return (
     <div>
-      <Layout>
+      <Layout socialsList={data.socials}>
         {/* *** Meta tags *** */}
         <SEO
           title={data.title}

@@ -3,6 +3,7 @@ import { editPodcast } from '../apiCalls/handleFetch';
 
 const IntegrationSection = ({ podcastData }) => {
   const { podcast } = podcastData;
+  const socials = podcast.socials ? podcast.socials : {};
   const instaClientId = process.env.INSTAGRAM_CLIENT_ID;
   const instaOauthRedirect = process.env.INSTAGRAM_OAUTH_REDIRECT;
   const [isInstagramConnected, setIsInstagramConnected] = useState(
@@ -14,6 +15,11 @@ const IntegrationSection = ({ podcastData }) => {
   const [facebookAppId, setFacebookAppId] = useState(
     podcast.facebook_app_id ? podcast.facebook_app_id : ''
   );
+
+  // Social Profiles Links
+  const [facebook, setFacebook] = useState(socials.facebook);
+  const [twitter, setTwitter] = useState(socials.twitter);
+  const [instagram, setInstagram] = useState(socials.instagram);
 
   const handleInstagramDisconnect = async (e) => {
     e.preventDefault();
@@ -29,7 +35,13 @@ const IntegrationSection = ({ podcastData }) => {
     const updatedPodcast = {
       financial_support: financialSupport !== '' ? financialSupport : null,
       facebook_app_id: facebookAppId !== '' ? facebookAppId : null,
+      socials: {
+        facebook: facebook ? facebook : null,
+        twitter: twitter ? twitter : null,
+        instagram: instagram ? instagram : null,
+      },
     };
+    // console.log(updatedPodcast);
     const res = await editPodcast(updatedPodcast);
     console.log(res);
   };
@@ -67,7 +79,7 @@ const IntegrationSection = ({ podcastData }) => {
                           href={`https://api.instagram.com/oauth/authorize?client_id=${instaClientId}&redirect_uri=${instaOauthRedirect}&scope=user_profile,user_media&response_type=code`}
                           target="_blank"
                         >
-                          Connect Now
+                          Display Your Feed on Your Website Now
                         </a>
                       </button>
                     </span>
@@ -88,6 +100,9 @@ const IntegrationSection = ({ podcastData }) => {
                         </svg>
                         <p className="text-sm leading-5 ">Connected</p>
                       </div>
+                      <p className="ml-4 text-xs text-gray-700">
+                        Your feed is now visible on your website
+                      </p>
                       <button
                         className="ml-4 text-xs text-gray-500 underline"
                         onClick={handleInstagramDisconnect}
@@ -101,6 +116,63 @@ const IntegrationSection = ({ podcastData }) => {
             </div>
             <div className="mt-6 sm:mt-5">
               <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                <label
+                  htmlFor="instagram"
+                  className="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"
+                >
+                  Instagram Profile
+                </label>
+                <div className="mt-1 sm:mt-0 sm:col-span-2">
+                  <div className="max-w-xs rounded-md shadow-sm">
+                    <input
+                      id="instagram"
+                      type="text"
+                      value={instagram}
+                      onChange={(e) => setInstagram(e.target.value)}
+                      className="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                <label
+                  htmlFor="twitter"
+                  className="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"
+                >
+                  Twitter Profile
+                </label>
+                <div className="mt-1 sm:mt-0 sm:col-span-2">
+                  <div className="max-w-xs rounded-md shadow-sm">
+                    <input
+                      id="twitter"
+                      type="text"
+                      value={twitter}
+                      onChange={(e) => setTwitter(e.target.value)}
+                      className="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                <label
+                  htmlFor="facebook"
+                  className="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"
+                >
+                  Facebook Profile
+                </label>
+                <div className="mt-1 sm:mt-0 sm:col-span-2">
+                  <div className="max-w-xs rounded-md shadow-sm">
+                    <input
+                      id="facebook"
+                      type="text"
+                      value={facebook}
+                      onChange={(e) => setFacebook(e.target.value)}
+                      className="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                 <label
                   htmlFor="facebook_id"
                   className="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"
