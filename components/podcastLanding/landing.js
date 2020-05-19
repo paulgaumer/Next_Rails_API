@@ -45,7 +45,7 @@ const PodcastLanding = ({ data }) => {
           )}
         </div>
 
-        <Cta data={data} border={data.instagram_access_token === null} />
+        <Cta data={data} border={true} />
       </Layout>
     </div>
   );

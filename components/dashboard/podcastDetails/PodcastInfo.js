@@ -12,8 +12,6 @@ const PodcastInfo = ({ podcastData }) => {
     podcastDetails.description
   );
 
-  // const isInstagramConnected = podcast.instagram_access_token !== null;
-
   const [primaryColor, setPrimaryColor] = useState(theme.colors.primary);
   const [headerTextColor, setHeaderTextColor] = useState(
     theme.colors.headerText ? theme.colors.headerText : '#ffffff'

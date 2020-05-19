@@ -27,13 +27,14 @@ const InstagramSection = ({ podcastId }) => {
       <div className="mx-6 sm:mx-20">
         <div className="flex mb-10">
           <h2
-            className={`flex-shrink-0 inline-block px-2 text-2xl font-semibold text-gray-600 border-b-2  md:text-3xl ${themeOff(
+            className={`flex-shrink-0 flex items-end inline-block px-2 text-2xl font-semibold text-gray-50 border-b-2  md:text-3xl ${themeOff(
               isThemed,
               'border-red-400'
             )}`}
             style={{ borderColor: themeOn(isThemed, colors.primary) }}
           >
-            Fresh on Instagram
+            <img src="/instagram-colors.png" alt="" className="w-6 h-6 ml-2" />
+            <span>Fresh from Instagram</span>
           </h2>
           <div className="w-full border-b border-gray-300"></div>
         </div>
