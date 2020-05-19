@@ -46,7 +46,7 @@ const SignUpPage = () => {
       signup(user);
     } else {
       alert(
-        'Podwii is still being deployed as a private release. Claim your ealry access code on https://podwii.com'
+        'Podwii is still being deployed as a private release. Claim your early access code on https://podwii.com'
       );
     }
   };
