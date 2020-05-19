@@ -8,6 +8,12 @@ const IntegrationSection = ({ podcastData }) => {
   const [isInstagramConnected, setIsInstagramConnected] = useState(
     podcast.instagram_access_token !== null
   );
+  const [financialSupport, setFinancialSupport] = useState(
+    podcast.financial_support ? podcast.financial_support : ''
+  );
+  const [facebookAppId, setFacebookAppId] = useState(
+    podcast.facebook_app_id ? podcast.facebook_app_id : ''
+  );
 
   const handleInstagramDisconnect = async (e) => {
     e.preventDefault();
@@ -18,9 +24,19 @@ const IntegrationSection = ({ podcastData }) => {
     res === 200 && setIsInstagramConnected(false);
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const updatedPodcast = {
+      financial_support: financialSupport !== '' ? financialSupport : null,
+      facebook_app_id: facebookAppId !== '' ? facebookAppId : null,
+    };
+    const res = await editPodcast(updatedPodcast);
+    console.log(res);
+  };
+
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
           <div className="pt-8 mt-8 sm:mt-5 sm:pt-10">
             <div>
@@ -86,7 +102,7 @@ const IntegrationSection = ({ podcastData }) => {
             <div className="mt-6 sm:mt-5">
               <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                 <label
-                  htmlFor="first_name"
+                  htmlFor="facebook_id"
                   className="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"
                 >
                   Facebook App ID
@@ -96,6 +112,8 @@ const IntegrationSection = ({ podcastData }) => {
                     <input
                       id="facebook_id"
                       type="text"
+                      value={facebookAppId}
+                      onChange={(e) => setFacebookAppId(e.target.value)}
                       className="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
                     />
                   </div>
@@ -103,7 +121,7 @@ const IntegrationSection = ({ podcastData }) => {
               </div>
               <div className="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                 <label
-                  htmlFor="last_name"
+                  htmlFor="financial_support"
                   className="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"
                 >
                   Support Link (Patreon...)
@@ -112,6 +130,8 @@ const IntegrationSection = ({ podcastData }) => {
                   <div className="max-w-xs rounded-md shadow-sm">
                     <input
                       id="financial_support"
+                      value={financialSupport}
+                      onChange={(e) => setFinancialSupport(e.target.value)}
                       className="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
                     />
                   </div>

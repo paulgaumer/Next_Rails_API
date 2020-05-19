@@ -1,11 +1,12 @@
 import React from 'react';
 
-const SupportButton = () => {
+const SupportButton = ({ link }) => {
   return (
     <span className="inline-flex flex-shrink-0 rounded-md">
-      <button
-        type="button"
-        className="inline-flex items-center px-3 py-2 text-sm font-medium leading-6 text-white transition duration-150 ease-in-out bg-white bg-opacity-25 border border-transparent rounded md:px-4 md:py-3 md:rounded-full hover:bg-opacity-50 focus:outline-none focus:border-white focus:shadow-outline-white active:bg-white active:bg-opacity-50"
+      <a
+        href={link}
+        target="_blank"
+        className="inline-flex items-center px-3 py-2 text-sm font-medium leading-6 text-white transition duration-150 ease-in-out bg-white bg-opacity-25 border border-transparent rounded md:px-4 md:py-3 md:rounded-full hover:bg-opacity-50 focus:outline-none focus:shadow-outline-white active:bg-white active:bg-opacity-50"
       >
         <span className="flex">
           <svg
@@ -22,7 +23,7 @@ const SupportButton = () => {
           <span className="hidden pl-2 md:inline-block">Support the show</span>
           <span className="pl-2 text-xs md:hidden">Support</span>
         </span>
-      </button>
+      </a>
     </span>
   );
 };
