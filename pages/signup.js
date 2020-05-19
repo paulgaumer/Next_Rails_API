@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import fetch from 'isomorphic-unfetch';
 import Cookies from 'js-cookie';
@@ -30,15 +30,18 @@ const signup = async ({ email, password, subdomain }) => {
 };
 
 const SignUpPage = () => {
+  console.log(process.env.EARLY_ACCESS_CODE);
   const [earlyAccessCode, setEarlyAccessCode] = useState('');
-  const [canSignUp, setCanSignUp] = useState(
-    earlyAccessCode === process.env.EARLY_ACCESS_CODE
-  );
+  const [canSignUp, setCanSignUp] = useState(false);
   const [user, setUser] = useState({
     email: '',
     password: '',
     subdomain: '',
   });
+
+  useEffect(() => {
+    setCanSignUp(earlyAccessCode === process.env.EARLY_ACCESS_CODE);
+  }, [earlyAccessCode]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
