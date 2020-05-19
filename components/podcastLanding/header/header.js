@@ -102,7 +102,7 @@ const NewHeader = ({ data, pageType }) => {
 
   return (
     <HeaderContainer textColor={headerText} backgroundColor={headerBackground}>
-      <div className="py-12 mx-auto max-w-7xl">
+      <div className="pt-12 pb-8 mx-auto md:pt-12 md:pb-12 max-w-7xl">
         <div
           data-name="top-part"
           className="flex flex-col-reverse items-center sm:mx-20 lg:grid lg:grid-cols-12 lg:gap-20 xl:gap-28"
@@ -201,22 +201,31 @@ const NewHeader = ({ data, pageType }) => {
         </div>
         <div
           data-name="bottom-part"
-          className="flex items-center justify-center mt-10 sm:mx-20 lg:mt-12 lg:justify-start"
+          className="flex flex-col items-center justify-center mt-14 lg:flex-row sm:mx-20 lg:mt-12 lg:justify-start"
         >
-          <SubscribeList
-            directoriesList={data.directories}
-            rss={data.feed_url}
-          />
-          {data.socials && (
-            <div className="mx-10 lg:block" s>
-              <SocialsList socialsList={data.socials} />
-            </div>
-          )}
-          {data.financial_support && (
-            <div className="lg:block">
-              <SupportButton link={data.financial_support} />
-            </div>
-          )}
+          <div className="flex items-center md:block">
+            <SubscribeList
+              directoriesList={data.directories}
+              rss={data.feed_url}
+            />
+            {data.financial_support && (
+              <div className="col-span-1 ml-6 sm:hidden">
+                <SupportButton link={data.financial_support} />
+              </div>
+            )}
+          </div>
+          <div className="flex items-center mt-12 lg:mt-0 lg:mx-10">
+            {data.socials && (
+              <div className="col-span-1 sm:mr-10 lg:block" s>
+                <SocialsList socialsList={data.socials} />
+              </div>
+            )}
+            {data.financial_support && (
+              <div className="hidden col-span-1 sm:block">
+                <SupportButton link={data.financial_support} />
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </HeaderContainer>

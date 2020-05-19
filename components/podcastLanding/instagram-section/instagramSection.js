@@ -23,7 +23,7 @@ const InstagramSection = ({ podcastId }) => {
   }, []);
 
   return (
-    <div className="mx-auto mt-32 mb-20 max-w-7xl">
+    <div className="pt-16 pb-20 mx-auto max-w-7xl">
       <div className="mx-6 sm:mx-20">
         <div className="flex mb-10">
           <h2
@@ -51,14 +51,14 @@ const InstagramSection = ({ podcastId }) => {
                     <img
                       src={pic.media_url}
                       alt={pic.id}
-                      className="object-cover object-center w-full rounded-sm md:h-64"
+                      className="object-cover object-center w-full h-32 rounded-sm md:h-64"
                     />
                   )}
                   {pic.media_type === 'VIDEO' && (
                     <video
                       src={pic.media_url}
                       controls
-                      className="object-cover object-center w-full rounded-sm md:h-64"
+                      className="object-cover object-center w-full h-32 rounded-sm md:h-64"
                     ></video>
                   )}
                 </a>

@@ -39,11 +39,13 @@ const PodcastLanding = ({ data }) => {
         </div>
 
         {/* Display if Instagram is setup */}
-        {data.instagram_access_token && (
-          <InstagramSection podcastId={data.id} />
-        )}
+        <div style={{ background: data.theme.colors.headerBackground }}>
+          {data.instagram_access_token && (
+            <InstagramSection podcastId={data.id} />
+          )}
+        </div>
 
-        <Cta data={data} border={false} />
+        <Cta data={data} border={data.instagram_access_token === null} />
       </Layout>
     </div>
   );

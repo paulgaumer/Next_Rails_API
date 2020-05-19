@@ -27,9 +27,9 @@ const SubscribeList = ({ directoriesList, rss }) => {
   return (
     <>
       {/* ABOVE SM SIZE */}
-      <ListContainer className="hidden px-8 rounded shadow-inner md:inline-block md:px-4 md:px-2">
+      <ListContainer className="hidden px-8 rounded shadow-inner sm:inline-block sm:px-4 sm:px-2">
         <p className="pt-2 text-center text-white md:hidden">Listen on</p>
-        <div className="py-6 space-y-6 text-gray-100 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-8 sm:grid-cols-3 md:py-4 md:flex md:justify-around">
+        <div className="py-6 space-y-6 text-gray-100 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-8 sm:grid-cols-4 sm:py-4 md:flex sm:justify-around">
           {directories['apple_podcasts'] && (
             <div className="transform md:px-4 hover:scale-105">
               <a
@@ -82,9 +82,9 @@ const SubscribeList = ({ directoriesList, rss }) => {
       </ListContainer>
 
       {/* BELOW SM SIZE */}
-      <div className="md:hidden">
+      <div className="sm:hidden">
         <ListContainer
-          className="flex items-center px-4 py-2 text-xs leading-tight text-white rounded cursor-pointer"
+          className="flex items-center px-4 py-2 text-xs font-medium leading-tight text-white rounded cursor-pointer"
           onClick={() => setModalIsOpen(true)}
         >
           <SubscribeIconMobile />

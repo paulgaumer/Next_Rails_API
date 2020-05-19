@@ -22,7 +22,7 @@ const EpisodesList = ({ episodes }) => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className="pt-12 mx-auto mb-20 bg-white rounded-t max-w-7xl">
+    <div className="pt-12 pb-16 mx-auto bg-white rounded-t max-w-7xl">
       <div className="mx-6 sm:mx-20">
         <div className="flex mb-10">
           <h2
