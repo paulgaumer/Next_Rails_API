@@ -36,7 +36,7 @@ const InstagramSection = ({ podcastId }) => {
             style={{ borderColor: themeOn(isThemed, colors.primary) }}
           >
             <img
-              src="/insta_icon_colors.png"
+              src="/insta_colors.png"
               alt="instagram"
               className="w-6 h-6 mr-2"
             />
@@ -68,10 +68,13 @@ const InstagramSection = ({ podcastId }) => {
                   )}
                   {pic.media_type === 'VIDEO' && (
                     <video
-                      src={pic.media_url}
                       controls
-                      className="object-cover object-center w-full h-32 rounded-sm md:h-64"
-                    ></video>
+                      playsinline
+                      loop
+                      className="object-cover object-center w-full h-32 rounded-sm md:h-64 video"
+                    >
+                      <source src={pic.media_url} />{' '}
+                    </video>
                   )}
                 </a>
               );
