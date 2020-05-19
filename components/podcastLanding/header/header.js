@@ -206,9 +206,11 @@ const NewHeader = ({ data, pageType }) => {
             directoriesList={data.directories}
             rss={data.feed_url}
           />
-          <div className="pl-10 lg:block">
-            <SupportButton />
-          </div>
+          {data.financial_support && (
+            <div className="pl-10 lg:block">
+              <SupportButton link={data.financial_support} />
+            </div>
+          )}
         </div>
       </div>
     </HeaderContainer>

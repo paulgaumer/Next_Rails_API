@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import SubscribeModal from './modal';
+import SubscribeIconMobile from '../../../icons/directories/subscribeMobile';
 import ApplePodcastIcon from '../../../icons/directories/applePodcastIcon';
 import GooglePodcastIcon from '../../../icons/directories/googlePodcastIcon';
 import SpotifyIcon from '../../../icons/directories/spotifyIcon';
@@ -14,7 +16,13 @@ const SubscribeList = ({ directoriesList, rss }) => {
     directoriesList === null ? {} : directoriesList
   );
   const width = 'w-8';
-  const height = 'w-8';
+  const height = 'h-8';
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
 
   return (
     <>
@@ -75,26 +83,30 @@ const SubscribeList = ({ directoriesList, rss }) => {
 
       {/* BELOW SM SIZE */}
       <div className="sm:hidden">
-        <div className="flex space-x-6">
-          <ListContainer className="flex items-center px-4 py-2 text-white rounded">
-            {/* <ApplePodcastIcon width="w-8" height="w-8" /> */}
-            <div className="flex items-center text-xs leading-tight">
-              <svg
-                fill="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                className="w-6 h-6 text-white"
-              >
-                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-              </svg>
-
-              <p className="pl-3">Subscribe</p>
-            </div>
-          </ListContainer>
-        </div>
+        <ListContainer
+          className="flex items-center px-4 py-2 text-xs leading-tight text-white rounded cursor-pointer"
+          onClick={() => setModalIsOpen(true)}
+        >
+          {/* <svg
+            fill="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            className="w-6 h-6 text-white"
+          >
+            <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+          </svg> */}
+          <SubscribeIconMobile />
+          <p className="pl-1">Subscribe</p>
+        </ListContainer>
+        <SubscribeModal
+          isOpen={modalIsOpen}
+          setModalIsOpen={setModalIsOpen}
+          directories={directories}
+          rss={rss}
+        />
       </div>
     </>
   );
