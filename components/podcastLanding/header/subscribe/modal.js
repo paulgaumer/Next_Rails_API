@@ -1,36 +1,43 @@
 import React, { useState } from 'react';
-import SubscribeModal from './modal';
+import Modal from 'react-modal';
 import ApplePodcastIcon from '../../../icons/directories/applePodcastIcon';
 import GooglePodcastIcon from '../../../icons/directories/googlePodcastIcon';
 import SpotifyIcon from '../../../icons/directories/spotifyIcon';
 import RssIcon from '../../../icons/directories/rssIcon';
-import styled from 'styled-components';
 
-const ListContainer = styled.div`
-  background-color: rgba(255, 255, 255, 0.25);
-`;
+const customStyles = {
+  overlay: {
+    zIndex: '10',
+    backgroundColor: 'rgba(100, 100, 100, 0.75)',
+  },
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    border: 'none',
+  },
+};
 
-const SubscribeList = ({ directoriesList, rss }) => {
-  const [directories] = useState(
-    directoriesList === null ? {} : directoriesList
-  );
+const SubscribeModal = ({ isOpen, setModalIsOpen, directories, rss }) => {
   const width = 'w-8';
   const height = 'w-8';
 
-  const [modalIsOpen, setModalIsOpen] = useState(true);
-
-  const openModal = () => {
-    setIsOpen(true);
-  };
-
   return (
-    <>
-      {/* ABOVE SM SIZE */}
-      <ListContainer className="hidden px-8 rounded shadow-inner sm:inline-block sm:px-4 md:px-2">
-        <p className="pt-2 text-center text-white md:hidden">Listen on</p>
-        <div className="py-6 space-y-6 text-gray-100 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-8 sm:grid-cols-3 md:py-4 md:flex md:justify-around">
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={() => setModalIsOpen(false)}
+      // onAfterOpen={afterOpenModal}
+      style={customStyles}
+      contentLabel="Example Modal"
+    >
+      <div className="">
+        <p className="pt-2 text-center text-gray-800 uppercase">Listen on</p>
+        <div className="grid grid-cols-2 row-gap-6 col-gap-10 pb-2 space-y-8 text-gray-700">
           {directories['apple_podcasts'] && (
-            <div className="transform md:px-4 hover:scale-105">
+            <div className="transform hover:scale-105">
               <a
                 href={directories['apple_podcasts']}
                 target="_blank"
@@ -45,7 +52,7 @@ const SubscribeList = ({ directoriesList, rss }) => {
             </div>
           )}
           {directories['google_podcasts'] && (
-            <div className="transform md:px-4 hover:scale-105">
+            <div className="transform hover:scale-105">
               <a
                 href={directories['google_podcasts']}
                 target="_blank"
@@ -60,7 +67,7 @@ const SubscribeList = ({ directoriesList, rss }) => {
             </div>
           )}
           {directories['spotify'] && (
-            <div className="transform md:px-4 hover:scale-105">
+            <div className="transform hover:scale-105">
               <a
                 href={directories['spotify']}
                 target="_blank"
@@ -71,43 +78,16 @@ const SubscribeList = ({ directoriesList, rss }) => {
               </a>
             </div>
           )}
-          <div className="transform md:px-4 hover:scale-105">
+          <div className="transform hover:scale-105">
             <a href={rss} target="_blank" className="flex items-center">
               <RssIcon width={width} height={height} />
               <span className="pl-2 text-xs leading-tight">Rss</span>
             </a>
           </div>
         </div>
-      </ListContainer>
-
-      {/* BELOW SM SIZE */}
-      <div className="sm:hidden">
-        <ListContainer
-          className="flex items-center px-4 py-2 text-xs leading-tight text-white rounded"
-          onClick={() => setModalIsOpen(true)}
-        >
-          <svg
-            fill="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            className="w-6 h-6 text-white"
-          >
-            <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-          </svg>
-          <p className="pl-3">Subscribe</p>
-        </ListContainer>
-        <SubscribeModal
-          isOpen={modalIsOpen}
-          setModalIsOpen={setModalIsOpen}
-          directories={directories}
-          rss={rss}
-        />
       </div>
-    </>
+    </Modal>
   );
 };
 
-export default SubscribeList;
+export default SubscribeModal;
