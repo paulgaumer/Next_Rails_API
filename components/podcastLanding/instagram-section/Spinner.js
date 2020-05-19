@@ -21,7 +21,7 @@ const Spinner = () => {
         viewBox="0 0 100 100"
         preserveAspectRatio="xMidYMid"
         className={`${themeOff(isThemed, 'text-red-400')}`}
-        style={{ color: themeOn(isThemed, colors.primary) }}
+        style={{ color: themeOn(isThemed, colors.headerText) }}
       >
         <g transform="rotate(0 50 50)">
           <rect

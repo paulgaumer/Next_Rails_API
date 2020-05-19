@@ -216,7 +216,7 @@ const NewHeader = ({ data, pageType }) => {
           </div>
           <div className="flex items-center mt-12 lg:mt-0 lg:mx-10">
             {data.socials && (
-              <div className="col-span-1 sm:mr-10 lg:block" s>
+              <div className="col-span-1 sm:mr-10 lg:block">
                 <SocialsList socialsList={data.socials} />
               </div>
             )}

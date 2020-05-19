@@ -35,7 +35,7 @@ const InstagramSection = ({ podcastId }) => {
             )}`}
             style={{ borderColor: themeOn(isThemed, colors.primary) }}
           >
-            <img src="/instagram-colors.png" alt="" className="w-6 h-6 mr-2" />
+            <img src="/insta-icon-colors.png" alt="" className="w-6 h-6 mr-2" />
             <a
               href={`https://www.instagram.com/${instagramUserName}/`}
               target="_blank"
