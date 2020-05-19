@@ -153,7 +153,7 @@ const IntegrationSection = ({ podcastData }) => {
                   </div> */}
                   <p className="text-sm text-gray-800 sm:pt-2">
                     Already done! Start creating awesome audiograms from your
-                    episode pages
+                    episodes pages
                   </p>
                 </div>
               </div>
