@@ -24,6 +24,7 @@ const TinyEditor = ({ value, setValue, height }) => {
           elementpath: false,
           body_class: 'editor-body',
           content_style: '.editor-body { font-size: 0.875rem }',
+          block_formats: 'Paragraph=p; Header 1=h3; Header 2=h4',
           plugins: [
             'advlist autolink lists link image charmap print preview anchor',
             'searchreplace visualblocks code fullscreen',
