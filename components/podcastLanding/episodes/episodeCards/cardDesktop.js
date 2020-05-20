@@ -127,7 +127,10 @@ const CardDesktop = ({ ep, epIndex }) => {
           </Link>
         </div>
         <div className="pt-3 text-sm text-gray-400">
-          <p>61 min | {formatDate(ep.enclosure.pubDate)}</p>
+          <p>
+            {Math.ceil(parseInt(ep.enclosure.duration, 10) / 60)} min |{' '}
+            {formatDate(ep.enclosure.pubDate)}
+          </p>
         </div>
       </div>
     </CardContainer>
