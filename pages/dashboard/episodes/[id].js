@@ -8,10 +8,11 @@ import EpisodeDetails from '../../../components/dashboard/episodes/episodeDetail
 
 const EpisodePage = ({ podcastData, currentDomain }) => {
   const { episode, id } = podcastData.podcast;
+  const { billing } = podcastData;
 
   return (
     <DashboardLayout podcastData={podcastData} currentDomain={currentDomain}>
-      <EpisodeDetails podEpisode={episode} podId={id} />
+      <EpisodeDetails podEpisode={episode} podId={id} billing={billing} />
     </DashboardLayout>
   );
 };

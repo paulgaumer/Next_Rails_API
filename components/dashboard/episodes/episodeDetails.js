@@ -5,7 +5,7 @@ import fetch from 'isomorphic-unfetch';
 import TinyEditor from '../text-editor/TinyEditor';
 import { createEpisode, updateEpisode } from '../apiCalls/handleFetch';
 
-const EpisodeDetails = ({ podEpisode, podId }) => {
+const EpisodeDetails = ({ podEpisode, podId, billing }) => {
   const headlinerUrl = (url) => {
     if (url.includes('?')) {
       return url.split('?')[0];
@@ -19,6 +19,7 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
   const [showNotes, setShowNotes] = useState(podEpisode.show_notes);
   const [transcription, setTranscription] = useState(podEpisode.transcription);
   const [audioUrl] = useState(headlinerUrl(podEpisode.enclosure.url));
+  const [time_used] = useState(Math.ceil(billing.transcription_time_used / 60));
   const [speakerNumber, setSpeakerNumber] = useState(1);
   const [uploaded, setUploaded] = useState(false);
 
@@ -185,7 +186,7 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
                   height={500}
                 />
               </div>
-              <div className="sm:col-span-6">
+              <div className=" sm:col-span-6">
                 <label
                   htmlFor="transcription"
                   className="block pb-4 text-sm font-medium leading-5 text-gray-700 uppercase"
@@ -194,7 +195,7 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
                 </label>
                 {!transcription && !uploaded && (
                   <>
-                    <div className="flex items-center max-w-xs rounded-md">
+                    <div className="flex items-center max-w-xs pt-3 rounded-md">
                       <p className="pr-2 text-gray-700">Number of speakers</p>
                       <select
                         id="speakers"
@@ -210,13 +211,40 @@ const EpisodeDetails = ({ podEpisode, podId }) => {
                         <option>4</option>
                       </select>
                     </div>
-                    <button
-                      type="button"
-                      onClick={handleUploadAudio}
-                      className="inline-flex items-center px-4 py-2 mt-4 text-base font-medium leading-6 text-indigo-700 transition duration-150 ease-in-out bg-indigo-100 border border-transparent rounded-md hover:bg-indigo-50 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo active:bg-indigo-200"
-                    >
-                      Get your transcription now
-                    </button>
+                    {time_used <= 200 && (
+                      <>
+                        <button
+                          type="button"
+                          onClick={handleUploadAudio}
+                          className="inline-flex items-center px-4 py-2 mt-4 text-base font-medium leading-6 text-indigo-700 transition duration-150 ease-in-out bg-indigo-100 border border-transparent rounded-md hover:bg-indigo-50 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo active:bg-indigo-200"
+                        >
+                          Get your transcription now
+                        </button>
+                        <p className="mt-2 text-sm italic text-gray-500">
+                          - You have used {time_used} min out of your free 3
+                          hours
+                        </p>
+                      </>
+                    )}
+                    {time_used > 200 && (
+                      <div className="flex items-center mt-2">
+                        <svg
+                          fill="none"
+                          strokeLinecap="round"
+                          strokeWnejoin="round"
+                          strokeWidth="2"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          className="w-6 h-6 mr-1 text-orange-400"
+                        >
+                          <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                        </svg>
+                        <p className="text-orange-400">
+                          - Oops, it seems you have used the entirety of your
+                          free 3 hours
+                        </p>
+                      </div>
+                    )}
                   </>
                 )}
                 {transcription === 'In Progress' && (
