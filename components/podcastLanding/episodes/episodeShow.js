@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { GlobalStateContext } from '../../../context/globalContextProvider';
+import { themeOn, themeOff } from '../../../utils/themeHandlers';
 
 const FormattedDiv = styled.div`
   line-height: 1.625;
@@ -23,10 +25,13 @@ const FormattedDiv = styled.div`
     padding: 1.25rem 0 0.75rem;
   }
   a {
-    color: red;
+    color: #fc8181; /* red-400 */
   }
   a:hover {
     text-decoration: underline;
+  }
+  p > img {
+    padding-bottom: 1rem;
   }
   p > iframe {
     /* display: inline; */
@@ -36,12 +41,19 @@ const FormattedDiv = styled.div`
 `;
 
 const Transcription = ({ episode }) => {
+  const { theme, isThemed } = useContext(GlobalStateContext);
+  const colors = isThemed ? theme.colors : '';
+
   return (
     <>
-      <div className="mb-10 border-b border-gray-300">
-        <h2 className="inline-block px-2 text-2xl text-3xl font-semibold text-gray-600 border-b-2 border-red-400">
+      <div className="flex mb-10">
+        <h2
+          className="flex-shrink-0 inline-block px-2 text-2xl text-3xl font-semibold text-gray-600 border-b-2"
+          style={{ borderColor: themeOn(isThemed, colors.primary) }}
+        >
           Transcription
         </h2>
+        <div className="w-full border-b border-gray-300"></div>
       </div>
       <FormattedDiv
         dangerouslySetInnerHTML={{ __html: episode.transcription }}
@@ -51,17 +63,24 @@ const Transcription = ({ episode }) => {
 };
 
 const EpisodeShow = ({ episode }) => {
+  const { theme, isThemed } = useContext(GlobalStateContext);
+  const colors = isThemed ? theme.colors : '';
   return (
     <div className="mx-auto max-w-7xl">
-      <div className="px-6 pt-12 md:mx-20">
+      <div className="px-6 pt-12">
         <div className="mb-14">
-          <div className="mb-8 border-b border-gray-300">
-            <h2 className="inline-block px-2 text-2xl text-3xl font-semibold text-gray-600 border-b-2 border-red-400">
+          <div className="flex mb-8">
+            <h2
+              className="flex-shrink-0 inline-block px-2 text-2xl text-3xl font-semibold text-gray-600 border-b-2"
+              style={{ borderColor: themeOn(isThemed, colors.primary) }}
+            >
               Show Notes
             </h2>
+            <div className="w-full border-b border-gray-300"></div>
           </div>
           <FormattedDiv
             dangerouslySetInnerHTML={{ __html: episode.show_notes }}
+            primary={themeOn(isThemed, colors.primary)}
           />
         </div>
         {episode.transcription && episode.transcription !== 'In Progress' && (
