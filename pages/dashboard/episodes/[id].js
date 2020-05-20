@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import nextCookie from 'next-cookies';
 import fetch from 'isomorphic-unfetch';
 import DashboardLayout from '../../../components/dashboard/dashboardLayout/dashboardLayout';
@@ -12,6 +13,9 @@ const EpisodePage = ({ podcastData, currentDomain }) => {
 
   return (
     <DashboardLayout podcastData={podcastData} currentDomain={currentDomain}>
+      <Head>
+        <title>{episode.title} | Podwii</title>
+      </Head>
       <EpisodeDetails podEpisode={episode} podId={id} billing={billing} />
     </DashboardLayout>
   );

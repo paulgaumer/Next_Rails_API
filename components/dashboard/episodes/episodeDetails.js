@@ -40,14 +40,10 @@ const EpisodeDetails = ({ podEpisode, podId, billing }) => {
 
     if (newEpisode.id !== null) {
       const res = await updateEpisode(newEpisode);
-      res === 204
-        ? Router.push(`/dashboard/episodes/${newEpisode.guid}`)
-        : alert('There has been an error');
+      res !== 204 && alert('There has been an error');
     } else {
       const res = await createEpisode(newEpisode);
-      res === 204
-        ? Router.push(`/dashboard/episodes/${newEpisode.guid}`)
-        : alert('There has been an error');
+      res !== 204 && alert('There has been an error');
     }
   };
 
@@ -183,7 +179,7 @@ const EpisodeDetails = ({ podEpisode, podId, billing }) => {
                 <TinyEditor
                   value={showNotes}
                   setValue={setShowNotes}
-                  height={500}
+                  height={300}
                 />
               </div>
               <div className=" sm:col-span-6">
@@ -221,8 +217,8 @@ const EpisodeDetails = ({ podEpisode, podId, billing }) => {
                           Get your transcription now
                         </button>
                         <p className="mt-2 text-sm italic text-gray-500">
-                          - You have used {time_used} min out of your free 3
-                          hours
+                          - You have used {time_used} min out of your free 180
+                          min
                         </p>
                       </>
                     )}
