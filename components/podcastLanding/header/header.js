@@ -102,7 +102,7 @@ const NewHeader = ({ data, pageType }) => {
 
   return (
     <HeaderContainer textColor={headerText} backgroundColor={headerBackground}>
-      <div className="pt-12 pb-8 mx-auto md:pt-12 md:pb-12 max-w-7xl">
+      <div className="pt-12 pb-4 mx-auto md:pb-8 md:pt-12 md:pb-12 max-w-7xl">
         <div
           data-name="top-part"
           className="flex flex-col-reverse items-center sm:mx-20 lg:grid lg:grid-cols-12 lg:gap-20 xl:gap-28"
