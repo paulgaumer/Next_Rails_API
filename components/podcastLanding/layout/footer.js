@@ -42,7 +42,7 @@ const Footer = ({ socialsList }) => {
             </a>
           )}
         </div>
-        <div className="flex items-center mt-8 md:mt-0 md:order-1">
+        <div className="flex items-center justify-center mt-8 md:mt-0 md:order-1 md:justify-start">
           <p className="text-base leading-6 text-center text-gray-400">
             Proudly powered by{' '}
             <a href="https://podwii.com" target="_blank" className="underline">
