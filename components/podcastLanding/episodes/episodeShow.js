@@ -12,6 +12,8 @@ const FormattedDiv = styled.div`
   p {
     padding-bottom: 0.75rem;
   }
+  h1,
+  h2,
   h3 {
     font-size: 1.25rem;
     font-weight: 700;
