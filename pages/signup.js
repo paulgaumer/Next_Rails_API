@@ -30,7 +30,6 @@ const signup = async ({ email, password, subdomain }) => {
 };
 
 const SignUpPage = () => {
-  console.log(process.env.EARLY_ACCESS_CODE);
   const [earlyAccessCode, setEarlyAccessCode] = useState('');
   const [canSignUp, setCanSignUp] = useState(false);
   const [user, setUser] = useState({

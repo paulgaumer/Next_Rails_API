@@ -48,7 +48,7 @@ export const createEpisode = async (info) => {
       episode: { ...info },
     }),
   });
-  return res.status;
+  return res;
 };
 
 export const updateEpisode = async (info) => {

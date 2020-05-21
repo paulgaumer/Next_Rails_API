@@ -39,11 +39,16 @@ const EpisodeDetails = ({ podEpisode, podId, billing }) => {
     };
 
     if (newEpisode.id !== null) {
-      const res = await updateEpisode(newEpisode);
-      res !== 204 && alert('There has been an error');
+      const status = await updateEpisode(newEpisode);
+      status !== 204 && alert('There has been an error');
     } else {
       const res = await createEpisode(newEpisode);
-      res !== 204 && alert('There has been an error');
+      res.status !== 200 && alert('There has been an error');
+      const data = await res.json();
+      setEpisode({
+        ...episode,
+        ['id']: data.episode_id,
+      });
     }
   };
 
