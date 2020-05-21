@@ -19,7 +19,11 @@ const login = async (user) => {
   });
   const token = res.headers.get('Authorization');
   Cookies.set('token', token, { expires: 1 });
-  Router.push('/dashboard');
+  if (res.status === 201) {
+    Router.push('/dashboard');
+  } else {
+    alert('Invalid email or password');
+  }
 };
 
 const LogInPage = () => {
