@@ -127,7 +127,7 @@ const PodcastInfo = ({ podcastData }) => {
               </label>
               <div className="mt-1 sm:mt-0 sm:col-span-2">
                 <p className="mb-2 text-sm text-gray-500 sm:pt-2">
-                  This will be the description showing on the main page.
+                  This will be the description visible on the main page.
                 </p>
                 <div className="flex max-w-lg rounded-md shadow-sm">
                   <TinyEditor
