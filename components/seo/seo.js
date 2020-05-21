@@ -19,6 +19,8 @@ export default ({ title, description, subdomain, cover, path }) => {
           {
             url: cover ? cover.url : '',
             alt: title,
+            width: 1280,
+            height: 720,
           },
         ],
       }}
