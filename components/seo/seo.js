@@ -27,8 +27,8 @@ export default ({
           {
             url: cover ? cover.url : '',
             alt: title,
-            width: 400,
-            height: 400,
+            width: 150,
+            height: 150,
           },
         ],
       }}
