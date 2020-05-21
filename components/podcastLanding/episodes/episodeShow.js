@@ -26,6 +26,7 @@ const FormattedDiv = styled.div`
     color: #4a5568; /* gray-700 */
     padding: 1.25rem 0 0.75rem;
   }
+
   a {
     color: #fc8181; /* red-400 */
   }
@@ -40,6 +41,11 @@ const FormattedDiv = styled.div`
     margin: 0 auto;
     padding: 16px 0;
   }
+
+  #transcript-speaker {
+    font-size: 1rem;
+    padding-bottom: 0.5rem;
+  }
 `;
 
 const Transcription = ({ episode }) => {
@@ -48,7 +54,7 @@ const Transcription = ({ episode }) => {
 
   return (
     <>
-      <div className="flex mb-10">
+      <div className="flex mb-8">
         <h2
           className="flex-shrink-0 inline-block px-2 text-2xl text-3xl font-semibold text-gray-600 border-b-2"
           style={{ borderColor: themeOn(isThemed, colors.primary) }}
