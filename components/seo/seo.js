@@ -1,8 +1,16 @@
 import React from 'react';
 import { NextSeo } from 'next-seo';
 
-export default ({ title, description, subdomain, cover, path }) => {
+export default ({
+  title,
+  description,
+  subdomain,
+  cover,
+  path,
+  facebook_app_id,
+}) => {
   const urlPath = path ? path : '';
+  const facebookAppId = facebook_app_id ? facebook_app_id : '';
 
   return (
     <NextSeo
@@ -30,7 +38,7 @@ export default ({ title, description, subdomain, cover, path }) => {
         cardType: 'summary_large_image',
       }}
       facebook={{
-        appId: '',
+        appId: facebookAppId,
       }}
     />
   );
