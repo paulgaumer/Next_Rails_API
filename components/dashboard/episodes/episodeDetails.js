@@ -30,11 +30,11 @@ const EpisodeDetails = ({ podEpisode, podId, billing }) => {
     });
   };
 
-  const saveEpisode = async (transcription) => {
+  const saveEpisode = async () => {
     const newEpisode = {
       ...episode,
       show_notes: showNotes,
-      transcription,
+      transcription: transcription,
       podcast_id: podId,
     };
 
@@ -267,7 +267,7 @@ const EpisodeDetails = ({ podEpisode, podId, billing }) => {
                   <TinyEditor
                     value={transcription}
                     setValue={setTranscription}
-                    height={800}
+                    height={500}
                   />
                 )}
               </div>
