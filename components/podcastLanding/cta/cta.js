@@ -35,7 +35,7 @@ const MailCta = ({ data, border }) => {
       }),
     });
     const resData = await res.json();
-    // res.status === 200 ? setEmail('') : console.log(resData);
+    res.status === 200 ? setEmail('') : console.log(resData);
   };
 
   return (
