@@ -44,7 +44,17 @@ const FormattedDiv = styled.div`
 
   #transcript-speaker {
     font-size: 1rem;
-    padding-bottom: 0.5rem;
+    padding: 0;
+  }
+  #transcript-timestamp {
+    margin: 0;
+    padding: 0;
+    font-size: 0.75rem;
+    color: #4a5568; /* gray-700 */
+  }
+  #transcript-content {
+    padding-top: 0.5rem;
+    padding-bottom: 1.5rem;
   }
 `;
 
