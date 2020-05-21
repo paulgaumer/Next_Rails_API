@@ -130,62 +130,10 @@ const EpisodeDetails = ({ podEpisode, podId, billing }) => {
                   ></div>
                 </div>
               </div>
-              <div className="sm:col-span-4">
-                <label
-                  htmlFor="title"
-                  className="block text-sm font-medium leading-5 text-gray-700 uppercase"
-                >
-                  Title
-                </label>
-                <div className="mt-1 rounded-md shadow-sm">
-                  <input
-                    id="title"
-                    type="text"
-                    value={episode.title}
-                    className="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
-                    onChange={(e) => handleChange(e.target)}
-                  />
-                </div>
-              </div>
-
-              <div className="sm:col-span-6">
-                <label
-                  htmlFor="summary"
-                  className="block text-sm font-medium leading-5 text-gray-700 uppercase"
-                >
-                  Summary
-                </label>
-                <div className="mt-1 rounded-md shadow-sm">
-                  <textarea
-                    id="summary"
-                    rows="7"
-                    value={episode.summary}
-                    className="block w-full transition duration-150 ease-in-out form-textarea sm:text-sm sm:leading-5"
-                    onChange={(e) => handleChange(e.target)}
-                  ></textarea>
-                </div>
-                <p className="mt-2 text-sm text-gray-500">
-                  The summary will be displayed on your homepage
-                </p>
-              </div>
-              <div className="sm:col-span-6">
-                <label
-                  htmlFor="showNotes"
-                  className="block text-sm font-medium leading-5 text-gray-700 uppercase"
-                >
-                  Show notes
-                </label>
-
-                <TinyEditor
-                  value={showNotes}
-                  setValue={setShowNotes}
-                  height={300}
-                />
-              </div>
               <div className=" sm:col-span-6">
                 <label
                   htmlFor="transcription"
-                  className="block pb-4 text-sm font-medium leading-5 text-gray-700 uppercase"
+                  className="block pb-2 mt-6 text-sm font-medium leading-5 text-gray-700 uppercase"
                 >
                   Transcription
                 </label>
@@ -267,9 +215,61 @@ const EpisodeDetails = ({ podEpisode, podId, billing }) => {
                   <TinyEditor
                     value={transcription}
                     setValue={setTranscription}
-                    height={500}
+                    height={300}
                   />
                 )}
+              </div>
+              <div className="sm:col-span-4">
+                <label
+                  htmlFor="title"
+                  className="block mt-6 text-sm font-medium leading-5 text-gray-700 uppercase"
+                >
+                  Episode Title
+                </label>
+                <div className="mt-1 rounded-md shadow-sm">
+                  <input
+                    id="title"
+                    type="text"
+                    value={episode.title}
+                    className="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
+                    onChange={(e) => handleChange(e.target)}
+                  />
+                </div>
+              </div>
+
+              <div className="sm:col-span-6">
+                <label
+                  htmlFor="summary"
+                  className="block mt-6 text-sm font-medium leading-5 text-gray-700 uppercase"
+                >
+                  Summary
+                </label>
+                <div className="mt-1 rounded-md shadow-sm">
+                  <textarea
+                    id="summary"
+                    rows="7"
+                    value={episode.summary}
+                    className="block w-full transition duration-150 ease-in-out form-textarea sm:text-sm sm:leading-5"
+                    onChange={(e) => handleChange(e.target)}
+                  ></textarea>
+                </div>
+                <p className="mt-2 text-sm text-gray-500">
+                  The summary will be displayed on your homepage
+                </p>
+              </div>
+              <div className="sm:col-span-6">
+                <label
+                  htmlFor="showNotes"
+                  className="block mt-6 text-sm font-medium leading-5 text-gray-700 uppercase"
+                >
+                  Show notes
+                </label>
+
+                <TinyEditor
+                  value={showNotes}
+                  setValue={setShowNotes}
+                  height={300}
+                />
               </div>
             </div>
           </div>
