@@ -37,7 +37,8 @@ const EpisodesList = ({ episodes }) => {
           <div className="w-full border-b border-gray-300"></div>
         </div>
         {currentEpisodes.map((ep, i) => {
-          return <EpisodeCard ep={ep} epIndex={i} key={ep.guid} />;
+          const epIndex = episodesList.findIndex((e) => e.guid === ep.guid);
+          return <EpisodeCard ep={ep} epIndex={epIndex} key={ep.guid} />;
         })}
         <Pagination
           episodesPerPage={episodesPerPage}
