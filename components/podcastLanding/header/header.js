@@ -85,21 +85,23 @@ const HeroImage = styled.div`
   }
 `;
 
-const NewHeader = ({ data, pageType, epIndex, singleEpList }) => {
+const NewHeader = ({ data, pageType, episode }) => {
   const audioDispatch = useContext(GlobalDispatchContext);
 
-  const { amplitude, theme, isThemed } = useContext(GlobalStateContext);
+  const { amplitude, theme, isThemed, episodes } = useContext(
+    GlobalStateContext
+  );
   const [headerText] = useState(data.theme.colors.headerText);
   const [headerBackground] = useState(data.theme.colors.headerBackground);
   const isEp = pageType === 'ep';
-  const index = singleEpList ? 0 : epIndex;
+  const index = isEp ? episodes.findIndex((e) => e.guid === episode.guid) : 0;
 
   const handlePlayClick = () => {
     audioDispatch({
       type: 'PLAY_EPISODE',
-      payload: isEp ? data.episode : data.episodes[0],
+      payload: isEp ? episode : data.episodes[0],
     });
-    amplitude.playSongAtIndex(isEp ? index : 0);
+    amplitude.playSongAtIndex(index);
   };
 
   return (
@@ -112,7 +114,7 @@ const NewHeader = ({ data, pageType, epIndex, singleEpList }) => {
           <div className="col-span-7 mt-12 lg:mt-0">
             {isEp && (
               <h1 className="pb-8 text-3xl leading-none text-center sm:text-4xl md:text-4xl lg:pb-12 xl:text-5xl font-titleLanding lg:text-left">
-                {data.episode.title}
+                {episode.title}
               </h1>
             )}
             {!isEp && (
@@ -191,8 +193,8 @@ const NewHeader = ({ data, pageType, epIndex, singleEpList }) => {
           <div className="pt-6">
             <HeroImage className="">
               <img
-                src={data.cover_image.url}
-                alt={data.cover_image.title}
+                src={isEp ? episode.cover_image.url : data.cover_image.url}
+                alt={isEp ? episode.cover_image.title : data.cover_image.title}
                 className="shadow-md"
               />
               <div data-name="cover-2"></div>

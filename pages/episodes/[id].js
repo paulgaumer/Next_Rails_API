@@ -11,45 +11,30 @@ import {
 } from '../../context/globalContextProvider';
 import { getSubdomain } from '../../utils/subdomain';
 
-const EpisodePage = ({ podData, theme }) => {
-  const { episode } = podData;
-
+const EpisodePage = ({ podData, theme, podEp }) => {
   const setTheme = useContext(GlobalDispatchContext);
   const episodesList = useContext(GlobalStateContext).episodes;
   const recordEpisodesList = useContext(GlobalDispatchContext);
 
-  const [epIndex, setEpIndex] = useState(0);
-  const [singleEpList, setSingleEpList] = useState(true);
-
   useEffect(() => {
     setTheme({ type: 'SET_THEME', payload: theme });
     if (episodesList.length === 0) {
-      recordEpisodesList({ type: 'LIST_EPISODES', payload: [podData.episode] });
-    } else {
-      setEpIndex(
-        episodesList.findIndex((e) => e.guid === podData.episode.guid)
-      );
-      setSingleEpList(false);
+      recordEpisodesList({ type: 'LIST_EPISODES', payload: podData.episodes });
     }
   }, []);
 
   return (
     <Layout>
       <SEO
-        title={podData.title}
-        description={podData.description}
+        title={podEp.title}
+        description={podEp.description}
         subdomain={podData.subdomain}
-        cover={episode.cover_image}
-        path={`/episodes/${episode.guid}`}
+        cover={podEp.cover_image}
+        path={`/episodes/${podEp.guid}`}
       />
-      <Header
-        data={podData}
-        pageType={'ep'}
-        epIndex={epIndex}
-        singleEpList={singleEpList}
-      />
+      <Header data={podData} episode={podEp} pageType={'ep'} />
       <Cta data={podData} border={true} />
-      <EpisodeShow episode={episode} />
+      <EpisodeShow episode={podEp} />
     </Layout>
   );
 };
@@ -61,13 +46,12 @@ EpisodePage.getInitialProps = async function (ctx) {
   const subdomain = getSubdomain(ctx.req);
   const apiUrl = process.env.API_HOST;
 
-  const res = await fetch(`${apiUrl}api/v1/landing/${subdomain}/${id}`, {
-    method: 'get',
-  });
+  const res = await fetch(`${apiUrl}api/v1/landing/${subdomain}`);
   const data = await res.json();
 
   return {
     podData: data.podcast,
+    podEp: data.podcast.episodes.find((e) => e.guid === id),
     theme: data.podcast.theme,
   };
 };
