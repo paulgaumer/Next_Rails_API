@@ -30,6 +30,9 @@ InstagramAuth.getInitialProps = async function (ctx) {
     return { data: null };
   }
 
+  console.log('query code');
+  console.log(query.code);
+
   // Get Short term token
   const searchParams = new URLSearchParams();
   searchParams.set('client_id', process.env.INSTAGRAM_CLIENT_ID);
@@ -47,7 +50,8 @@ InstagramAuth.getInitialProps = async function (ctx) {
     },
   });
   const shortToken = await shortRes.json();
-  // console.log(shortToken);
+  console.log('Short Token');
+  console.log(shortToken);
 
   if (shortToken.access_token === undefined) {
     return { data: null };
@@ -58,7 +62,8 @@ InstagramAuth.getInitialProps = async function (ctx) {
     `https://graph.instagram.com/access_token?grant_type=ig_exchange_token&client_secret=${process.env.INSTAGRAM_CLIENT_SECRET}&access_token=${shortToken.access_token}`
   );
   const longToken = await longRes.json();
-  // console.log(longToken);
+  console.log('Long Token');
+  console.log(longToken);
 
   if (longToken.access_token === undefined) {
     return { data: null };
