@@ -14,7 +14,7 @@ const PodcastLanding = ({ data }) => {
   const recordEpisodesList = useContext(GlobalDispatchContext);
 
   useEffect(() => {
-    if (episodesList.length === 0)
+    if (episodesList.length <= 1)
       recordEpisodesList({ type: 'LIST_EPISODES', payload: data.episodes });
   }, []);
 

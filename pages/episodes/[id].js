@@ -1,18 +1,38 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import fetch from 'isomorphic-unfetch';
 import SEO from '../../components/seo/seo';
 import Layout from '../../components/podcastLanding/layout/layout';
 import EpisodeShow from '../../components/podcastLanding/episodes/episodeShow';
 import Header from '../../components/podcastLanding/header/header';
 import Cta from '../../components/podcastLanding/cta/cta';
-import { GlobalDispatchContext } from '../../context/globalContextProvider';
+import {
+  GlobalDispatchContext,
+  GlobalStateContext,
+} from '../../context/globalContextProvider';
 import { getSubdomain } from '../../utils/subdomain';
 
 const EpisodePage = ({ podData, theme }) => {
-  const setTheme = useContext(GlobalDispatchContext);
-  setTheme({ type: 'SET_THEME', payload: theme });
-
   const { episode } = podData;
+
+  const setTheme = useContext(GlobalDispatchContext);
+  const episodesList = useContext(GlobalStateContext).episodes;
+  const recordEpisodesList = useContext(GlobalDispatchContext);
+
+  const [epIndex, setEpIndex] = useState(0);
+  const [singleEpList, setSingleEpList] = useState(true);
+
+  useEffect(() => {
+    setTheme({ type: 'SET_THEME', payload: theme });
+    if (episodesList.length === 0) {
+      recordEpisodesList({ type: 'LIST_EPISODES', payload: [podData.episode] });
+    } else {
+      setEpIndex(
+        episodesList.findIndex((e) => e.guid === podData.episode.guid)
+      );
+      setSingleEpList(false);
+    }
+  }, []);
+
   return (
     <Layout>
       <SEO
@@ -22,7 +42,12 @@ const EpisodePage = ({ podData, theme }) => {
         cover={episode.cover_image}
         path={`/episodes/${episode.guid}`}
       />
-      <Header data={podData} pageType={'ep'} />
+      <Header
+        data={podData}
+        pageType={'ep'}
+        epIndex={epIndex}
+        singleEpList={singleEpList}
+      />
       <Cta data={podData} border={true} />
       <EpisodeShow episode={episode} />
     </Layout>
