@@ -85,19 +85,21 @@ const HeroImage = styled.div`
   }
 `;
 
-const NewHeader = ({ data, pageType }) => {
+const NewHeader = ({ data, pageType, epIndex, singleEpList }) => {
   const audioDispatch = useContext(GlobalDispatchContext);
+
   const { amplitude, theme, isThemed } = useContext(GlobalStateContext);
   const [headerText] = useState(data.theme.colors.headerText);
   const [headerBackground] = useState(data.theme.colors.headerBackground);
   const isEp = pageType === 'ep';
+  const index = singleEpList ? 0 : epIndex;
 
   const handlePlayClick = () => {
     audioDispatch({
       type: 'PLAY_EPISODE',
       payload: isEp ? data.episode : data.episodes[0],
     });
-    amplitude.playSongAtIndex(0);
+    amplitude.playSongAtIndex(isEp ? index : 0);
   };
 
   return (
