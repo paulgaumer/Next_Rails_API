@@ -28,11 +28,13 @@ const DesktopSideBar = ({ podcastSubdomain, currentDomain }) => {
       <div className="flex flex-col w-64 bg-indigo-800 border-r border-gray-200">
         <div className="flex flex-col flex-1 h-0 pt-5 pb-4 overflow-y-auto">
           <div className="flex items-center flex-shrink-0 px-4">
-            <img
-              className="w-auto h-8"
-              src="/podwii-logo-white.png"
-              alt="Podwii"
-            />
+            <a href="https://podwii.com" target="_blank">
+              <img
+                className="w-auto h-8"
+                src="/podwii-logo-white.png"
+                alt="Podwii"
+              />
+            </a>
           </div>
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <nav className="flex-1 px-2 mt-5 bg-indigo-800">
