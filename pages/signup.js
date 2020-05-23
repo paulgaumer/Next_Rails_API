@@ -20,18 +20,20 @@ const signup = async ({ email, password, subdomain }) => {
       subdomain,
     }),
   });
-  if (res.status === 201) {
+  if (res.status === 200) {
     const token = res.headers.get('Authorization');
     Cookies.set('token', token, { expires: 1 });
     Router.push('/dashboard/onboarding');
+    return res;
   } else {
-    alert('Error');
+    return res;
   }
 };
 
 const SignUpPage = () => {
   const [earlyAccessCode, setEarlyAccessCode] = useState('');
   const [canSignUp, setCanSignUp] = useState(false);
+  const [errors, setErrors] = useState([]);
   const [user, setUser] = useState({
     email: '',
     password: '',
@@ -42,14 +44,16 @@ const SignUpPage = () => {
     setCanSignUp(earlyAccessCode === process.env.EARLY_ACCESS_CODE);
   }, [earlyAccessCode]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (canSignUp) {
-      signup(user);
+      const res = await signup(user);
+      const data = await res.json();
+      data.errors && setErrors(data.errors);
     } else {
-      alert(
-        'Podwii is still being deployed as a private release. Claim your early access code on https://podwii.com'
-      );
+      setErrors([
+        '[Incorrect access code] Podwii is still being deployed as a private release. Claim your early access code on https://podwii.com',
+      ]);
     }
   };
   // const handleChange = (e) => {
@@ -84,6 +88,35 @@ const SignUpPage = () => {
 
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
           <div className="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
+            {errors.length >= 1 && (
+              <ul className="p-4 mb-4 text-sm text-red-500 border border-red-500 rounded">
+                {errors.map((err) => {
+                  if (err.includes('Subdomain')) {
+                    err.replace('Subdomain', 'Url');
+                  }
+                  return (
+                    <li className="flex items-center">
+                      <svg
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        className="flex-shrink-0 w-6 h-6 mr-2"
+                      >
+                        <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                      </svg>
+                      <span>
+                        {err.includes('Subdomain')
+                          ? err.replace('Subdomain', 'This url')
+                          : err}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
             <form action="#" method="POST" onSubmit={handleSubmit}>
               <div>
                 <label
