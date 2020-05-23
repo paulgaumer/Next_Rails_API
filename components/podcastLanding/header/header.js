@@ -187,9 +187,16 @@ const NewHeader = ({ data, pageType, episode }) => {
                     </span>
                   )}
                   {!isEp && (
-                    <span className="pl-2 text-sm sm:text-lg lg:text-base">
-                      PLAY NOW
-                    </span>
+                    <>
+                      {/* Visible on Mobile */}
+                      <span className="pl-2 text-sm sm:text-lg lg:text-base lg:hidden">
+                        PLAY MOST RECENT
+                      </span>
+                      {/* Visible on Desktop */}
+                      <span className="hidden pl-2 text-sm sm:text-lg lg:text-base lg:inline-block">
+                        PLAY NOW
+                      </span>
+                    </>
                   )}
                 </button>
               </span>
