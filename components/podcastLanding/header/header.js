@@ -106,14 +106,36 @@ const NewHeader = ({ data, pageType, episode }) => {
 
   return (
     <HeaderContainer textColor={headerText} backgroundColor={headerBackground}>
-      <div className="pt-12 pb-4 mx-auto md:pb-8 md:pt-12 max-w-7xl">
+      <div className="relative pt-12 pb-4 mx-auto md:pb-8 md:pt-12 max-w-7xl">
+        {isEp && (
+          <div
+            className="absolute lg:hidden"
+            style={{ top: '20px', left: '15px' }}
+          >
+            <Link href="/">
+              <a>
+                <svg
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  className="w-6 h-6 sm:w-8 sm:h-8"
+                >
+                  <path d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </a>
+            </Link>
+          </div>
+        )}
         <div
           data-name="top-part"
           className="flex flex-col-reverse items-center sm:mx-20 lg:grid lg:grid-cols-12 lg:gap-20 xl:gap-28"
         >
           <div className="col-span-7 mt-12 lg:mt-0">
             {isEp && (
-              <h1 className="pb-8 text-3xl leading-none text-center sm:text-4xl md:text-4xl lg:pb-12 xl:text-5xl font-titleLanding lg:text-left">
+              <h1 className="px-2 pb-8 text-3xl leading-none text-center md:px-0 sm:text-4xl md:text-4xl lg:pb-12 xl:text-5xl font-titleLanding lg:text-left">
                 {episode.title}
               </h1>
             )}
