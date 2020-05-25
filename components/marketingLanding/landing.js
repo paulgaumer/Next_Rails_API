@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from './components/layout';
+import FacebookPixel from '../seo/pixels/index';
 import SEO from './components/seoMarketing';
 import Hero from './components/hero';
 import Features from './components/features';
@@ -10,7 +11,10 @@ import Footer from './components/footer';
 const MarketingLanding = () => {
   return (
     <Layout>
+      {/* In Head */}
       <SEO />
+      <FacebookPixel />
+      {/* **** */}
       <Hero />
       <Features />
       <LogoCloud />
