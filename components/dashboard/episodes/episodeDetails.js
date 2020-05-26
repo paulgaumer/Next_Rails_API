@@ -62,9 +62,13 @@ const EpisodeDetails = ({ podEpisode, podId, billing }) => {
 
     const timer = setTimeout(() => {
       const oldValue = speakersLabelsUpdated[targetId];
-      const oldReg = new RegExp(oldValue, 'g');
-      const new_trans = transcription.replace(oldReg, newValue);
-      console.log(new_trans);
+      const oldWithTags = `<h4 id='transcript-speaker'>${oldValue}</h4>`;
+      const oldReg = new RegExp(oldWithTags, 'g');
+      const newWithTags = `<h4 id='transcript-speaker'>${newValue}</h4>`;
+      console.log(oldWithTags);
+      console.log(newWithTags);
+
+      const new_trans = transcription.replace(oldReg, newWithTags);
       setSpeakersLabelsUpdated({
         ...speakersLabelsUpdated,
         [targetId]: newValue,
