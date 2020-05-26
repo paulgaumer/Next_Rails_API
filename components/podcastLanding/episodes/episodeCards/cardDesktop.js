@@ -101,7 +101,7 @@ const CardDesktop = ({ ep, epIndex }) => {
         </Link>
         <div className="flex items-center mt-3">
           <div
-            className="flex items-center justify-center flex-shrink-0 w-12 h-12 transform hover:scale-105"
+            className="flex items-center justify-center flex-shrink-0 w-12 h-12 transform cursor-pointer hover:scale-105"
             onClick={handlePlayClick}
           >
             <svg
