@@ -26,11 +26,8 @@ export const sendSlackNotification = async (email) => {
     'https://hooks.slack.com/services/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';
   const res = await fetch(url, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
     body: JSON.stringify({
-      text: `💪New Access Request: [${email}] 💪`,
+      text: `⭐️ New Access Request: [${email}] ⭐️`,
     }),
   });
 };

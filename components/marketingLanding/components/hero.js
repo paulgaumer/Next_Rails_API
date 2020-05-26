@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { submitAccessForm, sendSlackNotification } from '../utils/handleForm';
-// import scene from '../../../public/marketing/scene.svg';
-// import podwiiWhite from '../../../public/marketing/podwii-white.png';
-// import podwiiRed from '../../../public/marketing/podwii-red.png';
 
 const Hero = () => {
   const [isOpen, setIsOpen] = useState(false);

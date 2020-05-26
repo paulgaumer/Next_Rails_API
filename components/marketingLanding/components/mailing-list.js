@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { submitAccessForm } from '../utils/handleForm';
+import { submitAccessForm, sendSlackNotification } from '../utils/handleForm';
 
 const MailingList = () => {
   const [email, setEmail] = useState('');
@@ -11,6 +11,7 @@ const MailingList = () => {
     if (honeyBot === '') {
       const res = await submitAccessForm(email);
       if (res.status === 200) {
+        sendSlackNotification(email);
         setFormSubmitted(true);
         setEmail('');
       }
