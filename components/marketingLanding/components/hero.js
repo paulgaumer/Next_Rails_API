@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { submitAccessForm } from '../utils/handleForm';
+import { submitAccessForm, sendSlackNotification } from '../utils/handleForm';
 // import scene from '../../../public/marketing/scene.svg';
 // import podwiiWhite from '../../../public/marketing/podwii-white.png';
 // import podwiiRed from '../../../public/marketing/podwii-red.png';
@@ -16,6 +16,7 @@ const Hero = () => {
     if (honeyBot === '') {
       const res = await submitAccessForm(email);
       if (res.status === 200) {
+        sendSlackNotification(email);
         setFormSubmitted(true);
         setEmail('');
       }
