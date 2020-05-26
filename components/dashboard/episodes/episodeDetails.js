@@ -18,16 +18,61 @@ const EpisodeDetails = ({ podEpisode, podId, billing }) => {
   const [episode, setEpisode] = useState(podEpisode);
   const [showNotes, setShowNotes] = useState(podEpisode.show_notes);
   const [transcription, setTranscription] = useState(podEpisode.transcription);
+  const [transEditor, setTransEditor] = useState(null);
+  const [speakersLabels, setSpeakersLabels] = useState({
+    speaker1: 'Speaker 1',
+    speaker2: 'Speaker 2',
+  });
+  const [speakersLabelsUpdated, setSpeakersLabelsUpdated] = useState({
+    speaker1: 'Speaker 1',
+    speaker2: 'Speaker 2',
+  });
+
   const [audioUrl] = useState(headlinerUrl(podEpisode.enclosure.url));
   const [time_used] = useState(Math.ceil(billing.transcription_time_used / 60));
   const [speakerNumber, setSpeakerNumber] = useState(1);
   const [uploaded, setUploaded] = useState(false);
 
+  const setEditor = (editor, type) => {
+    if (type === 'transcription') {
+      setTransEditor(editor);
+    }
+  };
   const handleChange = (target, e) => {
     setEpisode({
       ...episode,
       [target.id]: target.value,
     });
+  };
+
+  // let typingTimer; //timer identifier
+  const [typingTimer, setTypingTimer] = useState(0);
+
+  const handleSpeakerLabelChange = (target) => {
+    const targetId = target.id;
+    // const oldValue = speakersLabels[target.id];
+    const newValue = target.value;
+
+    setSpeakersLabels({
+      ...speakersLabels,
+      [targetId]: newValue,
+    });
+
+    clearTimeout(typingTimer);
+
+    const timer = setTimeout(() => {
+      const oldValue = speakersLabelsUpdated[targetId];
+      const oldReg = new RegExp(oldValue, 'g');
+      const new_trans = transcription.replace(oldReg, newValue);
+      console.log(new_trans);
+      setSpeakersLabelsUpdated({
+        ...speakersLabelsUpdated,
+        [targetId]: newValue,
+      });
+      setTranscription(new_trans);
+      transEditor.setContent(new_trans);
+    }, 2000);
+    setTypingTimer(timer);
   };
 
   const saveEpisode = async () => {
@@ -217,11 +262,31 @@ const EpisodeDetails = ({ podEpisode, podId, billing }) => {
                 )}
                 {/* {uploaded && <p>Transcription has started...</p>} */}
                 {transcription !== null && transcription !== 'In Progress' && (
-                  <TinyEditor
-                    value={transcription}
-                    setValue={setTranscription}
-                    height={300}
-                  />
+                  <>
+                    <div className="flex mb-4 space-x-1">
+                      <input
+                        id="speaker1"
+                        className="block form-input sm:text-sm sm:leading-5"
+                        placeholder="Speaker 1"
+                        value={speakersLabels.speaker1}
+                        onChange={(e) => handleSpeakerLabelChange(e.target)}
+                      />
+                      <input
+                        id="speaker2"
+                        className="block form-input sm:text-sm sm:leading-5"
+                        placeholder="Speaker 2"
+                        value={speakersLabels.speaker2}
+                        onChange={(e) => handleSpeakerLabelChange(e.target)}
+                      />
+                    </div>
+                    <TinyEditor
+                      value={transcription}
+                      type="transcription"
+                      setValue={setTranscription}
+                      height={300}
+                      setEditor={setEditor}
+                    />
+                  </>
                 )}
               </div>
               <div className="sm:col-span-4">
@@ -273,6 +338,8 @@ const EpisodeDetails = ({ podEpisode, podId, billing }) => {
                 <TinyEditor
                   value={showNotes}
                   setValue={setShowNotes}
+                  setEditor={setEditor}
+                  type="shownotes"
                   height={300}
                 />
               </div>
