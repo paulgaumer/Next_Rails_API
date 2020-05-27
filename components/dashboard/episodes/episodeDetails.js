@@ -19,14 +19,12 @@ const EpisodeDetails = ({ podEpisode, podId, billing }) => {
   const [showNotes, setShowNotes] = useState(podEpisode.show_notes);
   const [transcription, setTranscription] = useState(podEpisode.transcription);
   const [transEditor, setTransEditor] = useState(null);
-  const [speakersLabels, setSpeakersLabels] = useState({
-    speaker1: 'Speaker 1',
-    speaker2: 'Speaker 2',
-  });
-  const [speakersLabelsUpdated, setSpeakersLabelsUpdated] = useState({
-    speaker1: 'Speaker 1',
-    speaker2: 'Speaker 2',
-  });
+  const [speakersLabels, setSpeakersLabels] = useState(
+    podEpisode.speakers_labels
+  );
+  const [speakersLabelsUpdated, setSpeakersLabelsUpdated] = useState(
+    podEpisode.speakers_labels
+  );
 
   const [audioUrl] = useState(headlinerUrl(podEpisode.enclosure.url));
   const [time_used] = useState(Math.ceil(billing.transcription_time_used / 60));
@@ -45,12 +43,10 @@ const EpisodeDetails = ({ podEpisode, podId, billing }) => {
     });
   };
 
-  // let typingTimer; //timer identifier
   const [typingTimer, setTypingTimer] = useState(0);
 
   const handleSpeakerLabelChange = (target) => {
     const targetId = target.id;
-    // const oldValue = speakersLabels[target.id];
     const newValue = target.value;
 
     setSpeakersLabels({
@@ -62,20 +58,19 @@ const EpisodeDetails = ({ podEpisode, podId, billing }) => {
 
     const timer = setTimeout(() => {
       const oldValue = speakersLabelsUpdated[targetId];
-      const oldWithTags = `<h4 id='transcript-speaker'>${oldValue}</h4>`;
+      const oldWithTags = `<h4 id=\"transcript-speaker\">${oldValue}</h4>`;
       const oldReg = new RegExp(oldWithTags, 'g');
-      const newWithTags = `<h4 id='transcript-speaker'>${newValue}</h4>`;
-      console.log(oldWithTags);
-      console.log(newWithTags);
-
+      const newWithTags = `<h4 id=\"transcript-speaker\">${newValue}</h4>`;
       const new_trans = transcription.replace(oldReg, newWithTags);
+
       setSpeakersLabelsUpdated({
         ...speakersLabelsUpdated,
         [targetId]: newValue,
       });
       setTranscription(new_trans);
       transEditor.setContent(new_trans);
-    }, 2000);
+    }, 1500);
+
     setTypingTimer(timer);
   };
 
@@ -84,6 +79,7 @@ const EpisodeDetails = ({ podEpisode, podId, billing }) => {
       ...episode,
       show_notes: showNotes,
       transcription: transcription,
+      speakers_labels: speakersLabels,
       podcast_id: podId,
     };
 
@@ -267,21 +263,27 @@ const EpisodeDetails = ({ podEpisode, podId, billing }) => {
                 {/* {uploaded && <p>Transcription has started...</p>} */}
                 {transcription !== null && transcription !== 'In Progress' && (
                   <>
-                    <div className="flex mb-4 space-x-1">
-                      <input
-                        id="speaker1"
-                        className="block form-input sm:text-sm sm:leading-5"
-                        placeholder="Speaker 1"
-                        value={speakersLabels.speaker1}
-                        onChange={(e) => handleSpeakerLabelChange(e.target)}
-                      />
-                      <input
-                        id="speaker2"
-                        className="block form-input sm:text-sm sm:leading-5"
-                        placeholder="Speaker 2"
-                        value={speakersLabels.speaker2}
-                        onChange={(e) => handleSpeakerLabelChange(e.target)}
-                      />
+                    <div className="flex items-center mt-6 mb-4 space-x-5">
+                      <label
+                        htmlFor="summary"
+                        className="block text-sm font-medium leading-5 text-gray-700"
+                      >
+                        Edit speakers labels:
+                      </label>
+                      {Object.keys(speakersLabels).map((key) => {
+                        return (
+                          <input
+                            id={key}
+                            // className="block form-input sm:text-sm sm:leading-5"
+                            className="w-20 py-1 text-sm leading-tight text-gray-700 bg-transparent border-b-2 border-indigo-700 appearance-none focus:outline-none"
+                            placeholder={
+                              key.charAt(0).toUpperCase() + key.slice(1)
+                            }
+                            value={speakersLabels[key]}
+                            onChange={(e) => handleSpeakerLabelChange(e.target)}
+                          />
+                        );
+                      })}
                     </div>
                     <TinyEditor
                       value={transcription}
