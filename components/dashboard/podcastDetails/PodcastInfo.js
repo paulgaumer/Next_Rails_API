@@ -42,6 +42,7 @@ const ThemeCheckInput = ({
 const PodcastInfo = ({ podcastData }) => {
   const { podcast } = podcastData;
   const { theme } = podcast;
+  const [transEditor, setTransEditor] = useState(null);
   const [podcastDetails, setPodcastDetails] = useState(podcast);
   const [podcastDescription, setPodcastDescription] = useState(
     podcastDetails.description
@@ -68,6 +69,12 @@ const PodcastInfo = ({ podcastData }) => {
   const handleHeaderBackgroundColorChange = (color) => {
     setHeaderBackgroundColor(color.hex);
     setSelectedColorTheme('custom');
+  };
+
+  const setEditor = (editor, type) => {
+    if (type === 'transcription') {
+      setTransEditor(editor);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -172,6 +179,8 @@ const PodcastInfo = ({ podcastData }) => {
                     value={podcastDescription}
                     setValue={setPodcastDescription}
                     height={200}
+                    type="podcast-description"
+                    setEditor={setEditor}
                   />
                 </div>
               </div>

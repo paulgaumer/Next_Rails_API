@@ -270,20 +270,23 @@ const EpisodeDetails = ({ podEpisode, podId, billing }) => {
                       >
                         Edit speakers labels:
                       </label>
-                      {Object.keys(speakersLabels).map((key) => {
-                        return (
-                          <input
-                            id={key}
-                            // className="block form-input sm:text-sm sm:leading-5"
-                            className="w-20 py-1 text-sm leading-tight text-gray-700 bg-transparent border-b-2 border-indigo-700 appearance-none focus:outline-none"
-                            placeholder={
-                              key.charAt(0).toUpperCase() + key.slice(1)
-                            }
-                            value={speakersLabels[key]}
-                            onChange={(e) => handleSpeakerLabelChange(e.target)}
-                          />
-                        );
-                      })}
+                      {speakersLabels &&
+                        Object.keys(speakersLabels).map((key) => {
+                          return (
+                            <input
+                              id={key}
+                              // className="block form-input sm:text-sm sm:leading-5"
+                              className="w-20 py-1 text-sm leading-tight text-gray-700 bg-transparent border-b-2 border-indigo-700 appearance-none focus:outline-none"
+                              placeholder={
+                                key.charAt(0).toUpperCase() + key.slice(1)
+                              }
+                              value={speakersLabels[key]}
+                              onChange={(e) =>
+                                handleSpeakerLabelChange(e.target)
+                              }
+                            />
+                          );
+                        })}
                     </div>
                     <TinyEditor
                       value={transcription}
