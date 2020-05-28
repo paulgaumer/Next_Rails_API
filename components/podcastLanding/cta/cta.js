@@ -62,7 +62,7 @@ const MailCta = ({ data, border }) => {
               type="email"
               value={email}
               required
-              className="w-full py-2 pl-3 pr-12 text-sm leading-6 text-gray-900 placeholder-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md appearance-none sm:px-3 focus:outline-none focus:placeholder-gray-400 sm:max-w-xs"
+              className="w-full py-2 pl-3 pr-12 text-sm leading-6 text-gray-900 placeholder-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md appearance-none sm:px-3 focus:outline-none focus:placeholder-gray-400 sm:w-64"
               placeholder="Enter your email"
               onChange={(e) => setEmail(e.target.value)}
             />
