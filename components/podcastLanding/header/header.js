@@ -242,19 +242,19 @@ const NewHeader = ({ data, pageType, episode }) => {
               rss={data.feed_url}
             />
             {data.financial_support && (
-              <div className="col-span-1 ml-6 sm:hidden">
+              <div className="ml-6 sm:hidden">
                 <SupportButton link={data.financial_support} />
               </div>
             )}
           </div>
-          <div className="flex items-center mt-12 lg:mt-0 lg:mx-10">
-            {data.socials && (
-              <div className="col-span-1 sm:mr-10 lg:block">
+          <div className="flex items-center lg:mx-10">
+            {Object.values(data.socials).find((e) => e !== null) && (
+              <div className="mt-12 sm:mr-10 lg:mt-0 lg:block">
                 <SocialsList socialsList={data.socials} />
               </div>
             )}
             {data.financial_support && (
-              <div className="hidden col-span-1 sm:block">
+              <div className="hidden sm:block">
                 <SupportButton link={data.financial_support} />
               </div>
             )}
