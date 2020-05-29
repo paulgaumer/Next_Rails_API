@@ -1,25 +1,52 @@
 import React, { useEffect, useState, useContext } from 'react';
 import fetch from 'isomorphic-unfetch';
 import Spinner from './Spinner.js';
-import { GlobalStateContext } from '../../../context/globalContextProvider';
+import {
+  GlobalStateContext,
+  GlobalDispatchContext,
+} from '../../../context/globalContextProvider';
 import { themeOn, themeOff } from '../../../utils/themeHandlers';
 
 const InstagramSection = ({ podcastId }) => {
   const apiUrl = process.env.API_HOST;
-  const [instagram, setInstagram] = useState([]);
-  const [instagramUserName, setInstagramUserName] = useState('');
-  const [loading, setLoading] = useState(true);
+  const { theme, isThemed, instagramList, instagramName } = useContext(
+    GlobalStateContext
+  );
 
-  const { theme, isThemed } = useContext(GlobalStateContext);
+  const [instagram, setInstagram] = useState(
+    instagramList.length >= 1 ? instagramList : []
+  );
+  const [instagramUserName, setInstagramUserName] = useState(
+    instagramName ? instagramName : ''
+  );
+  const [loading, setLoading] = useState(instagram === []);
+  const setInstaContext = useContext(GlobalDispatchContext);
+  const setInstaNameContext = useContext(GlobalDispatchContext);
+
   const colors = isThemed ? theme.colors : '';
 
   useEffect(() => {
     async function fetchInstagram() {
       const res = await fetch(`${apiUrl}/api/v1/fetch_instagram/${podcastId}`);
       const data = await res.json();
-      setLoading(false);
-      setInstagram(data.instagram);
-      setInstagramUserName(data.instagram[0].username);
+      // setLoading(instagramList === []);
+
+      const differences = data.instagram.filter(
+        ({ value: id1 }) => !instagramList.some(({ value: id2 }) => id2 === id1)
+      );
+
+      if (differences.length >= 1) {
+        setInstagram(data.instagram);
+        setInstagramUserName(data.instagram[0].username);
+        setInstaContext({
+          type: 'SET_INSTAGRAM_LIST',
+          payload: data.instagram,
+        });
+        setInstaNameContext({
+          type: 'SET_INSTAGRAM_NAME',
+          payload: data.instagram[0].username,
+        });
+      }
     }
     fetchInstagram();
   }, []);

@@ -19,6 +19,10 @@ const reducer = (state, action) => {
         theme: action.payload,
         isThemed: action.payload.colors !== null,
       };
+    case 'SET_INSTAGRAM_LIST':
+      return { ...state, instagramList: action.payload };
+    case 'SET_INSTAGRAM_NAME':
+      return { ...state, instagramName: action.payload };
     default:
       throw new Error();
   }
@@ -33,6 +37,8 @@ const GlobalContextProvider = ({ children }) => {
     amplitude: null,
     theme: null,
     isThemed: null,
+    instagramList: [],
+    instagramName: null,
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);

@@ -16,8 +16,8 @@ const Spinner = () => {
           display: 'block',
           shapeRendering: 'auto',
         }}
-        width="200px"
-        height="200px"
+        width="150px"
+        height="150px"
         viewBox="0 0 100 100"
         preserveAspectRatio="xMidYMid"
         className={`${themeOff(isThemed, 'text-red-400')}`}
