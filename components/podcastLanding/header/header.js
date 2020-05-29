@@ -248,11 +248,12 @@ const NewHeader = ({ data, pageType, episode }) => {
             )}
           </div>
           <div className="flex items-center lg:mx-10">
-            {Object.values(data.socials).find((e) => e !== null) && (
-              <div className="mt-12 sm:mr-10 lg:mt-0 lg:block">
-                <SocialsList socialsList={data.socials} />
-              </div>
-            )}
+            {data.socials &&
+              Object.values(data.socials).find((e) => e !== null) && (
+                <div className="mt-12 sm:mr-10 lg:mt-0 lg:block">
+                  <SocialsList socialsList={data.socials} />
+                </div>
+              )}
             {data.financial_support && (
               <div className="hidden sm:block">
                 <SupportButton link={data.financial_support} />
