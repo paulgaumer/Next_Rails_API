@@ -25,11 +25,11 @@ const InstagramSection = ({ podcastId }) => {
   }, []);
 
   return (
-    <div className="pt-12 pb-4 mx-auto md:pb-12 max-w-7xl">
+    <div className="pt-8 pb-4 mx-auto md:pt-12 md:pb-12 max-w-7xl">
       <div className="mx-6 sm:mx-20">
-        <div className="flex mb-10">
+        <div className="flex mb-6">
           <h2
-            className={`flex-shrink-0 flex items-center inline-block pr-2 text-xl md:text-2xl font-semibold text-gray-50 border-b-2 ${themeOff(
+            className={`flex-shrink-0 flex items-center inline-block pr-2 text-xl font-semibold text-gray-50 border-b-2 ${themeOff(
               isThemed,
               'border-red-400'
             )}`}
