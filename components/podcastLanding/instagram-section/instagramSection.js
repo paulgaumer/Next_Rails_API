@@ -13,23 +13,23 @@ const InstagramSection = ({ podcastId }) => {
     GlobalStateContext
   );
 
+  const colors = isThemed ? theme.colors : '';
+
+  const setInstaContext = useContext(GlobalDispatchContext);
+  const setInstaNameContext = useContext(GlobalDispatchContext);
   const [instagram, setInstagram] = useState(
     instagramList.length >= 1 ? instagramList : []
   );
   const [instagramUserName, setInstagramUserName] = useState(
     instagramName ? instagramName : ''
   );
-  const [loading, setLoading] = useState(instagram === []);
-  const setInstaContext = useContext(GlobalDispatchContext);
-  const setInstaNameContext = useContext(GlobalDispatchContext);
-
-  const colors = isThemed ? theme.colors : '';
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(instagram < 1);
     async function fetchInstagram() {
       const res = await fetch(`${apiUrl}/api/v1/fetch_instagram/${podcastId}`);
       const data = await res.json();
-      // setLoading(instagramList === []);
 
       const differences = data.instagram.filter(
         ({ value: id1 }) => !instagramList.some(({ value: id2 }) => id2 === id1)
@@ -49,7 +49,7 @@ const InstagramSection = ({ podcastId }) => {
       }
     }
     fetchInstagram();
-  }, []);
+  }, [instagram]);
 
   return (
     <div className="pt-8 pb-4 mx-auto md:pt-12 md:pb-12 max-w-7xl">
