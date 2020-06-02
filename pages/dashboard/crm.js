@@ -35,6 +35,11 @@ CrmPage.getInitialProps = async function (ctx) {
     },
   });
   const data = await res.json();
+
+  if (!data.podcast) {
+    redirect(ctx, '/errors/rssfeed');
+  }
+
   const resCrm = await fetch(`${apiUrl}api/v1/crm_items`, {
     method: 'get',
     headers: {

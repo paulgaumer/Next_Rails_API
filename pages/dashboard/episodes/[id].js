@@ -41,6 +41,10 @@ EpisodePage.getInitialProps = async function (ctx) {
   });
   const data = await res.json();
 
+  if (!data.podcast) {
+    redirect(ctx, '/errors/rssfeed');
+  }
+
   return {
     podcastData: data,
     currentDomain: domain,

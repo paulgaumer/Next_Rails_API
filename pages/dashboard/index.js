@@ -38,6 +38,11 @@ Dashboard.getInitialProps = async function (ctx) {
   });
   const data = await res.json();
 
+  if (!data.podcast) {
+    console.log('FEED ERROR');
+    redirect(ctx, '/errors/rssfeed');
+  }
+
   return {
     podcastData: data,
     currentDomain: domain,
