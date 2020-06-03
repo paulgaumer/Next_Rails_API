@@ -43,11 +43,13 @@ const Features = () => {
           <h3 className="text-3xl font-extrabold leading-8 tracking-tight text-center text-gray-600 font-titleMarketing sm:text-4xl sm:leading-10">
             Grow your audience faster
           </h3>
-          <p className="max-w-3xl mx-auto mt-4 text-xl leading-7 text-center text-gray-500">
-            With hundreds of new podcasts released every day, it is increasingly
-            difficult to find your audience. Don't rely on audio only,
-            transcribing your content extends your reach and helps you build
-            your acquisition strategy.
+          <p className="max-w-3xl mx-auto mt-6 text-xl leading-7 text-center text-gray-500">
+            Reaching your audience is increasingly difficult. Don't rely on
+            audio only!
+          </p>
+          <p className="max-w-3xl mx-auto mt-2 text-xl leading-7 text-center text-gray-500">
+            Boost your acquisition strategy by transcribing and enriching your
+            content.
           </p>
         </div>
 
@@ -207,7 +209,7 @@ const Features = () => {
             <img
               className="relative mx-auto rounded shadow"
               width="550"
-              src="/marketing/homepage.png"
+              src="/marketing/homepage2.png"
               alt=""
             />
           </div>
