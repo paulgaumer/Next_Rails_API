@@ -343,6 +343,7 @@ const Hero = () => {
                 <video
                   loop
                   controls
+                  poster="/marketing/poster.png"
                   src="https://podwii-transcripts.s3.eu-west-2.amazonaws.com/Podwii+Landing.mp4"
                   type="video/mp4"
                   className="rounded-lg"
