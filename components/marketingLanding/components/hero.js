@@ -212,7 +212,7 @@ const Hero = () => {
         {/* END MOBILE MENU */}
 
         <div className="max-w-screen-xl px-4 mx-auto mt-8 sm:mt-12 sm:px-6 md:mt-20 xl:mt-24">
-          <div className="lg:grid lg:grid-cols-12 lg:gap-8">
+          <div className="lg:grid lg:grid-cols-12 lg:gap-16">
             <div className="mb-16 lg:mb-0 sm:text-center md:max-w-2xl md:mx-auto lg:mx-0 lg:col-span-6 lg:text-left">
               {/* <div className="text-sm font-semibold tracking-wide text-red-200 uppercase sm:text-base lg:text-sm xl:text-base">
                 Early Access
@@ -323,13 +323,13 @@ const Hero = () => {
                     />
                   </pattern>
                 </defs>
-                <rect
+                {/* <rect
                   y="72"
                   width="640"
                   height="640"
                   className="text-gray-50"
                   fill="currentColor"
-                />
+                /> */}
                 <rect
                   x="118"
                   width="404"
@@ -337,8 +337,15 @@ const Hero = () => {
                   fill="url(#4f4f415c-a0e9-44c2-9601-6ded5a34a13e)"
                 />
               </svg>
-              <div className="relative w-full mx-auto rounded-lg shadow-lg lg:max-w-md">
-                <img src="/marketing/scene.svg" alt="" className="rounded" />
+              <div className="relative w-full mx-auto rounded-lg shadow-lg lg:mt-2">
+                {/* <img src="/marketing/scene.svg" alt="" className="rounded" /> */}
+
+                <video loop controls className="rounded-lg">
+                  <source
+                    src="https://storage.cloud.google.com/podwii-marketing-assets/Podwii%20Landing.mp4"
+                    type="video/mp4"
+                  />
+                </video>
               </div>
             </div>
           </div>
