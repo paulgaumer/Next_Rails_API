@@ -522,7 +522,7 @@ const Features = () => {
             <img
               className="relative mx-auto rounded shadow"
               width="550"
-              src="/marketing/insta-screen.png"
+              src="/marketing/ugp.gif"
               alt=""
             />
           </div>
