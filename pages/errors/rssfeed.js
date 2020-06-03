@@ -23,7 +23,7 @@ const FeedErrors = () => {
         >
           contact@podwii.com
         </a>{' '}
-        to solve this issue.
+        to resolve this issue.
       </p>
     </div>
   );
