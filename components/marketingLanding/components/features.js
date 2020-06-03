@@ -414,9 +414,9 @@ const Features = () => {
               Embed your Instagram feed
             </h4>
             <p className="mt-3 text-lg leading-7 text-gray-500">
-              For many podcasters, Instagram is a must-have for your
-              communication strategy. Creators spend a lot of time perfecting
-              their feeds, and visitors love to see them!
+              Instagram is often a must-have for your communication strategy.
+              Creators spend a lot of time perfecting their feeds, and visitors
+              love to see them!
             </p>
 
             <ul className="mt-10">
