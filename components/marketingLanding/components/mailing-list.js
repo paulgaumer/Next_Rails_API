@@ -57,7 +57,7 @@ const MailingList = () => {
         id="access"
         className="px-4 py-16 overflow-hidden sm:px-6 lg:px-8 lg:pb-20 xl:pt-2 xl:pb-20"
       >
-        <div className="relative max-w-xl mx-auto">
+        <div className="relative max-w-xl mx-auto lg:mt-16">
           <div className="text-center">
             <h2 className="text-4xl font-extrabold leading-9 tracking-tight text-white font-titleMarketing lg:text-5xl sm:leading-10">
               Get Early Access
