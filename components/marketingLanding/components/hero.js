@@ -340,12 +340,13 @@ const Hero = () => {
               <div className="relative w-full mx-auto rounded-lg shadow-lg lg:mt-2">
                 {/* <img src="/marketing/scene.svg" alt="" className="rounded" /> */}
 
-                <video loop controls className="rounded-lg">
-                  <source
-                    src="https://storage.cloud.google.com/podwii-marketing-assets/Podwii%20Landing.mp4"
-                    type="video/mp4"
-                  />
-                </video>
+                <video
+                  loop
+                  controls
+                  src="https://podwii-transcripts.s3.eu-west-2.amazonaws.com/Podwii+Landing.mp4"
+                  type="video/mp4"
+                  className="rounded-lg"
+                ></video>
               </div>
             </div>
           </div>
