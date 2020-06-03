@@ -9,7 +9,7 @@ const footer = () => {
             &copy; {new Date().getFullYear()} Podwii. All rights reserved.
           </p>
         </div>
-        <div className="mt-8 md:mt-0">
+        <div className="mt-8 text-center md:mt-0">
           <a
             href="mailto:contact@podwii.com"
             className="text-base leading-6 text-center text-gray-400 hover:underline"
