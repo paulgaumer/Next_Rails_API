@@ -87,8 +87,8 @@ const Features = () => {
                       Start building your mailing list
                     </h5>
                     <p className="mt-2 text-base leading-6 text-gray-500">
-                      Display an easy field to sign up for your newsletter or
-                      download your ebook to start building your mailing list.
+                      Display fields to easily sign up for your newsletter or
+                      download your ebook and start building your mailing list.
                       Link to{' '}
                       <a
                         href="https://mailchimp.com/"
@@ -133,8 +133,8 @@ const Features = () => {
                     </h5>
                     <p className="mt-2 text-base leading-6 text-gray-500">
                       Get rewarded for your hard work! Add a link to your
-                      patreon or other donation plateform in the header of your
-                      page to start receiving support from your audience.
+                      patreon or other donation plateform to start receiving
+                      support from your audience.
                     </p>
                   </div>
                 </div>
@@ -285,8 +285,8 @@ const Features = () => {
                         Transcribe in one-click
                       </h5>
                       <p className="mt-2 text-base leading-6 text-gray-500">
-                        Search engine optimization is not an option. Podwii
-                        transcribes your episodes on demand, giving you a
+                        Search engine optimization is not an option. Podwii uses
+                        AI to transcribe your episodes on demand, giving you a
                         massive boost in terms of discoverability and
                         referencing.
                       </p>
@@ -442,8 +442,8 @@ const Features = () => {
                       Display your Instagram content
                     </h5>
                     <p className="mt-2 text-base leading-6 text-gray-500">
-                      What a better way to encourage your visitors to follow you
-                      than by giving them a preview of your content! The perfect
+                      What a better way to encourage visitors to follow you than
+                      offering a preview of your content! The perfect
                       opportunity to boost your followers and animate your page.
                     </p>
                   </div>

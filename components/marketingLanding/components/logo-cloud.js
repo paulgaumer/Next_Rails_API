@@ -92,7 +92,7 @@ const LogoCloud = () => {
         </div>
         <div className="flex items-center justify-center px-8 py-10">
           <p className="text-base text-gray-400 font-titleMarketing group">
-            Not seeing yours?{' '}
+            Not seeing your podcast host? We probably cover it.{' '}
             <a
               href="mailto:contact@podwii.com?subject=Tell me more about Podwii"
               className="inline-block text-purple-600 transform hover:underline"
