@@ -51,7 +51,7 @@ const Features = () => {
           </p>
         </div>
 
-        <div className="relative mt-16 lg:mt-24 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
+        <div className="relative mt-24 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
           <div className="relative">
             <h4 className="text-2xl font-extrabold leading-8 tracking-tight text-gray-800 font-titleMarketing sm:text-3xl sm:leading-9">
               Optimized for podcasting
@@ -59,8 +59,7 @@ const Features = () => {
             <p className="mt-3 text-lg leading-7 text-gray-500">
               Made by podcasters, for podcasters. We understand the challenges
               in creating high value content and created a set of tools to
-              generate your website in one click, transcribe your episodes and
-              connect with your listeners.
+              better engage with your audience.
             </p>
 
             <ul className="mt-10">
@@ -83,14 +82,28 @@ const Features = () => {
                   </div>
                   <div className="ml-4">
                     <h5 className="text-lg font-medium leading-6 text-gray-900 font-titleMarketing">
-                      Engage with your audience
+                      Start building your mailing list
                     </h5>
                     <p className="mt-2 text-base leading-6 text-gray-500">
-                      Create a call-to-action on your page and encourage
-                      listeners to sign up for your newsletter or download your
-                      ebook. Start building your mailing list and connect with
-                      ConvertKit or Google Analytics to better engage with your
-                      audience.
+                      Display an easy field to sign up for your newsletter or
+                      download your ebook to start building your mailing list.
+                      Link to{' '}
+                      <a
+                        href="https://mailchimp.com/"
+                        target="_blank"
+                        className="font-semibold text-indigo-500 hover:underline"
+                      >
+                        Mailchimp
+                      </a>
+                      ,{' '}
+                      <a
+                        href="https://convertkit.com/"
+                        target="_blank"
+                        className="font-semibold text-indigo-500 hover:underline"
+                      >
+                        ConvertKit
+                      </a>{' '}
+                      or download it as csv.
                     </p>
                   </div>
                 </div>
@@ -100,29 +113,26 @@ const Features = () => {
                   <div className="flex-shrink-0">
                     <div className="flex items-center justify-center w-12 h-12 text-white transform bg-indigo-500 rounded-md group-hover:scale-105">
                       <svg
-                        className="w-6 h-6"
-                        stroke="currentColor"
                         fill="none"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        className="w-6 h-6"
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M13 10V3L4 14h7v7l9-11h-7z"
-                        />
+                        <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                       </svg>
                     </div>
                   </div>
                   <div className="ml-4">
                     <h5 className="text-lg font-medium leading-6 text-gray-900 font-titleMarketing">
-                      Generate transcripts instantly
+                      Receive financial support
                     </h5>
                     <p className="mt-2 text-base leading-6 text-gray-500">
-                      Search engine optimization is not an option. Podwii
-                      transcribes your episodes and automatically includes them
-                      in blog articles, giving you a massive boost in terms of
-                      discoverability and referencing.
+                      Get rewarded for your hard work! Add a link to your
+                      patreon or other donation plateform in the header of your
+                      page to start receiving support from your audience.
                     </p>
                   </div>
                 </div>
@@ -196,8 +206,8 @@ const Features = () => {
             </svg>
             <img
               className="relative mx-auto rounded shadow"
-              width="490"
-              src="/marketing/jls-homepage.png"
+              width="550"
+              src="/marketing/homepage.png"
               alt=""
             />
           </div>
@@ -236,21 +246,52 @@ const Features = () => {
           />
         </svg>
 
-        <div className="relative mt-20 lg:mt-24">
+        <div className="relative mt-24 lg:mt-40">
           <div className="lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-8 lg:items-center">
-            <div className="lg:col-start-2">
+            <div className=" lg:col-start-2">
               <h4 className="text-2xl font-extrabold leading-8 tracking-tight text-gray-800 font-titleMarketing sm:text-3xl sm:leading-9">
-                You are in control
+                Enrich your content
               </h4>
               <p className="mt-3 text-lg leading-7 text-gray-500">
                 Podwii automatically imports your new episodes and gives you
-                access to a range of options via a dedicated dashboard. Decide
-                what to publish, edit your content and setup your social sharing
-                process.
+                access to a wide range of options via a dedicated dashboard. Do
+                more in less time!
               </p>
 
               <ul className="mt-10">
-                <li>
+                <li className="mt-10">
+                  <div className="flex group">
+                    <div className="flex-shrink-0">
+                      <div className="flex items-center justify-center w-12 h-12 text-white transform bg-indigo-500 rounded-md group-hover:scale-105">
+                        <svg
+                          className="w-6 h-6"
+                          stroke="currentColor"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M13 10V3L4 14h7v7l9-11h-7z"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="ml-4">
+                      <h5 className="text-lg font-medium leading-6 text-gray-900 font-titleMarketing">
+                        Transcribe in one-click
+                      </h5>
+                      <p className="mt-2 text-base leading-6 text-gray-500">
+                        Search engine optimization is not an option. Podwii
+                        transcribes your episodes on demand, giving you a
+                        massive boost in terms of discoverability and
+                        referencing.
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                <li className="mt-10">
                   <div className="flex group">
                     <div className="flex-shrink-0">
                       <div className="flex items-center justify-center w-12 h-12 text-white transform bg-indigo-500 rounded-md group-hover:scale-105">
@@ -269,14 +310,16 @@ const Features = () => {
                         </svg>
                       </div>
                     </div>
-                    <div className="ml-4">
+                    <div className="ml-4 ">
                       <h5 className="text-lg font-medium leading-6 text-gray-900 font-titleMarketing">
                         Fine Tune your SEO strategy
                       </h5>
                       <p className="mt-2 text-base leading-6 text-gray-500">
-                        Edit your episodes through our blogging interface. Add
-                        your show notes, transcripts, backlinks and keywords to
-                        improve your SEO ranking.
+                        Edit your episodes and podcast details through our
+                        blogging interface. Enrich your show notes and
+                        transcripts with videos, images and links to better
+                        match your keywords. Who said show notes had to be
+                        boring?
                       </p>
                     </div>
                   </div>
@@ -287,21 +330,32 @@ const Features = () => {
                       <div className="flex items-center justify-center w-12 h-12 text-white transition transform bg-indigo-500 rounded-md group-hover:scale-105">
                         <svg
                           fill="currentColor"
-                          viewBox="0 0 20 20"
+                          strokeLinecap="round"
+                          strokeLWnejoin="round"
+                          stroke-Width="2"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
                           className="w-6 h-6"
                         >
-                          <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z"></path>
+                          <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
                         </svg>
                       </div>
                     </div>
                     <div className="ml-4">
                       <h5 className="text-lg font-medium leading-6 text-gray-900 font-titleMarketing">
-                        Share on your social networks
+                        Create Headliner Audiograms
                       </h5>
                       <p className="mt-2 text-base leading-6 text-gray-500">
-                        Podwii generates cards and taglines optimized for social
-                        media. Share your content on Facebook, Twitter and
-                        Instagram in seconds.
+                        We partnered with{' '}
+                        <a
+                          href="https://www.headliner.app/"
+                          target="_blank"
+                          className="font-semibold text-indigo-500 hover:underline"
+                        >
+                          Headliner
+                        </a>{' '}
+                        to let you access the service you love, straight from
+                        your Podwii dashboard. Oh, sweet sweet audiograms!
                       </p>
                     </div>
                   </div>
@@ -344,13 +398,166 @@ const Features = () => {
               </svg>
               <img
                 className="relative mx-auto rounded shadow"
-                width="490"
-                src="/marketing/dashboard2.png"
+                width="550"
+                src="/marketing/dashboard.png"
                 alt=""
               />
             </div>
           </div>
         </div>
+
+        <div className="relative mt-24 lg:mt-40 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
+          <div className="relative">
+            <h4 className="text-2xl font-extrabold leading-8 tracking-tight text-gray-800 font-titleMarketing sm:text-3xl sm:leading-9">
+              Embed your Instagram feed
+            </h4>
+            <p className="mt-3 text-lg leading-7 text-gray-500">
+              For many podcasters, Instagram is a must-have for your
+              communication strategy. Creators spend a lot of time perfecting
+              their feeds, and visitors love to see them!
+            </p>
+
+            <ul className="mt-10">
+              <li>
+                <div className="flex group">
+                  <div className="flex-shrink-0">
+                    <div className="flex items-center justify-center w-12 h-12 text-white transform bg-indigo-500 rounded-md group-hover:scale-105">
+                      <svg
+                        fill="none"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        className="w-6 h-6 "
+                      >
+                        <path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="ml-4">
+                    <h5 className="text-lg font-medium leading-6 text-gray-900 font-titleMarketing">
+                      Display your Instagram content
+                    </h5>
+                    <p className="mt-2 text-base leading-6 text-gray-500">
+                      What a better way to encourage your visitors to follow you
+                      than by giving them a preview of your content! The perfect
+                      opportunity to boost your followers and animate your page.
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li className="mt-10">
+                <div className="flex group">
+                  <div className="flex-shrink-0">
+                    <div className="flex items-center justify-center w-12 h-12 text-white transform bg-indigo-500 rounded-md group-hover:scale-105">
+                      <svg
+                        fill="none"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        className="w-6 h-6"
+                      >
+                        <path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="ml-4">
+                    <h5 className="text-lg font-medium leading-6 text-gray-900 font-titleMarketing">
+                      More networks are coming
+                    </h5>
+                    <p className="mt-2 text-base leading-6 text-gray-500">
+                      Twitter and others are on our shortlist.{' '}
+                      <a
+                        href="mailto:contact@podwii.com"
+                        className="font-semibold text-indigo-500 hover:underline"
+                      >
+                        Let us know
+                      </a>{' '}
+                      which network you'd love us to integrate to Podwii.
+                    </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div className="relative mx-2 mt-10 md:-mx-4 lg:mt-0">
+            <svg
+              className="absolute transform -translate-x-1/2 translate-y-16 left-1/2 lg:hidden"
+              width="784"
+              height="404"
+              fill="none"
+              viewBox="0 0 784 404"
+            >
+              <defs>
+                <pattern
+                  id="ca9667ae-9f92-4be7-abcb-9e3d727f2941"
+                  x="0"
+                  y="0"
+                  width="20"
+                  height="20"
+                  patternUnits="userSpaceOnUse"
+                >
+                  <rect
+                    x="0"
+                    y="0"
+                    width="4"
+                    height="4"
+                    className="text-gray-200"
+                    fill="currentColor"
+                  />
+                </pattern>
+              </defs>
+              <rect
+                width="784"
+                height="404"
+                fill="url(#ca9667ae-9f92-4be7-abcb-9e3d727f2941)"
+              />
+            </svg>
+            <img
+              className="relative mx-auto rounded shadow"
+              width="550"
+              src="/marketing/insta-screen.png"
+              alt=""
+            />
+          </div>
+        </div>
+
+        <svg
+          className="absolute hidden transform translate-x-1/2 translate-y-12 lg:block right-full"
+          width="404"
+          height="784"
+          fill="none"
+          viewBox="0 0 404 784"
+        >
+          <defs>
+            <pattern
+              id="64e643ad-2176-4f86-b3d7-f2c5da3b6a6d"
+              x="0"
+              y="0"
+              width="20"
+              height="20"
+              patternUnits="userSpaceOnUse"
+            >
+              <rect
+                x="0"
+                y="0"
+                width="4"
+                height="4"
+                className="text-gray-200"
+                fill="currentColor"
+              />
+            </pattern>
+          </defs>
+          <rect
+            width="404"
+            height="784"
+            fill="url(#64e643ad-2176-4f86-b3d7-f2c5da3b6a6d)"
+          />
+        </svg>
       </div>
     </div>
   );
