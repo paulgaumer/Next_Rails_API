@@ -523,8 +523,17 @@ const Features = () => {
               className="relative mx-auto rounded shadow"
               width="550"
               src="/marketing/ugp.gif"
-              alt=""
+              alt="ugpcast.podwii.com"
             />
+            <p className="pt-2 text-xs text-center text-gray-500 ">
+              <a
+                href="https://ugpcast.podwii.com"
+                target="_blank"
+                className="hover:underline"
+              >
+                - ugpcast.podwii.com -
+              </a>
+            </p>
           </div>
         </div>
 
