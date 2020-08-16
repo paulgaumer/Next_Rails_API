@@ -76,7 +76,7 @@ const MailingList = () => {
             >
               <div className="sm:col-span-2">
                 <div className="relative mt-1 rounded-md shadow-sm">
-                  <p class="hidden">
+                  <p className="hidden">
                     <label>
                       Don’t fill this out if you're human:{' '}
                       <input
