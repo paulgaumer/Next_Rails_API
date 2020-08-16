@@ -15,6 +15,7 @@ class MyApp extends App {
       <GlobalContextProvider>
         <Head>
           <link rel="shortcut icon" href="/favicon.png" />
+          {/* <script src="https://js.stripe.com/v3/"></script> */}
         </Head>
         <Component {...pageProps} />
         <div className="fixed bottom-0 z-20 w-full">
