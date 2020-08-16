@@ -333,8 +333,8 @@ const Features = () => {
                         <svg
                           fill="currentColor"
                           strokeLinecap="round"
-                          strokeLWnejoin="round"
-                          stroke-Width="2"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
                           className="w-6 h-6"
