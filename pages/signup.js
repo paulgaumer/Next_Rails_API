@@ -23,7 +23,8 @@ const signup = async ({ email, password, subdomain }) => {
   if (res.status === 200) {
     const token = res.headers.get('Authorization');
     Cookies.set('token', token, { expires: 1 });
-    Router.push('/dashboard/onboarding');
+    // Router.push('/dashboard/onboarding');
+    Router.push('/stripetest');
     return res;
   } else {
     return res;

@@ -1,18 +1,22 @@
-import React, { useState, useEffect } from 'react';
-// import { Elements, StripeProvider } from 'react-stripe-elements';
+import React from 'react';
 import { loadStripe } from '@stripe/stripe-js';
-// import { Elements } from '@stripe/react-stripe-js';
-// import PaymentForm from '../components/marketingLanding/components/paymentForm';
+import fetch from 'isomorphic-unfetch';
+import Cookies from 'js-cookie';
 
 const promise = loadStripe('pk_test_1Yvu7JYvlDZOvMAqG4IGInJM00REhvo0Lo');
 
 const Stripetest = () => {
+  const token = Cookies.get('token');
+  const apiUrl = process.env.API_HOST;
+
   const handleClick = async (event) => {
     // Call your backend to create the Checkout session.
-    const sessionId = await fetch(`${process.env.API_HOST}api/v1/charges`, {
+    const sessionId = await fetch(`${apiUrl}api/v1/charges`, {
       method: 'POST',
       headers: {
+        Accept: 'application/json',
         'Content-Type': 'application/json',
+        Authorization: token,
       },
       body: JSON.stringify({ items: [{ id: 'xl-tshirt' }] }),
     })
@@ -37,30 +41,6 @@ const Stripetest = () => {
       Checkout
     </button>
   );
-
-  // const [windowLoaded, setWindowLoaded] = useState(false);
-
-  // useEffect(() => {
-  //   if (typeof window !== undefined) {
-  //     setWindowLoaded(true);
-  //   }
-  // }, []);
-
-  // if (windowLoaded) {
-  //   return (
-  //     <div>
-  //       <Elements stripe={promise}>
-  //         <PaymentForm />
-  //       </Elements>
-  //     </div>
-  //   );
-  // } else {
-  //   return (
-  //     <div>
-  //       <p>No window yet!</p>
-  //     </div>
-  //   );
-  // }
 };
 
 export default Stripetest;
