@@ -2,7 +2,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/paulgaumer/japan_life_stories">
-    <img src="src/images/podcast-logo.png" alt="Logo" width="80" height="80">
+    <img src="public/marketing/banner-seo.png" alt="Logo" width="500">
   </a>
 
   <h3 align="center">Podwii (Next App)</h3>
@@ -24,8 +24,7 @@
 
 - [About the Project](#about-the-project)
   - [Built With](#built-with)
-- [Getting Started](#getting-started)
-  - [Installation](#installation)
+- [Installation](#installation)
 - [Contact](#contact)
 
 <!-- ABOUT THE PROJECT -->
@@ -46,11 +45,7 @@ Podwii is SaaS application helping podcasters better reach their audience. Gener
 
 <!-- GETTING STARTED -->
 
-## Getting Started
-
-If you'd like to contribute:
-
-### Installation
+## Installation
 
 1. Clone the repo
 
@@ -64,23 +59,23 @@ git clone git@github.com:paulgaumer/podwii_next_app.git
 yarn install
 ```
 
-3. Start your local Gatsby server
+3. Start your local Next server
 
 ```sh
 yarn dev
 ```
 
-### Environment variables
+<!-- ### Environment variables
 
 The following variables are needed:
 
 - `GATSBY_API_WEATHER` from the [Open Weather Map API](https://openweathermap.org/)
-- `GATSBY_GOOGLE_ANALYTICS` from [Google Analytics](https://analytics.google.com/)
+- `GATSBY_GOOGLE_ANALYTICS` from [Google Analytics](https://analytics.google.com/) -->
 
 <!-- CONTACT -->
 
 ## Contact
 
-Paul Gaumer - [@PaulGaumer](https://twitter.com/@PaulGaumer) - hello@paulgaumer.com
+[Paul Gaumer](https://paulgaumer.com) - [@PaulGaumer](https://twitter.com/@PaulGaumer) - hello@paulgaumer.com
 
 Project Link: [https://github.com/paulgaumer/podwii_next_app](https://github.com/paulgaumer/podwii_next_app)
