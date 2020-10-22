@@ -6,7 +6,6 @@
     "build": "next build",
     "start": "next start"
   },
-  "license": "ISC",
   "dependencies": {
     "@fullhuman/postcss-purgecss": "^2.1.0",
     "@tailwindcss/ui": "^0.1.3",
