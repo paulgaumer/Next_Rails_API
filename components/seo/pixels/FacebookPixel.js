@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default () => {
-  const pixelId = '239952763968177';
+  const pixelId = process.env.FACEBOOK_PIXEL_ID;
 
   return (
     <React.Fragment>
