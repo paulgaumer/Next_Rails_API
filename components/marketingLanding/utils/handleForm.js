@@ -22,8 +22,7 @@ export const submitAccessForm = async (details) => {
 };
 
 export const sendSlackNotification = async (email) => {
-  const url =
-    'https://hooks.slack.com/services/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';
+  const url = process.env.SLACK_WEBHOOK_URL;
   const res = await fetch(url, {
     method: 'POST',
     body: JSON.stringify({

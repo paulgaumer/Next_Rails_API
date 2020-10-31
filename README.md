@@ -41,7 +41,8 @@ Podwii is SaaS application helping podcasters better reach their audience. Gener
 - [Styled Components](https://styled-components.com/)
 - [Vercel](https://vercel.com) - hosting
 - [Google Cloud APIs](https://cloud.google.com/) - transcription and data hosting
-- [Amplitude.js](https://521dimensions.com/open-source/amplitudejs) - custom audio player
+- [Amplitude.js](https://521dimensions.com/open-source/amplitudejs) - custom Audio Player
+- [TinyMCE](https://www.tiny.cloud/) - custom WYSIWYG Text Editor
 
 <!-- GETTING STARTED -->
 
